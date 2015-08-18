@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] how to configure clustalw in mrsweb
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20how%20to%20configure%20clustalw%20in%20mrsweb&In-Reply-To=%3C1266584121.2077.6.camel%40xps%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000509.html">
+   <LINK REL="Next"  HREF="000511.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] how to configure clustalw in mrsweb</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20how%20to%20configure%20clustalw%20in%20mrsweb&In-Reply-To=%3C1266584121.2077.6.camel%40xps%3E"
+       TITLE="[Mrs-user] how to configure clustalw in mrsweb">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Fri Feb 19 13:55:21 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000509.html">[Mrs-user] how to configure clustalw in mrsweb
+</A></li>
+        <LI>Next message: <A HREF="000511.html">[Mrs-user] how to configure clustalw in mrsweb
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#510">[ date ]</a>
+              <a href="thread.html#510">[ thread ]</a>
+              <a href="subject.html#510">[ subject ]</a>
+              <a href="author.html#510">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I replaced libxml2 with my own xml library, but this library does not
+support XPath correctly yet. So for now you should copy the
+&lt;clustalw-exe&gt; tags to the highest level in the config file, somewhere
+after &lt;scriptdir&gt; e.g.
+
+Sorry, I'll try to fix this in a future release.
+
+-maarten
+
+Op vrijdag 19-02-2010 om 14:27 uur [tijdzone +0300], schreef Martin
+Senger:
+&gt;<i> I have not changed anything in distributed &quot;mrs-config.xml&quot; file,
+</I>&gt;<i> regardsing the clustal. It has this:
+</I>&gt;<i> 
+</I>&gt;<i> &lt;server&gt;
+</I>&gt;<i>    &lt;service&gt;clustalw&lt;/service&gt;
+</I>&gt;<i>    &lt;address&gt;0.0.0.0&lt;/address&gt;
+</I>&gt;<i>    &lt;port&gt;18083&lt;/port&gt;
+</I>&gt;<i>    &lt;clustalw-exe&gt;/usr/bin/clustalw&lt;/clustalw-exe&gt;
+</I>&gt;<i>    &lt;max-run-time&gt;120&lt;/max-run-time&gt;
+</I>&gt;<i> &lt;/server&gt;
+</I>&gt;<i> 
+</I>&gt;<i> And I have, indeed, clustaw in that location:
+</I>&gt;<i> 
+</I>&gt;<i> $ ls -la /usr/bin/clustalw
+</I>&gt;<i> -rwxr-xr-x 1 root root 723208 2008-12-15 21:34 /usr/bin/clustalw
+</I>&gt;<i> 
+</I>&gt;<i> But mrswen, when calling clustal, complains:
+</I>&gt;<i> javax.xml.ws.soap.SOAPFaultException: No clustal executable specified in mrs config file
+</I>&gt;<i> 
+</I>&gt;<i> I wonder where I am making a mistake, what am I overlooking?
+</I>&gt;<i> 
+</I>&gt;<i> Thanks for any help,
+</I>&gt;<i> Martin
+</I>&gt;<i> 
+</I>&gt;<i> -- 
+</I>&gt;<i> Martin Senger
+</I>&gt;<i> email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+</I>&gt;<i> skype: martinsenger
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000509.html">[Mrs-user] how to configure clustalw in mrsweb
+</A></li>
+	<LI>Next message: <A HREF="000511.html">[Mrs-user] how to configure clustalw in mrsweb
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#510">[ date ]</a>
+              <a href="thread.html#510">[ thread ]</a>
+              <a href="subject.html#510">[ subject ]</a>
+              <a href="author.html#510">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

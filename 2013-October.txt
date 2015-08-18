@@ -1,0 +1,330 @@
+From sas at belozersky.msu.ru  Wed Oct 16 13:18:15 2013
+From: sas at belozersky.msu.ru (Sergei Spirin)
+Date: Wed, 16 Oct 2013 15:18:15 +0400
+Subject: [mrs-user] Number of records
+Message-ID: <4237F985FA3A4CBF970C63EFD68D9C9C@boar>
+
+Dear MRS developers,
+
+It seems that MRS 6 incorrectly defines the number of findings.
+The following query:
+"DE:complete AND OS:Burkholderia AND DE:chromosome"
+finds 87 records, but with message on the first page
+"Records 1-15 of 2,817,818"
+and on the last (6th) page:
+"Records 76-87 of 2,817,818".
+There are also hyperlinks to 7th, 8th etc. pages, but they lead to pages "No hits found".
+
+And a question: is it possible to download all 87 findings at once, not by selecting them 
+one by one?
+
+Sergei Spirin,
+Belozersky Institute, Moscow 
+
+
+
+From shailesh1.m at tcs.com  Wed Oct 16 16:17:31 2013
+From: shailesh1.m at tcs.com (Shailesh1 M)
+Date: Wed, 16 Oct 2013 19:47:31 +0530
+Subject: [mrs-user] Segmentation fault: need consultation
+Message-ID: <OF1211BB06.DBC501EE-ON65257C06.004E4F32-65257C06.004E826B@tcs.com>
+
+Hi,
+
+Greetings!
+
+We have been using MRS (version: 4, OS: RHEL5.1) since long and 
+encountered a problem we are unable to debug, thereby need your 
+consultation and guidance.
+
+
+We have two ways of posting a SOAP request (raw xml) - one using soapUI 
+and other using perl SOAP client. Using perl SOAP client we are able to 
+post the request and successfully receive the response. Now the problem 
+chips in when we are making the soap call using soapUI. Below is the error 
+log.
+ 
+Thu Oct 10 05:36:53 EDT 
+2013:ERROR:org.apache.http.NoHttpResponseException: The target server 
+failed to respond 
+org.apache.http.NoHttpResponseException: The target server failed to 
+respond 
+at 
+org.apache.http.impl.conn.DefaultResponseParser.parseHead(DefaultResponseParser.java:101) 
+
+at 
+org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:252) 
+
+at 
+org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:281) 
+
+at 
+org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:247) 
+
+at 
+org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:219) 
+
+at 
+com.eviware.soapui.impl.wsdl.support.http.HttpClientSupport$SoapUIHttpRequestExecutor.doReceiveResponse(HttpClientSupport.java:151) 
+
+at 
+org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125) 
+
+at 
+org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:633) 
+
+at 
+org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:454) 
+
+at 
+org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:820) 
+
+at 
+org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:754) 
+
+at 
+com.eviware.soapui.impl.wsdl.support.http.HttpClientSupport$Helper.execute(HttpClientSupport.java:246) 
+
+at 
+com.eviware.soapui.impl.wsdl.support.http.HttpClientSupport.execute(HttpClientSupport.java:356) 
+
+at 
+com.eviware.soapui.impl.wsdl.submit.transports.http.HttpClientRequestTransport.submitRequest(HttpClientRequestTransport.java:317) 
+
+at 
+com.eviware.soapui.impl.wsdl.submit.transports.http.HttpClientRequestTransport.sendRequest(HttpClientRequestTransport.java:231) 
+
+at com.eviware.soapui.impl.wsdl.WsdlSubmit.run(WsdlSubmit.java:123) 
+at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) 
+at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source) 
+at java.util.concurrent.FutureTask.run(Unknown Source) 
+at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) 
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) 
+at java.lang.Thread.run(Unknown Source) 
+
+While posting the SOAP request using soapUI the mrsws service is getting 
+killed for the reasons unknown to us. We then got back to our the UNIX 
+server team to find out what might be causing this problem. But they were 
+only able to report back with the fact that the mrs service has been 
+segfaulting fairly regularly, and further the logs weren't of much help.
+
+Then we again posted the soap request using soapUI and simultaneously 
+analysed the logs, where we found the whenever a soap request is posted 
+(using soapUI) the mrsws service gets restarted and finally gets killed. 
+This phenomenon but doesn't happen when we post the soap request using 
+perl SOAP client.
+
+
+We also tried to access mrs6 @ http://mrs.cmbi.ru.nl/m6/ and are getting 
+expected response. Below is the corresponding query for the same.
+ 
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/
+" xmlns:sear="http://mrs.cmbi.ru.nl/m6/mrsws/search">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sear1:Count xmlns:sear1="http://ratchet.am.lilly.com:18081">
+         <sear1:db>uniprot</sear1:db>
+         <sear1:booleanquery>os:human</sear1:booleanquery>
+      </sear1:Count>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+Your help would be greatly appreciated. Please let us know in case you 
+require additional information.
+
+-- 
+Thanks and regards,
+Shailesh Maurya
+Systems Engineer
+Tata Consultancy Services Limited 
+C - 56, Phase 2, Noida (U.P) - 201305 
+Cell: +91-9911666572
+Web: http://www.tcs.com
+=====-----=====-----=====
+Notice: The information contained in this e-mail
+message and/or attachments to it may contain 
+confidential or privileged information. If you are 
+not the intended recipient, any dissemination, use, 
+review, distribution, printing or copying of the 
+information contained in this e-mail message 
+and/or attachments to it are strictly prohibited. If 
+you have received this communication in error, 
+please notify us by reply e-mail or telephone and 
+immediately and permanently delete the message 
+and any attachments. Thank you
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/mrs-user/attachments/20131016/ae940a73/attachment.html>
+
+From maarten at hekkelman.com  Wed Oct 16 19:37:04 2013
+From: maarten at hekkelman.com (maarten at hekkelman.com)
+Date: Wed, 16 Oct 2013 19:37:04 +0200
+Subject: [mrs-user] Number of records
+In-Reply-To: <4237F985FA3A4CBF970C63EFD68D9C9C@boar>
+References: <4237F985FA3A4CBF970C63EFD68D9C9C@boar>
+Message-ID: <9A866B88B25B40358272655A21F2A0EC@kleine>
+
+Dear Sergei,
+
+The number given for the result count of a boolean search is always a
+guess, unless the exact count is known by the time the page is rendered.
+This is a optimisation similar to what other search engines do, try to
+browse through the pages of a Google result to see it happening there too.
+
+And to download more than one document, click the checkbox before the
+first document and then hold down the shift key and click the checkbox
+before the last item in the list. An overlay should appear at the bottom
+of the page containing a button labelled 'Download'. You can use that
+button to download the selected documents.
+
+Hope this helps.
+
+-maarten
+
+
+
+-----Oorspronkelijk bericht----- 
+From: Sergei Spirin
+Sent: Wednesday, October 16, 2013 1:18 PM
+To: mrs-user at lists.berlios.de
+Subject: [mrs-user] Number of records
+
+Dear MRS developers,
+
+It seems that MRS 6 incorrectly defines the number of findings.
+The following query:
+"DE:complete AND OS:Burkholderia AND DE:chromosome"
+finds 87 records, but with message on the first page
+"Records 1-15 of 2,817,818"
+and on the last (6th) page:
+"Records 76-87 of 2,817,818".
+There are also hyperlinks to 7th, 8th etc. pages, but they lead to pages "No 
+hits found".
+
+And a question: is it possible to download all 87 findings at once, not by 
+selecting them
+one by one?
+
+Sergei Spirin,
+Belozersky Institute, Moscow
+
+
+_______________________________________________
+mrs-user mailing list
+mrs-user at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/mrs-user 
+
+
+From maarten at hekkelman.com  Wed Oct 16 19:36:15 2013
+From: maarten at hekkelman.com (maarten at hekkelman.com)
+Date: Wed, 16 Oct 2013 19:36:15 +0200
+Subject: [mrs-user] Segmentation fault: need consultation
+In-Reply-To: <OF1211BB06.DBC501EE-ON65257C06.004E4F32-65257C06.004E826B@tcs.com>
+References: <OF1211BB06.DBC501EE-ON65257C06.004E4F32-65257C06.004E826B@tcs.com>
+Message-ID: <1FF52A1042F64222BB1617B8BCC9EFE3@kleine>
+
+Dear Shailesh,
+
+MRS 4, that?s code from 2009. Since then I wrote MRS 5 and then decided to dump everything are rewrite MRS from scratch resulting in MRS 6. That last version is the one you should use, it is much faster and much more stable.
+
+I?m afraid this is not the answer you were waiting for.
+
+Best regards,
+
+-maarten
+
+
+From: Shailesh1 M 
+Sent: Wednesday, October 16, 2013 4:17 PM
+To: mrs-user at lists.berlios.de 
+Subject: [mrs-user] Segmentation fault: need consultation
+
+Hi, 
+
+Greetings! 
+
+We have been using MRS (version: 4, OS: RHEL5.1) since long and encountered a problem we are unable to debug, thereby need your consultation and guidance. 
+
+
+We have two ways of posting a SOAP request (raw xml) - one using soapUI and other using perl SOAP client. Using perl SOAP client we are able to post the request and successfully receive the response. Now the problem chips in when we are making the soap call using soapUI. Below is the error log. 
+  
+Thu Oct 10 05:36:53 EDT 2013:ERROR:org.apache.http.NoHttpResponseException: The target server failed to respond 
+org.apache.http.NoHttpResponseException: The target server failed to respond 
+at org.apache.http.impl.conn.DefaultResponseParser.parseHead(DefaultResponseParser.java:101) 
+at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:252) 
+at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:281) 
+at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:247) 
+at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:219) 
+at com.eviware.soapui.impl.wsdl.support.http.HttpClientSupport$SoapUIHttpRequestExecutor.doReceiveResponse(HttpClientSupport.java:151) 
+at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125) 
+at org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:633) 
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:454) 
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:820) 
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:754) 
+at com.eviware.soapui.impl.wsdl.support.http.HttpClientSupport$Helper.execute(HttpClientSupport.java:246) 
+at com.eviware.soapui.impl.wsdl.support.http.HttpClientSupport.execute(HttpClientSupport.java:356) 
+at com.eviware.soapui.impl.wsdl.submit.transports.http.HttpClientRequestTransport.submitRequest(HttpClientRequestTransport.java:317) 
+at com.eviware.soapui.impl.wsdl.submit.transports.http.HttpClientRequestTransport.sendRequest(HttpClientRequestTransport.java:231) 
+at com.eviware.soapui.impl.wsdl.WsdlSubmit.run(WsdlSubmit.java:123) 
+at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) 
+at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source) 
+at java.util.concurrent.FutureTask.run(Unknown Source) 
+at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) 
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) 
+at java.lang.Thread.run(Unknown Source) 
+
+While posting the SOAP request using soapUI the mrsws service is getting killed for the reasons unknown to us. We then got back to our the UNIX server team to find out what might be causing this problem. But they were only able to report back with the fact that the mrs service has been segfaulting fairly regularly, and further the logs weren't of much help. 
+
+Then we again posted the soap request using soapUI and simultaneously analysed the logs, where we found the whenever a soap request is posted (using soapUI) the mrsws service gets restarted and finally gets killed. This phenomenon but doesn't happen when we post the soap request using perl SOAP client. 
+
+
+We also tried to access mrs6 @ http://mrs.cmbi.ru.nl/m6/ and are getting expected response. Below is the corresponding query for the same. 
+  
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sear="http://mrs.cmbi.ru.nl/m6/mrsws/search"> 
+   <soapenv:Header/> 
+   <soapenv:Body> 
+      <sear1:Count xmlns:sear1="http://ratchet.am.lilly.com:18081"> 
+         <sear1:db>uniprot</sear1:db> 
+         <sear1:booleanquery>os:human</sear1:booleanquery> 
+      </sear1:Count> 
+   </soapenv:Body> 
+</soapenv:Envelope> 
+
+
+Your help would be greatly appreciated. Please let us know in case you require additional information. 
+
+-- 
+Thanks and regards,
+Shailesh Maurya
+Systems Engineer
+Tata Consultancy Services Limited 
+C - 56, Phase 2, Noida (U.P) - 201305 
+Cell: +91-9911666572
+Web: http://www.tcs.com 
+=====-----=====-----=====
+Notice: The information contained in this e-mail
+message and/or attachments to it may contain 
+confidential or privileged information. If you are 
+not the intended recipient, any dissemination, use, 
+review, distribution, printing or copying of the 
+information contained in this e-mail message 
+and/or attachments to it are strictly prohibited. If 
+you have received this communication in error, 
+please notify us by reply e-mail or telephone and 
+immediately and permanently delete the message 
+and any attachments. Thank you
+
+
+
+--------------------------------------------------------------------------------
+_______________________________________________
+mrs-user mailing list
+mrs-user at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/mrs-user
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/mrs-user/attachments/20131016/22d64f0e/attachment-0001.html>
+

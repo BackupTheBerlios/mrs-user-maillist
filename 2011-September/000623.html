@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Trivial%20OMIM%20retrieval%20issue%20and%20302%20error%20on%0A%20retrieving%20cross%20database%20links&In-Reply-To=%3C4E7C90E1.3060009%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000621.html">
+   <LINK REL="Next"  HREF="000624.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links</H1>
+    <B>Georgios Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Trivial%20OMIM%20retrieval%20issue%20and%20302%20error%20on%0A%20retrieving%20cross%20database%20links&In-Reply-To=%3C4E7C90E1.3060009%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links">georgios at biotek.uio.no
+       </A><BR>
+    <I>Fri Sep 23 16:00:01 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000621.html">[Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links
+</A></li>
+        <LI>Next message: <A HREF="000624.html">[Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#623">[ date ]</a>
+              <a href="thread.html#623">[ thread ]</a>
+              <a href="subject.html#623">[ subject ]</a>
+              <a href="author.html#623">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 09/21/2011 07:20 PM, Maarten L. Hekkelman wrote:
+&gt;<i> Op 21-9-2011 17:09, Georgios Magklaras schreef:
+</I>&gt;<i>
+</I>&gt;&gt;&gt;<i> I think I know what is going on here. Could you please build a new
+</I>&gt;&gt;&gt;<i> libzeep (using the trunk from the subversion repository at
+</I>&gt;&gt;&gt;<i> <A HREF="https://svn.cmbi.ru.nl/libzeep/trunk">https://svn.cmbi.ru.nl/libzeep/trunk</A> ) and then rebuild your MRS. I
+</I>&gt;&gt;&gt;<i> believe I made a change is the http reply class that might fix this
+</I>&gt;&gt;&gt;<i> particular problem. If this new code works, please let me know and I
+</I>&gt;&gt;&gt;<i> will release a new version.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> Will do, just to confirm, is it worth upgrading to 5.1.2-1 at the same
+</I>&gt;&gt;<i> time (referring to your launchpad files which I follow:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="https://launchpad.net/~hekkel/+archive/ppa/+packages">https://launchpad.net/~hekkel/+archive/ppa/+packages</A>
+</I>&gt;<i>
+</I>&gt;<i> I made the change in June and since the ppa version of libzeep is from 
+</I>&gt;<i> August, I think that 2.6.1-1 version of libzeep is the one you need to 
+</I>&gt;<i> fix the problem you are seeing. (I hope.)
+</I>&gt;<i>
+</I>&gt;<i> The 5.1.2 version of MRS uses the fixed libzeep and has a fix for 
+</I>&gt;<i> leaking file descriptors when using NCBI blast. Certainly useful if 
+</I>&gt;<i> you use this new option.
+</I>&gt;<i>
+</I>&gt;<i> -maarten
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>
+</I>Hmm, I upgraded from the libzeep trunk as instructed and restarted MRS. 
+No difference. The problem still persists.
+
+GM
+
+-- 
+-- 
+George Magklaras PhD
+RHCE no: 805008309135525
+
+Senior Systems Engineer/IT Manager
+Biotek Center, University of Oslo
+EMBnet TMPC Chair
+
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+Tel: +47 22840535
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000621.html">[Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links
+</A></li>
+	<LI>Next message: <A HREF="000624.html">[Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#623">[ date ]</a>
+              <a href="thread.html#623">[ thread ]</a>
+              <a href="subject.html#623">[ subject ]</a>
+              <a href="author.html#623">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

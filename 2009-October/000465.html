@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] mrs support
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs%20support&In-Reply-To=%3C4AD304CF.4070402%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000464.html">
+   <LINK REL="Next"  HREF="000466.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] mrs support</H1>
+    <B>George Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs%20support&In-Reply-To=%3C4AD304CF.4070402%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] mrs support">georgios at biotek.uio.no
+       </A><BR>
+    <I>Mon Oct 12 12:28:31 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000464.html">[Mrs-user] mrs support
+</A></li>
+        <LI>Next message: <A HREF="000466.html">[Mrs-user] mrs support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#465">[ date ]</a>
+              <a href="thread.html#465">[ thread ]</a>
+              <a href="subject.html#465">[ subject ]</a>
+              <a href="author.html#465">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>OK Marten,
+
+Thanks. We are keen to try it out. Could you also include the source RPM 
+as well?
+
+Don't worry to much about libperl.a. As for libstdc++, on RHEL 5.4:
+
+cnkeeper release101# yum list installed | grep libstdc
+compat-libstdc++-296.i386                 2.96-138 
+installed
+compat-libstdc++-33.i386                  3.2.3-61 
+installed
+compat-libstdc++-33.x86_64                3.2.3-61 
+installed
+libstdc++.i386                            4.1.2-46.el5 
+installed
+libstdc++.x86_64                          4.1.2-46.el5 
+installed
+libstdc++-devel.x86_64                    4.1.2-46.el5
+installed
+
+GM
+
+
+
+Maarten L. Hekkelman wrote:
+&gt;<i> George,
+</I>&gt;<i> 
+</I>&gt;<i> I've created a CentOS version of MRS and I'm about to release this as a 
+</I>&gt;<i> RPM. I've used the 5.3 version of CentOS and had to install several 
+</I>&gt;<i> libraries by hand since they were either missing or too old. Therefore I 
+</I>&gt;<i> had to link the executables statically against these libraries.
+</I>&gt;<i> 
+</I>&gt;<i> This raises a new point though, I cannot create a binary perl plugin 
+</I>&gt;<i> since my hand-build versions of the libraries are not position 
+</I>&gt;<i> independent (-fPIC) but the libperl.a is and mixing those is not 
+</I>&gt;<i> allowed. Since using the perl plugin is a deprecated technology in my 
+</I>&gt;<i> eyes anyway, would it be a real problem leaving this one out of the RPM?
+</I>&gt;<i> 
+</I>&gt;<i> Another potential problem is libstdc++, since I've used CentOS 5.3 I 
+</I>&gt;<i> hope I can assume that everyone has the right version installed? Trying 
+</I>&gt;<i> to link that one statically is proving to be difficult.
+</I>&gt;<i> 
+</I>&gt;<i> -maarten
+</I>&gt;<i> 
+</I>&gt;<i> --------------------------------------------------
+</I>&gt;<i> From: &quot;George Magklaras&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">georgios at biotek.uio.no</A>&gt;
+</I>&gt;<i> Sent: Thursday, September 10, 2009 11:16 AM
+</I>&gt;<i> To: &quot;Maarten L. Hekkelman&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">m.hekkelman at cmbi.ru.nl</A>&gt;
+</I>&gt;<i> Cc: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>&gt;
+</I>&gt;<i> Subject: Re: [Mrs-user] mrs support
+</I>&gt;<i> 
+</I>&gt;&gt;<i> If you support the latest RHEL (at the moment 5.4), this will solve 
+</I>&gt;&gt;<i> many problems with CentOS people. CentOS is basically derived from the 
+</I>&gt;&gt;<i> RHEL source rpms, so most of the library dependencies are/should be 
+</I>&gt;&gt;<i> the same with RHEL with very minor differences. So, CentOS 5 should be 
+</I>&gt;&gt;<i> the same with RHEL 5.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> GM
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Maarten L. Hekkelman wrote:
+</I>&gt;&gt;&gt;<i> George Magklaras schreef:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> I would like to convince you to re-consider including the RedHat 
+</I>&gt;&gt;&gt;&gt;<i> derivatives (RHEL and CentOS). On behalf of EMBnet Norway at least 
+</I>&gt;&gt;&gt;&gt;<i> in our academic environment, I can say that there is a large number 
+</I>&gt;&gt;&gt;&gt;<i> of people that does not use Debian based distros. I can offer some 
+</I>&gt;&gt;&gt;&gt;<i> help, but I think it is wrong to exclude these two RedHat based 
+</I>&gt;&gt;&gt;&gt;<i> distros, as I am sure there are *many* people that use them in an 
+</I>&gt;&gt;&gt;&gt;<i> academic setting, due to restrictions from their IT department.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I could support one other OS release, but then I need to know which 
+</I>&gt;&gt;&gt;<i> one and it should be something recent. It has been quite a challenge 
+</I>&gt;&gt;&gt;<i> to write software for the RHEL 5.1 servers we have here. We're in the 
+</I>&gt;&gt;&gt;<i> process of moving all our servers to Ubuntu.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> The only thing I know about CentOS is what I just read in the first 
+</I>&gt;&gt;&gt;<i> lines of their webpage. Do you have a suggestion for a version of 
+</I>&gt;&gt;&gt;<i> this OS? I could try to set it up in a virtual machine and then 
+</I>&gt;&gt;&gt;<i> create an MRS rpm (or yum?) archive for it.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> -maarten
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Mrs-user mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- 
+</I>&gt;&gt;<i> -- 
+</I>&gt;&gt;<i> George Magklaras BSc Hons MPhil
+</I>&gt;&gt;<i> RHCE:805008309135525
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Senior Computer Systems Engineer/UNIX-Linux Systems Administrator
+</I>&gt;&gt;<i> EMBnet Technical Management Board
+</I>&gt;&gt;<i> The Biotechnology Centre of Oslo,
+</I>&gt;&gt;<i> University of Oslo
+</I>&gt;&gt;<i> <A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Tel: +47-22840535
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- 
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i> 
+</I>
+-- 
+--
+George Magklaras BSc Hons MPhil
+RHCE:805008309135525
+
+Senior Computer Systems Engineer/UNIX-Linux Systems Administrator
+EMBnet Technical Management Board
+The Biotechnology Centre of Oslo,
+University of Oslo
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+Tel: +47-22840535
+
+--
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000464.html">[Mrs-user] mrs support
+</A></li>
+	<LI>Next message: <A HREF="000466.html">[Mrs-user] mrs support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#465">[ date ]</a>
+              <a href="thread.html#465">[ thread ]</a>
+              <a href="subject.html#465">[ subject ]</a>
+              <a href="author.html#465">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

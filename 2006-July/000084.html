@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Blast problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Blast%20problem&In-Reply-To=%3C44CA1AF1.9090805%40embl-heidelberg.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000078.html">
+   <LINK REL="Next"  HREF="000085.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Blast problem</H1>
+    <B>Dr. Andrea Schafferhans</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Blast%20problem&In-Reply-To=%3C44CA1AF1.9090805%40embl-heidelberg.de%3E"
+       TITLE="[Mrs-user] Blast problem">andrea.schafferhans at embl-heidelberg.de
+       </A><BR>
+    <I>Fri Jul 28 16:10:57 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000078.html">[Mrs-user] Blast problem
+</A></li>
+        <LI>Next message: <A HREF="000085.html">[Mrs-user] Blast problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#84">[ date ]</a>
+              <a href="thread.html#84">[ thread ]</a>
+              <a href="subject.html#84">[ subject ]</a>
+              <a href="author.html#84">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten,
+
+&gt;<i> In the mrs-submit.cgi script you can find some lines that try to start a 
+</I>&gt;<i> job in a queueing mechanism. Some of these are commented out, the one 
+</I>&gt;<i> currently active uses the 'batch' command of your Linux system. But for 
+</I>&gt;<i> batch to work, you have to enable 'at'.
+</I>Thanks a lot for the info. I have now enabled the atd and blast works 
+nicely.
+
+&gt;&gt;<i> To find out more, I also tried to run the query_xxxxx.csh script and its
+</I>&gt;&gt;<i> individual commands to find out what happens. And what I got was a core:
+</I>&gt;<i> 
+</I>&gt;<i> The core you get is because mrs_blast tried to open your sprot.cmp file 
+</I>&gt;<i> but wasn't allowed to. Perhaps the permissions on sprot.cmp are not 
+</I>&gt;<i> correct? 
+</I>Yes, that was due to the corrupt sprot files.
+
+     Thanks again!
+
+        Andrea
+
+
+P.S. As a hint for others trying out MRS: in the mrs_clustalw.cgi a path 
+to clustalw is assumed that might not be the right one on your system.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000078.html">[Mrs-user] Blast problem
+</A></li>
+	<LI>Next message: <A HREF="000085.html">[Mrs-user] Blast problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#84">[ date ]</a>
+              <a href="thread.html#84">[ thread ]</a>
+              <a href="subject.html#84">[ subject ]</a>
+              <a href="author.html#84">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Memory Issues (?) with mrs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Memory%20Issues%20%28%3F%29%20with%20mrs&In-Reply-To=%3C4E42AAD1.9040600%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000608.html">
+   <LINK REL="Next"  HREF="000610.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Memory Issues (?) with mrs</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Memory%20Issues%20%28%3F%29%20with%20mrs&In-Reply-To=%3C4E42AAD1.9040600%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Memory Issues (?) with mrs">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Aug 10 17:59:13 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000608.html">[Mrs-user] Memory Issues (?) with mrs
+</A></li>
+        <LI>Next message: <A HREF="000610.html">[Mrs-user] John N Calley/AM/LLY is out of the office.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#609">[ date ]</a>
+              <a href="thread.html#609">[ thread ]</a>
+              <a href="subject.html#609">[ subject ]</a>
+              <a href="author.html#609">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Uma Mahesh (&#3118;&#3129;&#3143;&#3127;&#3149;),
+
+&gt;<i> We have a local installation of MRS. We are seeing patterns of high
+</I>&gt;<i> memory usage where MRS tomcat (java) is taking up &gt;35G of total memory
+</I>&gt;<i> (both RAM and SWAP), and mrs-ws web service another 15G. I am using MRS
+</I>&gt;<i> for integrating ~4TB of data. The mrs index size is around a 1.5TB. Is
+</I>&gt;<i> it normal for MRS to consume such memory?
+</I>
+It is not uncommon. The mrs-ws application uses memory mapping for the 
+blast indices and these can be large. The Java process uses quite a lot 
+though, no idea why that is.
+
+If you upgrade to mrs version 5 (I uploaded version 5.1 today to the PPA 
+at <A HREF="https://launchpad.net/~hekkel/+archive/ppa/">https://launchpad.net/~hekkel/+archive/ppa/</A> ) you can dump the Java 
+front end and use the new web interface. I believe it is better and faster.
+
+Best regards,
+
+-maarten
+
+
+&gt;<i>
+</I>&gt;<i> Following is the snapshot of the top process on my server.
+</I>&gt;<i>
+</I>&gt;<i>   9731 srsadmin  19   0  259m 2680 1888 S  0.0  0.0   0:40.20 mrs-ws
+</I>&gt;<i>   9734 srsadmin  15   0 15.9g  15g  21m S  0.0 11.1   1:27.69 mrs-ws
+</I>&gt;<i>   9737 srsadmin  20   0  400m 330m 1048 S  0.0  0.2   0:00.34 mrs-ws
+</I>&gt;<i>   9738 srsadmin  20   0 73564  968  528 S  0.0  0.0   0:00.00 mrs-ws
+</I>&gt;<i>   9742 srsadmin  21   0  145m 1228  756 S  0.0  0.0   0:00.00 mrs-ws
+</I>&gt;<i>   31565 srsadmin  19   0 32.5g 591m 9200 S  0.0  0.4   2:00.69 java
+</I>&gt;<i>   ---This is the tomcat java
+</I>&gt;<i>
+</I>&gt;<i> Thank you very much for your time.
+</I>&gt;<i>
+</I>&gt;<i> Best Regards,
+</I>&gt;<i> Uma Mahesh.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000608.html">[Mrs-user] Memory Issues (?) with mrs
+</A></li>
+	<LI>Next message: <A HREF="000610.html">[Mrs-user] John N Calley/AM/LLY is out of the office.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#609">[ date ]</a>
+              <a href="thread.html#609">[ thread ]</a>
+              <a href="subject.html#609">[ subject ]</a>
+              <a href="author.html#609">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

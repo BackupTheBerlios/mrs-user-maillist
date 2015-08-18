@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] query parser - parenthesis
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20query%20parser%20-%20parenthesis&In-Reply-To=%3CAANLkTil5BgsQSuprDWt_YD9IiXIT0eVnU65X2f8c6IBW%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000573.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] query parser - parenthesis</H1>
+    <B>Martin Senger</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20query%20parser%20-%20parenthesis&In-Reply-To=%3CAANLkTil5BgsQSuprDWt_YD9IiXIT0eVnU65X2f8c6IBW%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] query parser - parenthesis">martin.senger at gmail.com
+       </A><BR>
+    <I>Tue Jun 22 00:44:52 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000573.html">[Mrs-user] query parser - parenthesis
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#572">[ date ]</a>
+              <a href="thread.html#572">[ thread ]</a>
+              <a href="subject.html#572">[ subject ]</a>
+              <a href="author.html#572">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+It seems that some queries that contain parenthesis and an AND operator are
+evaluated as syntactically incorrect. For example, these work fine:
+
+lysosyme AND lysozyme
+lysosyme &amp; lysozyme
+lysosyme OR lysozyme
+lysosyme | lysozyme
+
+But if I surround it by parenthesis, the first two produce errors:
+
+Expected word but found AND (lysosyme *AND* lysozyme)
+Expected word but found AND (lysosyme *&amp;* lysozyme)
+
+The ones with OR still work fine, even surrounded by parenthesis.
+
+I wonder if this is a feature or a bug... :-)
+
+Also the query containing a dollar sign gives me an error:
+
+HS$BRCA2_02
+Expected word but found '$' HS*$*BRCA2_02
+
+Cheers,
+Martin
+
+-- 
+Martin Senger
+email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+skype: martinsenger
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20100622/03b82ece/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20100622/03b82ece/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000573.html">[Mrs-user] query parser - parenthesis
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#572">[ date ]</a>
+              <a href="thread.html#572">[ thread ]</a>
+              <a href="subject.html#572">[ subject ]</a>
+              <a href="author.html#572">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

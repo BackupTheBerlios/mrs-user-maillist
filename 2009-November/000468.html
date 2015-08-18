@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Source installation on RHEL 5.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Source%20installation%20on%20RHEL%205.4&In-Reply-To=%3C4AEF397F.9080208%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000469.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Source installation on RHEL 5.4</H1>
+    <B>George Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Source%20installation%20on%20RHEL%205.4&In-Reply-To=%3C4AEF397F.9080208%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] Source installation on RHEL 5.4">georgios at biotek.uio.no
+       </A><BR>
+    <I>Mon Nov  2 20:56:47 CET 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000469.html">[Mrs-user] Source installation on RHEL 5.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#468">[ date ]</a>
+              <a href="thread.html#468">[ thread ]</a>
+              <a href="subject.html#468">[ subject ]</a>
+              <a href="author.html#468">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten,
+
+We have not yet time to try the rpm and we would like to insist on the 
+source installation instead. We got through all the checks of the 
+configure.pl script, so library wise we are OK.
+
+However, during the make stage, we get this:
+
+=&gt; exception.o
+./libzeep/src/exception.cpp: In constructor 
+'&#732;zeep::exception::exception(XML_ParserStruct*)':
+./libzeep/src/exception.cpp:84: error: 
+'XML_ERROR_RESERVED_NAMESPACE_URI' was not declared in this scope
+make[2]: *** [Obj.NoDebug/exception.o] Error 1
+make[2]: Leaving directory `/biotek/cnkeeper/site/sources/mrs-4.1.1/lib'
+make[1]: *** [mrs-build] Error 2
+make[1]: Leaving directory `/biotek/cnkeeper/site/sources/mrs-4.1.1/builder'
+make: *** [install] Error 2
+
+
+Any ideas where to look (is it zlib or something else we need to have a 
+look at?)
+
+cnkeeper cereus-tcf11# gcc -v
+Using built-in specs.
+Target: x86_64-redhat-linux
+Configured with: ../configure --prefix=/usr --mandir=/usr/share/man 
+--infodir=/usr/share/info --enable-shared --enable-threads=posix 
+--enable-checking=release --with-system-zlib --enable-__cxa_atexit 
+--disable-libunwind-exceptions --enable-libgcj-multifile 
+--enable-languages=c,c++,objc,obj-c++,java,fortran,ada 
+--enable-java-awt=gtk --disable-dssi --enable-plugin 
+--with-java-home=/usr/lib/jvm/java-1.4.2-gcj-1.4.2.0/jre 
+--with-cpu=generic --host=x86_64-redhat-linux
+Thread model: posix
+gcc version 4.1.2 20080704 (Red Hat 4.1.2-46)
+
+
+-- 
+--
+George Magklaras BSc Hons MPhil
+RHCE:805008309135525
+
+Senior Computer Systems Engineer/UNIX-Linux Systems Administrator
+EMBnet Technical Management Board
+The Biotechnology Centre of Oslo,
+University of Oslo
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+Tel: +47-22840535
+
+--
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000469.html">[Mrs-user] Source installation on RHEL 5.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#468">[ date ]</a>
+              <a href="thread.html#468">[ thread ]</a>
+              <a href="subject.html#468">[ subject ]</a>
+              <a href="author.html#468">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

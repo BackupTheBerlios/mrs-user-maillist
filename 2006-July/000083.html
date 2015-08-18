@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Method not found
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Method%20not%20found&In-Reply-To=%3C35CE974B-1D48-444B-8862-077A03F82E19%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000082.html">
+   <LINK REL="Next"  HREF="000072.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Method not found</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Method%20not%20found&In-Reply-To=%3C35CE974B-1D48-444B-8862-077A03F82E19%40hekkelman.com%3E"
+       TITLE="[Mrs-user] Method not found">maarten at hekkelman.com
+       </A><BR>
+    <I>Thu Jul 27 21:50:50 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000082.html">[Mrs-user] Method not found
+</A></li>
+        <LI>Next message: <A HREF="000072.html">[Mrs-user] MRS Database downloading
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#83">[ date ]</a>
+              <a href="thread.html#83">[ thread ]</a>
+              <a href="subject.html#83">[ subject ]</a>
+              <a href="author.html#83">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Diego,
+
+&gt;<i>  I get the following error in the log file after executing &quot;make  
+</I>&gt;<i> interpro&quot;.
+</I>
+&gt;<i> Can't locate object method &quot;version&quot; via package &quot;interpro::parser&quot; at
+</I>&gt;<i> /raid/usr/local/bin/mrs.pl line 290.
+</I>
+This is not really an error, the only error here is that the message  
+looks like an error. The problem is, the interpro parser does not  
+provide a method to determine the version of the current data. E.g.  
+SwissProt has a method called 'version' in the uniprot.pm file that  
+parses the reldate.txt file to find out what version the files are.  
+Some parser scripts should get a version method as well, but for some  
+it is simply impossible since there is no file containing a version  
+string and for these I will have to create some generic file date  
+based version string generator.
+
+-maarten
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000082.html">[Mrs-user] Method not found
+</A></li>
+	<LI>Next message: <A HREF="000072.html">[Mrs-user] MRS Database downloading
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#83">[ date ]</a>
+              <a href="thread.html#83">[ thread ]</a>
+              <a href="subject.html#83">[ subject ]</a>
+              <a href="author.html#83">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

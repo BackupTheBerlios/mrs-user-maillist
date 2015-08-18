@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [mrs-user] Me and M6 are still alive
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2012-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20Me%20and%20M6%20are%20still%20alive&In-Reply-To=%3C3AAB6D011903954EBDFFF6F364ACD6B71D85ED85%40UMCEXMBX02.umcn.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000651.html">
+   <LINK REL="Next"  HREF="000654.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[mrs-user] Me and M6 are still alive</H1>
+    <B>M.Hekkelman at ncmls.ru.nl</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20Me%20and%20M6%20are%20still%20alive&In-Reply-To=%3C3AAB6D011903954EBDFFF6F364ACD6B71D85ED85%40UMCEXMBX02.umcn.nl%3E"
+       TITLE="[mrs-user] Me and M6 are still alive">M.Hekkelman at ncmls.ru.nl
+       </A><BR>
+    <I>Fri Jul  6 13:53:55 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000651.html">[mrs-user] Me and M6 are still alive
+</A></li>
+        <LI>Next message: <A HREF="000654.html">[mrs-user] Me and M6 are still alive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#652">[ date ]</a>
+              <a href="thread.html#652">[ thread ]</a>
+              <a href="subject.html#652">[ subject ]</a>
+              <a href="author.html#652">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hey George, that's a lot of questions you're asking.  I'll try to answer them all.
+
+
+
+First, formatting. That's the process of taking a raw document (entry in a databank) and turn it into something more readable and useful. In the previous versions of MRS this was done by the parser scripts (written in Perl) and handled by the server. The new MRS will leave this task to the browser. Just look at the source code for a SwissProt entry in <A HREF="http://mrs.cmbi.ru.nl:18090/">http://mrs.cmbi.ru.nl:18090/</A>
+
+
+
+The memory usage of MRS is something that is tied to the speed of indexing. It is something that cannot be changed unless you would accept a tenfold increase in indexing time (at least tenfold). I don' t know if the amount of RAM needed has changed in the new version, have to check that.
+
+
+
+On the estimate of disk usage, a rough guess is that the generated MRS file is less than the size of the uncompressed raw data and sometimes even the half of that. The new MRS will give you a couple of progress bars that will help you estimate how long the indexing will take.
+
+
+
+SOAP will stay. We use it extensively in house and e.g. the MRS::Client script of Martin Senger depends on it. For those who dislike SOAP, the same code supports REST style calls for most of the functions. I use JSON in the web interface. I could add a new API for use with JavaScript, but you can use SOAP from JavaScript as well so I don't see much added value here.
+
+
+
+And no, git is not an option. Sorry. I'm very happy with subversion. BTW, you can now access the code repository at <A HREF="https://svn.cmbi.ru.nl/m6/">https://svn.cmbi.ru.nl/m6/</A> If you want to try things out, you will have to have libzeep installed (it is included in Debian wheezy).
+
+
+
+And then the most difficult question you asked... a plan. I don't have one yet. I'll have to make one, but before I do, I need to know what the priorities are for you guys. Like I said, I had some ambitious goals like having just a single executable and nothing else, every configuration done in a web app. But I realize that's a lot of work and I get the feeling an update is needed quickly since the old MRS is running into performance problems. Is that just me, or do you agree?
+
+
+
+-maarten
+
+
+
+
+
+
+
+________________________________
+Van: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user-bounces at lists.berlios.de</A> [<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user-bounces at lists.berlios.de</A>] namens George Marselis [<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">George.MARSELIS at KAUST.EDU.SA</A>]
+Verzonden: vrijdag 6 juli 2012 11:53
+Aan: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+Onderwerp: Re: [mrs-user] Me and M6 are still alive
+
+Hello sir, glad to  have you back!
+
+&gt;<i> I'd like to know if there are others willing to help. Since the code is still in development, it is still possible to change direction. I would also appreciate help in writing parsers and formatting code for the new MRS.
+</I>
+I can deal with packaging, testing, deployment, coding in C, Perl, Python, and ( lately ) R and Ruby . Have you made a plan about what is done, what needs to be done and what is to do later? It would be good for people to see a plan about how you want to move forward and how fast, before anybody can commit (day jobs are pesky :)
+
+By the way, what do you mean by formatting code? Not beautification, correct?
+
+A couple of questions:
+
+
+&gt;<i> Complete rewrite of the index and search algorithms. New file format (actually, data is now stored in folders) which is much more space efficient (EMBL is now 353GB instead of 456GB)
+</I>
+I beg your pardon, but I never quite understood why MRS is so memory hungry during indexing. Does the complete rewrite mean that MRS is going to be less running-time memory hungry?
+
+&gt;<i> all the SOAP calls of mrs-ws (should be simple: copy and adapt the mrs-ws code).
+</I>
+Hmmm&#8230; considering that SOAP is more dead than a dead horse beaten by slashdotters and redditors over multiple times and completely abandoned by AWS, Microsoft and Google, do you think that SOAP is a good idea?
+
+I think every single hip kid these days works with JSON. Maybe you can offer a compatibility layer for those who do not want to touch old code? A layer that reads in SOAP only but produces JSON?
+
+
+&gt;<i> A test framework and a thorough testing of the entire system to make sure I did not forget anything.
+</I>
+On the subject of tests: I think that we should have performance/resource consumption tests. One of my pet peeves with MRS has been that I have never been able to tell in advance the approximate disk/memory/cpu consumption that the software will need. Maybe we can make a reference Virtual Machine using VirtualBox that we can test against. For example, we can make performance tests about what is the average indexing running time and how it can improved. I think that would be excellent as it would allow us to identify bottlenecks.
+
+Speaking of hip kids, any chance you can move the project over to git/Hg?
+
+Best,
+----
+George Marselis, systems administrator
+Building #2, Level 4, room 4327
+Computational Bioscience Research Center, KAUST
+Land: +966-2-808-2944, Mobile: +966-56-321-7713, Skype: project2501a
+
+________________________________
+This message and its contents including attachments are intended solely for the original recipient. If you are not the intended recipient or have received this message in error, please notify me immediately and delete this message from your computer system. Any unauthorized use or distribution is prohibited. Please consider the environment before printing this email.
+
+
+The Radboud University Nijmegen Medical Centre is listed in the Commercial Register of the Chamber of Commerce under file number 41055629.
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20120706/98360775/attachment-0001.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20120706/98360775/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000651.html">[mrs-user] Me and M6 are still alive
+</A></li>
+	<LI>Next message: <A HREF="000654.html">[mrs-user] Me and M6 are still alive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#652">[ date ]</a>
+              <a href="thread.html#652">[ thread ]</a>
+              <a href="subject.html#652">[ subject ]</a>
+              <a href="author.html#652">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the mrs-user
+mailing list</a><br>
+</body></html>

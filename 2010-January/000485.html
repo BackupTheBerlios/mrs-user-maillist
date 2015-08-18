@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Installation question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Installation%20question&In-Reply-To=%3C9D488F59-CB95-444D-9C58-E0C8E2B6CC3D%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000483.html">
+   <LINK REL="Next"  HREF="000487.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Installation question</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Installation%20question&In-Reply-To=%3C9D488F59-CB95-444D-9C58-E0C8E2B6CC3D%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Installation question">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Fri Jan 29 22:16:01 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000483.html">[Mrs-user] Installation question
+</A></li>
+        <LI>Next message: <A HREF="000487.html">[Mrs-user] errors during installation from the sources (kubuntu	Karmic 9.10, MacBookPro)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#485">[ date ]</a>
+              <a href="thread.html#485">[ thread ]</a>
+              <a href="subject.html#485">[ subject ]</a>
+              <a href="author.html#485">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Oscar,
+
+Op 29-jan-2010, om 14:21 heeft Oscar Eriksson het volgende geschreven:
+&gt;<i>
+</I>&gt;<i> I'm trying to set up a mrs-web site locally on a mac osx 10.6 server
+</I>&gt;<i> and I've come across some problems. I just want to declare that I am
+</I>&gt;<i> no biologist, so my questions may be stupid.
+</I>
+Neither am I :-) Didn't keep me from writing MRS.
+
+&gt;<i> I managed to build and run the site if I force it to run in 32-bit
+</I>&gt;<i> architecture (intel x86) by using perl5.8.9, but not everything works
+</I>&gt;<i> as I suppose it should.
+</I>
+32 bit is not good enough. The biological databanks are so huge you  
+can forget to index those on a 32 bit machine. The smaller ones are  
+doable though.
+
+&gt;<i> First off, I could only build about half of the databases in
+</I>&gt;<i> databank.info file in the update_scripts folder. Is that normal or
+</I>&gt;<i> should I be able to build all databases in that file?
+</I>
+Well, that depends. Considering the 32bit addressing, the big ones  
+will definitively fail. Most smaller ones should be OK though. You  
+might want to take a look at the per databank log files that are  
+written in /data/status/
+
+&gt;<i> Secondly, when I run the mrs-web frontend I can't get the fasta
+</I>&gt;<i> information from the databases. I only gets the output:
+</I>&gt;<i> &quot;...
+</I>&gt;<i> .pm' No such file or directory at /u
+</I>&gt;<i> sr/local/share/mrs/parser_scripts/MRSScript.pm line 45.
+</I>&gt;<i> &quot;
+</I>&gt;<i> Is this right?
+</I>
+No. First of all, the snippet of data comes from a databank that does  
+not contain sequences as far as I can see. That means there won't be  
+a fasta either. But then the line:
+
+ &gt; Error in formatting entry: open 'MRS::Script::enzyme=HASH 
+(0x848c110)/ID  1.1.1.5
+
+worries me. No idea how you managed to get that one.
+
+&gt;<i> Thirdly, when I try to run Clustal, I get the java exception:
+</I>&gt;<i> &quot;javax.servlet.ServletException: No clustal executable specified in
+</I>&gt;<i> mrs config file&quot;
+</I>&gt;<i>
+</I>&gt;<i> I have installed clustalw2 and the executables are located in
+</I>&gt;<i> /usr/local/bin/clustalw2 as specified in /usr/local/etc/mrs-config.xml
+</I>&gt;<i> by the tag &lt;clustalw-exe&gt;
+</I>
+The version of MRS you use most likely has a bug, the config file has  
+two locations where the &lt;clustalw-exe&gt; tag occurs. One is in the base  
+section, next to e.g. &lt;scriptdir&gt;. The other is in the &lt;server&gt;  
+section for the clustalw server, next to &lt;address&gt;. I don't know  
+which one is used in your version, but most likely it is the other  
+one if you know what I mean. :-)
+
+&gt;<i> And my last problem. When I try to run a blast, I get the output that
+</I>&gt;<i> the database isn't loaded.
+</I>&gt;<i> &quot;Failed to submit blast job Databank gpcrdb was not loaded&quot;
+</I>&gt;<i> I can only choose between two databases even thou I've successfully
+</I>&gt;<i> installed other data sources (according to the logfiles).
+</I>
+Remember that you have to specify the databanks in each &lt;server&gt;  
+section. The ones loaded by the &lt;search&gt; server are not automatically  
+available to the &lt;blast&gt; server. Maybe this is why?
+
+Best regards,
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000483.html">[Mrs-user] Installation question
+</A></li>
+	<LI>Next message: <A HREF="000487.html">[Mrs-user] errors during installation from the sources (kubuntu	Karmic 9.10, MacBookPro)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#485">[ date ]</a>
+              <a href="thread.html#485">[ thread ]</a>
+              <a href="subject.html#485">[ subject ]</a>
+              <a href="author.html#485">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

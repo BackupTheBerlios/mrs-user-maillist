@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Problems with indexing the pdb
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-August/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Problems%20with%20indexing%20the%20pdb&In-Reply-To=%3C48A53A6D.8090303%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000396.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Problems with indexing the pdb</H1>
+    <B>George Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Problems%20with%20indexing%20the%20pdb&In-Reply-To=%3C48A53A6D.8090303%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] Problems with indexing the pdb">georgios at biotek.uio.no
+       </A><BR>
+    <I>Fri Aug 15 10:12:29 CEST 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000396.html">[Mrs-user] Problems with indexing the pdb
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#394">[ date ]</a>
+              <a href="thread.html#394">[ thread ]</a>
+              <a href="subject.html#394">[ subject ]</a>
+              <a href="author.html#394">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>That's an oldy, but still an issue.
+
+Actually Maarten, it is not only the pdb.make file that needs 
+correction. There are also issues with the generate_pdb_deps.pl script.
+
+So, for anyone still running the 3.0.1 or 3.1 branches, here are the 
+modified scripts below followed by the diffs. I have verified that they 
+work, so you might as well just replace with the complete scripts below.
+
+Best regards,
+GM
+-- 
+--
+George Magklaras
+
+Senior Computer Systems Engineer/UNIX Systems Administrator
+EMBnet Technical Management Board
+The Biotechnology Centre of Oslo,
+University of Oslo
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+Tel: +47-22840535
+
+--
+
+
+
+
+pdb.make:
+
+# $Id: pdb.make,v 1.24 2004/12/12 08:33:46 maarten Exp $
+
+DATABANK                = pdb
+MRSLIBS                 = pdb
+MRS_DICT                = text:title:ref:remark
+MRS_PARTS               = 2
+
+include make.pre
+
+PRESERVE_DATE = 1
+
+# Now determine what sequence files need to be generated
+# another special set of rules
+# Changed by George Magklaras to reflect the new PDB FTP system
+#DB_URL = <A HREF="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/pdb/">ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/pdb/</A>
+#MIRROR_INCLUDE = .*\.ent\.gz$$
+#MIRROR_OPTIONS += -r
+
+ZIPFILES = $(wildcard $(SRCDIR)*/*.gz)
+DATFILES = $(addprefix $(DSTDIR), $(notdir $(basename $(ZIPFILES))))
+
+# include separate dependancy files, generated with perl script
+pdb.deps: $(ZIPFILES)
+         $(PERL) generate_pdb_deps.pl pdb $(SRCDIR) $(DSTDIR)
+
+cleanup_deps:
+         rm -rf pdb.deps
+
+fetch: cleanup_deps
+         rsync -rltpvz --delete --port=33444 \
+                 rsync.wwpdb.org::ftp_data/structures/divided/pdb/ \
+                 $(SRCDIR)
+
+include pdb.deps
+
+mrs: data
+
+include make.post
+
+test:
+         echo $(ZIPFILES)
+
+
+
+
+
+generate_pdb_deps.pl:
+
+#!/usr/bin/perl
+
+#Modified by George Magklaras to adapt to the new PDB file format
+#(*.Z -&gt; *.gz)
+
+my $db = shift or die &quot;No db specified&quot;;
+my $srcdir = shift;
+my $dstdir = shift;
+
+die &quot;no valid source directory&quot; unless -d $srcdir;
+die &quot;no valid destination directory&quot; unless -d $dstdir;
+
+open DEP, &quot;&gt;$db.deps&quot;;
+open LST, &quot;find $srcdir -name \&quot;*.gz\&quot; |&quot;;
+
+while (&lt;LST&gt;) {
+         if (/(.+)\/([a-z0-9]{2})\/((pdb|r)?\2?.+)\.gz/) {
+                 print DEP &quot;$dstdir$3: $1/$2/$3.gz\n&quot;;
+                 print DEP &quot;\tzcat \$&lt; &gt; \$@\n&quot;;
+                 print DEP &quot;\ttouch -cr \$&lt; \$@\n&quot;;
+                 print DEP &quot;\n&quot;;
+         }
+}
+
+close LST;
+close DEP;
+
+
+
+###################################################################
+
+And the diffs:
+
+dias.uio.no# diff pdb.make 
+../mrs/../mrssvn/mrs/branches/3.0.1/update_scripts/pdb.make
+14,16c14,17
+&lt; # Changed by George Magklaras to reflect the new PDB FTP system
+&lt; #DB_URL = <A HREF="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/pdb/">ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/pdb/</A>
+&lt; #MIRROR_INCLUDE = .*\.ent\.gz$$
+---
+ &gt;
+ &gt; #DB_URL = <A HREF="ftp://ftp.rcsb.org//pub/pdb/data/structures/divided/pdb">ftp://ftp.rcsb.org//pub/pdb/data/structures/divided/pdb</A>
+ &gt; #DB_URL = <A HREF="ftp://pdb.ccdc.cam.ac.uk//pdb/data/structures/divided/pdb">ftp://pdb.ccdc.cam.ac.uk//pdb/data/structures/divided/pdb</A>
+ &gt; #MIRROR_INCLUDE = .*\.ent\.Z$$
+19c20
+&lt; ZIPFILES = $(wildcard $(SRCDIR)*/*.gz)
+---
+ &gt; ZIPFILES = $(wildcard $(SRCDIR)*/*.Z)
+31c32
+&lt;               rsync.wwpdb.org::ftp_data/structures/divided/pdb/ \
+---
+ &gt;               rsync.rcsb.org::ftp_data/structures/divided/pdb/ \
+
+
+
+dias.uio.no# diff pdb.make 
+../mrs/../mrssvn/mrs/branches/3.0.1/update_scripts/generate_pdb_deps.pl
+1c1
+&lt; # $Id: pdb.make,v 1.24 2004/12/12 08:33:46 maarten Exp $
+---
+ &gt; #!/bin/perl
+3,6c3,20
+&lt; DATABANK              = pdb
+&lt; MRSLIBS                       = pdb
+&lt; MRS_DICT              = text:title:ref:remark
+&lt; MRS_PARTS             = 2
+---
+ &gt; my $db = shift or die &quot;No db specified&quot;;
+ &gt; my $srcdir = shift;
+ &gt; my $dstdir = shift;
+ &gt;
+ &gt; die &quot;no valid source directory&quot; unless -d $srcdir;
+ &gt; die &quot;no valid destination directory&quot; unless -d $dstdir;
+ &gt;
+ &gt; open DEP, &quot;&gt;$db.deps&quot;;
+ &gt; open LST, &quot;find $srcdir -name \&quot;*.Z\&quot; |&quot;;
+ &gt;
+ &gt; while (&lt;LST&gt;) {
+ &gt;       if (/(.+)\/([a-z0-9]{2})\/((pdb|r)?\2?.+)\.Z/) {
+ &gt;               print DEP &quot;$dstdir$3: $1/$2/$3.Z\n&quot;;
+ &gt;               print DEP &quot;\tzcat \$&lt; &gt; \$@\n&quot;;
+ &gt;               print DEP &quot;\ttouch -cr \$&lt; \$@\n&quot;;
+ &gt;               print DEP &quot;\n&quot;;
+ &gt;       }
+ &gt; }
+8,41c22,23
+&lt; include make.pre
+&lt;
+&lt; PRESERVE_DATE = 1
+&lt;
+&lt; # Now determine what sequence files need to be generated
+&lt; # another special set of rules
+&lt; # Changed by George Magklaras to reflect the new PDB FTP system
+&lt; #DB_URL = <A HREF="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/pdb/">ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/pdb/</A>
+&lt; #MIRROR_INCLUDE = .*\.ent\.gz$$
+&lt; #MIRROR_OPTIONS += -r
+&lt;
+&lt; ZIPFILES = $(wildcard $(SRCDIR)*/*.gz)
+&lt; DATFILES = $(addprefix $(DSTDIR), $(notdir $(basename $(ZIPFILES))))
+&lt;
+&lt; # include separate dependancy files, generated with perl script
+&lt; pdb.deps: $(ZIPFILES)
+&lt;       $(PERL) generate_pdb_deps.pl pdb $(SRCDIR) $(DSTDIR)
+&lt;
+&lt; cleanup_deps:
+&lt;       rm -rf pdb.deps
+&lt;
+&lt; fetch: cleanup_deps
+&lt;       rsync -rltpvz --delete --port=33444 \
+&lt;               rsync.wwpdb.org::ftp_data/structures/divided/pdb/ \
+&lt;               $(SRCDIR)
+&lt;
+&lt; include pdb.deps
+&lt;
+&lt; mrs: data
+&lt;
+&lt; include make.post
+&lt;
+&lt; test:
+&lt;       echo $(ZIPFILES)
+---
+ &gt; close LST;
+ &gt; close DEP;
+
+
+
+
+
+
+Maarten L. Hekkelman wrote:
+&gt;<i> Uli,
+</I>&gt;<i> 
+</I>&gt;<i> The PDB files changed recently (last summer). The new PDB files are 
+</I>&gt;<i> gzipped whereas the older version used the old unix compress format.
+</I>&gt;<i> 
+</I>&gt;<i> The make file for pdb you use looks for .Z files instead of .gz files. 
+</I>&gt;<i> You either have to fix the old makefile or fetch the old data files. To 
+</I>&gt;<i> fix the make file you can look a the latest pdb.make file to see what 
+</I>&gt;<i> needs to be done.
+</I>&gt;<i> 
+</I>&gt;<i> -maarten
+</I>&gt;<i> 
+</I>&gt;<i> Uli schreef:
+</I>&gt;&gt;<i> Hi
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I have managed to index numerous databases including enzyme, go pfam 
+</I>&gt;&gt;<i> prosite sprot trembl and uniprot.  I have now tried to index the pdb 
+</I>&gt;&gt;<i> (make pdb) without success. Because it is relatively large I wanted to 
+</I>&gt;&gt;<i> test it on an older version (2004) to see if I can get it to work. I am 
+</I>&gt;&gt;<i> able to copy the raw and uncompressed files from a local mirror into the 
+</I>&gt;&gt;<i> .../data/raw/pdb/?? and .../data/uncompressed/pdb files with no problem 
+</I>&gt;&gt;<i> - I had to make a small changes to use gz rather than .Z files in the 
+</I>&gt;&gt;<i> pdb.make file.  The problem seems to arise when it tries to build the 
+</I>&gt;&gt;<i> pdb-1.cmp and pdb-2.cmp files.  Their size remains at 216.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The tails of the logs are as follows:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">uli at biosym1</A>:/media/nodem1/data/status$ tail pdb.make pdb.make_log 
+</I>&gt;&gt;<i> pdb.mirror_log
+</I>&gt;&gt;<i> ==&gt; pdb.make &lt;==
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ==&gt; pdb.make_log &lt;==
+</I>&gt;&gt;<i> make[3]: Nothing to be done for `data'.
+</I>&gt;&gt;<i> make -f pdb.make /media/nodem1/data/mrs/pdb-1.cmp 
+</I>&gt;&gt;<i> /media/nodem1/data/mrs/pdb-2.cmp
+</I>&gt;&gt;<i> make[4]: Entering directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;&gt;<i> /usr/bin/perl /usr/local/bin/mrs.pl create -d pdb -p 1 -P 2 -b 5 -w stop.txt
+</I>&gt;&gt;<i> Could not open stop.txt
+</I>&gt;&gt;<i> not enough raw files to create all parts at /usr/local/bin/mrs.pl line 325.
+</I>&gt;&gt;<i> make[4]: *** [/media/nodem1/data/mrs/pdb-1.cmp] Error 2
+</I>&gt;&gt;<i> make[4]: Leaving directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;&gt;<i> make[3]: *** [/media/nodem1/data/mrs/pdb.cmp] Error 2
+</I>&gt;&gt;<i> make[3]: Leaving directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ==&gt; pdb.mirror_log &lt;==
+</I>&gt;&gt;<i> make[3]: Entering directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;&gt;<i> rm -rf pdb.deps
+</I>&gt;&gt;<i> rsync -rltpvz --delete --port=33444 \
+</I>&gt;&gt;<i>         /media/nodem1/pdb/ \
+</I>&gt;&gt;<i>         /media/nodem1/data/raw/pdb/
+</I>&gt;&gt;<i> building file list ... done
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> sent 424916 bytes  received 20 bytes  121410.29 bytes/sec
+</I>&gt;&gt;<i> total size is 4075110271  speedup is 9589.94
+</I>&gt;&gt;<i> make[3]: Leaving directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">uli at biosym1</A>:/media/nodem1/data/status$
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> tail from pdb.make_log.1:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> zcat /media/nodem1/data/raw/pdb/zz/pdb1zzzent.gz &gt; 
+</I>&gt;&gt;<i> /media/nodem1/data/uncompressed/pdb/pdb1zzzent
+</I>&gt;&gt;<i> touch -cr /media/nodem1/data/raw/pdb/zz/pdb1zzzent.gz 
+</I>&gt;&gt;<i> /media/nodem1/data/uncompressed/pdb/pdb1zzzent
+</I>&gt;&gt;<i> make -f pdb.make /media/nodem1/data/mrs/pdb-1.cmp 
+</I>&gt;&gt;<i> /media/nodem1/data/mrs/pdb-2.cmp
+</I>&gt;&gt;<i> make[4]: Entering directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;&gt;<i> make[4]: `/media/nodem1/data/mrs/pdb-1.cmp' is up to date.
+</I>&gt;&gt;<i> make[4]: `/media/nodem1/data/mrs/pdb-2.cmp' is up to date.
+</I>&gt;&gt;<i> make[4]: Leaving directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;&gt;<i> /usr/bin/perl /usr/local/bin/mrs.pl merge -d pdb -P 2
+</I>&gt;&gt;<i> Invalid mrs data filemake[3]: *** [/media/nodem1/data/mrs/pdb.cmp] Error 2
+</I>&gt;&gt;<i> make[3]: Leaving directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> although I don't think applicable here the site for the rcsb rsync url 
+</I>&gt;&gt;<i> also seems to be down permanently.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The files in .../data/raw are of the form:
+</I>&gt;&gt;<i> .../data/raw/pdb/at/pdb1at0ent.gz
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> and the files in .../data/uncompressed are:
+</I>&gt;&gt;<i> .../data/uncompressed/pdb/pdb1at0ent
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> command limitations arise when for instance using ls or rm on all files 
+</I>&gt;&gt;<i> in the uncompressed directory i.e. they won't display/delete all the 
+</I>&gt;&gt;<i> files although they are there.  I don't know if this is part of the problem?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> However I would assume that the problem would be even worse when trying 
+</I>&gt;&gt;<i> to index genbank or embl.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Could you point me in the right direction regarding this?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Regards
+</I>&gt;&gt;<i> Uli
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ------------------------------------------------------------------------
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Mrs-user mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i> 
+</I>
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000396.html">[Mrs-user] Problems with indexing the pdb
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#394">[ date ]</a>
+              <a href="thread.html#394">[ thread ]</a>
+              <a href="subject.html#394">[ subject ]</a>
+              <a href="author.html#394">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Redesign,	feedback requested - Checked by AntiVir DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Redesign%2C%0A%09feedback%20requested%20-%20Checked%20by%20AntiVir%20DEMO%20version%20-&In-Reply-To=%3C20061116153716.GA11948%40bigben.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000136.html">
+   <LINK REL="Next"  HREF="000139.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Redesign,	feedback requested - Checked by AntiVir DEMO version -</H1>
+    <B>Guy Bottu</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Redesign%2C%0A%09feedback%20requested%20-%20Checked%20by%20AntiVir%20DEMO%20version%20-&In-Reply-To=%3C20061116153716.GA11948%40bigben.ulb.ac.be%3E"
+       TITLE="[Mrs-user] Redesign,	feedback requested - Checked by AntiVir DEMO version -">gbottu at ben.vub.ac.be
+       </A><BR>
+    <I>Thu Nov 16 16:37:16 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000136.html">[Mrs-user] Web for MRS
+</A></li>
+        <LI>Next message: <A HREF="000139.html">[Mrs-user] Redesign,	feedback requested - Checked by AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#137">[ date ]</a>
+              <a href="thread.html#137">[ thread ]</a>
+              <a href="subject.html#137">[ subject ]</a>
+              <a href="author.html#137">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Another problem is that an iterator for a combined databank is a bit  
+</I>&gt;<i> more complex and thus takes more time to process all entries. A  
+</I>&gt;<i> vector search on the combined 'sprot+trembl' takes almost twice as  
+</I>&gt;<i> long compared to a search on a single uniprot databank.
+</I>
+Well, a factor 2 is not that terrible.
+
+&gt;<i> Things get worse when using update databanks. The search that took  
+</I>&gt;<i> 1.5 second on embl_release takes 0.02 seconds on embl_updates but  
+</I>&gt;<i> takes 7.6 seconds on 'embl_release|embl_updates'. That's clearly not  
+</I>&gt;<i> acceptable.
+</I>
+That is indeed more serious.
+
+&gt;<i> To replace the concatenated databanks, you can merge the parts.  
+</I>&gt;<i> Merging sprot and trembl on my server takes about 15 minutes. And it  
+</I>&gt;<i> is possible to create a merged databank that doesn't copy the  
+</I>&gt;<i> document data, in that case you need to keep the parts around. Only  
+</I>&gt;<i> problem in this case is that when you update sprot, the uniprot  
+</I>&gt;<i> merged databank is no longer accessible until it is recreated itself.  
+</I>&gt;<i> I don't know yet if this will be a problem in real life.
+</I>
+Could be. The fact that during an appreciable period of time the 
+UniProt databank is not accessible, even in the middle of the night, 
+could be a problem, certainly if some automated script tries to retrieve a 
+sequence.
+Is a mechanism where the index files for SwissProt, TrEMBL and UniProt are 
+first created under another name and only then all together &quot;moved&quot; over 
+the old version (kinda like the on-line/off-line mechanism of SRS) 
+thinkable ?
+
+	Guy Bottu,
+	Belgian EMBnet Node
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000136.html">[Mrs-user] Web for MRS
+</A></li>
+	<LI>Next message: <A HREF="000139.html">[Mrs-user] Redesign,	feedback requested - Checked by AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#137">[ date ]</a>
+              <a href="thread.html#137">[ thread ]</a>
+              <a href="subject.html#137">[ subject ]</a>
+              <a href="author.html#137">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

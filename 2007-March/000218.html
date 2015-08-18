@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Installing gene - Checked by AntiVir DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Installing%20gene%20-%20Checked%20by%20AntiVir%20DEMO%20version%20-&In-Reply-To=%3C20070312110247.GA25039%40bigben.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000217.html">
+   <LINK REL="Next"  HREF="000220.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Installing gene - Checked by AntiVir DEMO version -</H1>
+    <B>Guy Bottu</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Installing%20gene%20-%20Checked%20by%20AntiVir%20DEMO%20version%20-&In-Reply-To=%3C20070312110247.GA25039%40bigben.ulb.ac.be%3E"
+       TITLE="[Mrs-user] Installing gene - Checked by AntiVir DEMO version -">gbottu at ben.vub.ac.be
+       </A><BR>
+    <I>Mon Mar 12 12:02:47 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000217.html">[Mrs-user] Vraagje over booleans
+</A></li>
+        <LI>Next message: <A HREF="000220.html">[Mrs-user] Installing gene - Checked by AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#218">[ date ]</a>
+              <a href="thread.html#218">[ thread ]</a>
+              <a href="subject.html#218">[ subject ]</a>
+              <a href="author.html#218">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>	Dear Maarten,
+
+I experienced some trouble installing the &quot;gene&quot; database. The file 
+gene.make contains :
+
+-------------------------------------------------------------
+DB_URL = <A HREF="ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/ASN_BINARY">ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/ASN_BINARY</A>
+MIRROR_INCLUDE=All_Data\.ags\.gz
+
+# what to make
+
+ZIPFILES = $(SRCDIR)All_Data.ags.gz
+# DATFILES = $(DSTDIR)All_Data.xgs.gz
+
+$(DSTDIR)All_Data.xgs.gz: $(SRCDIR)All_Data.ags.gz
+        $(GENE2XML) -i $&lt; -o stdout -b -c | gzip -c &gt; $@
+--------------------------------------------------------
+
+while gene.pm contains :
+
+-----------------------------------------
+sub raw_files()
+{
+        my ($self) = @_;
+
+        my $raw_dir = $self-&gt;{raw_dir} or die &quot;raw_dir is not defined\n&quot;;
+
+        my $gene2xml = `which gene2xml`;
+        chomp($gene2xml);
+        $gene2xml = &quot;./gene2xml&quot; unless -x $gene2xml;
+        $gene2xml = &quot;gene2xml&quot; unless -x $gene2xml;
+
+        return &quot;$gene2xml -i $raw_dir/All_Data.ags.gz -o stdout -b -c |&quot;;
+}
+-----------------------------------------
+
+I am afraid that two different approaches at installing gene, storing the 
+XML format file in &quot;uncompressed&quot; and doing the reformatting from binary 
+to XML on-the-fly, have been mixed. By the way, does the possibility to 
+&quot;return&quot; the output of a piped command still work under MRS 3 ?
+
+	Guy Bottu,
+	BEN
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000217.html">[Mrs-user] Vraagje over booleans
+</A></li>
+	<LI>Next message: <A HREF="000220.html">[Mrs-user] Installing gene - Checked by AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#218">[ date ]</a>
+              <a href="thread.html#218">[ thread ]</a>
+              <a href="subject.html#218">[ subject ]</a>
+              <a href="author.html#218">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

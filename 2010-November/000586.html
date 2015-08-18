@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Linking record id's from different databases
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Linking%20record%20id%27s%20from%20different%20databases&In-Reply-To=%3C4CDB2837.1090608%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000585.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Linking record id's from different databases</H1>
+    <B>Georgios Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Linking%20record%20id%27s%20from%20different%20databases&In-Reply-To=%3C4CDB2837.1090608%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] Linking record id's from different databases">georgios at biotek.uio.no
+       </A><BR>
+    <I>Thu Nov 11 00:18:15 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000585.html">[Mrs-user] Linking record id's from different databases
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#586">[ date ]</a>
+              <a href="thread.html#586">[ thread ]</a>
+              <a href="subject.html#586">[ subject ]</a>
+              <a href="author.html#586">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 11/10/2010 08:07 PM, Uma Mahesh (?????)  wrote:
+&gt;<i> Hi Maarten,
+</I>&gt;<i>
+</I>&gt;<i> Could you please tell me, how to retrieve a related dbest record given 
+</I>&gt;<i> an entrezgene id.
+</I>&gt;<i>
+</I>&gt;<i> I want to give entrezgene id as query, but want to list all dbEST 
+</I>&gt;<i> records that are relevant to entrezgene id.
+</I>&gt;<i>
+</I>&gt;<i> Thank you very much for your help.
+</I>&gt;<i> Best Regards,
+</I>&gt;<i> Uma Mahesh.
+</I>&gt;<i>
+</I>&gt;<i> -- 
+</I>&gt;<i> Think big, think fast, think ahead. Ideas are no one's monopoly
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>dbEST records do not have a referenced Entrez-index. The closest thing 
+in the MRS 4 index is a genbank_id. So, IMHO what you need to do is to:
+
+1)Locate Genbank accessions or IDs from the Entrez Gene.
+2)For each record with a Genbank ID/Accession query dbEST using the 
+'genbank_id' or 'genbank_acc' indices.
+
+I normally also cross reference that from Unigene as well.
+
+GM
+
+-- 
+-- 
+George Magklaras
+Senior Systems Engineer/IT Manager
+Biotek Center, University of Oslo
+EMBnet TMPC Chair
+
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+Tel: +47 22840535
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20101111/169e9360/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20101111/169e9360/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000585.html">[Mrs-user] Linking record id's from different databases
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#586">[ date ]</a>
+              <a href="thread.html#586">[ thread ]</a>
+              <a href="subject.html#586">[ subject ]</a>
+              <a href="author.html#586">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

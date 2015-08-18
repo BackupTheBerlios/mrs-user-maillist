@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Problem with gene.cmp
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Problem%20with%20gene.cmp&In-Reply-To=%3C47282F38.1050609%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000291.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Problem with gene.cmp</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Problem%20with%20gene.cmp&In-Reply-To=%3C47282F38.1050609%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Problem with gene.cmp">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Oct 31 08:31:04 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000291.html">[Mrs-user] Problem with gene.cmp
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#292">[ date ]</a>
+              <a href="thread.html#292">[ thread ]</a>
+              <a href="subject.html#292">[ subject ]</a>
+              <a href="author.html#292">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Roberto,
+
+&gt;<i> I have a similar problem that George Magklaras has, but with gene.cmp &#191;Any
+</I>&gt;<i> idea?. Here is the gene.cmp contents:
+</I>&gt;<i> 
+</I>&gt;<i> -r-------- 1 root root  218 Oct 19 18:55 gene.cmp
+</I>&gt;<i> -rw------- 1 root root    0 Oct 19 18:55 gene.cmp.fulltext_indx.XX4dp7TZ
+</I>&gt;<i> -rw------- 1 root root    0 Oct 19 18:55 gene.cmp.offsets.XXy4tPCq
+</I>
+This seems to be a very different problem. The size of the gene.cmp file 
+is only as long as the first header structure and the rest of the files 
+are empty. This means no data was processed at all.
+
+For gene you need to have the gene2xml application. Did you install 
+that? I'm sorry, this is not documented anywhere yet. You can find the 
+application somewhere at the NCBI site.
+
+&gt;<i> Also the embl_release finish without problem (I think?); Here is the mrs folder
+</I>&gt;<i> contents:
+</I>&gt;<i> 
+</I>&gt;<i> -r-------- 1 root root  20G Oct 28 16:43 embl_release-7.cmp
+</I> &gt; ...
+&gt;<i> 
+</I>&gt;<i> but the embl_release.cmp does not appear, the embl_release.make_log reports
+</I>&gt;<i> &quot;invalid mrs data file&quot; at the mrs.pl merge step
+</I>
+Do you have more detailed output from this log file? You could also 
+check each part separately by running 'mrs.pl info -d 
+embl_release-x.cmp' on each to see if there's any output at all or an 
+error message. If one is corrupt you might want to delete that part and 
+restart the make.
+
+There are a few problems with the current MRS when indexing a large 
+databank as EMBL. The trunk of the SVN tree at Berlios fixes all but one 
+of them. I haven't had the time to fix this last problem yet, I hope to 
+have the time this week.
+
+To build the latest EMBL release you have to check out the source code 
+from Berlios, build a new MRS and make sure you copy the stop.txt file 
+from the mrs/plugin directory to the /usr/local/share/mrs/update_scripts 
+directory. This file contains stop words to use and limits the size of 
+the indices which is essential to avoid the last bug.
+
+I really hope I will have a fixed MRS by the end of this week. I'll keep 
+you all posted.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000291.html">[Mrs-user] Problem with gene.cmp
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#292">[ date ]</a>
+              <a href="thread.html#292">[ thread ]</a>
+              <a href="subject.html#292">[ subject ]</a>
+              <a href="author.html#292">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

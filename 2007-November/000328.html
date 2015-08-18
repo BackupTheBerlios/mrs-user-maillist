@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] update -&gt;revision 504
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20update%20-%3Erevision%20504&In-Reply-To=%3C474BEBF4.1040309%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000327.html">
+   <LINK REL="Next"  HREF="000329.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] update -&gt;revision 504</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20update%20-%3Erevision%20504&In-Reply-To=%3C474BEBF4.1040309%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] update -&gt;revision 504">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue Nov 27 11:05:40 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000327.html">[Mrs-user] update -&gt;revision 504
+</A></li>
+        <LI>Next message: <A HREF="000329.html">[Mrs-user] MRS 3.1 release candidate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#328">[ date ]</a>
+              <a href="thread.html#328">[ thread ]</a>
+              <a href="subject.html#328">[ subject ]</a>
+              <a href="author.html#328">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alex Patak schreef:
+
+&gt;<i> Make install overwrites the /usr/local/etc/mrs-config.xml so each time I
+</I>&gt;<i> have to set again my list of databases to present. Is this necessary? I
+</I>&gt;<i> have some own local databases.
+</I>
+No, this is a bug... sorry. Fixed it.
+
+&gt;<i> Some more stuff:
+</I>&gt;<i> 
+</I>&gt;<i> - make install doesn't update the content of the scripts folders
+</I>&gt;<i> in /usr/local/share/mrs/:
+</I>&gt;<i> 
+</I>&gt;<i> update_scripts
+</I>&gt;<i> parser_scripts
+</I>
+You mean, it doesn't overwrite files in those directories?
+
+With the config file I changed the logic to create a .dist version of
+the file and only copy over the new dist file to the real version if
+that one does not yet exist.
+
+Should I do the same with all scripts? You would then end up with a
+bunch of databank.make.dist and databank.pm.dist files. I could also
+create a dist subdirectory with the files installed there.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000327.html">[Mrs-user] update -&gt;revision 504
+</A></li>
+	<LI>Next message: <A HREF="000329.html">[Mrs-user] MRS 3.1 release candidate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#328">[ date ]</a>
+              <a href="thread.html#328">[ thread ]</a>
+              <a href="subject.html#328">[ subject ]</a>
+              <a href="author.html#328">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

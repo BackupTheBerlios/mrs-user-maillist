@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] 2 changes and BLAST-formatting
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%202%20changes%20and%20BLAST-formatting&In-Reply-To=%3C44A2ACCC.7000300%40dbm.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000027.html">
+   <LINK REL="Next"  HREF="000029.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] 2 changes and BLAST-formatting</H1>
+    <B>Robert HERZOG</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%202%20changes%20and%20BLAST-formatting&In-Reply-To=%3C44A2ACCC.7000300%40dbm.ulb.ac.be%3E"
+       TITLE="[Mrs-user] 2 changes and BLAST-formatting">rherzog at dbm.ulb.ac.be
+       </A><BR>
+    <I>Wed Jun 28 18:22:36 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000027.html">[Mrs-user] minor change and indexing speed
+</A></li>
+        <LI>Next message: <A HREF="000029.html">[Mrs-user] 2 changes and BLAST-formatting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#28">[ date ]</a>
+              <a href="thread.html#28">[ thread ]</a>
+              <a href="subject.html#28">[ subject ]</a>
+              <a href="author.html#28">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten and friends,
+
+I want to mention two issues that can easily be cleared about MRS_2.0 :
+1. the failed_dbs.txt file in the status directory has to be 
+world-writeable for apache to be able to send the edition command to 
+clear a &quot;failed&quot; databank in the databanks.cgi view
+2. I think that the pdb.make is not really as functional as most other 
+make files. Starting the rsync by hand succeeds if the target directory 
+exists. I am presently rsync-ing the PDB. I shall see tomorrow if the 
+updating process works.
+
+I have activated the lines in uniprot, embl_release and embl_updates 
+make files in order for the software to build the NCBI-formatted blast 
+files. The building works flawlessly once the formatdb command from the 
+BLAST package is in the path. Also, I had to hand-compile 
+swiss2fasta.cpp in the update_scripts directory and put it in the path. 
+In this way, an external BLAST server can be fed permanently with up to 
+date blast-formatted databanks.
+
+Maarten, you mention in the end of the compilation phase that to keep 
+databanks up to date, one should run a make daily and a make weekly. 
+These scripts, albeit simple to compose, might be useful to be part of 
+the distribution for people to use and enjoy.
+
+Robert
+
+-- 
+Robert Herzog
+Universit&#233; libre de Bruxelles
+Laboratoire de Bioinformatique
+Rue des Prof. Jeener et Brachet 12
+B 6041 Gosselies  Belgium
+Tel 32-2-6509978 fax 32-2-6509998
+Email : <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">rherzog at ulb.ac.be</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000027.html">[Mrs-user] minor change and indexing speed
+</A></li>
+	<LI>Next message: <A HREF="000029.html">[Mrs-user] 2 changes and BLAST-formatting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#28">[ date ]</a>
+              <a href="thread.html#28">[ thread ]</a>
+              <a href="subject.html#28">[ subject ]</a>
+              <a href="author.html#28">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

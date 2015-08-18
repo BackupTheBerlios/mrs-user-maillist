@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS Database downloading
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20Database%20downloading&In-Reply-To=%3C99E464C1-67E9-4C6F-A0EF-9E13CEB2DF27%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000072.html">
+   <LINK REL="Next"  HREF="000080.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS Database downloading</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20Database%20downloading&In-Reply-To=%3C99E464C1-67E9-4C6F-A0EF-9E13CEB2DF27%40hekkelman.com%3E"
+       TITLE="[Mrs-user] MRS Database downloading">maarten at hekkelman.com
+       </A><BR>
+    <I>Thu Jul 27 08:42:47 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000072.html">[Mrs-user] MRS Database downloading
+</A></li>
+        <LI>Next message: <A HREF="000080.html">[Mrs-user] MRS Database downloading
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#75">[ date ]</a>
+              <a href="thread.html#75">[ thread ]</a>
+              <a href="subject.html#75">[ subject ]</a>
+              <a href="author.html#75">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Diego,
+
+&gt;<i> I am still having problems with databases:
+</I>&gt;<i>
+</I>&gt;<i> I execute  &quot;make interpro&quot; but it seems the file &quot;match.xml.gz&quot; is not
+</I>&gt;<i> downloaded completely. After downloading 47MB ..the ftp server stops
+</I>&gt;<i> tranferring. What do you think is happening?
+</I>
+No idea, honest. But as a workaround you could add a line like this  
+to interpro.make:
+
+MIRROR_INCLUDE = interpro\.xml\.gz
+
+That way you only transfer the interpro.xml.gz file which is the only  
+that is needed anyway. And since you have no problem downloading that  
+one this might solve your problems.
+
+Until you hit another file that won't download of course... :-(
+
+-maarten
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000072.html">[Mrs-user] MRS Database downloading
+</A></li>
+	<LI>Next message: <A HREF="000080.html">[Mrs-user] MRS Database downloading
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#75">[ date ]</a>
+              <a href="thread.html#75">[ thread ]</a>
+              <a href="subject.html#75">[ subject ]</a>
+              <a href="author.html#75">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

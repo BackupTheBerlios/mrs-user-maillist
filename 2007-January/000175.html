@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS 3 and wild cards - Checked by AntiVir DEMO	version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%203%20and%20wild%20cards%20-%20Checked%20by%20AntiVir%20DEMO%0A%09version%20-&In-Reply-To=%3CD6450060-8ADB-43BD-915C-15270BA567B1%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000174.html">
+   <LINK REL="Next"  HREF="000177.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS 3 and wild cards - Checked by AntiVir DEMO	version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%203%20and%20wild%20cards%20-%20Checked%20by%20AntiVir%20DEMO%0A%09version%20-&In-Reply-To=%3CD6450060-8ADB-43BD-915C-15270BA567B1%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] MRS 3 and wild cards - Checked by AntiVir DEMO	version -">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Fri Jan 19 09:14:36 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000174.html">[Mrs-user] MRS 3 and wild cards - Checked by AntiVir DEMO version -
+</A></li>
+        <LI>Next message: <A HREF="000177.html">[Mrs-user] plugin tutorial
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#175">[ date ]</a>
+              <a href="thread.html#175">[ thread ]</a>
+              <a href="subject.html#175">[ subject ]</a>
+              <a href="author.html#175">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 18-jan-2007, om 12:27 heeft Guy Bottu het volgende geschreven:
+&gt;<i>
+</I>&gt;<i> I just took a good look at MRS 3
+</I>&gt;<i> (<A HREF="http://www.cmbi.ru.nl/mrs-3">http://www.cmbi.ru.nl/mrs-3</A> as well as our local
+</I>&gt;<i> test installation) and I noticed that there seems
+</I>&gt;<i> to be no possibility anymore to perform a
+</I>&gt;<i> search involving wild cards. Not only is there no
+</I>&gt;<i> &quot;wildcard&quot; button but a query like &quot;id:*_papaya&quot;
+</I>&gt;<i> in SwissProt does not work. Don't you think that
+</I>&gt;<i> this is a serious deficiency ?
+</I>
+Yes, perhaps.
+
+First of all, I do not consider the interface as 'finished'. What I  
+think is finished is the indexing part, the scripts and the web  
+services API. The Java based frontend should actually be considered  
+as a proof of concept.
+
+That being said, the functionality for doing wildcard searches is  
+still there, in the backend and for boolean searches. The reason it  
+is not yet available in the interface is that I have to write some  
+more code to allow for wildcards in ranked query searches. I'll try  
+to explain this.
+
+When using wildcards you're actually creating a query that is being  
+expanded before being executed. In your example we're using the ID  
+index and search for all keys containing *_papaya. All these keys are  
+added to a regular boolean query and this new boolean query is then  
+executed.
+
+To support wildcards in ranked queries we have to do something  
+similar. There's one problem though, all terms in a ranked query have  
+a rank themselves and this rank is used in calculating the score.  
+This means that I cannot simply replace a query term containing  
+wildcards with a set of other query terms since I will have to  
+calculate a new rank for these new terms to make sure the results  
+remain in the expected scoring order.
+
+This is well researched territory, and I know what needs to be done.  
+It is similar to query expansion using thesauri e.g.. The only  
+problem is, I didn't have time to work on this yet.
+
+So for now you can continue using the Perl based interface with all  
+its quirks and problems. Or you can directly send your wildcard  
+queries to the web services API.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000174.html">[Mrs-user] MRS 3 and wild cards - Checked by AntiVir DEMO version -
+</A></li>
+	<LI>Next message: <A HREF="000177.html">[Mrs-user] plugin tutorial
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#175">[ date ]</a>
+              <a href="thread.html#175">[ thread ]</a>
+              <a href="subject.html#175">[ subject ]</a>
+              <a href="author.html#175">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

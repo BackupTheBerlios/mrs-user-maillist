@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] RFC: planning ahead for mrs 4.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20RFC%3A%20planning%20ahead%20for%20mrs%204.1&In-Reply-To=%3C48E52A18.30704%40dalicon.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000423.html">
+   <LINK REL="Next"  HREF="000425.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] RFC: planning ahead for mrs 4.1</H1>
+    <B>Koen Cuelenaere</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20RFC%3A%20planning%20ahead%20for%20mrs%204.1&In-Reply-To=%3C48E52A18.30704%40dalicon.com%3E"
+       TITLE="[Mrs-user] RFC: planning ahead for mrs 4.1">koenc at dalicon.com
+       </A><BR>
+    <I>Thu Oct  2 22:07:52 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000423.html">[Mrs-user] RFC: planning ahead for mrs 4.1
+</A></li>
+        <LI>Next message: <A HREF="000425.html">[Mrs-user] RFC: planning ahead for mrs 4.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#424">[ date ]</a>
+              <a href="thread.html#424">[ thread ]</a>
+              <a href="subject.html#424">[ subject ]</a>
+              <a href="author.html#424">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten
+
+see below for my comments; I've given them rates from 1 to 5, 5 being 
+the highest priority
+from my point of view..
+&gt;<i> - call back for parser scripts
+</I>&gt;<i> 	The idea is to be able to do queries on other databanks from inside a 
+</I>&gt;<i> formatter script. This way you can e.g. enable or disable links to other 
+</I>&gt;<i> entries that may or may not exist.
+</I>&gt;<i>   
+</I>prio: 4
+&gt;<i> - linking
+</I>&gt;<i> 	The SRS way of linking results from one databank to records in another.
+</I>&gt;<i>   
+</I>prio: 4
+What I would like to have here, is not (like SRS) have just one way of 
+linking 2 databanks, but several
+ways of linking them... That also means expanding the query language to 
+be able to express what  link route to
+use... Also, one thing that would not be needed from my point of view, 
+is the &quot;shortest route&quot; type of linking,
+where you can link database A to Z while there are no direct links 
+available and the system could get
+their using a shortest route approach. Reason is, often you don't end up 
+with the things you want; so you
+just end up writing out the route in the query language from hop to hop...
+
+
+&gt;<i> - more RDBMS like storage of records
+</I>&gt;<i> 	This may be necessary to do the linking right. It allows for more SQL 
+</I>&gt;<i> like queries and perhaps even nested queries. MRS already has so-called 
+</I>&gt;<i> meta data fields for storing extra information along with a document but 
+</I>&gt;<i> the implementation may need to be improved.
+</I>&gt;<i>   
+</I>Not sure if with RDBMS you mean a Read/Write system... that for me 
+wouldn't be high prio (prio: 1).
+
+prio: 5 Wrt the meta data fields, yes I would like to see that 
+improved... so like the SRS way,
+you could do getz -f 'id des aut' '[embl-des:prion]' e.g. and only those 
+fields would be returned, similar to in
+sql doing &quot;select id, des, aut from embl where des like '%prion%';
+Where the main important thing I think is, being able to basically - out 
+of the MRS box - be able to just select
+any field that the &quot;parser&quot; knows of... so e.g. also sequence field, 
+without having to store it (from the admin/dev
+point of view) in the meta data again... I guess just keeping pointers 
+to those pieces of info in the file (cmp)
+won't work since the data is compressed?
+
+&gt;<i> - case sensitive indices
+</I>&gt;<i> 	Needed for the RDBMS feature and some databanks (wikipedia e.g.)
+</I>&gt;<i>   
+</I>in RDBMSystems it's configurable ; I believe in mysql the default is 
+case-insensitive... So also for me, not
+high prio. prio:1
+
+&gt;<i> - DNA blast and all the translated versions.
+</I>&gt;<i>   
+</I>prio:2
+Wrt amount of work, I think a &quot;wrapper&quot; approach would be a lot faster, also
+for future developers, instead of re-implementing it. (I'm assuming 
+currently
+it's a kind of re-implementation...).
+
+&gt;<i> - allow the storage of images inside a databank
+</I>&gt;<i> 	Should already be possible, but I never tried it... There's no way to 
+</I>&gt;<i> access such images from a web page yet.
+</I>&gt;<i>   
+</I>prio 1
+
+
+&gt;<i> - more databanks
+</I>&gt;<i> 	
+</I>&gt;<i> I'm not sure if all of this is doable. And I'd like to hear where you 
+</I>&gt;<i> think priorities are. If you have additions to this wish-list, please 
+</I>&gt;<i> post them here.
+</I>&gt;<i>   
+</I>prio: 1 (but I'm biased ;) ).
+
+thanks for asking Maarten,
+regards,
+Koen
+
+-- 
+----------------------------------------------------------
+Koen Cuelenaere, MSc      Dalicon BV
+P.O. Box 354              Tel:    +31 (0) 317 450 709
+6700 AJ Wageningen        Fax:    +31 (0) 317 428 908
+                          Mobile: +31 (0) 653 325 402
+Visiting address
+Agro Business Park 90
+6708 PW Wageningen        
+The Netherlands
+
+<A HREF="http://www.dalicon.com/">http://www.dalicon.com/</A>   Email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">K.Cuelenaere at dalicon.com</A>
+---------------------------------------------------------
+The contents of this message, as well as any enclosures, are addressed
+personally to, and thus solely intended for the addressee. They may
+contain information regarding a third party. A recipient who is neither
+the addressee, nor empowered to receive this message on behalf of the
+addressee, is kindly requested to immediately inform the sender of receipt.
+Any use of the contents of this message and/or of the enclosures by any
+other person than the addressee is illegal towards the sender and the
+aforementioned third party.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000423.html">[Mrs-user] RFC: planning ahead for mrs 4.1
+</A></li>
+	<LI>Next message: <A HREF="000425.html">[Mrs-user] RFC: planning ahead for mrs 4.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#424">[ date ]</a>
+              <a href="thread.html#424">[ thread ]</a>
+              <a href="subject.html#424">[ subject ]</a>
+              <a href="author.html#424">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

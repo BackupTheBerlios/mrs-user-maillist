@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Has someone the Gene databank functional ? - Checked	by AntiVir DEMO ve
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Has%20someone%20the%20Gene%20databank%20functional%20%3F%20-%20Checked%0A%09by%20AntiVir%20DEMO%20ve&In-Reply-To=%3C110095AA-C9FD-4507-A06C-0856F3B7E779%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000252.html">
+   <LINK REL="Next"  HREF="000254.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Has someone the Gene databank functional ? - Checked	by AntiVir DEMO ve</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Has%20someone%20the%20Gene%20databank%20functional%20%3F%20-%20Checked%0A%09by%20AntiVir%20DEMO%20ve&In-Reply-To=%3C110095AA-C9FD-4507-A06C-0856F3B7E779%40hekkelman.com%3E"
+       TITLE="[Mrs-user] Has someone the Gene databank functional ? - Checked	by AntiVir DEMO ve">maarten at hekkelman.com
+       </A><BR>
+    <I>Mon Jun  4 14:59:54 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000252.html">[Mrs-user] Has someone the Gene databank functional ? - Checked by	AntiVir DEMO ve
+</A></li>
+        <LI>Next message: <A HREF="000254.html">[Mrs-user] Mrs-user Digest, Vol 12,	Issue 1 - Checked by AntiVir DEMO version
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#253">[ date ]</a>
+              <a href="thread.html#253">[ thread ]</a>
+              <a href="subject.html#253">[ subject ]</a>
+              <a href="author.html#253">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I installed a more recent Xalan on my laptop and can now reproduce  
+your problem. I'll see if I can fix it. I'll let you know asap.
+
+-maarten
+
+
+Op 4-jun-2007, om 11:37 heeft Guy Bottu het volgende geschreven:
+
+&gt;<i> 	Dear all,
+</I>&gt;<i>
+</I>&gt;<i> At the BEN MRS server we have a serious problem with getting the  
+</I>&gt;<i> Entrez
+</I>&gt;<i> Gene databank operational. When I try the command :
+</I>&gt;<i> .../Xalan xxx.xml gene_xslt.xml
+</I>&gt;<i> (where xxx.xml is an entry from &quot;gene&quot; in XML format but without
+</I>&gt;<i> the DOCTYPE line) I get :
+</I>&gt;<i>
+</I>&gt;<i> XSLT Error: The element xsl:text or literal text is not allowed at  
+</I>&gt;<i> this
+</I>&gt;<i> position in the stylesheet
+</I>&gt;<i> (<A HREF="file:///usr/local/share/mrs/parser_scripts/gene_xslt.xml,">file:///usr/local/share/mrs/parser_scripts/gene_xslt.xml,</A> line 66,
+</I>&gt;<i> column 62.)
+</I>&gt;<i>
+</I>&gt;<i> As a consequence the Web server does not display the entry,  
+</I>&gt;<i> although it
+</I>&gt;<i> does display the &quot;Plain text&quot;. At the &quot;mother server&quot; at CMBI it does
+</I>&gt;<i> work, but Maarten let me know he has on older version of Xalan.
+</I>&gt;<i>
+</I>&gt;<i> The line 66 reads :
+</I>&gt;<i> &lt;xsl:when test=&quot;Other-source_src/Dbtag/Dbtag_db = 'HPRD'&quot;&gt;
+</I>&gt;<i> Replacing the &quot;test&quot; by something simpler or replacing the code  
+</I>&gt;<i> between
+</I>&gt;<i> xsl:when and /xsl:when by something else does not help. As if the  
+</I>&gt;<i> &quot;when&quot;
+</I>&gt;<i> command behaves in an unusual way because of its context. Some  
+</I>&gt;<i> friend of
+</I>&gt;<i> mine who did some XSLT programming took a look but could not find
+</I>&gt;<i> anything.
+</I>&gt;<i>
+</I>&gt;<i> And an older version of Xalan is not obvious to find on the Internet.
+</I>&gt;<i>
+</I>&gt;<i> So, I get pretty desperate and I ask if someone already managed to get
+</I>&gt;<i> &quot;gene&quot; functional on his MRS server.
+</I>&gt;<i>
+</I>&gt;<i> 	Regards,
+</I>&gt;<i> 	Guy Bottu,
+</I>&gt;<i> 	Belgian EMBnet Node
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000252.html">[Mrs-user] Has someone the Gene databank functional ? - Checked by	AntiVir DEMO ve
+</A></li>
+	<LI>Next message: <A HREF="000254.html">[Mrs-user] Mrs-user Digest, Vol 12,	Issue 1 - Checked by AntiVir DEMO version
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#253">[ date ]</a>
+              <a href="thread.html#253">[ thread ]</a>
+              <a href="subject.html#253">[ subject ]</a>
+              <a href="author.html#253">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

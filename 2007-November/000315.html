@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS: Web Service
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%3A%20Web%20Service&In-Reply-To=%3CB2F2DA28-F59F-40C8-8C6B-3FC31A3BB23A%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000309.html">
+   <LINK REL="Next"  HREF="000317.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS: Web Service</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%3A%20Web%20Service&In-Reply-To=%3CB2F2DA28-F59F-40C8-8C6B-3FC31A3BB23A%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] MRS: Web Service">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Thu Nov 22 20:52:24 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000309.html">[Mrs-user] MRS: Web Service
+</A></li>
+        <LI>Next message: <A HREF="000317.html">[Mrs-user] MRS: Web Service
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#315">[ date ]</a>
+              <a href="thread.html#315">[ thread ]</a>
+              <a href="subject.html#315">[ subject ]</a>
+              <a href="author.html#315">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 21-nov-2007, om 16:32 heeft Alvaro Martinez Barrio het volgende  
+geschreven:
+
+Sorry for not responding sooner to your previous e-mail. I'm very  
+busy with other things at the moment.
+
+&gt;<i> I have developed better this script for querying MRS blast service and
+</I>&gt;<i> now works better. But just against your MRS in Netherlands, Maarten.
+</I>&gt;<i>
+</I>&gt;<i> If I query my server (see first trace) it stalls on the queue. The
+</I>&gt;<i> second trace correspond to querying yours. You see how it goes to the
+</I>&gt;<i> different status.
+</I>&gt;<i>
+</I>&gt;<i> What do I have to look for? As you said you implemented your own  
+</I>&gt;<i> blast.
+</I>&gt;<i> Some kind of queuing system should be present perhaps???
+</I>
+If you get back a message at all from the blast server that means the  
+server is running. And yes I did implement my own blast algorithm as  
+well as the queueing mechanism and all.
+
+You could start the blast server but without forking it so it stays  
+in the foreground. You can do so by starting it with the -f flags  
+from within a terminal. And then you can specify the -v flag to get  
+more verbose output. These two should give you some more feedback  
+about what is going on.
+
+There are some extra options that might influence the way blast  
+works. E.g. there's a threads parameter in the mrs-config.xml file,  
+you might want to change that to two e.g.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+06 26 750 799
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000309.html">[Mrs-user] MRS: Web Service
+</A></li>
+	<LI>Next message: <A HREF="000317.html">[Mrs-user] MRS: Web Service
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#315">[ date ]</a>
+              <a href="thread.html#315">[ thread ]</a>
+              <a href="subject.html#315">[ subject ]</a>
+              <a href="author.html#315">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

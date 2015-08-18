@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Error in MRS on the public Web Portal
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Error%20in%20MRS%20on%20the%20public%20Web%20Portal&In-Reply-To=%3C4B790206.9040609%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000507.html">
+   <LINK REL="Next"  HREF="000509.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Error in MRS on the public Web Portal</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Error%20in%20MRS%20on%20the%20public%20Web%20Portal&In-Reply-To=%3C4B790206.9040609%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Error in MRS on the public Web Portal">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Mon Feb 15 09:12:54 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000507.html">[Mrs-user] Error in MRS on the public Web Portal
+</A></li>
+        <LI>Next message: <A HREF="000509.html">[Mrs-user] how to configure clustalw in mrsweb
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#508">[ date ]</a>
+              <a href="thread.html#508">[ thread ]</a>
+              <a href="subject.html#508">[ subject ]</a>
+              <a href="author.html#508">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Chevreux, Bastien schreef:
+
+&gt;&gt;<i> BTW, fasta will never work for Gene of course, since it is not a
+</I>&gt;&gt;<i> databank that contains sequences.
+</I>&gt;<i> 
+</I>&gt;<i> I'm currently trying to find out what MRS can and can't, the above sentence I did not understand.
+</I>&gt;<i> 
+</I>&gt;<i> To test things out, I made a second search: &quot;dnaa&quot; in &quot;GenBank&quot;. The first ID in the results is &quot;z19108&quot;. Clicking on it I get a GenBank entry with one sequence and 4 genes annotated. So far, so expected, so good.
+</I>&gt;<i> 
+</I>&gt;<i> Then changing the view to &quot;FastA&quot; gets me an error (similar as reported earlier):
+</I>&gt;<i>   &gt;z19108 Spiroplasma citri dnaA, dnaN, gyrA and gyrB genes.
+</I>&gt;<i>   Error in formatting entry: open 'MRS::Script::genbank=HASH(0x23a5f2e0)/L
+</I>&gt;<i>   ...
+</I>&gt;<i> 
+</I>&gt;<i> This is not to be expected, is it?
+</I>
+Well.... maybe not. Point is, I only created support for blasting 
+protein sequences. I never bothered to create one of the other blast 
+options. As a result, I don't store the DNA sequences of Genbank entries 
+separately and thus I don't have direct support for a fasta export of 
+genbank entries.
+
+Now suppose you want to have a fasta output for Genbank, you could 
+implement a 'sequence' procedure in the genbank.pm file. For an example 
+on how to do this, have a look at embl.pm.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000507.html">[Mrs-user] Error in MRS on the public Web Portal
+</A></li>
+	<LI>Next message: <A HREF="000509.html">[Mrs-user] how to configure clustalw in mrsweb
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#508">[ date ]</a>
+              <a href="thread.html#508">[ thread ]</a>
+              <a href="subject.html#508">[ subject ]</a>
+              <a href="author.html#508">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

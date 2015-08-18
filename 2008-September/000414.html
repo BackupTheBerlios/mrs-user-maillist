@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] EMBL indexing error and gcc 4.3.2 problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20EMBL%20indexing%20error%20and%20gcc%204.3.2%20problems&In-Reply-To=%3C48C91213.4060803%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000410.html">
+   <LINK REL="Next"  HREF="000407.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] EMBL indexing error and gcc 4.3.2 problems</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20EMBL%20indexing%20error%20and%20gcc%204.3.2%20problems&In-Reply-To=%3C48C91213.4060803%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] EMBL indexing error and gcc 4.3.2 problems">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Thu Sep 11 14:41:55 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000410.html">[Mrs-user] EMBL indexing error and gcc 4.3.2 problems
+</A></li>
+        <LI>Next message: <A HREF="000407.html">[Mrs-user] MRS 4, perl interface requirements
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#414">[ date ]</a>
+              <a href="thread.html#414">[ thread ]</a>
+              <a href="subject.html#414">[ subject ]</a>
+              <a href="author.html#414">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Przemys&#322;aw Stempor schreef:
+
+&gt;<i> However, I came across another feature, that seems to malfunction.
+</I>&gt;<i> Data base joining (&lt;db-join ...&gt; tag in xml file) doesn't work for web
+</I>&gt;<i> interface. The bug seems to be exactly in web interface, because soap
+</I>&gt;<i> response send by the mrs-ws looks correct, but is not correctly
+</I>&gt;<i> interpreted by web interface (obtained by SVN, revision 110). Single
+</I>&gt;<i> file databases work perfectly fine. Example: both embl_release and
+</I>&gt;<i> embl_updates works fine when added as different databases, but when
+</I>&gt;<i> joined using following code in mrs-config.xml:
+</I>&gt;<i> 		&lt;db-join id=&quot;embl&quot; name=&quot;EMBL&quot;&gt;
+</I>&gt;<i> 			&lt;db-part&gt;embl_release&lt;/db-part&gt;
+</I>&gt;<i> 			&lt;db-part&gt;embl_updates&lt;/db-part&gt;
+</I>&gt;<i> 		&lt;/db-join&gt;
+</I>&gt;<i> the embl db is not accessible from web interface. The database is at
+</I>&gt;<i> the same time accessible using console applications (mrs-quary and
+</I>&gt;<i> mrs-test).
+</I>
+To include a databank in the list of available databanks, you also have 
+to mention it in the &lt;dbs&gt; list in the &lt;server&gt; section. Also make sure 
+you pick the right server.
+
+I hope this helps?
+
+I will write some more documentation the coming days. Especially this 
+configfile needs some explanation.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000410.html">[Mrs-user] EMBL indexing error and gcc 4.3.2 problems
+</A></li>
+	<LI>Next message: <A HREF="000407.html">[Mrs-user] MRS 4, perl interface requirements
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#414">[ date ]</a>
+              <a href="thread.html#414">[ thread ]</a>
+              <a href="subject.html#414">[ subject ]</a>
+              <a href="author.html#414">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

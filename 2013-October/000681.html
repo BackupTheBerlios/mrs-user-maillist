@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [mrs-user] Segmentation fault: need consultation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2013-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20Segmentation%20fault%3A%20need%20consultation&In-Reply-To=%3C1FF52A1042F64222BB1617B8BCC9EFE3%40kleine%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000679.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[mrs-user] Segmentation fault: need consultation</H1>
+    <B>maarten at hekkelman.com</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20Segmentation%20fault%3A%20need%20consultation&In-Reply-To=%3C1FF52A1042F64222BB1617B8BCC9EFE3%40kleine%3E"
+       TITLE="[mrs-user] Segmentation fault: need consultation">maarten at hekkelman.com
+       </A><BR>
+    <I>Wed Oct 16 19:36:15 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000679.html">[mrs-user] Segmentation fault: need consultation
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#681">[ date ]</a>
+              <a href="thread.html#681">[ thread ]</a>
+              <a href="subject.html#681">[ subject ]</a>
+              <a href="author.html#681">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Shailesh,
+
+MRS 4, that&#8217;s code from 2009. Since then I wrote MRS 5 and then decided to dump everything are rewrite MRS from scratch resulting in MRS 6. That last version is the one you should use, it is much faster and much more stable.
+
+I&#8217;m afraid this is not the answer you were waiting for.
+
+Best regards,
+
+-maarten
+
+
+From: Shailesh1 M 
+Sent: Wednesday, October 16, 2013 4:17 PM
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A> 
+Subject: [mrs-user] Segmentation fault: need consultation
+
+Hi, 
+
+Greetings! 
+
+We have been using MRS (version: 4, OS: RHEL5.1) since long and encountered a problem we are unable to debug, thereby need your consultation and guidance. 
+
+
+We have two ways of posting a SOAP request (raw xml) - one using soapUI and other using perl SOAP client. Using perl SOAP client we are able to post the request and successfully receive the response. Now the problem chips in when we are making the soap call using soapUI. Below is the error log. 
+  
+Thu Oct 10 05:36:53 EDT 2013:ERROR:org.apache.http.NoHttpResponseException: The target server failed to respond 
+org.apache.http.NoHttpResponseException: The target server failed to respond 
+at org.apache.http.impl.conn.DefaultResponseParser.parseHead(DefaultResponseParser.java:101) 
+at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:252) 
+at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:281) 
+at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:247) 
+at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:219) 
+at com.eviware.soapui.impl.wsdl.support.http.HttpClientSupport$SoapUIHttpRequestExecutor.doReceiveResponse(HttpClientSupport.java:151) 
+at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125) 
+at org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:633) 
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:454) 
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:820) 
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:754) 
+at com.eviware.soapui.impl.wsdl.support.http.HttpClientSupport$Helper.execute(HttpClientSupport.java:246) 
+at com.eviware.soapui.impl.wsdl.support.http.HttpClientSupport.execute(HttpClientSupport.java:356) 
+at com.eviware.soapui.impl.wsdl.submit.transports.http.HttpClientRequestTransport.submitRequest(HttpClientRequestTransport.java:317) 
+at com.eviware.soapui.impl.wsdl.submit.transports.http.HttpClientRequestTransport.sendRequest(HttpClientRequestTransport.java:231) 
+at com.eviware.soapui.impl.wsdl.WsdlSubmit.run(WsdlSubmit.java:123) 
+at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) 
+at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source) 
+at java.util.concurrent.FutureTask.run(Unknown Source) 
+at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) 
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) 
+at java.lang.Thread.run(Unknown Source) 
+
+While posting the SOAP request using soapUI the mrsws service is getting killed for the reasons unknown to us. We then got back to our the UNIX server team to find out what might be causing this problem. But they were only able to report back with the fact that the mrs service has been segfaulting fairly regularly, and further the logs weren't of much help. 
+
+Then we again posted the soap request using soapUI and simultaneously analysed the logs, where we found the whenever a soap request is posted (using soapUI) the mrsws service gets restarted and finally gets killed. This phenomenon but doesn't happen when we post the soap request using perl SOAP client. 
+
+
+We also tried to access mrs6 @ <A HREF="http://mrs.cmbi.ru.nl/m6/">http://mrs.cmbi.ru.nl/m6/</A> and are getting expected response. Below is the corresponding query for the same. 
+  
+&lt;soapenv:Envelope xmlns:soapenv=&quot;<A HREF="http://schemas.xmlsoap.org/soap/envelope/">http://schemas.xmlsoap.org/soap/envelope/</A>&quot; xmlns:sear=&quot;<A HREF="http://mrs.cmbi.ru.nl/m6/mrsws/search">http://mrs.cmbi.ru.nl/m6/mrsws/search</A>&quot;&gt; 
+   &lt;soapenv:Header/&gt; 
+   &lt;soapenv:Body&gt; 
+      &lt;sear1:Count xmlns:sear1=&quot;<A HREF="http://ratchet.am.lilly.com:18081">http://ratchet.am.lilly.com:18081</A>&quot;&gt; 
+         &lt;sear1:db&gt;uniprot&lt;/sear1:db&gt; 
+         &lt;sear1:booleanquery&gt;os:human&lt;/sear1:booleanquery&gt; 
+      &lt;/sear1:Count&gt; 
+   &lt;/soapenv:Body&gt; 
+&lt;/soapenv:Envelope&gt; 
+
+
+Your help would be greatly appreciated. Please let us know in case you require additional information. 
+
+-- 
+Thanks and regards,
+Shailesh Maurya
+Systems Engineer
+Tata Consultancy Services Limited 
+C - 56, Phase 2, Noida (U.P) - 201305 
+Cell: +91-9911666572
+Web: <A HREF="http://www.tcs.com">http://www.tcs.com</A> 
+=====-----=====-----=====
+Notice: The information contained in this e-mail
+message and/or attachments to it may contain 
+confidential or privileged information. If you are 
+not the intended recipient, any dissemination, use, 
+review, distribution, printing or copying of the 
+information contained in this e-mail message 
+and/or attachments to it are strictly prohibited. If 
+you have received this communication in error, 
+please notify us by reply e-mail or telephone and 
+immediately and permanently delete the message 
+and any attachments. Thank you
+
+
+
+--------------------------------------------------------------------------------
+_______________________________________________
+mrs-user mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20131016/22d64f0e/attachment-0001.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20131016/22d64f0e/attachment-0001.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000679.html">[mrs-user] Segmentation fault: need consultation
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#681">[ date ]</a>
+              <a href="thread.html#681">[ thread ]</a>
+              <a href="subject.html#681">[ subject ]</a>
+              <a href="author.html#681">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the mrs-user
+mailing list</a><br>
+</body></html>

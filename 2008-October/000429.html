@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] performance issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20performance%20issues&In-Reply-To=%3C48EF083D.3090000%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000428.html">
+   <LINK REL="Next"  HREF="000430.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] performance issues</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20performance%20issues&In-Reply-To=%3C48EF083D.3090000%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] performance issues">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Fri Oct 10 09:46:05 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000428.html">[Mrs-user] performance issues
+</A></li>
+        <LI>Next message: <A HREF="000430.html">[Mrs-user] publicly available MRS servers?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#429">[ date ]</a>
+              <a href="thread.html#429">[ thread ]</a>
+              <a href="subject.html#429">[ subject ]</a>
+              <a href="author.html#429">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Koen Cuelenaere schreef:
+
+&gt;&gt;<i>  However, when you do a 
+</I>&gt;&gt;<i> search on all databanks you will end up with quite a list of documents 
+</I>&gt;&gt;<i> that match. And for each document the server has to retrieve the 
+</I>&gt;&gt;<i> document's title. This means the disk has to seek each document.
+</I>&gt;&gt;<i>   
+</I>&gt;<i> if this is part of the reason of the performance issue, does that imply 
+</I>&gt;<i> that for every
+</I>&gt;<i> hit found (possibly &quot;all records&quot;), it will go in to fetch it, but only 
+</I>&gt;<i> display the top x ?
+</I>&gt;<i> If so, wouldn't it be enough to just go in for the top x records to 
+</I>&gt;<i> retrieve the data?
+</I>
+No. I only fetch the titles for the hits that will be displayed, that's 
+five per databank. The rest of the data comes from the indices and ID 
+tables, a large part of the indices and all of the ID tables are cached 
+into memory.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000428.html">[Mrs-user] performance issues
+</A></li>
+	<LI>Next message: <A HREF="000430.html">[Mrs-user] publicly available MRS servers?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#429">[ date ]</a>
+              <a href="thread.html#429">[ thread ]</a>
+              <a href="subject.html#429">[ subject ]</a>
+              <a href="author.html#429">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [mrs-user] version 6, beta 2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2012-December/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20version%206%2C%20beta%202&In-Reply-To=%3C3AAB6D011903954EBDFFF6F364ACD6B735C52D2D%40UMCEXMBX02.umcn.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000666.html">
+   <LINK REL="Next"  HREF="000668.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[mrs-user] version 6, beta 2</H1>
+    <B>M.Hekkelman at umcn.nl</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20version%206%2C%20beta%202&In-Reply-To=%3C3AAB6D011903954EBDFFF6F364ACD6B735C52D2D%40UMCEXMBX02.umcn.nl%3E"
+       TITLE="[mrs-user] version 6, beta 2">M.Hekkelman at umcn.nl
+       </A><BR>
+    <I>Thu Dec 20 15:49:52 CET 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000666.html">[mrs-user] mrs 6 beta 1
+</A></li>
+        <LI>Next message: <A HREF="000668.html">[mrs-user] yet another beta
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#667">[ date ]</a>
+              <a href="thread.html#667">[ thread ]</a>
+              <a href="subject.html#667">[ subject ]</a>
+              <a href="author.html#667">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A quick update. If you installed the first beta, you will have to review 
+the new configuration file carefully. A new file is written to 
+/usr/local/etc/mrs/m6-config.xml.dist. Or simply remove your current 
+config file and run make install. I changed the location of the raw 
+files to make them compatible with a mrs 5 installation.
+
+I also rewrote the FTP client since the one using ASIO was hanging when 
+behind a firewall. (No, not a simple passive problem).
+
+To get you up and running quickly, I copied the output of an install and 
+configure session. When completed I was able to access a running MRS at 
+<A HREF="http://192.168.74.133:18090/">http://192.168.74.133:18090/</A>
+
+-maarten
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at ubuntu</A>:~/projects$ snarf 
+<A HREF="ftp://ftp.cmbi.ru.nl/pub/software/mrs/m6-6.0.0b2.tbz">ftp://ftp.cmbi.ru.nl/pub/software/mrs/m6-6.0.0b2.tbz</A>
+...
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at ubuntu</A>:~/projects$ tar xf m6-6.0.0b2.tbz
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at ubuntu</A>:~/projects$ cd m6-6.0.0b2/
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at ubuntu</A>:~/projects/m6-6.0.0b2$ ./configure 
+--boost=$HOME/projects/boost
+Using perl /usr/bin/perl
+Reading settings from previous make.config file
+Checking for a compiler... OK
+Checking for libboost... OK
+Checking for libz... OK
+Checking for libbz2... OK
+Checking for libperl... OK
+Creating make.config file...done
+
+The new make.config contains:
+
+MRS_USER      = maarten
+MRS_BASE_URL  = <A HREF="http://192.168.74.133:18090/">http://192.168.74.133:18090/</A>
+MRS_PORT      = 18090
+CXX           = /usr/bin/c++
+PERL          = /usr/bin/perl
+CLUSTALO      =
+RSYNC         = /usr/bin/rsync
+BOOST         = /home/maarten/projects/boost
+BIN_DIR       = /usr/local/bin
+MAN_DIR       = /usr/local/man
+MRS_ETC_DIR   = /usr/local/etc/mrs
+MRS_DATA_DIR  = /srv/m6-data
+MRS_LOG_DIR   = /srv/m6-data/log
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at ubuntu</A>:~/projects/m6-6.0.0b2$ make -j2
+makefile:115: obj/M6BitStream.d: No such file or directory
+...
+ &gt;&gt; src/M6WSSearch.cpp
+ &gt;&gt; m6
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at ubuntu</A>:~/projects/m6-6.0.0b2$ sudo make install
+Creating directories
+Copying files
+Creating configuration file
+
+
+      PLEASE NOTE
+
+Don't forget to create an admin user for the MRS server by running the 
+command /usr/local/bin/m6 password
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at ubuntu</A>:~/projects/m6-6.0.0b2$ cd
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at ubuntu</A>:~$ m6 password
+Enter username: admin
+Enter password:
+Enter password again:
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at ubuntu</A>:~$ m6 update enzyme
+...
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at ubuntu</A>:~$ m6 update prosite
+...
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at ubuntu</A>:~$ m6 server start
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at ubuntu</A>:~$
+
+Het UMC St Radboud staat geregistreerd bij de Kamer van Koophandel in het handelsregister onder nummer 41055629.
+The Radboud University Nijmegen Medical Centre is listed in the Commercial Register of the Chamber of Commerce under file number 41055629.
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000666.html">[mrs-user] mrs 6 beta 1
+</A></li>
+	<LI>Next message: <A HREF="000668.html">[mrs-user] yet another beta
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#667">[ date ]</a>
+              <a href="thread.html#667">[ thread ]</a>
+              <a href="subject.html#667">[ subject ]</a>
+              <a href="author.html#667">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] db installation problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20db%20installation%20problem&In-Reply-To=%3Cp0623090cc0e137ea932a%40%5B130.223.122.102%5D%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000044.html">
+   <LINK REL="Next"  HREF="000046.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] db installation problem</H1>
+    <B>Laurent Falquet</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20db%20installation%20problem&In-Reply-To=%3Cp0623090cc0e137ea932a%40%5B130.223.122.102%5D%3E"
+       TITLE="[Mrs-user] db installation problem">Laurent.Falquet at unil.ch
+       </A><BR>
+    <I>Mon Jul 17 15:25:10 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000044.html">[Mrs-user] db installation problem
+</A></li>
+        <LI>Next message: <A HREF="000046.html">[Mrs-user] Db installation problem !!!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Maarten,
+
+&gt;&gt;<i>- install a fresh Fedora core4 on an old PC.
+</I>&gt;<i>
+</I>&gt;<i>An old PC is not the right PC to use with MRS. Hosting MRS is not a
+</I>&gt;<i>problem, but indexing really requires a lot of CPU horsepower.
+</I>
+Of course I know about indexing times, but just 
+for testing purposes I don't want to
+create problems on our main servers, especially when there are so many modules
+and packages to install they might create conflicts...
+
+&gt;<i>Apparently MRS is crashing on your computer. Since you were talking
+</I>&gt;<i>about an old computer, what CPU does this computer have? Illegal
+</I>&gt;<i>instruction often means it is compiled for another CPU than the one
+</I>&gt;<i>you're using. It might very well be that you e.g. have a PIII and
+</I>&gt;<i>try to run a P4 compiled application on it. That won't work.
+</I>
+Well then why do we need to recompile it ? I mean a recompilation should
+take care of this problem. (or do you distribute executables?)
+
+&gt;<i>And then, sometime ago someone at GNU headquarters decided it was a
+</I>&gt;<i>good idea to rename gzcat to zcat. You can try to edit the GZCAT
+</I>&gt;<i>variable in your make_xxx.conf file to point to your copy of zcat.
+</I>
+I checked for this variable and it is correctly set in the file make_xxx.conf:
+...
+FORMATDB                = formatdb
+SWISS_TO_FASTA  = $(SCRIPTDIR)swiss2fasta
+BASH                    = /bin/bash
+GZCAT                   = /bin/zcat
+...
+
+The problem must be elsewhere.
+Any idea?
+
+Thanks again.
+Laurent
+
+
+
+-- 
+-----------------------------------------
+Dr. Laurent Falquet
+Swiss EMBnet node Manager
+Swiss Institute of Bioinformatics
+G&#233;nopode, UNIL
+CH-1015 Lausanne, Switzerland
+Tel: +41 21 692 4078
+Fax: +41 21 692 4065
+Email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Laurent.Falquet at isb-sib.ch</A>
+<A HREF="http://www.ch.embnet.org">http://www.ch.embnet.org</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000044.html">[Mrs-user] db installation problem
+</A></li>
+	<LI>Next message: <A HREF="000046.html">[Mrs-user] Db installation problem !!!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

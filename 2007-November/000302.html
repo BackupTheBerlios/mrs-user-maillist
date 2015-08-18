@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Problem with web interface and the MRS instalation (new	version)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Problem%20with%20web%20interface%20and%20the%20MRS%20instalation%0A%20%28new%09version%29&In-Reply-To=%3C473A9F5F.7040506%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000301.html">
+   <LINK REL="Next"  HREF="000303.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Problem with web interface and the MRS instalation (new	version)</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Problem%20with%20web%20interface%20and%20the%20MRS%20instalation%0A%20%28new%09version%29&In-Reply-To=%3C473A9F5F.7040506%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Problem with web interface and the MRS instalation (new	version)">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Nov 14 08:10:23 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000301.html">[Mrs-user] Problem with web interface and the MRS instalation (new	version)
+</A></li>
+        <LI>Next message: <A HREF="000303.html">[Mrs-user] Trunk 498 and configure.pl
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#302">[ date ]</a>
+              <a href="thread.html#302">[ thread ]</a>
+              <a href="subject.html#302">[ subject ]</a>
+              <a href="author.html#302">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">rbahena at ibt.unam.mx</A> schreef:
+
+&gt;<i> I have installed mrs-3.0.1b, i copy the stop.txt file from the mrs/plugin
+</I>&gt;<i> directory to the /usr/local/share/mrs/update_scripts directory. I did the make
+</I>&gt;<i> of the embl_releases without problems, it generate the file embl_releases.cmp
+</I>&gt;<i> but they do not appear in the web interface.
+</I>&gt;<i> The *.cmp files are ok, because i can run mrs.pl info -d embl_release.cmp
+</I>&gt;<i> without error. Any idea?
+</I>
+The files available in the web interface are determined by the
+mrs_config.xml file. This file is usually located in /usr/local/etc.
+
+I normally leave out embl_release. I use the embl_updates.make file to
+create an embl_updates.cmp file and then merge the indices from
+embl_release and embl_updates into embl.cmp. This last file then
+contains the latest up-to-date data.
+
+For this to work you will have to leave the embl_release and
+embl_updates files around. And it breaks when the embl_release file is
+updated... I'm going to redesign the way data is stored to avoid this
+problem.
+
+&gt;<i> Also, i installed mrs-3 from svn last week (new version), but when i run
+</I>&gt;<i> configure.pl (mrs script), i get the following error:
+</I>&gt;<i> 
+</I>&gt;<i>   Unsupported CPU: x86_64
+</I>
+Yeah, that configure script is not really ready for public consumption,
+I'm afraid. I'm sorry I posted here to test it. I shouldn't have done that.
+
+I think I will create binary downloads after all. The build of MRS is
+far too complex and has too many dependencies to be usable.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000301.html">[Mrs-user] Problem with web interface and the MRS instalation (new	version)
+</A></li>
+	<LI>Next message: <A HREF="000303.html">[Mrs-user] Trunk 498 and configure.pl
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#302">[ date ]</a>
+              <a href="thread.html#302">[ thread ]</a>
+              <a href="subject.html#302">[ subject ]</a>
+              <a href="author.html#302">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] iterating over all entries
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20iterating%20over%20all%20entries&In-Reply-To=%3Ck2o4d93f07c1004140024ncd9aa2ean18fd1c473f78669%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000562.html">
+   <LINK REL="Next"  HREF="000563.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] iterating over all entries</H1>
+    <B>Martin Senger</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20iterating%20over%20all%20entries&In-Reply-To=%3Ck2o4d93f07c1004140024ncd9aa2ean18fd1c473f78669%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] iterating over all entries">martin.senger at gmail.com
+       </A><BR>
+    <I>Wed Apr 14 09:24:39 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000562.html">[Mrs-user] iterating over all entries
+</A></li>
+        <LI>Next message: <A HREF="000563.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#569">[ date ]</a>
+              <a href="thread.html#569">[ thread ]</a>
+              <a href="subject.html#569">[ subject ]</a>
+              <a href="author.html#569">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;<i> However, not all is lost. The query '*' is a short-cut in MRS. It simply
+</I>&gt;<i> resolves into an iterator over entries based on entry number. This should
+</I>&gt;<i> take hardly any time since it involves no lookup, just increasing an
+</I>&gt;<i> integer.
+</I>&gt;<i>
+</I>
+&gt;<i> Therefore, you should be able to use SOAP and iterate step-by-step through
+</I>&gt;<i> the results of a query that consists of only the '*' string for
+</I>&gt;<i> booleanfilter and using resultoffset and maxresultcount.
+</I>&gt;<i>
+</I>
+Thanks for this hint. I think that I did that already - and the results were
+not too fast. But I have to redo my test - and make sure that I am not
+adding addition software layers that add to the speed. I will report back
+how it goes.
+
+Meantime, I tried to use the plugin MRS.pm (on the same machine where mrs
+files are). The problem is that the simple iteration consumes too much
+memory (it probably does not release it efficiently enough). Therefore, I
+cannot, for example, iterate over full TrEMBL. I am attaching the script
+that does nothing more than getting individual entries and printing out how
+far it got in the iteration. If I run it on a laptop (4GB memory) it works
+fine up to about 15-20% of the TrEMBL entries, with memory growing and
+growing. Try to start the script and look by 'top' from another window.
+
+I wonder if this memory consumption indicates something wrong in my
+iterations, or if it is a bug in the MRS plugin itself.
+
+Thanks,
+Martin
+
+Here is the script (you have to change there the location of the MRS.pm
+plugin file):
+
+#!/usr/bin/perl -w
+#
+
+use strict;
+use warnings;
+use lib &quot;/home/senger/Software/mrs-4.1.1/plugin&quot;;  # EDIT THIS
+use MRS;
+
+my $db = new MRS::MDatabank ('trembl')
+    or die &quot;Could not open databank 'trembl'.\n&quot;;
+
+my $result = $db-&gt;Find (&quot;*&quot;);
+die &quot;No records found. Strange.\n&quot; unless $result;
+
+my $start = time;
+my $total = $result-&gt;{count};
+print STDERR &quot;Iterating over $total records found in TrEMBL...\n&quot;;
+my $count = 0;
+
+while (my $id = $result-&gt;Next) {
+    my $doc = $db-&gt;Get ($id);
+
+    $count++;
+    print STDERR sprintf (&quot;\r%6.2f%% [%d from %d processed]&quot;,
+              $count/ $total * 100, $count, $total);
+}
+
+print STDERR &quot; Elapsed time: &quot;, time - $start, &quot; seconds\n&quot;;
+__END__
+
+
+
+-- 
+Martin Senger
+email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+skype: martinsenger
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20100414/c178e4a7/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20100414/c178e4a7/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000562.html">[Mrs-user] iterating over all entries
+</A></li>
+	<LI>Next message: <A HREF="000563.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#569">[ date ]</a>
+              <a href="thread.html#569">[ thread ]</a>
+              <a href="subject.html#569">[ subject ]</a>
+              <a href="author.html#569">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

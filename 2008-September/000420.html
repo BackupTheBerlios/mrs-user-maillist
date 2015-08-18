@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS index repositories and smart ways to distribute it across EMBnet members
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20index%20repositories%20and%20smart%20ways%20to%20distribute%0A%20it%20across%20EMBnet%20members&In-Reply-To=%3C48D74D9E.5040106%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000419.html">
+   <LINK REL="Next"  HREF="000421.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS index repositories and smart ways to distribute it across EMBnet members</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20index%20repositories%20and%20smart%20ways%20to%20distribute%0A%20it%20across%20EMBnet%20members&In-Reply-To=%3C48D74D9E.5040106%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] MRS index repositories and smart ways to distribute it across EMBnet members">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Mon Sep 22 09:47:42 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000419.html">[Mrs-user] MRS index repositories and smart ways to distribute it across EMBnet members
+</A></li>
+        <LI>Next message: <A HREF="000421.html">[Mrs-user] MRS index repositories and smart ways to distribute it across EMBnet members
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#420">[ date ]</a>
+              <a href="thread.html#420">[ thread ]</a>
+              <a href="subject.html#420">[ subject ]</a>
+              <a href="author.html#420">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear all,
+
+I received the quoted e-mail this weekend, and I must say I'm a bit 
+surprised by the content. I'll try to comment on it a bit.
+
+&gt;<i> George Magklaras a &#233;crit :
+</I> &gt;
+&gt;&gt;<i> This is meant to be a follow up on various issues with MRS (referring 
+</I>&gt;&gt;<i> to version 3, not 4). I have seen from time-to-time messages with 
+</I>&gt;&gt;<i> people complaining about slow/broken/memory starved indexing processes 
+</I>&gt;&gt;<i> for large datasets (embl, genbank, etc).
+</I>
+When complaining, one should realize that EMBL now consists of some 630 
+Gigabytes of raw text. This is really quite a lot of bytes. If your 
+computer has a hard disk capable of transfering 60 Megabytes per second 
+(which is still quite common) it will take you at least 3 hours to only 
+read through this data. Writing out the data along with an index will 
+take at least the same amount of time. Now we have to construct an index 
+for all the unique words in this pile of data, and if you consider that 
+there are 138 million documents in EMBL, you can imagine this to be 
+quite a lot.
+
+MRS is capable of finishing a complete cycle of parsing and indexing of 
+EMBL in 24 hours. But this comes at a cost, it uses a lot of memory. 
+Fortunately, memory is cheap these days. I could have opted for an 
+approach that uses less memory, but then I would either have to use more 
+disk space or more time. MRS 3 used to slice the databank and create 
+parts, but this meant you needed intermediate diskspace of up to a 
+terabyte to create EMBL. The price of a terabyte of _extra_ diskspace is 
+high, higher than 16 Gigabytes of memory. And since this terabyte has to 
+be written out and read in again, you can see that it takes many hours 
+extra.
+
+&gt;&gt;<i> I have been also following 
+</I>&gt;&gt;<i> the discussions about the forthcoming 4 release (currently in beta), 
+</I>&gt;&gt;<i> which needs currently around 17 Gigs of resident RAM (gulp!) to 
+</I>&gt;&gt;<i> perform the same process, requiring realistically a 32 Gig RAM server, 
+</I>&gt;&gt;<i> something clearly out of the bounds of more EMBnet nodes (?).
+</I>
+It's not that bad, it seems. I've received reports of others indexing 
+EMBL on a computer with just 8 Gigabyte of memory and 20 GB of swap. It 
+took over two days to complete the indexing, but it worked.
+
+I just configured on-line a Dell server with two AMD dual core 
+processors, 16 GB of memory and 2 1-Terabyte disks. It will cost you 
+roughly 2800 euro's, ex. VAT. This would be a fine computer to do MRS 
+indexing, 16 GB is enough to do EMBL for the year to come. Is this 
+really out of bounds?
+
+ &gt;&gt; And the
+&gt;&gt;<i> thing is (if you follow the recent discussions of the mrs-user mailing 
+</I>&gt;&gt;<i> list) that this process is asymmetrical (you require large amounts of 
+</I>&gt;&gt;<i> RAM to index, but modest amounts of RAM to use the dataset).
+</I>
+correct
+
+&gt;&gt;<i> After many smaller labs wanting to use MRS on the large datasets 
+</I>&gt;&gt;<i> locally requested from us to help with this process, I was wondering 
+</I>&gt;&gt;<i> whether it would be sensible to setup either a set of mirrored/synced 
+</I>&gt;&gt;<i> FTP sites, so people can download already formatted databases for MRS. 
+</I>&gt;&gt;<i> For example, we place the formatted files (currently for MRS version 
+</I>&gt;&gt;<i> 3) for the EMBL release plus updates here:
+</I>&gt;&gt;<i> <A HREF="ftp://ftp.no.embnet.org/biodatabases/mrsindex/">ftp://ftp.no.embnet.org/biodatabases/mrsindex/</A>
+</I>&gt;&gt;<i> allowing people with desktop spec machines to download the dataset and 
+</I>&gt;&gt;<i> use MRS locally.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> In terms of scalability- a set of torrent/P2P nodes that could 
+</I>&gt;&gt;<i> commonly perform this process more effectively  due to the size of the 
+</I>&gt;&gt;<i> datasets.  This could help the MRS community a lot, save them time and 
+</I>&gt;&gt;<i> disk space  and it would be another nice example of collaborating to 
+</I>&gt;&gt;<i> produce vital datasets. Comments /suggestions/volunteers are welcome.
+</I>
+I've already suggested a better solution to this. I can write a 
+replication tool to help distribute MRS files. Esp. with EMBL it is not 
+necessary to transfer all the data, you could limit it to just create a 
+'diff' or 'patch' file and use that. This would limit bandwidth 
+considerably.
+
+But before I spend the time on writing something like this, I really 
+want to be sure there's a demand for this. There are other things my 
+boss wants me to do.
+
+Robert Herzog wrote:
+&gt;<i> I am no longer actively using MRS, as those who know me may understand. 
+</I>&gt;<i> But this news about an MRS server needing only limited capacity to 
+</I>&gt;<i> provide MRS service is great. It is typically a case for an MRS 
+</I>&gt;<i> Federation, like the SRS federation we tried to set up some years ago, 
+</I>&gt;<i> before Lion and SRS went down.
+</I>&gt;<i> I hope this idea will find  roots during the current EMBnet meeting in 
+</I>&gt;<i> Italy.
+</I>
+And that's another thing I could do. Since the retrieval of data in MRS 
+is completely web services based, it is trivial to link several servers 
+together and pass requests for data from one to another. I've discussed 
+this before with Robert, but someone has to step forward to help design 
+and organize this. I'm not a member of EMB-NET and so I have no idea 
+what you guys need.
+
+What disturbs me a bit though, is that MRS is apparently discussed but 
+nobody took the time to inform me about this. If there are problems with 
+MRS, you should really contact me, if you need changes you can ask for 
+them. Since I hardly ever get feedback on MRS, I got the impression 
+nobody was interested.
+
+MRS 4 has been in development for a long time. There has been plenty of 
+opportunity to steer its direction. If no one cares to comment on my 
+proposals I make my own choices. The two choices I made for MRS 4 were 
+to optimize more, so I could continue to index EMBL for a few more years 
+and to make installation and management easier.
+
+So, if you have suggestions on how to improve things, you now know where 
+you should direct them.
+
+Best regards,
+
+-maarten
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000419.html">[Mrs-user] MRS index repositories and smart ways to distribute it across EMBnet members
+</A></li>
+	<LI>Next message: <A HREF="000421.html">[Mrs-user] MRS index repositories and smart ways to distribute it across EMBnet members
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#420">[ date ]</a>
+              <a href="thread.html#420">[ thread ]</a>
+              <a href="subject.html#420">[ subject ]</a>
+              <a href="author.html#420">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

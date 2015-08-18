@@ -1,0 +1,1276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] problem with finding an entry in Uniprot
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20problem%20with%20finding%20an%20entry%20in%20Uniprot&In-Reply-To=%3Cn2j4d93f07c1004130254mdfa0fa6p8bfb99505ce4129e%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000564.html">
+   <LINK REL="Next"  HREF="000566.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] problem with finding an entry in Uniprot</H1>
+    <B>Martin Senger</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20problem%20with%20finding%20an%20entry%20in%20Uniprot&In-Reply-To=%3Cn2j4d93f07c1004130254mdfa0fa6p8bfb99505ce4129e%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] problem with finding an entry in Uniprot">martin.senger at gmail.com
+       </A><BR>
+    <I>Tue Apr 13 11:54:47 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000564.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+        <LI>Next message: <A HREF="000566.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#565">[ date ]</a>
+              <a href="thread.html#565">[ thread ]</a>
+              <a href="subject.html#565">[ subject ]</a>
+              <a href="author.html#565">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Could you check if the sprot file is OK?
+</I>&gt;<i>
+</I>
+All three (uniprot, sprot, trembl) do not report anything wrong, except the
+warning I mentioned:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">senger at ShereKhan2</A>:/usr/local/data/mrs$ mrs-test -d uniprot &gt;
+test_uniprot.txt
+no file specified for db-join Uniprot KB
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">senger at ShereKhan2</A>:/usr/local/data/mrs$ mrs-test -d sprot &gt; test_sprot.txt
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">senger at ShereKhan2</A>:/usr/local/data/mrs$ mrs-test -d trembl &gt; test_trembl.txt
+
+The created test_*.txt are attached.
+
+Thanks for looking into it.
+Martin
+
+-- 
+Martin Senger
+email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+skype: martinsenger
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20100413/9c7c8d78/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20100413/9c7c8d78/attachment.html</A>&gt;
+-------------- next part --------------
+File: /usr/local/data/mrs/trembl.cmp
+
+Header:
+  signature:     MRSd
+  uuid:          cf2cb7f5-7c18-43b7-843e-def0f94e0a09
+  name:          TrEMBL
+  version:       UniProtKB/TrEMBL Release 2010_04 of 23-Mar-2010
+  url:           <A HREF="http://www.ebi.ac.uk/uniprot/index.html">http://www.ebi.ac.uk/uniprot/index.html</A>
+  script:        uniprot
+  section:       protein
+  size:          120
+  entries:       10618387
+  data offset:   120
+  data size:     20405853694
+  raw data size: 25992432888
+  index offset:  20405853814
+  index size:    11161590154
+  info offset:   31739887616
+  info size:     2327
+  id offset:     31567443968
+  id size:       172443648
+  blast offset:  31739889943
+  blast size:    3564719947
+  omitvec offset:0
+
+Data Header:
+  signature:    data
+  size:         16
+  count:        1
+  meta data:    2 { title, LINK }
+
+Data Part 0:
+  signature:    part
+  size:         56
+  data offset:  240
+  data size:    20389083312
+  table offset: 20389083552
+  table size:   16770262
+  count:        10618387
+  raw data:     25992432888
+  compression:  mflz
+
+Index Header (indx) 28 bytes
+  entries:           10618387
+  count:             20
+  weight bit count:  5
+  array compression: sel2
+
+Index Part 0 (Indp) 28 bytes
+  name:          __ALL_TEXT__
+  kind:          wtxt
+  tree offset:   21491400704
+  tree size:     1646573568
+  root:          803991
+  entries:       68758166
+  bits offset:   20405855762
+  bits size:     1085544039
+  weight offset: 23137974272
+  flags:         V3-index
+
+Index Part 1 (Indp) 28 bytes
+  name:          ac
+  kind:          text
+  tree offset:   23281305600
+  tree size:     206174208
+  root:          100671
+  entries:       10670817
+  bits offset:   23180447820
+  bits size:     58174210
+  flags:         IDL+length V3-index
+  idl offset:    23238622030
+  idl size:      42683283
+
+Index Part 2 (Indp) 28 bytes
+  name:          cc
+  kind:          text
+  tree offset:   23853344768
+  tree size:     260096
+  root:          127
+  entries:       12916
+  bits offset:   23487479808
+  bits size:     47916258
+  flags:         IDL+length V3-index
+  idl offset:    23535396066
+  idl size:      317946663
+
+Index Part 3 (Indp) 28 bytes
+  name:          crc64
+  kind:          text
+  tree offset:   23946483712
+  tree size:     259665920
+  root:          126790
+  entries:       8748378
+  bits offset:   23853604864
+  bits size:     51707470
+  flags:         IDL+length V3-index
+  idl offset:    23905312334
+  idl size:      41170546
+
+Index Part 4 (Indp) 28 bytes
+  name:          de
+  kind:          text
+  tree offset:   24467425280
+  tree size:     16191488
+  root:          7906
+  entries:       742406
+  bits offset:   24206149632
+  bits size:     44451570
+  flags:         IDL+length V3-index
+  idl offset:    24250601202
+  idl size:      216822888
+
+Index Part 5 (Indp) 28 bytes
+  name:          dr
+  kind:          text
+  tree offset:   26565681152
+  tree size:     826771456
+  root:          403697
+  entries:       36056344
+  bits offset:   24483616768
+  bits size:     503685337
+  flags:         IDL+length V3-index
+  idl offset:    24987302105
+  idl size:      1578377579
+
+Index Part 6 (Indp) 28 bytes
+  name:          dt
+  kind:          date
+  tree offset:   27398719488
+  tree size:     6144
+  root:          3
+  entries:       153
+  bits offset:   27392452608
+  bits size:     6265766
+  flags:         V3-index
+
+Index Part 7 (Indp) 28 bytes
+  name:          ft
+  kind:          text
+  tree offset:   27447519232
+  tree size:     11407360
+  root:          5570
+  entries:       414513
+  bits offset:   27398725632
+  bits size:     9377386
+  flags:         IDL+length V3-index
+  idl offset:    27408103018
+  idl size:      39414647
+
+Index Part 8 (Indp) 28 bytes
+  name:          gn
+  kind:          text
+  tree offset:   27597684736
+  tree size:     218103808
+  root:          106496
+  entries:       8948704
+  bits offset:   27458926592
+  bits size:     54439006
+  flags:         IDL+length V3-index
+  idl offset:    27513365598
+  idl size:      84318031
+
+Index Part 9 (indp) 28 bytes
+  name:          id
+  kind:          valu
+  tree offset:   27815790591
+  tree size:     226367489
+  root:          226365441
+  entries:       10618387
+
+Index Part 10 (Indp) 28 bytes
+  name:          kw
+  kind:          text
+  tree offset:   28150956032
+  tree size:     12288
+  root:          6
+  entries:       464
+  bits offset:   28042158080
+  bits size:     17413761
+  flags:         IDL+length V3-index
+  idl offset:    28059571841
+  idl size:      91383772
+
+Index Part 11 (Indp) 28 bytes
+  name:          length
+  kind:          nmbr
+  tree offset:   28167168000
+  tree size:     108544
+  root:          53
+  entries:       6174
+  bits offset:   28150968320
+  bits size:     16198870
+  flags:         V3-index
+
+Index Part 12 (Indp) 28 bytes
+  name:          mw
+  kind:          nmbr
+  tree offset:   28192321536
+  tree size:     4122624
+  root:          2013
+  entries:       218968
+  bits offset:   28167276544
+  bits size:     25043187
+  flags:         V3-index
+
+Index Part 13 (Indp) 28 bytes
+  name:          oc
+  kind:          text
+  tree offset:   28504571904
+  tree size:     1204224
+  root:          588
+  entries:       50173
+  bits offset:   28196444160
+  bits size:     18139620
+  flags:         IDL+length V3-index
+  idl offset:    28214583780
+  idl size:      289986323
+
+Index Part 14 (Indp) 28 bytes
+  name:          og
+  kind:          text
+  tree offset:   28509151232
+  tree size:     83968
+  root:          41
+  entries:       4249
+  bits offset:   28505776128
+  bits size:     366218
+  flags:         IDL+length V3-index
+  idl offset:    28506142346
+  idl size:      3008208
+
+Index Part 15 (Indp) 28 bytes
+  name:          oh
+  kind:          text
+  tree offset:   28513961984
+  tree size:     43008
+  root:          21
+  entries:       1970
+  bits offset:   28509235200
+  bits size:     673410
+  flags:         IDL+length V3-index
+  idl offset:    28509908610
+  idl size:      4052646
+
+Index Part 16 (Indp) 28 bytes
+  name:          os
+  kind:          text
+  tree offset:   28693659648
+  tree size:     3594240
+  root:          1755
+  entries:       166572
+  bits offset:   28514004992
+  bits size:     13436656
+  flags:         IDL+length V3-index
+  idl offset:    28527441648
+  idl size:      166216196
+
+Index Part 17 (Indp) 28 bytes
+  name:          ox
+  kind:          text
+  tree offset:   28775303168
+  tree size:     4448256
+  root:          2172
+  entries:       232039
+  bits offset:   28697253888
+  bits size:     6245686
+  flags:         IDL+length V3-index
+  idl offset:    28703499574
+  idl size:      71803151
+
+Index Part 18 (Indp) 28 bytes
+  name:          pe
+  kind:          text
+  tree offset:   28870250496
+  tree size:     2048
+  root:          1
+  entries:       11
+  bits offset:   28779751424
+  bits size:     8378748
+  flags:         IDL+length V3-index
+  idl offset:    28788130172
+  idl size:      82118760
+
+Index Part 19 (Indp) 28 bytes
+  name:          ref
+  kind:          text
+  tree offset:   31545925632
+  tree size:     21518336
+  root:          10507
+  entries:       1004646
+  bits offset:   28870252544
+  bits size:     144500394
+  flags:         IDL+length V3-index
+  idl offset:    29014752938
+  idl size:      2531172292
+
+ID Table contains 168402 pages
+-------------- next part --------------
+File: /usr/local/data/mrs/sprot.cmp
+
+Header:
+  signature:     MRSd
+  uuid:          c260597d-c87b-402d-bb7b-acd1c6a12daf
+  name:          Swiss-Prot
+  version:       UniProtKB/Swiss-Prot Release 2010_04 of 23-Mar-2010
+  url:           <A HREF="http://www.ebi.ac.uk/uniprot/index.html">http://www.ebi.ac.uk/uniprot/index.html</A>
+  script:        uniprot
+  section:       protein
+  size:          120
+  entries:       516081
+  data offset:   120
+  data size:     1650242196
+  raw data size: 2320128500
+  index offset:  1650242316
+  index size:    1161503988
+  info offset:   2819111936
+  info size:     2335
+  id offset:     2811746304
+  id size:       7365632
+  blast offset:  2819114271
+  blast size:    188525786
+  omitvec offset:0
+
+Data Header:
+  signature:    data
+  size:         16
+  count:        1
+  meta data:    2 { title, LINK }
+
+Data Part 0:
+  signature:    part
+  size:         56
+  data offset:  240
+  data size:    1649377915
+  table offset: 1649378155
+  table size:   864161
+  count:        516081
+  raw data:     2320128500
+  compression:  mflz
+
+Index Header (indx) 28 bytes
+  entries:           516081
+  count:             20
+  weight bit count:  5
+  array compression: sel2
+
+Index Part 0 (Indp) 28 bytes
+  name:          __ALL_TEXT__
+  kind:          wtxt
+  tree offset:   1771372544
+  tree size:     165146624
+  root:          80638
+  entries:       7083119
+  bits offset:   1650244264
+  bits size:     121126827
+  weight offset: 1936519168
+  flags:         V3-index
+
+Index Part 1 (Indp) 28 bytes
+  name:          ac
+  kind:          text
+  tree offset:   1941436416
+  tree size:     12959744
+  root:          6328
+  entries:       670625
+  bits offset:   1938583492
+  bits size:     121219
+  flags:         IDL+length V3-index
+  idl offset:    1938704711
+  idl size:      2731322
+
+Index Part 2 (Indp) 28 bytes
+  name:          cc
+  kind:          text
+  tree offset:   2041987072
+  tree size:     4319232
+  root:          2109
+  entries:       203839
+  bits offset:   1954396160
+  bits size:     9916328
+  flags:         IDL+length V3-index
+  idl offset:    1964312488
+  idl size:      77673274
+
+Index Part 3 (Indp) 28 bytes
+  name:          crc64
+  kind:          text
+  tree offset:   2048757760
+  tree size:     12863488
+  root:          6281
+  entries:       433178
+  bits offset:   2046306304
+  bits size:     445272
+  flags:         IDL+length V3-index
+  idl offset:    2046751576
+  idl size:      2004885
+
+Index Part 4 (Indp) 28 bytes
+  name:          de
+  kind:          text
+  tree offset:   2084769792
+  tree size:     2256896
+  root:          1102
+  entries:       110732
+  bits offset:   2061621248
+  bits size:     2244007
+  flags:         IDL+length V3-index
+  idl offset:    2063865255
+  idl size:      20902916
+
+Index Part 5 (Indp) 28 bytes
+  name:          dr
+  kind:          text
+  tree offset:   2266560512
+  tree size:     97335296
+  root:          47527
+  entries:       4310025
+  bits offset:   2087026688
+  bits size:     18343286
+  flags:         IDL+length V3-index
+  idl offset:    2105369974
+  idl size:      161188761
+
+Index Part 6 (Indp) 28 bytes
+  name:          dt
+  kind:          date
+  tree offset:   2365126656
+  tree size:     10240
+  root:          5
+  entries:       286
+  bits offset:   2363895808
+  bits size:     1230471
+  flags:         V3-index
+
+Index Part 7 (Indp) 28 bytes
+  name:          ft
+  kind:          text
+  tree offset:   2428786688
+  tree size:     23121920
+  root:          11290
+  entries:       886753
+  bits offset:   2365136896
+  bits size:     8705009
+  flags:         IDL+length V3-index
+  idl offset:    2373841905
+  idl size:      54944306
+
+Index Part 8 (Indp) 28 bytes
+  name:          gn
+  kind:          text
+  tree offset:   2459707392
+  tree size:     11298816
+  root:          5517
+  entries:       527822
+  bits offset:   2451908608
+  bits size:     908832
+  flags:         IDL+length V3-index
+  idl offset:    2452817440
+  idl size:      6889552
+
+Index Part 9 (indp) 28 bytes
+  name:          id
+  kind:          valu
+  tree offset:   2471008255
+  tree size:     9971713
+  root:          9969665
+  entries:       516081
+
+Index Part 10 (Indp) 28 bytes
+  name:          kw
+  kind:          text
+  tree offset:   2498627584
+  tree size:     24576
+  root:          12
+  entries:       1018
+  bits offset:   2480979968
+  bits size:     1655705
+  flags:         IDL+length V3-index
+  idl offset:    2482635673
+  idl size:      15990790
+
+Index Part 11 (Indp) 28 bytes
+  name:          length
+  kind:          nmbr
+  tree offset:   2499371008
+  tree size:     55296
+  root:          27
+  entries:       3141
+  bits offset:   2498652160
+  bits size:     717628
+  flags:         V3-index
+
+Index Part 12 (Indp) 28 bytes
+  name:          mw
+  kind:          nmbr
+  tree offset:   2500495360
+  tree size:     1916928
+  root:          936
+  entries:       104001
+  bits offset:   2499426304
+  bits size:     1067342
+  flags:         V3-index
+
+Index Part 13 (Indp) 28 bytes
+  name:          oc
+  kind:          text
+  tree offset:   2520786944
+  tree size:     198656
+  root:          97
+  entries:       8035
+  bits offset:   2502412288
+  bits size:     3764054
+  flags:         IDL+length V3-index
+  idl offset:    2506176342
+  idl size:      14609495
+
+Index Part 14 (Indp) 28 bytes
+  name:          og
+  kind:          text
+  tree offset:   2521145344
+  tree size:     20480
+  root:          10
+  entries:       906
+  bits offset:   2520985600
+  bits size:     26906
+  flags:         IDL+length V3-index
+  idl offset:    2521012506
+  idl size:      130978
+
+Index Part 15 (Indp) 28 bytes
+  name:          oh
+  kind:          text
+  tree offset:   2521800704
+  tree size:     53248
+  root:          26
+  entries:       2469
+  bits offset:   2521165824
+  bits size:     152569
+  flags:         IDL+length V3-index
+  idl offset:    2521318393
+  idl size:      480488
+
+Index Part 16 (Indp) 28 bytes
+  name:          os
+  kind:          text
+  tree offset:   2533220352
+  tree size:     415744
+  root:          203
+  entries:       19476
+  bits offset:   2521853952
+  bits size:     3095713
+  flags:         IDL+length V3-index
+  idl offset:    2524949665
+  idl size:      8268880
+
+Index Part 17 (Indp) 28 bytes
+  name:          ox
+  kind:          text
+  tree offset:   2538010624
+  tree size:     221184
+  root:          108
+  entries:       12072
+  bits offset:   2533636096
+  bits size:     883456
+  flags:         IDL+length V3-index
+  idl offset:    2534519552
+  idl size:      3490304
+
+Index Part 18 (Indp) 28 bytes
+  name:          pe
+  kind:          text
+  tree offset:   2544379904
+  tree size:     2048
+  root:          1
+  entries:       13
+  bits offset:   2538231808
+  bits size:     517072
+  flags:         IDL+length V3-index
+  idl offset:    2538748880
+  idl size:      5629834
+
+Index Part 19 (Indp) 28 bytes
+  name:          ref
+  kind:          text
+  tree offset:   2798143488
+  tree size:     13602816
+  root:          6642
+  entries:       631017
+  bits offset:   2544381952
+  bits size:     51764620
+  flags:         IDL+length V3-index
+  idl offset:    2596146572
+  idl size:      201996119
+
+ID Table contains 7193 pages
+-------------- next part --------------
+File: /usr/local/data/mrs/sprot.cmp
+
+Header:
+  signature:     MRSd
+  uuid:          c260597d-c87b-402d-bb7b-acd1c6a12daf
+  name:          Swiss-Prot
+  version:       UniProtKB/Swiss-Prot Release 2010_04 of 23-Mar-2010
+  url:           <A HREF="http://www.ebi.ac.uk/uniprot/index.html">http://www.ebi.ac.uk/uniprot/index.html</A>
+  script:        uniprot
+  section:       protein
+  size:          120
+  entries:       516081
+  data offset:   120
+  data size:     1650242196
+  raw data size: 2320128500
+  index offset:  1650242316
+  index size:    1161503988
+  info offset:   2819111936
+  info size:     2335
+  id offset:     2811746304
+  id size:       7365632
+  blast offset:  2819114271
+  blast size:    188525786
+  omitvec offset:0
+
+Data Header:
+  signature:    data
+  size:         16
+  count:        1
+  meta data:    2 { title, LINK }
+
+Data Part 0:
+  signature:    part
+  size:         56
+  data offset:  240
+  data size:    1649377915
+  table offset: 1649378155
+  table size:   864161
+  count:        516081
+  raw data:     2320128500
+  compression:  mflz
+
+Index Header (indx) 28 bytes
+  entries:           516081
+  count:             20
+  weight bit count:  5
+  array compression: sel2
+
+Index Part 0 (Indp) 28 bytes
+  name:          __ALL_TEXT__
+  kind:          wtxt
+  tree offset:   1771372544
+  tree size:     165146624
+  root:          80638
+  entries:       7083119
+  bits offset:   1650244264
+  bits size:     121126827
+  weight offset: 1936519168
+  flags:         V3-index
+
+Index Part 1 (Indp) 28 bytes
+  name:          ac
+  kind:          text
+  tree offset:   1941436416
+  tree size:     12959744
+  root:          6328
+  entries:       670625
+  bits offset:   1938583492
+  bits size:     121219
+  flags:         IDL+length V3-index
+  idl offset:    1938704711
+  idl size:      2731322
+
+Index Part 2 (Indp) 28 bytes
+  name:          cc
+  kind:          text
+  tree offset:   2041987072
+  tree size:     4319232
+  root:          2109
+  entries:       203839
+  bits offset:   1954396160
+  bits size:     9916328
+  flags:         IDL+length V3-index
+  idl offset:    1964312488
+  idl size:      77673274
+
+Index Part 3 (Indp) 28 bytes
+  name:          crc64
+  kind:          text
+  tree offset:   2048757760
+  tree size:     12863488
+  root:          6281
+  entries:       433178
+  bits offset:   2046306304
+  bits size:     445272
+  flags:         IDL+length V3-index
+  idl offset:    2046751576
+  idl size:      2004885
+
+Index Part 4 (Indp) 28 bytes
+  name:          de
+  kind:          text
+  tree offset:   2084769792
+  tree size:     2256896
+  root:          1102
+  entries:       110732
+  bits offset:   2061621248
+  bits size:     2244007
+  flags:         IDL+length V3-index
+  idl offset:    2063865255
+  idl size:      20902916
+
+Index Part 5 (Indp) 28 bytes
+  name:          dr
+  kind:          text
+  tree offset:   2266560512
+  tree size:     97335296
+  root:          47527
+  entries:       4310025
+  bits offset:   2087026688
+  bits size:     18343286
+  flags:         IDL+length V3-index
+  idl offset:    2105369974
+  idl size:      161188761
+
+Index Part 6 (Indp) 28 bytes
+  name:          dt
+  kind:          date
+  tree offset:   2365126656
+  tree size:     10240
+  root:          5
+  entries:       286
+  bits offset:   2363895808
+  bits size:     1230471
+  flags:         V3-index
+
+Index Part 7 (Indp) 28 bytes
+  name:          ft
+  kind:          text
+  tree offset:   2428786688
+  tree size:     23121920
+  root:          11290
+  entries:       886753
+  bits offset:   2365136896
+  bits size:     8705009
+  flags:         IDL+length V3-index
+  idl offset:    2373841905
+  idl size:      54944306
+
+Index Part 8 (Indp) 28 bytes
+  name:          gn
+  kind:          text
+  tree offset:   2459707392
+  tree size:     11298816
+  root:          5517
+  entries:       527822
+  bits offset:   2451908608
+  bits size:     908832
+  flags:         IDL+length V3-index
+  idl offset:    2452817440
+  idl size:      6889552
+
+Index Part 9 (indp) 28 bytes
+  name:          id
+  kind:          valu
+  tree offset:   2471008255
+  tree size:     9971713
+  root:          9969665
+  entries:       516081
+
+Index Part 10 (Indp) 28 bytes
+  name:          kw
+  kind:          text
+  tree offset:   2498627584
+  tree size:     24576
+  root:          12
+  entries:       1018
+  bits offset:   2480979968
+  bits size:     1655705
+  flags:         IDL+length V3-index
+  idl offset:    2482635673
+  idl size:      15990790
+
+Index Part 11 (Indp) 28 bytes
+  name:          length
+  kind:          nmbr
+  tree offset:   2499371008
+  tree size:     55296
+  root:          27
+  entries:       3141
+  bits offset:   2498652160
+  bits size:     717628
+  flags:         V3-index
+
+Index Part 12 (Indp) 28 bytes
+  name:          mw
+  kind:          nmbr
+  tree offset:   2500495360
+  tree size:     1916928
+  root:          936
+  entries:       104001
+  bits offset:   2499426304
+  bits size:     1067342
+  flags:         V3-index
+
+Index Part 13 (Indp) 28 bytes
+  name:          oc
+  kind:          text
+  tree offset:   2520786944
+  tree size:     198656
+  root:          97
+  entries:       8035
+  bits offset:   2502412288
+  bits size:     3764054
+  flags:         IDL+length V3-index
+  idl offset:    2506176342
+  idl size:      14609495
+
+Index Part 14 (Indp) 28 bytes
+  name:          og
+  kind:          text
+  tree offset:   2521145344
+  tree size:     20480
+  root:          10
+  entries:       906
+  bits offset:   2520985600
+  bits size:     26906
+  flags:         IDL+length V3-index
+  idl offset:    2521012506
+  idl size:      130978
+
+Index Part 15 (Indp) 28 bytes
+  name:          oh
+  kind:          text
+  tree offset:   2521800704
+  tree size:     53248
+  root:          26
+  entries:       2469
+  bits offset:   2521165824
+  bits size:     152569
+  flags:         IDL+length V3-index
+  idl offset:    2521318393
+  idl size:      480488
+
+Index Part 16 (Indp) 28 bytes
+  name:          os
+  kind:          text
+  tree offset:   2533220352
+  tree size:     415744
+  root:          203
+  entries:       19476
+  bits offset:   2521853952
+  bits size:     3095713
+  flags:         IDL+length V3-index
+  idl offset:    2524949665
+  idl size:      8268880
+
+Index Part 17 (Indp) 28 bytes
+  name:          ox
+  kind:          text
+  tree offset:   2538010624
+  tree size:     221184
+  root:          108
+  entries:       12072
+  bits offset:   2533636096
+  bits size:     883456
+  flags:         IDL+length V3-index
+  idl offset:    2534519552
+  idl size:      3490304
+
+Index Part 18 (Indp) 28 bytes
+  name:          pe
+  kind:          text
+  tree offset:   2544379904
+  tree size:     2048
+  root:          1
+  entries:       13
+  bits offset:   2538231808
+  bits size:     517072
+  flags:         IDL+length V3-index
+  idl offset:    2538748880
+  idl size:      5629834
+
+Index Part 19 (Indp) 28 bytes
+  name:          ref
+  kind:          text
+  tree offset:   2798143488
+  tree size:     13602816
+  root:          6642
+  entries:       631017
+  bits offset:   2544381952
+  bits size:     51764620
+  flags:         IDL+length V3-index
+  idl offset:    2596146572
+  idl size:      201996119
+
+ID Table contains 7193 pages
+
+File: /usr/local/data/mrs/trembl.cmp
+
+Header:
+  signature:     MRSd
+  uuid:          cf2cb7f5-7c18-43b7-843e-def0f94e0a09
+  name:          TrEMBL
+  version:       UniProtKB/TrEMBL Release 2010_04 of 23-Mar-2010
+  url:           <A HREF="http://www.ebi.ac.uk/uniprot/index.html">http://www.ebi.ac.uk/uniprot/index.html</A>
+  script:        uniprot
+  section:       protein
+  size:          120
+  entries:       10618387
+  data offset:   120
+  data size:     20405853694
+  raw data size: 25992432888
+  index offset:  20405853814
+  index size:    11161590154
+  info offset:   31739887616
+  info size:     2327
+  id offset:     31567443968
+  id size:       172443648
+  blast offset:  31739889943
+  blast size:    3564719947
+  omitvec offset:0
+
+Data Header:
+  signature:    data
+  size:         16
+  count:        1
+  meta data:    2 { title, LINK }
+
+Data Part 0:
+  signature:    part
+  size:         56
+  data offset:  240
+  data size:    20389083312
+  table offset: 20389083552
+  table size:   16770262
+  count:        10618387
+  raw data:     25992432888
+  compression:  mflz
+
+Index Header (indx) 28 bytes
+  entries:           10618387
+  count:             20
+  weight bit count:  5
+  array compression: sel2
+
+Index Part 0 (Indp) 28 bytes
+  name:          __ALL_TEXT__
+  kind:          wtxt
+  tree offset:   21491400704
+  tree size:     1646573568
+  root:          803991
+  entries:       68758166
+  bits offset:   20405855762
+  bits size:     1085544039
+  weight offset: 23137974272
+  flags:         V3-index
+
+Index Part 1 (Indp) 28 bytes
+  name:          ac
+  kind:          text
+  tree offset:   23281305600
+  tree size:     206174208
+  root:          100671
+  entries:       10670817
+  bits offset:   23180447820
+  bits size:     58174210
+  flags:         IDL+length V3-index
+  idl offset:    23238622030
+  idl size:      42683283
+
+Index Part 2 (Indp) 28 bytes
+  name:          cc
+  kind:          text
+  tree offset:   23853344768
+  tree size:     260096
+  root:          127
+  entries:       12916
+  bits offset:   23487479808
+  bits size:     47916258
+  flags:         IDL+length V3-index
+  idl offset:    23535396066
+  idl size:      317946663
+
+Index Part 3 (Indp) 28 bytes
+  name:          crc64
+  kind:          text
+  tree offset:   23946483712
+  tree size:     259665920
+  root:          126790
+  entries:       8748378
+  bits offset:   23853604864
+  bits size:     51707470
+  flags:         IDL+length V3-index
+  idl offset:    23905312334
+  idl size:      41170546
+
+Index Part 4 (Indp) 28 bytes
+  name:          de
+  kind:          text
+  tree offset:   24467425280
+  tree size:     16191488
+  root:          7906
+  entries:       742406
+  bits offset:   24206149632
+  bits size:     44451570
+  flags:         IDL+length V3-index
+  idl offset:    24250601202
+  idl size:      216822888
+
+Index Part 5 (Indp) 28 bytes
+  name:          dr
+  kind:          text
+  tree offset:   26565681152
+  tree size:     826771456
+  root:          403697
+  entries:       36056344
+  bits offset:   24483616768
+  bits size:     503685337
+  flags:         IDL+length V3-index
+  idl offset:    24987302105
+  idl size:      1578377579
+
+Index Part 6 (Indp) 28 bytes
+  name:          dt
+  kind:          date
+  tree offset:   27398719488
+  tree size:     6144
+  root:          3
+  entries:       153
+  bits offset:   27392452608
+  bits size:     6265766
+  flags:         V3-index
+
+Index Part 7 (Indp) 28 bytes
+  name:          ft
+  kind:          text
+  tree offset:   27447519232
+  tree size:     11407360
+  root:          5570
+  entries:       414513
+  bits offset:   27398725632
+  bits size:     9377386
+  flags:         IDL+length V3-index
+  idl offset:    27408103018
+  idl size:      39414647
+
+Index Part 8 (Indp) 28 bytes
+  name:          gn
+  kind:          text
+  tree offset:   27597684736
+  tree size:     218103808
+  root:          106496
+  entries:       8948704
+  bits offset:   27458926592
+  bits size:     54439006
+  flags:         IDL+length V3-index
+  idl offset:    27513365598
+  idl size:      84318031
+
+Index Part 9 (indp) 28 bytes
+  name:          id
+  kind:          valu
+  tree offset:   27815790591
+  tree size:     226367489
+  root:          226365441
+  entries:       10618387
+
+Index Part 10 (Indp) 28 bytes
+  name:          kw
+  kind:          text
+  tree offset:   28150956032
+  tree size:     12288
+  root:          6
+  entries:       464
+  bits offset:   28042158080
+  bits size:     17413761
+  flags:         IDL+length V3-index
+  idl offset:    28059571841
+  idl size:      91383772
+
+Index Part 11 (Indp) 28 bytes
+  name:          length
+  kind:          nmbr
+  tree offset:   28167168000
+  tree size:     108544
+  root:          53
+  entries:       6174
+  bits offset:   28150968320
+  bits size:     16198870
+  flags:         V3-index
+
+Index Part 12 (Indp) 28 bytes
+  name:          mw
+  kind:          nmbr
+  tree offset:   28192321536
+  tree size:     4122624
+  root:          2013
+  entries:       218968
+  bits offset:   28167276544
+  bits size:     25043187
+  flags:         V3-index
+
+Index Part 13 (Indp) 28 bytes
+  name:          oc
+  kind:          text
+  tree offset:   28504571904
+  tree size:     1204224
+  root:          588
+  entries:       50173
+  bits offset:   28196444160
+  bits size:     18139620
+  flags:         IDL+length V3-index
+  idl offset:    28214583780
+  idl size:      289986323
+
+Index Part 14 (Indp) 28 bytes
+  name:          og
+  kind:          text
+  tree offset:   28509151232
+  tree size:     83968
+  root:          41
+  entries:       4249
+  bits offset:   28505776128
+  bits size:     366218
+  flags:         IDL+length V3-index
+  idl offset:    28506142346
+  idl size:      3008208
+
+Index Part 15 (Indp) 28 bytes
+  name:          oh
+  kind:          text
+  tree offset:   28513961984
+  tree size:     43008
+  root:          21
+  entries:       1970
+  bits offset:   28509235200
+  bits size:     673410
+  flags:         IDL+length V3-index
+  idl offset:    28509908610
+  idl size:      4052646
+
+Index Part 16 (Indp) 28 bytes
+  name:          os
+  kind:          text
+  tree offset:   28693659648
+  tree size:     3594240
+  root:          1755
+  entries:       166572
+  bits offset:   28514004992
+  bits size:     13436656
+  flags:         IDL+length V3-index
+  idl offset:    28527441648
+  idl size:      166216196
+
+Index Part 17 (Indp) 28 bytes
+  name:          ox
+  kind:          text
+  tree offset:   28775303168
+  tree size:     4448256
+  root:          2172
+  entries:       232039
+  bits offset:   28697253888
+  bits size:     6245686
+  flags:         IDL+length V3-index
+  idl offset:    28703499574
+  idl size:      71803151
+
+Index Part 18 (Indp) 28 bytes
+  name:          pe
+  kind:          text
+  tree offset:   28870250496
+  tree size:     2048
+  root:          1
+  entries:       11
+  bits offset:   28779751424
+  bits size:     8378748
+  flags:         IDL+length V3-index
+  idl offset:    28788130172
+  idl size:      82118760
+
+Index Part 19 (Indp) 28 bytes
+  name:          ref
+  kind:          text
+  tree offset:   31545925632
+  tree size:     21518336
+  root:          10507
+  entries:       1004646
+  bits offset:   28870252544
+  bits size:     144500394
+  flags:         IDL+length V3-index
+  idl offset:    29014752938
+  idl size:      2531172292
+
+ID Table contains 168402 pages
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000564.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+	<LI>Next message: <A HREF="000566.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#565">[ date ]</a>
+              <a href="thread.html#565">[ thread ]</a>
+              <a href="subject.html#565">[ subject ]</a>
+              <a href="author.html#565">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

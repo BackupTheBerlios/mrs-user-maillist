@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Source installation on RHEL 5.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Source%20installation%20on%20RHEL%205.4&In-Reply-To=%3C1F2BCF7874AF4340889B832737DB1E42%40xps%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000471.html">
+   <LINK REL="Next"  HREF="000473.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Source installation on RHEL 5.4</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Source%20installation%20on%20RHEL%205.4&In-Reply-To=%3C1F2BCF7874AF4340889B832737DB1E42%40xps%3E"
+       TITLE="[Mrs-user] Source installation on RHEL 5.4">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Nov  4 20:05:06 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000471.html">[Mrs-user] Source installation on RHEL 5.4
+</A></li>
+        <LI>Next message: <A HREF="000473.html">[Mrs-user] Source installation on RHEL 5.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#472">[ date ]</a>
+              <a href="thread.html#472">[ thread ]</a>
+              <a href="subject.html#472">[ subject ]</a>
+              <a href="author.html#472">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> I have played around with the RHEL libexpat and got rid of the problem by 
+</I>&gt;<i> installing manually 2.01. I got working binaries now (at least the enzyme 
+</I>&gt;<i> database test is successful) on RHEL 5.4. We are OK with the library 
+</I>&gt;<i> issues now and we will post a nice guide people can use to compile from 
+</I>&gt;<i> source on the RHEL/CentOS platform.
+</I>
+But why go through this and not use the binary rpm? The result should be the 
+same.
+
+&gt;<i> Another question: We are installing the tomcat 5.5(.28) server now. We try 
+</I>&gt;<i> to deploy the war file in the standard way (through the admin interface). 
+</I>&gt;<i> It uploads it properly. However, the Tomcat server is now not happy. It 
+</I>&gt;<i> starts, it binds to the socket (lsof -i says that) , but all connections 
+</I>&gt;<i> timeout. Eventually, it will come recover. We notice at this stage that it 
+</I>&gt;<i> tries to connect to your mother server (mrs.cmbi.ru.nl, at port 18084 and 
+</I>&gt;<i> it is left at the SYN_SENT stage). Could that be causing the delay?
+</I>
+First of all, you have to change the server settings using the Tomcat Admin 
+Tool. You can find out how to do this in the help pages:
+
+<A HREF="http://mrs.cmbi.ru.nl/mrs-web/help.do?page=50">http://mrs.cmbi.ru.nl/mrs-web/help.do?page=50</A>
+
+Somewhere near the bottom of this document you will find what needs to be 
+changed. Apparently I changed the default for the server setting to 
+mrs.cmbi.ru.nl instead of localhost. My error, sorry.
+
+&gt;<i> Also the /etc/default/tomcat5.5 file (TOMCAT5_SECURITY) seems to be 
+</I>&gt;<i> Debian/Ubuntu specific. Do you know where is the default location for 
+</I>&gt;<i> setting this variable?
+</I>
+No idea, really. I've stopped using Tomcat after the frustration grew too 
+much. I now use glassfish and it seems to be much more stable and easier to 
+configure.
+
+-maarten 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000471.html">[Mrs-user] Source installation on RHEL 5.4
+</A></li>
+	<LI>Next message: <A HREF="000473.html">[Mrs-user] Source installation on RHEL 5.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#472">[ date ]</a>
+              <a href="thread.html#472">[ thread ]</a>
+              <a href="subject.html#472">[ subject ]</a>
+              <a href="author.html#472">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

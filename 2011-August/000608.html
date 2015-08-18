@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Memory Issues (?) with mrs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Memory%20Issues%20%28%3F%29%20with%20mrs&In-Reply-To=%3CCAP8TB_6UwvsP_ihSzMV%3Dt5qqz4mvjDJZOzdJLNuJSB6zukGtmw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000609.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Memory Issues (?) with mrs</H1>
+    <B>Uma Mahesh (&#3118;&#3129;&#3143;&#3127;&#3149;) </B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Memory%20Issues%20%28%3F%29%20with%20mrs&In-Reply-To=%3CCAP8TB_6UwvsP_ihSzMV%3Dt5qqz4mvjDJZOzdJLNuJSB6zukGtmw%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] Memory Issues (?) with mrs">chanchalauma at gmail.com
+       </A><BR>
+    <I>Wed Aug 10 17:53:01 CEST 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000609.html">[Mrs-user] Memory Issues (?) with mrs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#608">[ date ]</a>
+              <a href="thread.html#608">[ thread ]</a>
+              <a href="subject.html#608">[ subject ]</a>
+              <a href="author.html#608">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Maarten,
+
+We have a local installation of MRS. We are seeing patterns of high
+memory usage where MRS tomcat (java) is taking up &gt;35G of total memory (both
+RAM and SWAP), and mrs-ws web service another 15G. I am using MRS for
+integrating ~4TB of data. The mrs index size is around a 1.5TB. Is it normal
+for MRS to consume such memory?
+
+Following is the snapshot of the top process on my server.
+
+ 9731 srsadmin  19   0  259m 2680 1888 S  0.0  0.0   0:40.20 mrs-ws
+ 9734 srsadmin  15   0 15.9g  15g  21m S  0.0 11.1   1:27.69 mrs-ws
+ 9737 srsadmin  20   0  400m 330m 1048 S  0.0  0.2   0:00.34 mrs-ws
+ 9738 srsadmin  20   0 73564  968  528 S  0.0  0.0   0:00.00 mrs-ws
+ 9742 srsadmin  21   0  145m 1228  756 S  0.0  0.0   0:00.00 mrs-ws
+ 31565 srsadmin  19   0 32.5g 591m 9200 S  0.0  0.4   2:00.69 java  ---This
+is the tomcat java
+
+Thank you very much for your time.
+
+Best Regards,
+Uma Mahesh.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20110810/3378d1d8/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20110810/3378d1d8/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000609.html">[Mrs-user] Memory Issues (?) with mrs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#608">[ date ]</a>
+              <a href="thread.html#608">[ thread ]</a>
+              <a href="subject.html#608">[ subject ]</a>
+              <a href="author.html#608">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

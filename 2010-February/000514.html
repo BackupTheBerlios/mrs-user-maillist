@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] unresolved/unreplaced variables in hyperlinks in	mrsweb
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20unresolved/unreplaced%20variables%20in%20hyperlinks%20in%0A%09mrsweb&In-Reply-To=%3C4B825C25.6080004%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000513.html">
+   <LINK REL="Next"  HREF="000517.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] unresolved/unreplaced variables in hyperlinks in	mrsweb</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20unresolved/unreplaced%20variables%20in%20hyperlinks%20in%0A%09mrsweb&In-Reply-To=%3C4B825C25.6080004%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] unresolved/unreplaced variables in hyperlinks in	mrsweb">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Mon Feb 22 11:27:49 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000513.html">[Mrs-user] unresolved/unreplaced variables in hyperlinks in mrsweb
+</A></li>
+        <LI>Next message: <A HREF="000517.html">[Mrs-user] unresolved/unreplaced variables in hyperlinks in	mrsweb
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#514">[ date ]</a>
+              <a href="thread.html#514">[ thread ]</a>
+              <a href="subject.html#514">[ subject ]</a>
+              <a href="author.html#514">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Martin,
+
+The problem was twofold, first of all I added XML::XSLT as dependancy, 
+but this XSLT processor is not really useful. You really should replace 
+this with XML::LibXSLT.
+
+Second, the xsl for gene contained an error, the link should of course 
+have been: <A HREF="http://.../query.do?db=taxonomy&amp;query=id:tax-id">http://.../query.do?db=taxonomy&amp;query=id:tax-id</A>
+
+So I fixed both gene.pm and gene_xslt.xsl. You can fetch the latest from 
+SVN.
+
+-maarten
+
+
+Op 22-02-10 06:48, Martin Senger schreef:
+&gt;<i> I have installed mrsweb (and mrs-ws) locally. Finally, I succeeded to
+</I>&gt;<i> add (Entrez)-Gene databank. But there seem to be some issues with the
+</I>&gt;<i> display. I wonder where I made a mistake or what step I missed.
+</I>&gt;<i>
+</I>&gt;<i> For example, this entry (this URL):
+</I>&gt;<i> <A HREF="http://cbrcgit:8080/mrs-web/entry.do?db=gene&amp;id=33212&amp;query=cone+snail">http://cbrcgit:8080/mrs-web/entry.do?db=gene&amp;id=33212&amp;query=cone+snail</A>
+</I>&gt;<i> &lt;<A HREF="http://cbrcgit:8080/mrs-web/entry.do?db=gene&amp;id=33212&amp;query=cone+snail">http://cbrcgit:8080/mrs-web/entry.do?db=gene&amp;id=33212&amp;query=cone+snail</A>&gt;
+</I>&gt;<i> shows (see also the screenshot) a link to Organism (Drosophila
+</I>&gt;<i> melanogaster) as
+</I>&gt;<i> &quot;<A HREF="http://cbrcgit:8080/mrs-web/query.do?db=taxonomy&amp;id={$tax_id">http://cbrcgit:8080/mrs-web/query.do?db=taxonomy&amp;id={$tax_id</A>}
+</I>&gt;<i> &lt;<A HREF="http://cbrcgit:8080/mrs-web/query.do?db=taxonomy&amp;id={$tax_id">http://cbrcgit:8080/mrs-web/query.do?db=taxonomy&amp;id={$tax_id</A>}&gt;&quot; - where
+</I>&gt;<i> {$tax_id} seems suspicious (and, of course, it does not resolve). The
+</I>&gt;<i> same is with all pubmed links (and the links are not really visually
+</I>&gt;<i> separated one from another, as seen on the screenshot):
+</I>&gt;<i> <A HREF="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&amp;cmd=Retrieve&amp;list_uids={$pmid">http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&amp;cmd=Retrieve&amp;list_uids={$pmid</A>}
+</I>&gt;<i> &lt;<A HREF="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&amp;cmd=Retrieve&amp;list_uids={$pmid">http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&amp;cmd=Retrieve&amp;list_uids={$pmid</A>}&gt;.
+</I>&gt;<i>
+</I>&gt;<i> I suspect that this is a result of applying the XSLT in the parser
+</I>&gt;<i> script? I followed the advise (given in this mailing list recently) and
+</I>&gt;<i> uncommented &quot;use XML::XSLT;&quot; line in the 'gene.pm &lt;<A HREF="http://gene.pm">http://gene.pm</A>&gt;' file.
+</I>&gt;<i>
+</I>&gt;<i> I came to this records by making a query &quot;cone snail&quot; and clicking on
+</I>&gt;<i> the first found record (see another attached screenshot). Also, perhaps
+</I>&gt;<i> interesting, I have not found the same record at MRS server at CMBI.
+</I>&gt;<i>
+</I>&gt;<i> Thanks for any advise and help,
+</I>&gt;<i> Martin
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Martin Senger
+</I>&gt;<i> email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A>
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A>&gt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at kaust.edu.sa</A>&gt;
+</I>&gt;<i> skype: martinsenger
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000513.html">[Mrs-user] unresolved/unreplaced variables in hyperlinks in mrsweb
+</A></li>
+	<LI>Next message: <A HREF="000517.html">[Mrs-user] unresolved/unreplaced variables in hyperlinks in	mrsweb
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#514">[ date ]</a>
+              <a href="thread.html#514">[ thread ]</a>
+              <a href="subject.html#514">[ subject ]</a>
+              <a href="author.html#514">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

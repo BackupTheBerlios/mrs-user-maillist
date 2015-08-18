@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] How to use MRS as Database for EMBOSS
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20How%20to%20use%20MRS%20as%20Database%20for%20EMBOSS&In-Reply-To=%3C4DD02CD9.4040404%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000597.html">
+   <LINK REL="Next"  HREF="000601.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] How to use MRS as Database for EMBOSS</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20How%20to%20use%20MRS%20as%20Database%20for%20EMBOSS&In-Reply-To=%3C4DD02CD9.4040404%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] How to use MRS as Database for EMBOSS">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Sun May 15 21:43:21 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000597.html">[Mrs-user] How to use MRS as Database for EMBOSS
+</A></li>
+        <LI>Next message: <A HREF="000601.html">[Mrs-user] How to use MRS as Database for EMBOSS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#598">[ date ]</a>
+              <a href="thread.html#598">[ thread ]</a>
+              <a href="subject.html#598">[ subject ]</a>
+              <a href="author.html#598">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 13-05-11 17:50, Mahmut Uludag wrote:
+
+&gt;&gt;<i> And then the parameters, since they are name, order is not important:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="http://mrs.cmbi.ru.nl/mrsws/search/rest/GetEntry/db/sprot/id/104k_thepa">http://mrs.cmbi.ru.nl/mrsws/search/rest/GetEntry/db/sprot/id/104k_thepa</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> And that's it.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> For enumerations (e.g. Format type) you can find the accepted values in
+</I>&gt;&gt;<i> the WSDL.
+</I>&gt;<i>
+</I>&gt;<i> I was thinking about adding few mrs tests to emboss qa tests. I have
+</I>&gt;<i> noticed that above query returns its results in an xml structure that
+</I>&gt;<i> looks like a soap envelope, even if i select the format 'plain'. May
+</I>&gt;<i> this going to change in future?
+</I>
+You're right, the result of this REST call is a SOAP envelope. Exactly 
+the same as would have been returned by the corresponding SOAP call. In 
+the case of retrieving just one piece of data this may seem a bit of 
+overkill, but I left it that way since other calls might return more 
+complex data and then I would have to come up with a way to format that.
+
+However, if you're only interested in plain text records, you might as 
+well use the 'download' facility in MRS:
+
+<A HREF="http://mrs.cmbi.ru.nl/mrs-5/download?db=sprot&amp;id=104k_thepa">http://mrs.cmbi.ru.nl/mrs-5/download?db=sprot&amp;id=104k_thepa</A>
+
+This returns the records in plain text. Maybe that's a better option for 
+you?
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000597.html">[Mrs-user] How to use MRS as Database for EMBOSS
+</A></li>
+	<LI>Next message: <A HREF="000601.html">[Mrs-user] How to use MRS as Database for EMBOSS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#598">[ date ]</a>
+              <a href="thread.html#598">[ thread ]</a>
+              <a href="subject.html#598">[ subject ]</a>
+              <a href="author.html#598">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

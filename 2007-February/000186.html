@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] sorry, Debian-Ubuntu's security trapped me again
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20sorry%2C%20Debian-Ubuntu%27s%20security%20trapped%20me%20again&In-Reply-To=%3C45CB3C96.3080209%40dbm.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000185.html">
+   <LINK REL="Next"  HREF="000187.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] sorry, Debian-Ubuntu's security trapped me again</H1>
+    <B>Robert HERZOG</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20sorry%2C%20Debian-Ubuntu%27s%20security%20trapped%20me%20again&In-Reply-To=%3C45CB3C96.3080209%40dbm.ulb.ac.be%3E"
+       TITLE="[Mrs-user] sorry, Debian-Ubuntu's security trapped me again">rherzog at dbm.ulb.ac.be
+       </A><BR>
+    <I>Thu Feb  8 16:07:02 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000185.html">[Mrs-user] mrs-3 update
+</A></li>
+        <LI>Next message: <A HREF="000187.html">[Mrs-user] sorry, Debian-Ubuntu's security trapped me again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#186">[ date ]</a>
+              <a href="thread.html#186">[ thread ]</a>
+              <a href="subject.html#186">[ subject ]</a>
+              <a href="author.html#186">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten,
+Sorry, I was again stuck with a Java error when trying to access the web 
+interface for a new MRS server on an Ubuntu machine (Debian). I searched 
+for some time till I remebered that the security approach for Tomcat 5.5 
+on Debian is to enable security (see startup script where the option 
+TOMCAT5_SECURITY=yes is given. Changing this to no allows entering the 
+web interface.
+Be warned that this behaviour might also amper web visibility on other 
+distributions.
+
+Now that this is cleared, I got another error, in the top page of the 
+MRS web interface:
+&quot;Cannot connect to SOAP server at <A HREF="http://localhost:8081/mrs/soap">http://localhost:8081/mrs/soap</A>&quot;
+
+I solved this by editing the mrs-config.xml file :
+The original string about data location is /data//mrs. I changed it to 
+/data/mrs.
+
+This is probably a simple detail for Maarten to fix.
+
+Robert
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000185.html">[Mrs-user] mrs-3 update
+</A></li>
+	<LI>Next message: <A HREF="000187.html">[Mrs-user] sorry, Debian-Ubuntu's security trapped me again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#186">[ date ]</a>
+              <a href="thread.html#186">[ thread ]</a>
+              <a href="subject.html#186">[ subject ]</a>
+              <a href="author.html#186">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

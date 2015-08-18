@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Installation question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Installation%20question&In-Reply-To=%3C97b95c0c1001290521s7ba500b7nad94812522e631e5%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000486.html">
+   <LINK REL="Next"  HREF="000485.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Installation question</H1>
+    <B>Oscar Eriksson</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Installation%20question&In-Reply-To=%3C97b95c0c1001290521s7ba500b7nad94812522e631e5%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] Installation question">oscer803 at student.liu.se
+       </A><BR>
+    <I>Fri Jan 29 14:21:02 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000486.html">[Mrs-user] Rebase commercial data
+</A></li>
+        <LI>Next message: <A HREF="000485.html">[Mrs-user] Installation question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#483">[ date ]</a>
+              <a href="thread.html#483">[ thread ]</a>
+              <a href="subject.html#483">[ subject ]</a>
+              <a href="author.html#483">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I'm trying to set up a mrs-web site locally on a mac osx 10.6 server
+and I've come across some problems. I just want to declare that I am
+no biologist, so my questions may be stupid.
+
+I managed to build and run the site if I force it to run in 32-bit
+architecture (intel x86) by using perl5.8.9, but not everything works
+as I suppose it should.
+
+First off, I could only build about half of the databases in
+databank.info file in the update_scripts folder. Is that normal or
+should I be able to build all databases in that file?
+
+Secondly, when I run the mrs-web frontend I can't get the fasta
+information from the databases. I only gets the output:
+&quot;
+&gt;<i>1.1.1.5 Acetoin dehydrogenase.
+</I>Error in formatting entry: open 'MRS::Script::enzyme=HASH(0x848c110)/ID
+  1.1.1.5
+DE   Acetoin dehydrogenase.
+AN   Diacetyl reductase.
+CA   Acet
+oin + NAD(+) = diacetyl + NADH.
+CC   -!- NADP(+) also acts.
+PR   PROSITE
+; PDOC00060;
+DR   Q48436, BUDC_KLEPN ;  Q04520, BUDC_KLETE ;  Q5HJP2, BU
+TA_STAAC ;
+DR   P66775, BUTA_STAAM ;  P99120, BUTA_STAAN ;  Q6GKH9, BUTA
+_STAAR ;
+DR   Q6GCZ8, BUTA_STAAS ;  P66776, BUTA_STAAW ;  Q5HKG6, BUTA_S
+TAEQ ;
+DR   Q8CQD2, BUTA_STAES ;
+//
+.pm' No such file or directory at /u
+sr/local/share/mrs/parser_scripts/MRSScript.pm line 45.
+&quot;
+Is this right?
+
+Thirdly, when I try to run Clustal, I get the java exception:
+&quot;javax.servlet.ServletException: No clustal executable specified in
+mrs config file&quot;
+
+I have installed clustalw2 and the executables are located in
+/usr/local/bin/clustalw2 as specified in /usr/local/etc/mrs-config.xml
+by the tag &lt;clustalw-exe&gt;
+
+And my last problem. When I try to run a blast, I get the output that
+the database isn't loaded.
+&quot;Failed to submit blast job Databank gpcrdb was not loaded&quot;
+I can only choose between two databases even thou I've successfully
+installed other data sources (according to the logfiles).
+
+I would be really grateful if someone could direct me in the right
+direction because I'm not making any progress anymore.
+
+Best regards,
+Oscar Eriksson
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000486.html">[Mrs-user] Rebase commercial data
+</A></li>
+	<LI>Next message: <A HREF="000485.html">[Mrs-user] Installation question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#483">[ date ]</a>
+              <a href="thread.html#483">[ thread ]</a>
+              <a href="subject.html#483">[ subject ]</a>
+              <a href="author.html#483">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

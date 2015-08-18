@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] ??? CRITICAL MRS fix required ???
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20%3F%3F%3F%20CRITICAL%20MRS%20fix%20required%20%3F%3F%3F&In-Reply-To=%3CAB739A4C-B254-4C51-BBAB-417747D491D9%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000105.html">
+   <LINK REL="Next"  HREF="000107.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] ??? CRITICAL MRS fix required ???</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20%3F%3F%3F%20CRITICAL%20MRS%20fix%20required%20%3F%3F%3F&In-Reply-To=%3CAB739A4C-B254-4C51-BBAB-417747D491D9%40hekkelman.com%3E"
+       TITLE="[Mrs-user] ??? CRITICAL MRS fix required ???">maarten at hekkelman.com
+       </A><BR>
+    <I>Tue Sep 26 14:41:38 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000105.html">[Mrs-user] ??? CRITICAL MRS fix required ???
+</A></li>
+        <LI>Next message: <A HREF="000107.html">[Mrs-user] ??? CRITICAL MRS fix required ???
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#106">[ date ]</a>
+              <a href="thread.html#106">[ thread ]</a>
+              <a href="subject.html#106">[ subject ]</a>
+              <a href="author.html#106">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 26-sep-2006, om 14:24 heeft david coornaert het volgende geschreven:
+
+&gt;<i> Yeah I removed the part1.log (over 12giga) caused it was too huge  
+</I>&gt;<i> for databank.cgi to display
+</I>&gt;<i> seems that it has to read it before he sends it, well I dunno
+</I>
+I'll see if I can fix that.
+
+&gt;<i> honestly, we have two MRS instances here, and they both do have the  
+</I>&gt;<i> same sickness..
+</I>&gt;<i> I can see your site did teh cleaning process,
+</I>&gt;<i> no ideas why ours didn't...
+</I>
+Very strange. But then, mirror.pl was a quick hack.
+
+&gt;<i> so what's the rick you use to remove ?
+</I>&gt;<i> which part of which script is responsible of this ?
+</I>&gt;<i> I'll have a look and find what goes wrong..
+</I>
+mirror.pl should take care of that. However, it does this only if it  
+gets the -c flags now that I had a look at the script. Have a look at  
+the script or run it without any options to see how to use it.
+
+But I found the problem. In my local config file I have:
+
+MIRROR_OPTIONS     = -c
+
+And of course this should have been a global setting. So if your  
+make_bendisk.conf file does not contain the  above line it will not  
+clean up after a mirror.
+
+I'm sorry about this. I'll fix this as well.
+
+-maarten
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ===============================================
+</I>&gt;<i> David Coornaert [PhD]   (<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dcoorna at dbm.ulb.ac.be</A>)
+</I>&gt;<i>
+</I>&gt;<i> Belgian Embnet Node (<A HREF="http://www.be.embnet.org">http://www.be.embnet.org</A>)
+</I>&gt;<i> Universit&#233; Libre de Bruxelles
+</I>&gt;<i>
+</I>&gt;<i> Laboratoire de Bioinformatique
+</I>&gt;<i> 12, Rue des Professeurs Jeener &amp; Brachet
+</I>&gt;<i> 6041  Gosselies
+</I>&gt;<i> BELGIQUE
+</I>&gt;<i>
+</I>&gt;<i> T&#233;l:  +3226509975
+</I>&gt;<i> Fax:  +3226509998
+</I>&gt;<i> ===============================================
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Maarten L. Hekkelman wrote:
+</I>&gt;&gt;<i> Hi David,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> This is strange and I don't fully understand what went wrong at  
+</I>&gt;&gt;<i> your site. I cannot see the embl_release logfiles on bendisk  
+</I>&gt;&gt;<i> either, is that because you start embl_release manually?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> At the CMBI embl_release updated almost completely automatically  
+</I>&gt;&gt;<i> this release, apart from a disk that ran full. And it took care of  
+</I>&gt;&gt;<i> cleaning up the old files as well:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  &lt;<A HREF="http://www.cmbi.ru.nl/mrs/cgi-bin/databanks.cgi?">http://www.cmbi.ru.nl/mrs/cgi-bin/databanks.cgi?</A> 
+</I>&gt;&gt;<i> log=embl_release&amp;type=fetch&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The mirror script should take care of the cleaning. If it doesn't,  
+</I>&gt;&gt;<i> I'd like to hear more about it since that means it doesn't work on  
+</I>&gt;&gt;<i> your system the same way as it does on mine.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> You can rerun the mirror safely by issuing the command 'make -f  
+</I>&gt;&gt;<i> embl_release.make fetch' in the scripts directory.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Looking at the svn log I believe I never checked in an  
+</I>&gt;&gt;<i> embl_release.make file that had a MRS_PARTS of 32. I should have  
+</I>&gt;&gt;<i> of course.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -maarten
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Op 26-sep-2006, om 13:59 heeft david coornaert het volgende  
+</I>&gt;&gt;<i> geschreven:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> We need the mirror process to REMOVE obsolete files
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I suppose this is an artefact caused by the new naming convention  
+</I>&gt;&gt;&gt;<i> of the
+</I>&gt;&gt;&gt;<i> EMBL datafiles
+</I>&gt;&gt;&gt;<i> If you don't manually intervene
+</I>&gt;&gt;&gt;<i> the mirror proccess will currently maintain both releases 87 and  
+</I>&gt;&gt;&gt;<i> 88 in
+</I>&gt;&gt;&gt;<i> the raw dir
+</I>&gt;&gt;&gt;<i> and this will lead to a Bazillion of duplicate entries warning
+</I>&gt;&gt;&gt;<i> resulting in cosmologically-sized log files, whose in their turn  
+</I>&gt;&gt;&gt;<i> will
+</I>&gt;&gt;&gt;<i> block the databanks.cgi scripts
+</I>&gt;&gt;&gt;<i> from displaying the corresponding logs...
+</I>&gt;&gt;&gt;<i> Also it seems that the part number for embl-release reverted to 8
+</I>&gt;&gt;&gt;<i> instead of 32
+</I>&gt;&gt;&gt;<i> Hence the indexing process was stuck at part 1 after 4 days, and  
+</I>&gt;&gt;&gt;<i> with a
+</I>&gt;&gt;&gt;<i> 12 giga part1.log
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> the same phenomenon occurs with cumulative_embl_updates:
+</I>&gt;&gt;&gt;<i> possibly due to the same file naming convention change
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> If you suspect your MRS server's sick at indexing :
+</I>&gt;&gt;&gt;<i> here's what I deed :
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> 1) killall make
+</I>&gt;&gt;&gt;<i> 2) in RAW/EMBLRELEASE  directory
+</I>&gt;&gt;&gt;<i>     rm *r87*
+</I>&gt;&gt;&gt;<i> 3) in RAW/EMBLUPDATE dir
+</I>&gt;&gt;&gt;<i>     rm *r88*
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> pay attention 87 in rel and 88 in updates..
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Did I say Urgent ?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> --===============================================
+</I>&gt;&gt;&gt;<i> David Coornaert [PhD]   (<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dcoorna at dbm.ulb.ac.be</A>)
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Belgian Embnet Node (<A HREF="http://www.be.embnet.org">http://www.be.embnet.org</A>)
+</I>&gt;&gt;&gt;<i> Universit&#233; Libre de Bruxelles
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Laboratoire de Bioinformatique
+</I>&gt;&gt;&gt;<i> 12, Rue des Professeurs Jeener &amp; Brachet
+</I>&gt;&gt;&gt;<i> 6041  Gosselies
+</I>&gt;&gt;&gt;<i> BELGIQUE
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> T&#233;l:  +3226509975
+</I>&gt;&gt;&gt;<i> Fax:  +3226509998
+</I>&gt;&gt;&gt;<i> ===============================================
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Mrs-user mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> mvg,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Maarten L. Hekkelman
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000105.html">[Mrs-user] ??? CRITICAL MRS fix required ???
+</A></li>
+	<LI>Next message: <A HREF="000107.html">[Mrs-user] ??? CRITICAL MRS fix required ???
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#106">[ date ]</a>
+              <a href="thread.html#106">[ thread ]</a>
+              <a href="subject.html#106">[ subject ]</a>
+              <a href="author.html#106">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

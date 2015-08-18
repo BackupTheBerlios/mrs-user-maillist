@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] why '&lt;' &quot;toxic&quot; for MRS Web services ? - Checked by	AntiVir DEMO versio
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20why%20%27%3C%27%20%22toxic%22%20for%20MRS%20Web%20services%20%3F%20-%20Checked%20by%0A%09AntiVir%20DEMO%20versio&In-Reply-To=%3C20060908163549.GA30943%40bigben.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000099.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] why '&lt;' &quot;toxic&quot; for MRS Web services ? - Checked by	AntiVir DEMO versio</H1>
+    <B>Guy Bottu</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20why%20%27%3C%27%20%22toxic%22%20for%20MRS%20Web%20services%20%3F%20-%20Checked%20by%0A%09AntiVir%20DEMO%20versio&In-Reply-To=%3C20060908163549.GA30943%40bigben.ulb.ac.be%3E"
+       TITLE="[Mrs-user] why '&lt;' &quot;toxic&quot; for MRS Web services ? - Checked by	AntiVir DEMO versio">gbottu at ben.vub.ac.be
+       </A><BR>
+    <I>Fri Sep  8 18:35:49 CEST 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000099.html">[Mrs-user] why '&lt;' &quot;toxic&quot; for MRS Web services ? - Checked by	AntiVir DEMO versio
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#98">[ date ]</a>
+              <a href="thread.html#98">[ thread ]</a>
+              <a href="subject.html#98">[ subject ]</a>
+              <a href="author.html#98">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>When I execute the following script :
+
+----------------------------------------------
+use SOAP::Lite;
+use Data::Dumper;
+
+$ns_url = '<A HREF="http://mrs.cmbi.ru.nl/mrs">http://mrs.cmbi.ru.nl/mrs</A>';
+$url = '<A HREF="http://mrs.cmbi.ru.nl/mrs/cgi-bin/mrs_soap.cgi">http://mrs.cmbi.ru.nl/mrs/cgi-bin/mrs_soap.cgi</A>';
+$soap = SOAP::Lite-&gt;uri($ns_url)-&gt;proxy($url);
+
+$db = 'sprot';
+$query = 'length&lt;100';
+
+$result = &amp;soapCall(SOAP::Data-&gt;name('service:query')-&gt;
+  attr({'xmlns:service' =&gt; $ns_url}) =&gt; (
+    SOAP::Data-&gt;name('service:db')-&gt;type('xsd:string' =&gt; $db),
+    SOAP::Data-&gt;name('service:query')-&gt;type('xsd:string' =&gt; $query)
+  )
+);
+
+foreach $d (@{$result}) {
+  print &quot;$d\n&quot;;
+}
+
+sub soapCall()
+{
+    my $result = $soap-&gt;call(@_);
+
+    my $err;
+    if ($result-&gt;fault)
+    {
+        $err .= $result-&gt;faultdetail.&quot;\n&quot;    if defined $result-&gt;faultdetail;
+        $err .= $result-&gt;faultcode.&quot;\n&quot;        if defined $result-&gt;faultcode;
+        $err .= $result-&gt;faultstring.&quot;\n&quot;    if defined $result-&gt;faultstring;
+        $err .= $result-&gt;faultactor.&quot;\n&quot;    if defined $result-&gt;faultactor;
+    }
+
+    return ($result-&gt;result, $err) if defined wantarray and wantarray;
+    die $err if defined $err;
+    return $result-&gt;result;
+};
+
+-----------------------------------------------
+
+I get :
+
+SOAP-ENV:Client
+Application failed during request deserialization:
+not well-formed (invalid token) at line 1, column 509, byte 509 at /usr/pkg/lib/perl5/vendor_perl/5.8.0/x86_64-linux-thread-multi/XML/Parser.pm line 187
+
+The problem seems to be caused by the '&lt;' character, because if I put any 
+other query in $query it works fine. Anyone an idea why '&lt;' seems to be 
+&quot;toxic&quot; ?
+
+	Regards,
+	Guy Bottu,
+	Belgian EMBnet Node
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000099.html">[Mrs-user] why '&lt;' &quot;toxic&quot; for MRS Web services ? - Checked by	AntiVir DEMO versio
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#98">[ date ]</a>
+              <a href="thread.html#98">[ thread ]</a>
+              <a href="subject.html#98">[ subject ]</a>
+              <a href="author.html#98">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

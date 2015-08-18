@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS: Web Service
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%3A%20Web%20Service&In-Reply-To=%3C47318A85.4000105%40vub.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000295.html">
+   <LINK REL="Next"  HREF="000297.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS: Web Service</H1>
+    <B>Guy Bottu</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%3A%20Web%20Service&In-Reply-To=%3C47318A85.4000105%40vub.ac.be%3E"
+       TITLE="[Mrs-user] MRS: Web Service">gbottu at vub.ac.be
+       </A><BR>
+    <I>Wed Nov  7 10:51:01 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000295.html">[Mrs-user] MRS: Web Service
+</A></li>
+        <LI>Next message: <A HREF="000297.html">[Mrs-user] MRS: Web Service
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#296">[ date ]</a>
+              <a href="thread.html#296">[ thread ]</a>
+              <a href="subject.html#296">[ subject ]</a>
+              <a href="author.html#296">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>	Dear Maarten,
+
+I have difficulty in accessing the Web servives from the outside. I tried the 
+following Perl code :
+
+$db = 'sprot'; $query = 'id:papa?_carpa';
+
+$result = &amp;soapCall(SOAP::Data-&gt;name('ns:Find')-&gt;
+   attr({'xmlns:ns' =&gt; $ns_url}) =&gt; (
+       SOAP::Data-&gt;name('ns:db')-&gt;type('xsd:string' =&gt; $db),
+       SOAP::Data-&gt;name('ns:queryterms')-&gt;type('xsd:string' =&gt; $query),
+   )
+);
+
+
+but
+
+print  $result-&gt;result;
+
+just returns the number of hits/
+
+I also tried lines of code with $result-&gt;method-&gt;{hits} and variations thereoff, 
+but this gives error messages or gibberish like ARRAY(0x12bb000). How can I 
+obtain a list of identifiers, which could be displayed or given as input to
+&amp;soapCall(SOAP::Data-&gt;name('ns:GetEntry')-&gt;...  ?
+
+	Regards,
+	Guy Bottu,
+	BEN
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000295.html">[Mrs-user] MRS: Web Service
+</A></li>
+	<LI>Next message: <A HREF="000297.html">[Mrs-user] MRS: Web Service
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#296">[ date ]</a>
+              <a href="thread.html#296">[ thread ]</a>
+              <a href="subject.html#296">[ subject ]</a>
+              <a href="author.html#296">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

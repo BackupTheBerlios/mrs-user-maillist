@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [mrs-user] Me and M6 are still alive
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2012-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20Me%20and%20M6%20are%20still%20alive&In-Reply-To=%3C4FF9F57E.8070009%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000652.html">
+   <LINK REL="Next"  HREF="000655.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[mrs-user] Me and M6 are still alive</H1>
+    <B>Georgios Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20Me%20and%20M6%20are%20still%20alive&In-Reply-To=%3C4FF9F57E.8070009%40biotek.uio.no%3E"
+       TITLE="[mrs-user] Me and M6 are still alive">georgios at biotek.uio.no
+       </A><BR>
+    <I>Sun Jul  8 23:02:54 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000652.html">[mrs-user] Me and M6 are still alive
+</A></li>
+        <LI>Next message: <A HREF="000655.html">[mrs-user] Me and M6 are still alive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#654">[ date ]</a>
+              <a href="thread.html#654">[ thread ]</a>
+              <a href="subject.html#654">[ subject ]</a>
+              <a href="author.html#654">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten,
+
+It's good to see that you are developing this. I have some general 
+comments that hopefully will help you shape the direction of MRS 
+development.
+
+1)In terms of performance: I see that you are indicating the need for 
+new space improvements. For me the greatest issue is lookup/search 
+performance. Sysadmins and managers of production MRS installations are 
+aware of the floating effect of flatfile databases (like EMBL) and they 
+spec their storage accordingly should they wish to keep up with full 
+size releases. However in my view mrs-ws did not perform incredibly fast 
+with a simultaneous user load of more than 30-40 sessions. 5 was a big 
+improvement and things are getting better, so this is what I am hinting 
+as an MRS goal: If it is simple enough to use (which it is) and searches 
+are fast, it is a clear winner.
+
+2)Having said 1), I would also like to point out that it might be worth 
+considering offering the functionality to download and crunch EMBL 
+subsets, as opposed to the full release. What I tend to find amongst my 
+users, is that they are often interested in smaller subsets of the EMBL 
+dataset: say EST human databases and/or HTG mouse sequences. Giving the 
+user or MRS manager the ability to follow the taxonomy division of the 
+EMBL file sets and having the ability to choose what to download and 
+format via a simple interface would:
+i)reduce download, indexing, storage and search runtime requirements for 
+people that do not need everything.
+ii)make MRS easier to use with sample real world data sets in a 
+classroom environment, where students can have laptops and/or smaller 
+servers and see what MRS can do.
+
+3)I see that you are trying to simplify the system by reducing the 
+number of binaries and dependencies. That's good. May I also suggest 
+that we try and produce Debian and RedHat packages, to 
+simplify/standardize the installation on all major OS platforms and 
+distros.
+
+4)Help: I can help you with:
+i)Testing.
+ii)Production of RPM packages for RedHat distros
+iii)Maybe some much needed documentation.
+iv)Maybe some parser construction. I know a couple of people that would 
+like to port their databases to MRS, so that's a nice exercise to get 
+into the process of writing parsers.
+In the process of doing this, may I suggest that you consider opening 
+access to an svn or other version control system, so that what we are 
+able to contribute goes back to one single repository.
+
+That's all from me.
+
+Best regards,
+GM
+
+Best regards,
+
+-- 
+-- 
+George Magklaras PhD
+RHCE no: 805008309135525
+  
+Senior Systems Engineer/Head of IT
+Biotechnology Center of Oslo and
+the Norwegian Center for Molecular Medicine
+EMBnet TMPC Chair
+
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+
+On 06/07/2012 10:29 ??, <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">M.Hekkelman at ncmls.ru.nl</A> wrote:
+&gt;<i>
+</I>&gt;<i> Since I had to work on another project (a new HSSP creator) for the 
+</I>&gt;<i> last half year, I didn't have time to work on the new MRS. Now 
+</I>&gt;<i> that HSSP seems to be working, I can pick up MRS again.
+</I>&gt;<i>
+</I>&gt;<i> I'd like to know if there are others willing to help. Since the code 
+</I>&gt;<i> is still in development, it is still possible to change direction. I 
+</I>&gt;<i> would also appreciate help in writing parsers and formatting code for 
+</I>&gt;<i> the new MRS.
+</I>&gt;<i>
+</I>&gt;<i> My original goal with MRS 6 (aka M6) was a single executable capable 
+</I>&gt;<i> of doing everything. I still would like to do that, but it is rather 
+</I>&gt;<i> ambitious. Perhaps I will have to create an early release that 
+</I>&gt;<i> delivers the improvements for the end user and keep the improvements 
+</I>&gt;<i> for the maintainers for a later release? The improvement in 
+</I>&gt;<i> responsiveness may be worth this split.
+</I>&gt;<i>
+</I>&gt;<i> What I did so far:
+</I>&gt;<i>
+</I>&gt;<i> - Complete rewrite of the index and search algorithms. New file format 
+</I>&gt;<i> (actually, data is now stored in folders) which is much more space 
+</I>&gt;<i> efficient (EMBL is now 353GB instead of 456GB)
+</I>&gt;<i>
+</I>&gt;<i> - There are now three executables, 'm6' is the driver for several 
+</I>&gt;<i> actions like 'build'. 'm6-server' is the new mrs-ws. And there is 
+</I>&gt;<i> a m6-passwd that generates password hashes for the new admin pages.
+</I>&gt;<i>
+</I>&gt;<i> - m6 build indexes databanks based on a simple XML script. No 
+</I>&gt;<i> more Perl plugins. (Eventually this script should be editable with a 
+</I>&gt;<i> graphical editor. This is one of those features that can be pushed back?)
+</I>&gt;<i>
+</I>&gt;<i> - The m6-server has a subset of the current mrs-ws functionality, but 
+</I>&gt;<i> a lot is still missing. Formatting of databank records is now done in 
+</I>&gt;<i> the browser using JavaScript and that seems to work very nice.
+</I>&gt;<i>
+</I>&gt;<i> - I have a new protein blast implementation (fixing some performance 
+</I>&gt;<i> reducing bugs I introduced years after writing the original code). 
+</I>&gt;<i> This blast works on FastA formatted files directly. (It is used 
+</I>&gt;<i> in HSSP too).
+</I>&gt;<i>
+</I>&gt;<i> What needs to be implemented:
+</I>&gt;<i>
+</I>&gt;<i> - a blast and clustal interface in the server
+</I>&gt;<i>
+</I>&gt;<i> - all the SOAP calls of mrs-ws (should be simple: copy and adapt 
+</I>&gt;<i> the mrs-ws code).
+</I>&gt;<i>
+</I>&gt;<i> - status pages
+</I>&gt;<i>
+</I>&gt;<i> - an automatic update system. (I might keep this for a later release 
+</I>&gt;<i> and instead use makefiles for now.)
+</I>&gt;<i>
+</I>&gt;<i> - A test framework and a thorough testing of the entire system to make 
+</I>&gt;<i> sure I did not forget anything.
+</I>&gt;<i>
+</I>&gt;<i> If you're willing to help me with this new MRS, please let me know. 
+</I>&gt;<i> I'm especially looking for feedback on the design decissions I made 
+</I>&gt;<i> and help in writing new parser and formatter code.
+</I>&gt;<i>
+</I>&gt;<i> best regards,
+</I>&gt;<i>
+</I>&gt;<i> -maarten
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> The Radboud University Nijmegen Medical Centre is listed in the 
+</I>&gt;<i> Commercial Register of the Chamber of Commerce under file number 41055629.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20120708/8d796962/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20120708/8d796962/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000652.html">[mrs-user] Me and M6 are still alive
+</A></li>
+	<LI>Next message: <A HREF="000655.html">[mrs-user] Me and M6 are still alive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#654">[ date ]</a>
+              <a href="thread.html#654">[ thread ]</a>
+              <a href="subject.html#654">[ subject ]</a>
+              <a href="author.html#654">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the mrs-user
+mailing list</a><br>
+</body></html>

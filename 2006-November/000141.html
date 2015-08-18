@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20The%20Web%20services%20time-out%20problem%20-%20Checked%20by%0A%09AntiVir%20DEMO%20version%20-&In-Reply-To=%3C24E2F019-9B87-4CA9-B146-EF7CF9A5269C%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000140.html">
+   <LINK REL="Next"  HREF="000142.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20The%20Web%20services%20time-out%20problem%20-%20Checked%20by%0A%09AntiVir%20DEMO%20version%20-&In-Reply-To=%3C24E2F019-9B87-4CA9-B146-EF7CF9A5269C%40hekkelman.com%3E"
+       TITLE="[Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -">maarten at hekkelman.com
+       </A><BR>
+    <I>Fri Nov 17 08:44:31 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000140.html">[Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -
+</A></li>
+        <LI>Next message: <A HREF="000142.html">[Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#141">[ date ]</a>
+              <a href="thread.html#141">[ thread ]</a>
+              <a href="subject.html#141">[ subject ]</a>
+              <a href="author.html#141">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 17-nov-2006, om 8:25 heeft Maarten L. Hekkelman het volgende  
+geschreven:
+&gt;&gt;<i>
+</I>&gt;&gt;<i> On the test machine mrs_soap.cgi goes on running and finally stops
+</I>&gt;&gt;<i> after a
+</I>&gt;&gt;<i> long time. Is it possible that the problem is not (only) at the  
+</I>&gt;&gt;<i> server
+</I>&gt;&gt;<i> side but (also) at the client side ?
+</I>&gt;<i>
+</I>&gt;<i> If you're using perl at the client side there might be a problem
+</I>&gt;<i> there too. But I expect the server to be too slow.
+</I>
+I just did a quick test and found out that the query 'id:*_human' on  
+swissprot takes half a second on my Mac Mini. I then tested with the  
+soap_server I created for the SIMDAT project and that took only 5  
+seconds. So I think the problem here is in the soap server script.
+
+You could try to check out the trunk of the mrs project, there is a  
+new soap server in there in the mrs/ws directory. It also has a WSDL  
+that describes what you can do with it. If you think WSDL's are a bit  
+hard to read in a text editor (I do) you can use e.g. Eclipse with  
+Web-tools installed to get a graphical view or simply look at the  
+mrsws.h file in mrs/ws/Sources/ to see what you can do.
+
+I'm still developing this soap server so you can expect to see new  
+and/or changed methods as time goes by.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000140.html">[Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -
+</A></li>
+	<LI>Next message: <A HREF="000142.html">[Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#141">[ date ]</a>
+              <a href="thread.html#141">[ thread ]</a>
+              <a href="subject.html#141">[ subject ]</a>
+              <a href="author.html#141">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

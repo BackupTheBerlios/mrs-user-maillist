@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] some questions - Checked by AntiVir DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20some%20questions%20-%20Checked%20by%20AntiVir%20DEMO%20version%20-&In-Reply-To=%3C003E04A8-D474-4EFE-A513-0E1BC2997952%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000228.html">
+   <LINK REL="Next"  HREF="000231.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] some questions - Checked by AntiVir DEMO version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20some%20questions%20-%20Checked%20by%20AntiVir%20DEMO%20version%20-&In-Reply-To=%3C003E04A8-D474-4EFE-A513-0E1BC2997952%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] some questions - Checked by AntiVir DEMO version -">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue Mar 20 09:38:40 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000228.html">[Mrs-user] some questions - Checked by AntiVir DEMO version -
+</A></li>
+        <LI>Next message: <A HREF="000231.html">[Mrs-user] problem with indexing RefSeq - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#229">[ date ]</a>
+              <a href="thread.html#229">[ thread ]</a>
+              <a href="subject.html#229">[ subject ]</a>
+              <a href="author.html#229">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Guy,
+
+&gt;<i> I have some theoretical questions about how MRS 3 functions :
+</I>&gt;<i>
+</I>&gt;<i> - the sorting of query results according to importance : is it  
+</I>&gt;<i> simply the
+</I>&gt;<i> number of times a query word is found in the entry or is it more
+</I>&gt;<i> sophisticated ?
+</I>
+The scoring is based on the so-called Vector Matching algorithm. The  
+idea is that a document is a vector in an N dimensional space where N  
+is the number of unique words found in the entire databank. A query  
+is considered to be a document and documents can be compared by  
+looking at their vector. If you calculate the cosine of the angle  
+between two vectors you get a number between 0 and 1 where 1 means  
+identical and 0 means no relation whatsoever.
+
+All terms are adjusted using the TF/IDF correction mechanism. This  
+stands for term frequency and inverse document frequency. The IDF is  
+calculated as
+	
+	log(1.0 + N / M)	
+
+		where N is the total number of documents in the databank and M is
+		the number of documents containing this term.
+
+During indexing the TF is calculated by counting terms in a document  
+and then scale these TF's for each term by setting the highest  
+scoring term to 1. At the end of indexing the total weight for all  
+documents is calculated and stored in the MRS file (this is the  
+square root of the sum of the squares of all TF's in the document:  
+Sqrt(Sum(tf*tf)) ).
+
+Scoring is then done by accumulating for each term in the query the  
+product of each TF in the query and each document it is found in  
+corrected by the IDF factor. After accumulating these values the  
+accumulated values are divided by the weight of each document  
+calculated earlier. We then have for each document a score and take  
+the top of these as result. An attempt is made to score only those  
+documents that score for each query term.
+
+To optimise things a bit I've implemented an early termination  
+algorithm that stops accumulating TF's once the TF for a term in a  
+document drops below a value that is no longer significant for the  
+final score.
+
+This is in short the Vector algorithm, there are two closely related  
+scoring mechanisms called Dice and Jaccard which are also supported.  
+There's no way in the current interface to select another algorithm  
+though, I'm working on that.
+
+BTW. To store TF's for each term and each document I had to add a new  
+index type, a so-called weighted index. By default MRS creates  
+regular indices, but if you add weights it will create a weighted  
+index. The last step in indexing creates the __ALL_TEXT__ index which  
+is a weighted index containing all terms found in any other index. It  
+is this index which is used for calculating the scoring.
+
+&gt;<i> - the alternative spelling suggestions : what algorithm does it use ?
+</I>
+The makefiles can be used to create .dict files for each MRS  
+databank. Such a dict file contains a Trie structure for the words in  
+a index. The defaults for creating such a file are to use the  
+__ALL_TEXT__ index for collecting words and to use only words at  
+least 4 characters long that occur at least in 4 different documents.
+
+Then, when a word is checked against this trie, characters are  
+compared and for each match a reward is added to a score. For each  
+mismatch different classed of modifications are scored: insertions,  
+deletions, transpositions and substitutions each with a different  
+penalty. The trie structure makes it very easy to quickly try out all  
+combinations and the final list is sorted by score.
+
+&gt;<i> - the parsing of text into separate words. How are word strings  
+</I>&gt;<i> delimited ?
+</I>
+In a regular expression: [0-9a-z_]+((-|\.)[0-9a-z_]+)*
+
+That means in english, a words starts with one or more characters  
+from the 'word character class' W containing digits, alphabetical  
+characters and underscores. Then either a single hyphen or a dot  
+followed by one or more W characters can follow in one or more sets.
+
+So, a word cannot contain two consecutive hyphens and/or dots and  
+trailing hyphens and dots are not allowed.
+
+As an extra, if a word contains only one hyphen and no dots the two  
+groups at each side of the hyphen are stored as separate words as well.
+
+I hope this answers your questions. Feel free to ask for more  
+explanation if needed.
+
+-maarten
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000228.html">[Mrs-user] some questions - Checked by AntiVir DEMO version -
+</A></li>
+	<LI>Next message: <A HREF="000231.html">[Mrs-user] problem with indexing RefSeq - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#229">[ date ]</a>
+              <a href="thread.html#229">[ thread ]</a>
+              <a href="subject.html#229">[ subject ]</a>
+              <a href="author.html#229">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

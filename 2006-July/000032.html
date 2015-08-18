@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRSCommon.pm and some stray hard-coded paths
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRSCommon.pm%20and%20some%20stray%20hard-coded%20paths&In-Reply-To=%3C44AE2099.1000706%40dbm.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000031.html">
+   <LINK REL="Next"  HREF="000033.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRSCommon.pm and some stray hard-coded paths</H1>
+    <B>david coornaert</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRSCommon.pm%20and%20some%20stray%20hard-coded%20paths&In-Reply-To=%3C44AE2099.1000706%40dbm.ulb.ac.be%3E"
+       TITLE="[Mrs-user] MRSCommon.pm and some stray hard-coded paths">dcoorna at dbm.ulb.ac.be
+       </A><BR>
+    <I>Fri Jul  7 10:51:37 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000031.html">[Mrs-user] MRSCommon.pm and some stray hard-coded paths
+</A></li>
+        <LI>Next message: <A HREF="000033.html">[Mrs-user] MRSCommon.pm and some stray hard-coded paths
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#32">[ date ]</a>
+              <a href="thread.html#32">[ thread ]</a>
+              <a href="subject.html#32">[ subject ]</a>
+              <a href="author.html#32">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>from mrs-result.cgi (line13)
+#!/usr/bin/perl
+
+use strict;
+use MRS;
+use MRSCGI qw/-no_xhtml/;
+use CGI::Cookie;
+use CGI::Carp qw(fatalsToBrowser);
+use Data::UUID;
+use Data::Dumper;
+use POSIX qw(strftime);
+use XML::SAX;
+use XML::SAX::Expat;
+use MRSCommon; &lt;-----------------here
+use Format;
+
+
+
+===============================================
+David Coornaert [PhD]   (<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dcoorna at dbm.ulb.ac.be</A>)
+
+Belgian Embnet Node (<A HREF="http://www.be.embnet.org">http://www.be.embnet.org</A>)
+Universit&#233; Libre de Bruxelles
+
+Laboratoire de Bioinformatique
+12, Rue des Professeurs Jeener &amp; Brachet
+6041  Gosselies
+BELGIQUE
+
+T&#233;l:  +3226509975
+Fax:  +3226509998
+===============================================
+
+
+
+Maarten L. Hekkelman wrote:
+&gt;<i> Op 7-jul-2006, om 8:59 heeft Robert Herzog het volgende geschreven:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> It seems that the file MRSCommon.pm is not copied during installation
+</I>&gt;&gt;<i> to a place within reach of the $PATH. From what I see, this does not
+</I>&gt;&gt;<i> affect basic downloading, indexing and web-visibility. You should
+</I>&gt;&gt;<i> probably do the copy by hand for the time being.
+</I>&gt;<i>
+</I>&gt;<i> MRSCommon is no longer part of the distribution since it shouldn't be
+</I>&gt;<i> used anymore. I integrated its functionality into MRSCGI.pm.
+</I>&gt;<i>
+</I>&gt;&gt;<i> Also two hard coded paths for $status_dir (../data/...) survived
+</I>&gt;&gt;<i> scrutiny, namely in databanks.cgi and databank_log.cgi. Edit the line
+</I>&gt;&gt;<i> according to your own configuration and all should be OK.
+</I>&gt;<i>
+</I>&gt;<i> The databank_log.cgi script should not have been part of the
+</I>&gt;<i> distribution since it is outdated. It's task is now done by
+</I>&gt;<i> databanks.cgi. And I fixed databanks.cgi to use mrs.conf to locate the
+</I>&gt;<i> base data directory. I assume in the script that you maintain the
+</I>&gt;<i> layout as set up by the install script, that means that the status
+</I>&gt;<i> directory is located in the same parent folder as the mrs data directory.
+</I>&gt;<i>
+</I>&gt;<i> I didn't update the tar ball since it is such a small change. For
+</I>&gt;<i> those of you who want this update, you should apply the following patch:
+</I>&gt;<i>
+</I>&gt;<i> [pb:~/projects/mrs_2.0] maarten% svn diff -r 125
+</I>&gt;<i> web-simple/cgi-bin/databanks.cgi
+</I>&gt;<i> Index: web-simple/cgi-bin/databanks.cgi
+</I>&gt;<i> ===================================================================
+</I>&gt;<i> --- web-simple/cgi-bin/databanks.cgi (revision 125)
+</I>&gt;<i> +++ web-simple/cgi-bin/databanks.cgi (working copy)
+</I>&gt;<i> @@ -10,7 +10,19 @@
+</I>&gt;<i> use File::stat;
+</I>&gt;<i> use Data::Dumper;
+</I>&gt;<i> -my $status_dir = &quot;/data/status/&quot;;
+</I>&gt;<i> +our $mrs_data;
+</I>&gt;<i> +
+</I>&gt;<i> +my $settings = 'mrs.conf';
+</I>&gt;<i> +unless (my $return = do $settings)
+</I>&gt;<i> +{
+</I>&gt;<i> + warn &quot;couldn't parse $settings: $@&quot; if $@;
+</I>&gt;<i> + warn &quot;couldn't do $settings: $!&quot; unless defined $return;
+</I>&gt;<i> + warn &quot;couldn't run $settings&quot; unless $return;
+</I>&gt;<i> +}
+</I>&gt;<i> +
+</I>&gt;<i> +# assume that $mrs_data and $status_dir share the same parent folder
+</I>&gt;<i> +my $status_dir = &quot;$mrs_data/../status/&quot;;
+</I>&gt;<i> +
+</I>&gt;<i> my $q = new MRSCGI;
+</I>&gt;<i> &amp;main();
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -maarten
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/mrs-user">http://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000031.html">[Mrs-user] MRSCommon.pm and some stray hard-coded paths
+</A></li>
+	<LI>Next message: <A HREF="000033.html">[Mrs-user] MRSCommon.pm and some stray hard-coded paths
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#32">[ date ]</a>
+              <a href="thread.html#32">[ thread ]</a>
+              <a href="subject.html#32">[ subject ]</a>
+              <a href="author.html#32">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

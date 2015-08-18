@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] nucleic acid sequences in fasta format
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20nucleic%20acid%20sequences%20in%20fasta%20format&In-Reply-To=%3C49AE5E8A.8030203%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000444.html">
+   <LINK REL="Next"  HREF="000446.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] nucleic acid sequences in fasta format</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20nucleic%20acid%20sequences%20in%20fasta%20format&In-Reply-To=%3C49AE5E8A.8030203%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] nucleic acid sequences in fasta format">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Mar  4 11:57:14 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000444.html">[Mrs-user] nucleic acid sequences in fasta format
+</A></li>
+        <LI>Next message: <A HREF="000446.html">[Mrs-user] One Question On MRS-file updates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#445">[ date ]</a>
+              <a href="thread.html#445">[ thread ]</a>
+              <a href="subject.html#445">[ subject ]</a>
+              <a href="author.html#445">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Maarten L. Hekkelman schreef:
+
+&gt;&gt;<i> I am experimenting with a Web Service client for MRS 4 (for the moment at the 
+</I>&gt;&gt;<i> server <A HREF="http://mrs.cmbi.ru.nl/mrsws,">http://mrs.cmbi.ru.nl/mrsws,</A> I am waiting for resources to buy a new 
+</I>&gt;&gt;<i> computer). I noticed that it is not possible to obtain a nucleic acid sequence 
+</I>&gt;&gt;<i> using the SOAP object GetEntry with Format &quot;fasta&quot;. Yet, with MRS 3 it was 
+</I>&gt;&gt;<i> possible and I noticed that the parser scripts for MRS 4 do have the &quot;sequence&quot; 
+</I>&gt;&gt;<i> subroutine. Is there maybe just a line of code missing ?
+</I>&gt;<i> 
+</I>&gt;<i> I'll have a look. Sounds indeed like some missing feature somewhere.
+</I>
+Indeed, I forgot to add a few lines of Perl code to the MRSScript.pm 
+driver script:
+
+$ svn diff -r 894 MRSScript.pm
+Index: MRSScript.pm
+===================================================================
+--- MRSScript.pm	(revision 894)
++++ MRSScript.pm	(working copy)
+@@ -116,6 +116,26 @@
+  	return $result;
+  }
+
++sub sequence
++{
++	my ($mrs_script_dir, $name, $text, $db, $id) = @_;
++	
++	my $result;
++	
++	eval
++	{
++		my $fmt = &amp;load_script($mrs_script_dir, $name);
++		$result = $fmt-&gt;sequence($text);
++	};
++	
++	if ($@)
++	{
++		$result = &quot;Error in formatting entry: $@&quot;;
++	}
++	
++	return $result;
++}
++
+  sub pp_script
+  {
+  	my ($mrs_script_dir, $text) = @_;
+
+This patch fixes the fasta formatting problem you see in EMBL.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000444.html">[Mrs-user] nucleic acid sequences in fasta format
+</A></li>
+	<LI>Next message: <A HREF="000446.html">[Mrs-user] One Question On MRS-file updates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#445">[ date ]</a>
+              <a href="thread.html#445">[ thread ]</a>
+              <a href="subject.html#445">[ subject ]</a>
+              <a href="author.html#445">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Mrs Databases
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs%20Databases&In-Reply-To=%3C1153485886.44c0cc3e5379b%40biol.unlp.edu.ar%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000065.html">
+   <LINK REL="Next"  HREF="000067.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Mrs Databases</H1>
+    <B>dbellante at biol.unlp.edu.ar</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs%20Databases&In-Reply-To=%3C1153485886.44c0cc3e5379b%40biol.unlp.edu.ar%3E"
+       TITLE="[Mrs-user] Mrs Databases">dbellante at biol.unlp.edu.ar
+       </A><BR>
+    <I>Fri Jul 21 14:44:46 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000065.html">[Mrs-user] MRS Installations - some recent recommendations
+</A></li>
+        <LI>Next message: <A HREF="000067.html">[Mrs-user] Mrs Databases
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#66">[ date ]</a>
+              <a href="thread.html#66">[ thread ]</a>
+              <a href="subject.html#66">[ subject ]</a>
+              <a href="author.html#66">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+
+  I executed &quot;make interpro&quot; but that database doesn't appear as indexed in the 
+web interface.
+
+ Thanks!!
+
+ Diego
+
+  The output was the following:
+
+make /raid/db/mrsdata/flags/interpro.done
+make[1]: Entering directory `/raid/usr/local/mrs-update'
+make[2]: Entering directory `/raid/usr/local/mrs-update'
+make: success
+sync
+touch /raid/db/mrsdata/status/interpro.fetched
+touch /raid/db/mrsdata/flags/interpro.fetched
+make[2]: Leaving directory `/raid/usr/local/mrs-update'
+make[2]: Entering directory `/raid/usr/local/mrs-update'
+make: success
+sync
+touch /raid/db/mrsdata/status/interpro.make
+touch /raid/db/mrsdata/flags/interpro.make
+make[2]: Leaving directory `/raid/usr/local/mrs-update'
+touch /raid/db/mrsdata/status/interpro.done
+touch /raid/db/mrsdata/flags/interpro.done
+make[1]: Leaving directory `/raid/usr/local/mrs-update'
+rm /raid/db/mrsdata/flags/interpro.*
+
+---     LOGS   -----------------------------------------
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">root at srsfed</A> status]# more interpro.make_log
+make[3]: Entering directory `/raid/usr/local/mrs-update'
+make[3]: Nothing to be done for `data'.
+/usr/bin/perl /raid/usr/local/bin/mrs.pl create -d interpro
+Can't locate object method &quot;version&quot; via package &quot;interpro::parser&quot; at /raid/
+usr/local/bin/mrs.pl line 290.
+
+Parsing done, creating index... done!
+chmod a+r /raid/db/mrsdata/mrs/interpro.cmp
+make[3]: Nothing to be done for `blast'.
+make[3]: Leaving directory `/raid/usr/local/mrs-update'
+
+-------------------------------------------------------------------
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">root at srsfed</A> status]# more interpro.mirror_log
+make[3]: Entering directory `/raid/usr/local/mrs-update'
+/usr/bin/perl /raid/usr/local/mrs-update/mirror.pl -d /raid/db/mrsdata/raw/
+interpro/ -c <A HREF="ftp://ftp.ebi.ac.uk/pub">ftp://ftp.ebi.ac.uk/pub</A>
+/databases/interpro
+match.xml.gz
+
+
+Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+
+Retrying...
+match.xml.gz
+
+
+Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+
+Retrying...
+match.xml.gz
+
+
+Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+
+Retrying...
+match.xml.gz
+
+
+Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+
+Retrying...
+match.xml.gz
+
+
+Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+
+Retrying...
+match.xml.gz
+
+
+Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+
+make[3]: Leaving directory `/raid/usr/local/mrs-update'
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000065.html">[Mrs-user] MRS Installations - some recent recommendations
+</A></li>
+	<LI>Next message: <A HREF="000067.html">[Mrs-user] Mrs Databases
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#66">[ date ]</a>
+              <a href="thread.html#66">[ thread ]</a>
+              <a href="subject.html#66">[ subject ]</a>
+              <a href="author.html#66">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

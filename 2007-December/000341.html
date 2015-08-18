@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user]  Questions and report after installation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20%20Questions%20and%20report%20after%20installation&In-Reply-To=%3C477217BA.C0C50FA0%40genebee.msu.su%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000340.html">
+   <LINK REL="Next"  HREF="000342.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user]  Questions and report after installation</H1>
+    <B>Alexandre Kravchenko</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20%20Questions%20and%20report%20after%20installation&In-Reply-To=%3C477217BA.C0C50FA0%40genebee.msu.su%3E"
+       TITLE="[Mrs-user]  Questions and report after installation">alexk at genebee.msu.su
+       </A><BR>
+    <I>Wed Dec 26 09:58:34 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000340.html">[Mrs-user] Oral health, 23k Hospitals, 17k physicians email
+</A></li>
+        <LI>Next message: <A HREF="000342.html">[Mrs-user] Questions and report after installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#341">[ date ]</a>
+              <a href="thread.html#341">[ thread ]</a>
+              <a href="subject.html#341">[ subject ]</a>
+              <a href="author.html#341">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello mrs-users,
+
+I have installed mrs-3.1-rc1 on Fedora 8 x86_64 + jdk-1.6.0_03 +
+gsoap-2.7.9-0.1.l + swig-1.3.33 + tomcat5-5.5.25-1 + axis-1.2.1-2.
+
+First edit configure.pl and change
+    my $ld_opts = &quot;-L$lib_dir -lgsoap&quot;;
+to the
+   my $ld_opts = &quot;&quot;;
+
+Else after
+   perl configure.pl
+I have
+....
+Could not build a soap application
+....
+============================
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">root at mail</A> mrs-3.1]# perl configure.pl
+Using perl /usr/bin/perl
+Checking for Perl module URI... OK
+Checking for Perl module Net::FTP... OK
+Checking for Perl module Getopt::Std... OK
+Checking for Perl module ExtUtils::MakeMaker... OK
+Checking for Perl module CGI... OK
+Checking for a compiler... OK
+Checking the version of SWIG...
+Version 1.3.33 of Swig is not the correct one
+Swig version 1.3.27 is needed to build MRS
+ Skipping
+Checking the version of soapcpp2
+Checking for the availability of tr1... OK
+Checking the boost header files... OK
+Checking for boost_regex library... OK
+Checking for boost_filesystem library... OK
+Checking for boost_thread library... OK
+Checking for libxml2... OK
+Creating make.config file... done
+
+=====================================
+When I loaded &quot;<A HREF="http://localhost:8080/mrs-3/">http://localhost:8080/mrs-3/</A>&quot;, I have:
+
+Could not connect to SOAP server at <A HREF="http://localhost:8081/mrs/soap,">http://localhost:8081/mrs/soap,</A>
+please inform administrator.
+.......
+=====================================
+Tomcat output in the catalina.out:
+.................
+AxisFault
+ faultCode:
+{<A HREF="http://schemas.xmlsoap.org/soap/envelope/">http://schemas.xmlsoap.org/soap/envelope/</A>}Server.userException
+ faultSubcode:
+ faultString: org.xml.sax.SAXParseException: The prefix
+&quot;SOAP-ENV&quot; for element &quot;SOAP-ENV:Envelope&quot; is not
+bound.
+ faultActor:
+ faultNode:
+ faultDetail:
+ {<A HREF="http://xml.apache.org/axis/">http://xml.apache.org/axis/</A>}stackTrace:org.xml.sax.SAXParseException:
+The prefix &quot;SOAP-ENV&quot; for element
+&quot;SOAP-ENV:Envelope&quot; is not bound.
+.....................
+
+org.xml.sax.SAXParseException: The prefix &quot;SOAP-ENV&quot; for element
+&quot;SOAP-ENV:Envelope&quot; is not bound.
+ at org.apache.axis.AxisFault.makeFault(AxisFault.java:101)
+.................
+=====================================
+mrsws output in the mrsws-search.log:
+.....
+Error 35 fault: SOAP-ENV:VersionMismatch [no subcode]
+&quot;Invalid SOAP message or SOAP version mismatch&quot;
+Detail: [no detail]
+=====================================
+
+Can you help me?
+
+Thanks!
+
+--
+Best regards,
+
+Alexander A. Kravchenko
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000340.html">[Mrs-user] Oral health, 23k Hospitals, 17k physicians email
+</A></li>
+	<LI>Next message: <A HREF="000342.html">[Mrs-user] Questions and report after installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#341">[ date ]</a>
+              <a href="thread.html#341">[ thread ]</a>
+              <a href="subject.html#341">[ subject ]</a>
+              <a href="author.html#341">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

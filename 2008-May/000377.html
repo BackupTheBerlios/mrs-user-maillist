@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Mrs unsuccesfull installation - plase Help!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs%20unsuccesfull%20installation%20-%20plase%20Help%21&In-Reply-To=%3C48219D00.2070900%40lcb.uu.se%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000380.html">
+   <LINK REL="Next"  HREF="000379.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Mrs unsuccesfull installation - plase Help!</H1>
+    <B>Alvaro Martinez Barrio</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs%20unsuccesfull%20installation%20-%20plase%20Help%21&In-Reply-To=%3C48219D00.2070900%40lcb.uu.se%3E"
+       TITLE="[Mrs-user] Mrs unsuccesfull installation - plase Help!">Alvaro.Martinez.Barrio at lcb.uu.se
+       </A><BR>
+    <I>Wed May  7 14:13:52 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000380.html">[Mrs-user] Mrs embl_release BLAST
+</A></li>
+        <LI>Next message: <A HREF="000379.html">[Mrs-user] Mrs unsuccesfull installation - plase Help!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#377">[ date ]</a>
+              <a href="thread.html#377">[ thread ]</a>
+              <a href="subject.html#377">[ subject ]</a>
+              <a href="author.html#377">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten and mrs-users!
+
+I try to install the newest Mrs from the SVN trunk with several 
+configurations.
+
+With boost libraries 1_35_0, I get the following compilation report:
+
+
+=&gt; mrsws-blast.o
+=&gt; soapC.o
+=&gt; soapServer.o
+=&gt; CJob.o
+=&gt; WConfig.o
+=&gt; WFormat.o
+/usr/local/include/boost-1_35/boost/date_time/date_facet.hpp:301: error: 
+expected identifier before '(' token
+/usr/local/include/boost-1_35/boost/date_time/date_facet.hpp:301: error: 
+expected `)' before 'pthread_getspecific'
+/usr/local/include/boost-1_35/boost/date_time/date_facet.hpp:301: error: 
+expected ',' or '...' before 'pthread_getspecific'
+/usr/local/include/boost-1_35/boost/date_time/date_facet.hpp:301: error: 
+expected ';' before '&amp;' token
+/usr/local/include/boost-1_35/boost/date_time/date_facet.hpp:314: error: 
+expected `;' before 'virtual'
+make[1]: *** [Obj.NoDebug/WFormat.o] Error 1
+make: *** [all] Error 2
+
+The faulty compilation of WFormat.o which is in ws/common/Sources could 
+be replicated with the following line:
+
+
+alvaro:/usr/local/mrs/ws/common/Sources alvaro$ /usr/bin/c++ 
+-I/Library/Perl/5.8.6/darwin-thread-multi-2level/CORE/ 
+-I/usr/local/include/boost-1_35/ -I/usr/local/include -o 
+/tmp/WFormat.out WFormat.cpp -lboost_date_time-mt-1_35 -L/usr/local/lib 2&gt;&amp;1
+/usr/local/include/boost-1_35/boost/date_time/date_facet.hpp:301: error: 
+expected identifier before '(' token
+/usr/local/include/boost-1_35/boost/date_time/date_facet.hpp:301: error: 
+expected `)' before 'pthread_getspecific'
+/usr/local/include/boost-1_35/boost/date_time/date_facet.hpp:301: error: 
+expected ',' or '...' before 'pthread_getspecific'
+/usr/local/include/boost-1_35/boost/date_time/date_facet.hpp:301: error: 
+expected ';' before '&amp;' token
+/usr/local/include/boost-1_35/boost/date_time/date_facet.hpp:314: error: 
+expected `;' before 'virtual'
+
+
+It seems that the library of boost &quot;date_time&quot; gives some problems in 
+whatever function is used in WFormat.cpp. But I couldn't find it anyway:
+
+So I try loading the library in case it needs another components that 
+weren't included in the Makefile line:
+
+alvaro:/usr/local/mrs/ws/common/Sources alvaro$ ld -lboost_date_time-mt-1_35
+
+But this library just depends in itself. Not as for instance, 
+lboost_filesystem-mt-1_35 which depends on lboost_system-mt-1_35...
+
+Then I try to track down the failure:
+
+(In ws/common/Sources/WFormat.cpp)
+#include &lt;boost/filesystem/operations.hpp&gt;
+#include &lt;boost/filesystem/path.hpp&gt;
+#include &lt;boost/thread.hpp&gt;
+#include &lt;boost/bind.hpp&gt;
+
+So it is not included at all. Not in bind.hpp, operations.hpp or path.hpp.
+
+The only place I found it was at &lt;boost/thread.hpp&gt; as it includes:
+
+#include &lt;boost/thread/thread.hpp&gt;
+#include &lt;boost/thread/condition.hpp&gt;
+#include &lt;boost/thread/exceptions.hpp&gt;
+#include &lt;boost/thread/mutex.hpp&gt;
+#include &lt;boost/thread/once.hpp&gt;
+#include &lt;boost/thread/recursive_mutex.hpp&gt;
+#include &lt;boost/thread/tss.hpp&gt;
+#include &lt;boost/thread/xtime.hpp&gt;
+
+And the last &lt;boost/thread/xtime.hpp&gt;
+
+#include &lt;boost/cstdint.hpp&gt;
+#include &lt;boost/thread/thread_time.hpp&gt;
+#include &lt;boost/date_time/posix_time/conversion.hpp&gt;
+
+So I assume that include directive is the one that provokes the faulty 
+library to be loaded !?.
+
+
+Anyway, I compiled then boost_1_34_1 so I could try with this version, 
+thinking that I would avoid the library version failure...
+
+Then I got the following:
+
+make -Cws/clustal all
+.....
+=&gt; mrsws-clustal.o
+./Sources/mrsws-clustal.cpp: In function 'int ns__ClustalW(soap*, 
+std::vector&lt;ns__Sequence, std::allocator&lt;ns__Sequence&gt; &gt;,
+./Sources/mrsws-clustal.cpp: ns__ClustalWResponse&amp;)':
+./Sources/mrsws-clustal.cpp:359: error: ambiguous overload for 
+'operator&lt;&lt;' in 'log &lt;&lt; input. std::vector&lt;_Tp, _Alloc&gt;::size [with
+./Sources/mrsws-clustal.cpp:359: error: _Tp = ns__Sequence, _Alloc = 
+std::allocator&lt;ns__Sequence&gt;]()'
+../common/Sources/WUtils.h:19: note: candidates are: WLogger&amp; 
+WLogger::operator&lt;&lt;(char)
+../common/Sources/WUtils.h:22: note:                 WLogger&amp; 
+WLogger::operator&lt;&lt;(float)
+../common/Sources/WUtils.h:25: note:                 WLogger&amp; 
+WLogger::operator&lt;&lt;(const std::string&amp;) &lt;near match&gt;
+make[1]: *** [Obj.NoDebug/mrsws-clustal.o] Error 1
+make: *** [all] Error 2
+
+It looks like this is more of an error in the mrsws-clustal.cpp file. So 
+I was thinking if someone could help me to rewrite this...
+
+
+I am running Mac OS X 10.4, gcc version 4.0.1 (Apple Computer, Inc. 
+build 5367), soapcpp2 2.9.7f, swig 1.3.31, ...
+
+I have already compiled mrs-3.0-rc2 with this configuration... so I 
+don't understand why it does not compile...
+
+The thing is that the line that seems to be causing the error:
+
+// --------------------------------------------------------------------
+//
+//      SOAP calls
+//
+
+SOAP_FMAC5 int SOAP_FMAC6
+ns__ClustalW(
+         struct soap*                                    soap,
+         vector&lt;struct ns__Sequence&gt;             input,
+         struct ns__ClustalWResponse&amp;    response)
+{
+         WLogger log(soap-&gt;ip, __func__);
+
+         log &lt;&lt; input.size() &lt;&lt; &quot; sequences &quot;; //&lt;&lt;&lt;&lt; THIS ONE
+
+is exactly the same line/function tha in version 3.0-rc2 which I have 
+already compiled. Note that if I comment that line away, it compiles 
+smoothly. Weird, isn't it?
+
+Furthermore, I include a couple of patches (level -p0) to the 
+configure.pl script so they work supporting either boost_1_34_1 or 
+boost_1_35 (the recursive library dependency between 
+libboost_filesystem-mt and libboost_system), and specially, the dylib 
+extensions of Mac OS X.
+
+My command line for configure.pl now is:
+
+alvaro:/usr/local/mrs alvaro$ sudo perl configure.pl 
+--boost=/usr/local/include/boost-1_34_1/ 
+--boost_regex=boost_regex-mt-1_34_1 
+--boost_filesystem=boost_filesystem-mt-1_34_1 
+--boost_thread=boost_thread-mt-1_34_1 --prefix=/usr/local/mrs 
+--parser-script-dir=/usr/local/mrs/parser_scripts 
+--update-script-dir=/usr/local/mrs/update_scripts
+
+Mvh,
+&#225;lvaro
+
+
+-- 
+Alvaro Martinez Barrio
+The Linnaeus Centre for Bioinformatics
+Husargatan 3, Box 598
+SE 751 24 Uppsala SWEDEN
+
+Tel: +46 18 471 6685 - Fax: +46 18 471 6698
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: configure.pl.mac-os-x.boost_1_34_1.patch
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20080507/2544d864/attachment.ksh">https://lists.berlios.de/pipermail/mrs-user/attachments/20080507/2544d864/attachment.ksh</A>&gt;
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: configure.pl.mac-os-x.boost_1_35.patch
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20080507/2544d864/attachment-0001.ksh">https://lists.berlios.de/pipermail/mrs-user/attachments/20080507/2544d864/attachment-0001.ksh</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000380.html">[Mrs-user] Mrs embl_release BLAST
+</A></li>
+	<LI>Next message: <A HREF="000379.html">[Mrs-user] Mrs unsuccesfull installation - plase Help!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#377">[ date ]</a>
+              <a href="thread.html#377">[ thread ]</a>
+              <a href="subject.html#377">[ subject ]</a>
+              <a href="author.html#377">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [mrs-user] problems with SOAP search
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20problems%20with%20SOAP%20search&In-Reply-To=%3CD8DB24E66384E14A940C383DEB1D8BD0B18967%40USTLMLLYC102.rf.lilly.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000676.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[mrs-user] problems with SOAP search</H1>
+    <B>Joshua Guptill - Network</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20problems%20with%20SOAP%20search&In-Reply-To=%3CD8DB24E66384E14A940C383DEB1D8BD0B18967%40USTLMLLYC102.rf.lilly.com%3E"
+       TITLE="[mrs-user] problems with SOAP search">guptill_joshua at network.lilly.com
+       </A><BR>
+    <I>Tue Sep 17 20:38:08 CEST 2013</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000676.html">[mrs-user] problems with SOAP search
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#675">[ date ]</a>
+              <a href="thread.html#675">[ thread ]</a>
+              <a href="subject.html#675">[ subject ]</a>
+              <a href="author.html#675">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>All,
+I'm having difficulty implementing the soap search.  I'm using Java.  So far I've generated the stubs, and I believe I'm composing the request correctly.  I started out coding the request and I had problems (see below).  I changed tactics and now I moved on to testing with SoapUI, in case there was some sort of issue in my code.
+
+I'm getting a rejection page from sending a simple message to the soap server.  See below for the message I'm sending:
+
+&lt;soapenv:Envelope xmlns:soapenv=&quot;<A HREF="http://schemas.xmlsoap.org/soap/envelope/">http://schemas.xmlsoap.org/soap/envelope/</A>&quot; xmlns:sear=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/search">http://mrs.cmbi.ru.nl/mrsws/search</A>&quot;&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;sear:GetDatabankInfo&gt;
+         &lt;sear:db&gt;Taxonomy&lt;/sear:db&gt;
+      &lt;/sear:GetDatabankInfo&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+
+There is one other thing at play here.  The server is hosted behind my company's network.  To make external calls outside the network (browsing, for example), I have to utilize a proxy server.   For some reason, I have to utilize the proxy server to at least get a rejection page from the proxy server.  If I don't, I just get a connection refused.
+
+I am trying to get my networking questions answered.  In the meantime, does there look to be anything incorrect with my request?  This is the first time I've used soap, so I'm a bit of a n00b.
+
+Thanks,
+Josh
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20130917/f3cd8ae0/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20130917/f3cd8ae0/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000676.html">[mrs-user] problems with SOAP search
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#675">[ date ]</a>
+              <a href="thread.html#675">[ thread ]</a>
+              <a href="subject.html#675">[ subject ]</a>
+              <a href="author.html#675">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] mrs-5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs-5&In-Reply-To=%3C4D7F6BE6.3020805%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000588.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] mrs-5</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs-5&In-Reply-To=%3C4D7F6BE6.3020805%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] mrs-5">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue Mar 15 14:38:46 CET 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000588.html">[Mrs-user] mrs-5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#587">[ date ]</a>
+              <a href="thread.html#587">[ thread ]</a>
+              <a href="subject.html#587">[ subject ]</a>
+              <a href="author.html#587">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear all,
+
+I'm working on a new version of MRS. This new version will be much 
+easier to install and manage, eventually. I plan to make available a 
+debian package to make installation on Debian and Ubuntu as easy as 
+possible.
+
+I also decided to dump the Java web application. Instead, I extended my 
+zeep library to make it possible to do web application development in 
+C++. For now this means that the new MRS only works with very recent 
+browsers. I moved part of the logic from the Java web application into 
+the Javascripts that control the web pages.
+
+The code is not completely stable yet. And so I'm not going to offer the 
+debian packages yet. But if you want to see what it looks like, you can 
+visit <A HREF="http://mrs.cmbi.ru.nl/">http://mrs.cmbi.ru.nl/</A> and you can also check out the source code 
+from <A HREF="https://svn.cmbi.ru.nl/mrs/trunk">https://svn.cmbi.ru.nl/mrs/trunk</A>
+
+Before I release the final MRS 5 version, I want to finally implement 
+linking. I know this is highly overdue, but I think I finally found out 
+the way to do a proper interface for this feature.
+
+Some pitfalls you should be aware of in case you want to try MRS are:
+
+- The new mrs-ws application is installed in /usr/local/sbin instead of 
+/usr/local/bin. Watch out you're launching the right one if you're 
+upgrading.
+- The parsers have changed. You can not have both the old and new 
+parsers fully functional in one directory.
+- updating is now done with 'mrs-update' which actually is an executable 
+makefile, but makes it as easy as typing just:
+
+	mrs-update enzyme
+
+- The old Java application can still be used, but since the parsers 
+changed, internal MRS hyper links are broken.
+
+Best regards,
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000588.html">[Mrs-user] mrs-5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#587">[ date ]</a>
+              <a href="thread.html#587">[ thread ]</a>
+              <a href="subject.html#587">[ subject ]</a>
+              <a href="author.html#587">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

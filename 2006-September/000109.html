@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] case sensitive identifiers
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20case%20sensitive%20identifiers&In-Reply-To=%3C451BDD04.9040806%40ebi.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000108.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] case sensitive identifiers</H1>
+    <B>Peter Rice</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20case%20sensitive%20identifiers&In-Reply-To=%3C451BDD04.9040806%40ebi.ac.uk%3E"
+       TITLE="[Mrs-user] case sensitive identifiers">pmr at ebi.ac.uk
+       </A><BR>
+    <I>Thu Sep 28 16:32:36 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000108.html">[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	version -
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#109">[ date ]</a>
+              <a href="thread.html#109">[ thread ]</a>
+              <a href="subject.html#109">[ subject ]</a>
+              <a href="author.html#109">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Guy Bottu wrote:
+&gt;<i> My idea is to let the MRS parser store 1fnt_aLC
+</I>&gt;<i> (LC means lowercase) as identifier. A user can then search for the 
+</I>&gt;<i> sequence he needs in MRS and in EMBOSS (if the EMBOSS installation uses 
+</I>&gt;<i> MRS as databank access mechanism) ask for the sequence pdbprot:1fnt_alc.
+</I>&gt;<i> This would of course also work with 1fnt_a_12835 but it avoids the use of 
+</I>&gt;<i> a meaningless and irreproducible number. Anybody a comment ?
+</I>
+Not a general solution, but for PDB chains you could use an extra 
+underscore for the lower case ones.
+
+For EMBOSS .... well, we could play with the way databases work. Not all 
+access methods allow case sensitive searching, but we could fetch all 
+entries and try to reject those that do not match. This would need 
+something in the EMBOSS id. We already allow modifiers after the id to 
+set sequence ranges pdbprot:1fbt_a[1:20] or we could add a qualifier 
+-scasesensitive for all sequence inputs.
+
+Peter
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000108.html">[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	version -
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#109">[ date ]</a>
+              <a href="thread.html#109">[ thread ]</a>
+              <a href="subject.html#109">[ subject ]</a>
+              <a href="author.html#109">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

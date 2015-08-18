@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] install script in 2.0 branch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20install%20script%20in%202.0%20branch&In-Reply-To=%3C449A92EC.5000501%40dbm.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000001.html">
+   <LINK REL="Next"  HREF="000004.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] install script in 2.0 branch</H1>
+    <B>Robert HERZOG</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20install%20script%20in%202.0%20branch&In-Reply-To=%3C449A92EC.5000501%40dbm.ulb.ac.be%3E"
+       TITLE="[Mrs-user] install script in 2.0 branch">rherzog at dbm.ulb.ac.be
+       </A><BR>
+    <I>Thu Jun 22 14:54:04 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000001.html">[Mrs-user] install script in 2.0 branch
+</A></li>
+        <LI>Next message: <A HREF="000004.html">[Mrs-user] install script in 2.0 branch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2">[ date ]</a>
+              <a href="thread.html#2">[ thread ]</a>
+              <a href="subject.html#2">[ subject ]</a>
+              <a href="author.html#2">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Maarten L. Hekkelman wrote:
+
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> Let's start using this mailinglist for future communication regarding  
+</I>&gt;<i> MRS issues. That way we create a publicly available archive of  
+</I>&gt;<i> information for future users.
+</I>&gt;<i>
+</I>&gt;<i> I've updated the 2.0 release branch in svn and checked in a new  
+</I>&gt;<i> install script. It is not finished but I would like to get some  
+</I>&gt;<i> feedback on what it does. Right now it tries to find out what you  
+</I>&gt;<i> have installed on your computer and writes a make.config file that  
+</I>&gt;<i> should allow you to build and install the plugin and three  
+</I>&gt;<i> executables: mrs.pl, mrs_blast and mrs_query.
+</I>&gt;<i>
+</I>&gt;<i> The procedure to get this code is as follows:
+</I>&gt;<i>
+</I>&gt;<i> First get the source code from the repository at berlios:
+</I>&gt;<i>
+</I>&gt;<i> svn co <A HREF="https://svn.berlios.de/svnroot/repos/mrs/branches/2.0">https://svn.berlios.de/svnroot/repos/mrs/branches/2.0</A> mrs_2.0
+</I>&gt;<i>
+</I>&gt;<i> That will create a folder containing the release 2.0 code for MRS.  
+</I>&gt;<i> Now to test the installation you should copy out the code to a new  
+</I>&gt;<i> location with the following command:
+</I>&gt;<i>
+</I>&gt;<i> svn export mrs_2.0 mrs_test_2.0
+</I>&gt;<i>
+</I>&gt;<i> The new mrs_test_2.0 directory is what will finally be delivered as a  
+</I>&gt;<i> download. In this mrs_test_2.0 directory you can then run
+</I>&gt;<i>
+</I>&gt;<i> perl install.pl
+</I>&gt;<i>
+</I>&gt;<i> and follow the directions on screen.
+</I>
+Hi Maarten,
+
+The installation went flawlessly on a &quot;naive&quot; freshly installed SuSE 
+10.0 computer on Pentium architecture. This machine has
+Linux kernel 2.3.13-15-smp
+Perl 5.8.7
+gcc 4.0.2
+no swig
+boost 1.33.0
+boost-jam 3.1.4
+all from distri, updated to latest fixes.
+
+After starting perl install.pl, I got a few complaints about lacking 
+Perl modules (URI, SOAP::Lite, etc.). I could cure all these by 
+installing additional modeuls from the SuSE distribution. Only 
+XML::SAX::Expat required access to the CPAN server (CPAN  &gt;&gt; install 
+XML::SAX::Expat).
+After that, a cd to plugin, the make and make install went with only two 
+minor complaints about
+/bin/sh: - : invalid option
+but this did not choke the compilation.
+
+So far so good !
+
+Robert
+
+-- 
+Robert Herzog
+Universit&#233; libre de Bruxelles
+Laboratoire de Bioinformatique
+Rue des Prof. Jeener et Brachet 12
+B 6041 Gosselies  Belgium
+Tel 32-2-6509978 fax 32-2-6509998
+Email : <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">rherzog at ulb.ac.be</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000001.html">[Mrs-user] install script in 2.0 branch
+</A></li>
+	<LI>Next message: <A HREF="000004.html">[Mrs-user] install script in 2.0 branch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2">[ date ]</a>
+              <a href="thread.html#2">[ thread ]</a>
+              <a href="subject.html#2">[ subject ]</a>
+              <a href="author.html#2">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

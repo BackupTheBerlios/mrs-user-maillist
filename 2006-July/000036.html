@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRSCommon.pm and some stray hard-coded paths
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRSCommon.pm%20and%20some%20stray%20hard-coded%20paths&In-Reply-To=%3C7C599822-0013-4F1D-AABF-1AB6C006D26B%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000035.html">
+   <LINK REL="Next"  HREF="000037.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRSCommon.pm and some stray hard-coded paths</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRSCommon.pm%20and%20some%20stray%20hard-coded%20paths&In-Reply-To=%3C7C599822-0013-4F1D-AABF-1AB6C006D26B%40hekkelman.com%3E"
+       TITLE="[Mrs-user] MRSCommon.pm and some stray hard-coded paths">maarten at hekkelman.com
+       </A><BR>
+    <I>Fri Jul  7 14:58:57 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000035.html">[Mrs-user] MRSCommon.pm and some stray hard-coded paths
+</A></li>
+        <LI>Next message: <A HREF="000037.html">[Mrs-user] Compilation error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#36">[ date ]</a>
+              <a href="thread.html#36">[ thread ]</a>
+              <a href="subject.html#36">[ subject ]</a>
+              <a href="author.html#36">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 7-jul-2006, om 13:36 heeft david coornaert het volgende geschreven:
+
+&gt;<i> Yeah I removed it harmlessly
+</I>&gt;<i>
+</I>&gt;<i> I also removed the path (since it is in /usr/local/bin )
+</I>&gt;<i> and it works,
+</I>&gt;<i> I guess batch system shell looks in there by default
+</I>
+Depends on the setup of your batch system... At the CMBI we're using  
+a cluster and they differ hugely from the submit host.
+
+&gt;<i> I have a problem tho (now that blast runs)
+</I>&gt;<i> blast jobs against SwissProt do work and are displayed (MRS-nicely)
+</I>&gt;<i> but against uniprot they run but are not displayed???? (*puzzled*)
+</I>
+I think I know what the problem is, it's on springbok, right?
+
+You have 'sprot|trembl' as an alias for uniprot. This won't work, I  
+believe there's a bug somewhere. What you should do is replace 'sprot| 
+trembl' with 'sprot+trembl'. The difference is that the latter is a  
+simple concatenation of the two databanks while the first is an  
+update. Uniprot is not an update collection like EMBL Release plus  
+EMBL Updates is. There's also a performance hit for update databanks  
+since the amount of work that needs to be done is more.
+
+And then, the order is also important. Suppose you consider sprot and  
+trembl an update combination, then sprot is the update for trembl and  
+the order should be 'trembl|sprot'. (The output of trembl is filtered  
+by sprot.)
+
+I'll have a look at that bug in mrs_blast, I know I had a look before  
+but don't remember what I saw then. :-)
+
+-maarten
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000035.html">[Mrs-user] MRSCommon.pm and some stray hard-coded paths
+</A></li>
+	<LI>Next message: <A HREF="000037.html">[Mrs-user] Compilation error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#36">[ date ]</a>
+              <a href="thread.html#36">[ thread ]</a>
+              <a href="subject.html#36">[ subject ]</a>
+              <a href="author.html#36">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

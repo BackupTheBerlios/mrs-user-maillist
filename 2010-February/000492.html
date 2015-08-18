@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Installation question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Installation%20question&In-Reply-To=%3C4B668925.9060905%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000493.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Installation question</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Installation%20question&In-Reply-To=%3C4B668925.9060905%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Installation question">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Mon Feb  1 08:56:21 CET 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000493.html">[Mrs-user] suggestion to add few more Makefile's targets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#492">[ date ]</a>
+              <a href="thread.html#492">[ thread ]</a>
+              <a href="subject.html#492">[ subject ]</a>
+              <a href="author.html#492">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Oscar Eriksson schreef:
+
+&gt;<i> This answer really spared me some time. Seems like that the only
+</I>&gt;<i> option is to get the program to compile in 64-bit then. Is there any
+</I>&gt;<i> reports about people who have done this on a mac (osx 10.6)? I
+</I>&gt;<i> remember that had quite a bit of trouble trying to do so, and that's
+</I>&gt;<i> why I switched to 32-bit.
+</I>
+I've dropped support for MacOS X for now. It proved to be too much 
+trouble trying to get MRS to run properly on that OS. And not to be 
+rude, but performance on MacOS X really sucked when compared to Linux.
+
+If you're serious about running MRS you should install a 64 bit Linux 
+somewhere. And if dedicated hardware is a problem you can always fall 
+back to a virtual machine, but don't expect too much performance wise in 
+that case.
+
+-maarten
+
+
+&gt;<i> On Fri, Jan 29, 2010 at 10:16 PM, Maarten L. Hekkelman
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">m.hekkelman at cmbi.ru.nl</A>&gt; wrote:
+</I>&gt;&gt;<i> Hi Oscar,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Op 29-jan-2010, om 14:21 heeft Oscar Eriksson het volgende geschreven:
+</I>&gt;&gt;&gt;<i> I'm trying to set up a mrs-web site locally on a mac osx 10.6 server
+</I>&gt;&gt;&gt;<i> and I've come across some problems. I just want to declare that I am
+</I>&gt;&gt;&gt;<i> no biologist, so my questions may be stupid.
+</I>&gt;&gt;<i> Neither am I :-) Didn't keep me from writing MRS.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I managed to build and run the site if I force it to run in 32-bit
+</I>&gt;&gt;&gt;<i> architecture (intel x86) by using perl5.8.9, but not everything works
+</I>&gt;&gt;&gt;<i> as I suppose it should.
+</I>&gt;&gt;<i> 32 bit is not good enough. The biological databanks are so huge you can
+</I>&gt;&gt;<i> forget to index those on a 32 bit machine. The smaller ones are doable
+</I>&gt;&gt;<i> though.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> First off, I could only build about half of the databases in
+</I>&gt;&gt;&gt;<i> databank.info file in the update_scripts folder. Is that normal or
+</I>&gt;&gt;&gt;<i> should I be able to build all databases in that file?
+</I>&gt;&gt;<i> Well, that depends. Considering the 32bit addressing, the big ones will
+</I>&gt;&gt;<i> definitively fail. Most smaller ones should be OK though. You might want to
+</I>&gt;&gt;<i> take a look at the per databank log files that are written in /data/status/
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Secondly, when I run the mrs-web frontend I can't get the fasta
+</I>&gt;&gt;&gt;<i> information from the databases. I only gets the output:
+</I>&gt;&gt;&gt;<i> &quot;...
+</I>&gt;&gt;&gt;<i> .pm' No such file or directory at /u
+</I>&gt;&gt;&gt;<i> sr/local/share/mrs/parser_scripts/MRSScript.pm line 45.
+</I>&gt;&gt;&gt;<i> &quot;
+</I>&gt;&gt;&gt;<i> Is this right?
+</I>&gt;&gt;<i> No. First of all, the snippet of data comes from a databank that does not
+</I>&gt;&gt;<i> contain sequences as far as I can see. That means there won't be a fasta
+</I>&gt;&gt;<i> either. But then the line:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Error in formatting entry: open 'MRS::Script::enzyme=HASH(0x848c110)/ID
+</I>&gt;&gt;&gt;<i>  1.1.1.5
+</I>&gt;&gt;<i> worries me. No idea how you managed to get that one.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Thirdly, when I try to run Clustal, I get the java exception:
+</I>&gt;&gt;&gt;<i> &quot;javax.servlet.ServletException: No clustal executable specified in
+</I>&gt;&gt;&gt;<i> mrs config file&quot;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I have installed clustalw2 and the executables are located in
+</I>&gt;&gt;&gt;<i> /usr/local/bin/clustalw2 as specified in /usr/local/etc/mrs-config.xml
+</I>&gt;&gt;&gt;<i> by the tag &lt;clustalw-exe&gt;
+</I>&gt;&gt;<i> The version of MRS you use most likely has a bug, the config file has two
+</I>&gt;&gt;<i> locations where the &lt;clustalw-exe&gt; tag occurs. One is in the base section,
+</I>&gt;&gt;<i> next to e.g. &lt;scriptdir&gt;. The other is in the &lt;server&gt; section for the
+</I>&gt;&gt;<i> clustalw server, next to &lt;address&gt;. I don't know which one is used in your
+</I>&gt;&gt;<i> version, but most likely it is the other one if you know what I mean. :-)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> And my last problem. When I try to run a blast, I get the output that
+</I>&gt;&gt;&gt;<i> the database isn't loaded.
+</I>&gt;&gt;&gt;<i> &quot;Failed to submit blast job Databank gpcrdb was not loaded&quot;
+</I>&gt;&gt;&gt;<i> I can only choose between two databases even thou I've successfully
+</I>&gt;&gt;&gt;<i> installed other data sources (according to the logfiles).
+</I>&gt;&gt;<i> Remember that you have to specify the databanks in each &lt;server&gt; section.
+</I>&gt;&gt;<i> The ones loaded by the &lt;search&gt; server are not automatically available to
+</I>&gt;&gt;<i> the &lt;blast&gt; server. Maybe this is why?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Best regards,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -maarten
+</I>&gt;&gt;<i>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000493.html">[Mrs-user] suggestion to add few more Makefile's targets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#492">[ date ]</a>
+              <a href="thread.html#492">[ thread ]</a>
+              <a href="subject.html#492">[ subject ]</a>
+              <a href="author.html#492">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

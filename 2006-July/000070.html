@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] usage of DATABASES in conf file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20usage%20of%20DATABASES%20in%20conf%20file&In-Reply-To=%3C44C77A14.2030909%40embl-heidelberg.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000069.html">
+   <LINK REL="Next"  HREF="000073.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] usage of DATABASES in conf file</H1>
+    <B>Dr. Andrea Schafferhans</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20usage%20of%20DATABASES%20in%20conf%20file&In-Reply-To=%3C44C77A14.2030909%40embl-heidelberg.de%3E"
+       TITLE="[Mrs-user] usage of DATABASES in conf file">andrea.schafferhans at embl-heidelberg.de
+       </A><BR>
+    <I>Wed Jul 26 16:20:04 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000069.html">[Mrs-user] usage of DATABASES in conf file
+</A></li>
+        <LI>Next message: <A HREF="000073.html">[Mrs-user] usage of DATABASES in conf file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#70">[ date ]</a>
+              <a href="thread.html#70">[ thread ]</a>
+              <a href="subject.html#70">[ subject ]</a>
+              <a href="author.html#70">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten,
+
+thanks for your quick answer.
+
+&gt;&gt;<i> after looking at the output of make -n in the update_scripts  
+</I>&gt;&gt;<i> directory I
+</I>&gt;&gt;<i> have the suspicion that my setting of the DATABASES variable in my
+</I>&gt;&gt;<i> make_xxx.conf file is not used.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Could it be that the line defining DBALLFLAGS in the Makefile should
+</I>&gt;&gt;<i> refer to the variable $DATABASES instead of referring to  
+</I>&gt;&gt;<i> $ALL_DATABASES?
+</I>&gt;<i> 
+</I>&gt;<i> No, that should make no difference. The ALL_DATABASES is used only to  
+</I>&gt;<i> create all the rules for all possible dbs. The db's actually made  
+</I>&gt;<i> depends on DATABASES.
+</I>&gt;<i> 
+</I>&gt;<i> You can play around with the rule test:
+</I>&gt;<i> 
+</I>&gt;<i> 	make test
+</I>Yes, I've done that and it says that the DATABASES variable is set 
+correctly. What I expected is that after setting the DATABASES variable, 
+make all would only make those databases. (Do you agree with that 
+expectation?) However, make all depends on DBALLFLAGS which in turn is 
+generated from ALL_DATABASES. Therefore, it ignores the setting of 
+DATABASES.
+
+&gt;<i> Simply running make -n without an argument should run a make all, but  
+</I>&gt;<i> I'm not sure if that will always work. What argument did you specify?
+</I>I tried it without an argument and with the argument 'all'. In both 
+cases it would make all databases that have ...make file in the 
+install_scripts directory.
+
+      Best wishes
+
+           Andrea
+
+
+P.S. Another hint for things to check in the install process: On my 
+system gzcat (known as zcat on my system) and formatdb weren't found. 
+Probably it would be good to notify the user during installation that 
+these tools are needed.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000069.html">[Mrs-user] usage of DATABASES in conf file
+</A></li>
+	<LI>Next message: <A HREF="000073.html">[Mrs-user] usage of DATABASES in conf file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#70">[ date ]</a>
+              <a href="thread.html#70">[ thread ]</a>
+              <a href="subject.html#70">[ subject ]</a>
+              <a href="author.html#70">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

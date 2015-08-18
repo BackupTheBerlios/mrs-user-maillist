@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] PROSITE documentation title line - Checked by	AntiVir DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20PROSITE%20documentation%20title%20line%20-%20Checked%20by%0A%09AntiVir%20DEMO%20version%20-&In-Reply-To=%3CCADD7CF4-E40E-43D5-AF67-B2AD44D5B0F6%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000199.html">
+   <LINK REL="Next"  HREF="000200.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] PROSITE documentation title line - Checked by	AntiVir DEMO version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20PROSITE%20documentation%20title%20line%20-%20Checked%20by%0A%09AntiVir%20DEMO%20version%20-&In-Reply-To=%3CCADD7CF4-E40E-43D5-AF67-B2AD44D5B0F6%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] PROSITE documentation title line - Checked by	AntiVir DEMO version -">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Fri Feb 16 17:09:39 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000199.html">[Mrs-user] PROSITE documentation title line - Checked by AntiVir	DEMO version -
+</A></li>
+        <LI>Next message: <A HREF="000200.html">[Mrs-user] problem with &quot;length&quot; - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 16-feb-2007, om 15:27 heeft Guy Bottu het volgende geschreven:
+&gt;<i>
+</I>&gt;<i> The stars come from the ****** lines around the title  as well as from
+</I>&gt;<i> the text (hence their unpredictable number). I think you can get  
+</I>&gt;<i> rid of
+</I>&gt;<i> them by replacing in prosite_doc.pm line 95
+</I>&gt;<i> elsif ($line =~ m/\*\s*(.+?)\s*\*/) {
+</I>&gt;<i> by
+</I>&gt;<i> elsif ($line =~ m/\*\s+(.+?)\s+\*/) {
+</I>
+Your suggestion will probably work, but I'm not so sure there will  
+always be whitespace between the title and the surrounding stars. And  
+thus I changed the line to:
+
+elsif ($line =~ m/\*\s*([^*].+?)\s*\*/) {
+
+And that seems to work fine.
+
+Thanks for the feedback.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000199.html">[Mrs-user] PROSITE documentation title line - Checked by AntiVir	DEMO version -
+</A></li>
+	<LI>Next message: <A HREF="000200.html">[Mrs-user] problem with &quot;length&quot; - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

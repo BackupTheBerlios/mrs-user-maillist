@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] problem with finding an entry in Uniprot
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20problem%20with%20finding%20an%20entry%20in%20Uniprot&In-Reply-To=%3C4BC5A9F2.1080306%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000568.html">
+   <LINK REL="Next"  HREF="000571.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] problem with finding an entry in Uniprot</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20problem%20with%20finding%20an%20entry%20in%20Uniprot&In-Reply-To=%3C4BC5A9F2.1080306%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] problem with finding an entry in Uniprot">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Apr 14 13:41:38 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000568.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+        <LI>Next message: <A HREF="000571.html">[Mrs-user] status update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#570">[ date ]</a>
+              <a href="thread.html#570">[ thread ]</a>
+              <a href="subject.html#570">[ subject ]</a>
+              <a href="author.html#570">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 13-04-10 11:36, Martin Senger schreef:
+
+&gt;<i> I found the following problem which I am not sure where it originates
+</I>&gt;<i> from: Using the mrs-web, I make a query for &quot;A7YL71&quot; in the databank
+</I>&gt;<i> &quot;Uniprot KB&quot;.
+</I>
+ &gt; ....
+
+&gt;<i> There is one thing which may be relevant: when I do &quot;mrs-test -d
+</I>&gt;<i> uniprot&quot; (but it also happened for other mrs command-line tools), I am
+</I>&gt;<i> getting a warning:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">senger at ShereKhan2</A>:/usr/local/data/mrs$ mrs-test -d uniprot
+</I>&gt;<i> *no file specified for db-join Uniprot KB*
+</I>&gt;<i> File: /usr/local/data/mrs/sprot.cmp
+</I>
+The problem was a configuration error in mrs-config.xml. A db-join 
+element should always have a file attribute.
+
+I'll release an update to MRS soon that will make sure a bug like this 
+won't happen anymore.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000568.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+	<LI>Next message: <A HREF="000571.html">[Mrs-user] status update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#570">[ date ]</a>
+              <a href="thread.html#570">[ thread ]</a>
+              <a href="subject.html#570">[ subject ]</a>
+              <a href="author.html#570">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

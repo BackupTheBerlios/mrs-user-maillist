@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Web for MRS
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Web%20for%20MRS&In-Reply-To=%3C347A3DBA-38F6-4137-95C2-7357EEC52420%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000134.html">
+   <LINK REL="Next"  HREF="000136.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Web for MRS</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Web%20for%20MRS&In-Reply-To=%3C347A3DBA-38F6-4137-95C2-7357EEC52420%40hekkelman.com%3E"
+       TITLE="[Mrs-user] Web for MRS">maarten at hekkelman.com
+       </A><BR>
+    <I>Wed Nov 15 21:37:17 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000134.html">[Mrs-user] Web for MRS
+</A></li>
+        <LI>Next message: <A HREF="000136.html">[Mrs-user] Web for MRS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#135">[ date ]</a>
+              <a href="thread.html#135">[ thread ]</a>
+              <a href="subject.html#135">[ subject ]</a>
+              <a href="author.html#135">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Christian,
+
+&gt;<i> The permissions of the databanks are all correct. But
+</I>&gt;<i> i cannot see the indexed databanks. If i try to have
+</I>&gt;<i> infos over go for example
+</I>&gt;<i> (<A HREF="http://escher/mrs/cgi-bin/mrs.cgi?dbinfo=go(">http://escher/mrs/cgi-bin/mrs.cgi?dbinfo=go(</A>)), i
+</I>&gt;<i> will get the following error:Databank not found: 'go'
+</I>&gt;<i> at
+</I>&gt;<i> /usr/lib/perl5/site_perl/5.8.8/i386-linux-thread-multi/MRS.pm
+</I>&gt;<i> line 98. This line refer to  my $self =
+</I>&gt;<i> MRSc::new_MDatabank(@_). I dont know , what is the
+</I>&gt;<i> really problem.
+</I>
+Things you can try:
+
+- in a terminal, go to the cgi-bin directory and type:
+
+$ perl mrs.cgi overview=1
+
+this way you start the mrs.cgi script from the commandline and it  
+should give you the HTML output, not some kind of error. If this  
+doesn't work you probably have an error in the mrs.conf file in cgi-bin.
+
+If this command works properly though, you could try to become the  
+web user and then run the same command to see if permissions are all  
+correct.
+
+And if that works correctly as well, you should let me know so I can  
+try to think of some more things you might check.
+
+-maarten
+
+
+&gt;<i> i will be very happy, if u can help me.
+</I>&gt;<i> best regards.
+</I>&gt;<i> christian.
+</I>&gt;<i> --- &quot;Maarten L. Hekkelman&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>&gt;
+</I>&gt;<i> schrieb:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Op 15-nov-2006, om 16:50 heeft christian Tsatedem
+</I>&gt;&gt;<i> het volgende
+</I>&gt;&gt;<i> geschreven:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> i have now acces to the web interface, but i
+</I>&gt;&gt;<i> cannot
+</I>&gt;&gt;&gt;<i> see the Databanks.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> This often means that the permissions of the
+</I>&gt;&gt;<i> databanks are not
+</I>&gt;&gt;<i> correct. Remember that the apache webserver runs as
+</I>&gt;&gt;<i> a different user
+</I>&gt;&gt;<i> than your own account and that may mean that the
+</I>&gt;&gt;<i> webserver cannot
+</I>&gt;&gt;<i> access the mrs files. The complete path from root to
+</I>&gt;&gt;<i> mrs file needs
+</I>&gt;&gt;<i> to be accessible by the web server user.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hope this helps.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -maarten
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 	
+</I>&gt;<i> 		
+</I>&gt;<i> ___________________________________________________________
+</I>&gt;<i> Der fr&#252;he Vogel f&#228;ngt den Wurm. Hier gelangen Sie zum neuen Yahoo!  
+</I>&gt;<i> Mail: <A HREF="http://mail.yahoo.de">http://mail.yahoo.de</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+my root certificate can be found at:
+<A HREF="https://bsd.hekkelman.com/~maarten/cacert.crt">https://bsd.hekkelman.com/~maarten/cacert.crt</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000134.html">[Mrs-user] Web for MRS
+</A></li>
+	<LI>Next message: <A HREF="000136.html">[Mrs-user] Web for MRS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#135">[ date ]</a>
+              <a href="thread.html#135">[ thread ]</a>
+              <a href="subject.html#135">[ subject ]</a>
+              <a href="author.html#135">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

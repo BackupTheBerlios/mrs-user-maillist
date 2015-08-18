@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] how to set-up SOAP web services
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20how%20to%20set-up%20SOAP%20web%20services&In-Reply-To=%3C4d93f07c1002070533s7d4ce11i9cf9b5b4a362952b%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000499.html">
+   <LINK REL="Next"  HREF="000503.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] how to set-up SOAP web services</H1>
+    <B>Martin Senger</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20how%20to%20set-up%20SOAP%20web%20services&In-Reply-To=%3C4d93f07c1002070533s7d4ce11i9cf9b5b4a362952b%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] how to set-up SOAP web services">martin.senger at gmail.com
+       </A><BR>
+    <I>Sun Feb  7 14:33:19 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000499.html">[Mrs-user] how to set-up SOAP web services
+</A></li>
+        <LI>Next message: <A HREF="000503.html">[Mrs-user] how to set-up SOAP web services
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#502">[ date ]</a>
+              <a href="thread.html#502">[ thread ]</a>
+              <a href="subject.html#502">[ subject ]</a>
+              <a href="author.html#502">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Many thanks for your clarification. It's very helpful, and I think I am
+almost there :-)
+
+Just to re-iterate (to be sure that I got it right):
+
+* All SOAP requests are directed to the mrs-ws server (or servers). Either
+directly, using just the needed port, e.g. <A HREF="http://localhost:18081/,">http://localhost:18081/,</A> or (more
+often) using a reverse proxy that maps various URLs - all usually coming via
+port 80 - to the individual ports/machines of the mrs-ws(s).
+
+* The mrsweb application uses the mrs-ws - meaning that mrsweb is a SOAP
+client (and it does the SOAP calls via classes generated from the WSDL).
+
+Few things, however, are still a bit vague to me:
+
+* Who (what) generates WSDL - the one with my own service location (taken
+from the &lt;external-address&gt; in mrs-config.xml)? Or perhaps nobody generates
+it, perhaps I need to change it there manually? Then, who is using the tag
+&lt;external-address&gt;? Does the mrs-ws server need to know its own external
+address (probably not)?
+
+* Why the released mrs war file has the WSDL files in the WEB-INF directory?
+I would think that the WSDL files should be in the publicly available space,
+not in the hidden WEB-INF. Or, perhaps they are generated on the fly when
+requested for (something like that was possible with axis1)?
+
+* Finally, is there a SOAP operation returning the list of available
+databanks? [Or is the select menu in the top of the main web page, the &quot;All
+Databanks&quot;, hard-coded?]. Could it be the UpdateStatusInfo, perhaps?
+
+Thanks and I am sorry for bothering with so many questions (I promise I will
+stop soon),
+Martin
+
+-- 
+Martin Senger
+email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+skype: martinsenger
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20100207/3be7b370/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20100207/3be7b370/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000499.html">[Mrs-user] how to set-up SOAP web services
+</A></li>
+	<LI>Next message: <A HREF="000503.html">[Mrs-user] how to set-up SOAP web services
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#502">[ date ]</a>
+              <a href="thread.html#502">[ thread ]</a>
+              <a href="subject.html#502">[ subject ]</a>
+              <a href="author.html#502">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

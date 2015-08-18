@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] mrs 5.0.2 released
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs%205.0.2%20released&In-Reply-To=%3C4DC2D97D.6020805%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000597.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] mrs 5.0.2 released</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs%205.0.2%20released&In-Reply-To=%3C4DC2D97D.6020805%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] mrs 5.0.2 released">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Thu May  5 19:08:13 CEST 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000597.html">[Mrs-user] How to use MRS as Database for EMBOSS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#596">[ date ]</a>
+              <a href="thread.html#596">[ thread ]</a>
+              <a href="subject.html#596">[ subject ]</a>
+              <a href="author.html#596">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear MRS user,
+
+I've created a new release, version 5 is now final. As you may notice, 
+the version number is actually 5.0.2b and of course this means I've 
+debugged it already quite a bit.
+
+The most important new feature is the addition of the new web 
+application (which was actually implemented in libzeep). This mean you 
+no longer need a separate Java web application to access MRS with a web 
+browser.
+
+Now this unfortunately also means that backward compatibility with older 
+browsers had to be axed. I decided that apart from Firefox (3.6), Opera 
+and Chrome I now support only Internet Explorer 9.0 since supporting 8.0 
+and older was a bit too much work. But in the beautiful tradition of 
+'Open Source' software, you're free to fix this. The only thing that 
+needs to be fixed is a couple of JavaScript files, I think... If you 
+feel like helping here, go to the docroot directory for MRS (default is 
+/var/lib/mrs/docroot) and hack the HTML and JavaScript there.
+
+Another major change is the support for more the Unicode character set. 
+I've received reports that it is now possible to index Chinese text and 
+even search it.
+
+This also means you have to add a charset specification to the parser 
+files. By default MRS assumes ASCII text (most databanks are ascii 
+anyway) but you can specify utf8 as character set in the constructor of 
+the parser. See wiki.pm for an example.
+
+I've renamed the tools a bit, to run an update you now can use the 
+mrs-update tool (which is actually simply an executable makefile). I 
+also made configuration a bit easier by trying to reduce the number of 
+configuration files. And the default location for configuration files 
+has changed a little (they are now together in a separate directory 
+inside /etc).
+
+To make installation easier if you're using Ubuntu, I create a PPA. This 
+means that if you have Ubuntu Maverick (10.10) on an amd64 machine, you 
+can do the following to install MRS from scratch:
+
+sudo apt-add-repository ppa:hekkel/ppa
+sudo apt-get update
+sudo apt-get install mrs-all
+
+See the <A HREF="https://launchpad.net/~hekkel/+archive/ppa">https://launchpad.net/~hekkel/+archive/ppa</A> page for more info on 
+this PPA.
+
+After installing MRS this way you can run e.g.:
+
+mrs-update enzyme
+
+(That's not going to work on a fresh install, you'll have to run
+'sudo -u mrs-dba mrs-update enzyme' since the directories are by default 
+owned by user mrs-dba).
+
+Starting the web-service is done by running
+
+sudo /etc/init.d/mrs-ws start
+
+After which you can access the MRS web interface at port 18080.
+
+If you want to build from source code, you can also fetch the source from
+
+<A HREF="ftp://ftp.cmbi.ru.nl/pub/software/mrs/">ftp://ftp.cmbi.ru.nl/pub/software/mrs/</A>
+
+Don't forget you also need libzeep, which can be found here as well.
+
+There are man pages for all the installed tools, in case you need help.
+
+Changes that didn't make it in this release are the NCBI blast 
+integration. That will have to wait for a next release, I hope it won't 
+take too long.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000597.html">[Mrs-user] How to use MRS as Database for EMBOSS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#596">[ date ]</a>
+              <a href="thread.html#596">[ thread ]</a>
+              <a href="subject.html#596">[ subject ]</a>
+              <a href="author.html#596">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

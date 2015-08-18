@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Installing gene - Checked by AntiVir DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Installing%20gene%20-%20Checked%20by%20AntiVir%20DEMO%20version%20-&In-Reply-To=%3C18DCEAE2-5FC8-448D-BDD3-B51F64514F93%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000218.html">
+   <LINK REL="Next"  HREF="000219.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Installing gene - Checked by AntiVir DEMO version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Installing%20gene%20-%20Checked%20by%20AntiVir%20DEMO%20version%20-&In-Reply-To=%3C18DCEAE2-5FC8-448D-BDD3-B51F64514F93%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Installing gene - Checked by AntiVir DEMO version -">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Mon Mar 12 14:50:08 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000218.html">[Mrs-user] Installing gene - Checked by AntiVir DEMO version -
+</A></li>
+        <LI>Next message: <A HREF="000219.html">[Mrs-user] boolean support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#220">[ date ]</a>
+              <a href="thread.html#220">[ thread ]</a>
+              <a href="subject.html#220">[ subject ]</a>
+              <a href="author.html#220">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 12-mrt-2007, om 12:02 heeft Guy Bottu het volgende geschreven:
+&gt;<i>
+</I>&gt;<i> I experienced some trouble installing the &quot;gene&quot; database. The file
+</I>&gt;<i> gene.make contains :
+</I>
+  ... snip ...
+
+&gt;<i> I am afraid that two different approaches at installing gene,  
+</I>&gt;<i> storing the
+</I>&gt;<i> XML format file in &quot;uncompressed&quot; and doing the reformatting from  
+</I>&gt;<i> binary
+</I>&gt;<i> to XML on-the-fly, have been mixed.
+</I>
+And I'm afraid I never fixed the gene make and parser scripts after  
+updating MRS to version 3...
+
+I've submitted a new version for both this afternoon.
+
+BTW, the gene.pm script requires a XSLT processor to be installed,  
+preferably Xalan. That's something I need to fix in a later release.
+
+&gt;<i> By the way, does the possibility to
+</I>&gt;<i> &quot;return&quot; the output of a piped command still work under MRS 3 ?
+</I>
+I dropped that in the mrs update to version 3 but I re-added it this  
+afternoon. It is in the trunk version.
+
+What I did is moving the code that does the mapping into a method of  
+the script object where you can choose to override it. The method is  
+called map_ext2cmd.
+
+The default version of this method maps gz, Z and bz2. You can add a  
+new mapping by either overriding this method or adding a field to the  
+parser hash values like in gene.pm:
+
+sub new
+{
+	my $invocant = shift;
+	my $self = {
+		url			=&gt; '<A HREF="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=gene">http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=gene</A>',
+		name		=&gt; '(Entrez-) Gene',
+		meta		=&gt; [ 'title' ],
+		section		=&gt; 'gene',
+		raw_files	=&gt; qr/All_Data\.ags\.gz/,
+		ext_mapping	=&gt; {
+			extension	=&gt; qr/.+\.ags\.gz$/,
+			command		=&gt; '&quot;./gene2xml -i $file -o stdout -b -c |&quot;'
+		},
+		@_
+	};
+	return bless $self, &quot;MRS::Script::gene&quot;;
+}
+
+See the ext_mapping construct.
+
+Hope this helps.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000218.html">[Mrs-user] Installing gene - Checked by AntiVir DEMO version -
+</A></li>
+	<LI>Next message: <A HREF="000219.html">[Mrs-user] boolean support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#220">[ date ]</a>
+              <a href="thread.html#220">[ thread ]</a>
+              <a href="subject.html#220">[ subject ]</a>
+              <a href="author.html#220">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [mrs-user] Me and M6 are still alive
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2012-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20Me%20and%20M6%20are%20still%20alive&In-Reply-To=%3CCC1CB3D3.DF11%25george.marselis%40kaust.edu.sa%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000655.html">
+   <LINK REL="Next"  HREF="000656.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[mrs-user] Me and M6 are still alive</H1>
+    <B>George Marselis</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20Me%20and%20M6%20are%20still%20alive&In-Reply-To=%3CCC1CB3D3.DF11%25george.marselis%40kaust.edu.sa%3E"
+       TITLE="[mrs-user] Me and M6 are still alive">George.MARSELIS at KAUST.EDU.SA
+       </A><BR>
+    <I>Fri Jul  6 17:58:09 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000655.html">[mrs-user] Me and M6 are still alive
+</A></li>
+        <LI>Next message: <A HREF="000656.html">[mrs-user] Me and M6 are still alive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#653">[ date ]</a>
+              <a href="thread.html#653">[ thread ]</a>
+              <a href="subject.html#653">[ subject ]</a>
+              <a href="author.html#653">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hey George, that's a lot of questions you're asking.  I'll try to answer them all.
+
+
+
+Hehehe, my apologies! I will try to ask less ignorant questions next time ^_^
+
+
+First, formatting. That's the process of taking a raw document (entry in a databank) and turn it into something more readable and useful. In the previous versions of MRS this was done by the parser scripts (written in Perl) and handled by the server. The new MRS will leave this task to the browser. Just look at the source code for a SwissProt entry in <A HREF="http://mrs.cmbi.ru.nl:18090/">http://mrs.cmbi.ru.nl:18090/</A>
+
+That's cool. Browsers can do a lot more these days. Especially now that Microsoft seems &#8211;thankfully&#8211; keen to shut down IE6 for ever
+
+
+
+
+The memory usage of MRS is something that is tied to the speed of indexing. It is something that cannot be changed unless you would accept a tenfold increase in indexing time (at least tenfold). I don' t know if the amount of RAM needed has changed in the new version, have to check that.
+
+Hmmm&#8230;. Is there a way to redirect, during runtime, where the indexing may be done? For example I got half a terabyte of SAS 6GB/sec at 15krpm in raid6+0 max raid level. I also have a SATA III controller with 2gb cache with raid 6+0 max as well, and a bunch of intel SATA III SSDs . It's not as fast as DDR3-10600 but still would like to see the performance difference. For me, it makes more sense to buy fast storage than buy more memory for my (limited) resources, as our mrs installation in in VirtualBox and it has to play along with all the other VMs.
+
+
+On the estimate of disk usage, a rough guess is that the generated MRS file is less than the size of the uncompressed raw data and sometimes even the half of that. The new MRS will give you a couple of progress bars that will help you estimate how long the indexing will take.
+
+I have to apologize  for the silly question, but can you please remind me how does MRS schedule the indexing? Is it a cronjob, or is it done in the makefile, after updating is done?
+
+I am asking because there is this technique VirtualBox called &quot;memory ballooning&quot;. It is basically run-time dynamic memory allocation to a VM, much as if you were to stick another memory board on a mainframe and it would happily start using it, after initialization.
+
+If there is a predictable way to tell/query the M6 server when it is thinking about starting indexing and when it is going to finish,  I could then use Memory ballooning in VirtualBox to allocate more memory by taking memory away from other virtual machines, or shutting them down for the duration of indexing.
+
+Also, hmmm, I think I can write a nagios module to check the status of the indexing&#8230;
+
+
+
+
+SOAP will stay. We use it extensively in house and e.g. the MRS::Client script of Martin Senger depends on it. For those who dislike SOAP, the same code supports REST style calls for most of the functions. I use JSON in the web interface. I could add a new API for use with JavaScript, but you can use SOAP from JavaScript as well so I don't see much added value here.
+
+
+
+10-4
+
+
+And no, git is not an option. Sorry. I'm very happy with subversion. BTW, you can now access the code repository at <A HREF="https://svn.cmbi.ru.nl/m6/">https://svn.cmbi.ru.nl/m6/</A> If you want to try things out, you will have to have libzeep installed (it is included in Debian wheezy).
+
+
+
+Woot. git svn clone  works just fine ;)
+
+
+And then the most difficult question you asked... a plan. I don't have one yet. I'll have to make one, but before I do, I need to know what the priorities are for you guys. Like I said, I had some ambitious goals like having just a single executable and nothing else, every configuration done in a web app. But I realize that's a lot of work and I get the feeling an update is needed quickly since the old MRS is running into performance problems. Is that just me, or do you agree?
+
+
+
+Totally agree! Just please keep in mind that I am seeing things from the operations side. So, any remarks I am making have the usual flavor of Scary Devil Monastery.
+
+So, from the operations side, my priorities for MRS right now are:
+
+ *   OS specific packages or
+ *   Package it within a Virtual Machine (vbox prefered) so I can server it to users as an appliance  with the data over nfs/san or separate virtual disk (with failover/teleporting, of course)
+ *   Resource consumption mapping
+ *   Puppet/chef recipe
+
+That's it, I think. Let's see what everybody else has to say. Maybe put up a bug tracker and use it as a feature request tracker? Maybe RT?
+
+
+-maarten
+
+
+
+
+
+Best,
+----
+George Marselis, systems administrator
+Building #2, Level 4, room 4327
+Computational Bioscience Research Center, KAUST
+Land: +966-2-808-2944, Mobile: +966-56-321-7713, Skype: project2501a
+
+________________________________
+This message and its contents including attachments are intended solely for the original recipient. If you are not the intended recipient or have received this message in error, please notify me immediately and delete this message from your computer system. Any unauthorized use or distribution is prohibited. Please consider the environment before printing this email.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20120706/b77e4d66/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20120706/b77e4d66/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000655.html">[mrs-user] Me and M6 are still alive
+</A></li>
+	<LI>Next message: <A HREF="000656.html">[mrs-user] Me and M6 are still alive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#653">[ date ]</a>
+              <a href="thread.html#653">[ thread ]</a>
+              <a href="subject.html#653">[ subject ]</a>
+              <a href="author.html#653">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the mrs-user
+mailing list</a><br>
+</body></html>

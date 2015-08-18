@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Questions and report after successful installation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20successful%20installation&In-Reply-To=%3C977B49CB-546A-4450-83E4-49D3776F6D2F%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000257.html">
+   <LINK REL="Next"  HREF="000259.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Questions and report after successful installation</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20successful%20installation&In-Reply-To=%3C977B49CB-546A-4450-83E4-49D3776F6D2F%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Questions and report after successful installation">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Fri Jun  8 17:40:19 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000257.html">[Mrs-user] Questions and report after successful installation
+</A></li>
+        <LI>Next message: <A HREF="000259.html">[Mrs-user] Questions and report after successful installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#258">[ date ]</a>
+              <a href="thread.html#258">[ thread ]</a>
+              <a href="subject.html#258">[ subject ]</a>
+              <a href="author.html#258">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Alvaro,
+
+I'm sorry about your installation woes. It seems my install script  
+isn't finished yet, I'll try to fix those problems asap.
+
+What you should do on MacOS is use DarwinPorts, or MacPorts as it is  
+called these days. Using that you can type
+
+	port install boost
+	port install gsoap
+
+and that's about all you need to have both boost and gsoap installed  
+on your computer. See &lt;<A HREF="http://www.macports.org/">http://www.macports.org/</A>&gt;
+
+To use the soap servers, you will have to start them manually. I did  
+not include scripts to start mrsws and friends automatically, I  
+always start them from within a 'screen' session on my computers.  
+That way I can monitor what happens. I'll see if I can write some  
+script to startup these SOAP servers at boot time, but that's all  
+very system specific.
+
+Now I will try to answer your questions.
+&gt;<i>
+</I>&gt;<i> 1 ) Down there are the starting lines of my etc/mrs-config.xml for my
+</I>&gt;<i> three SOAP servers. It seems that both search and blast have no -exe
+</I>&gt;<i> entity as for &lt;clustalw-exe&gt;. Is that okay? How is it then the blast
+</I>&gt;<i> run? I guess it is some kind of client itself to another blast
+</I>&gt;<i> service... but a better explanation? Is it WS reading this file so  
+</I>&gt;<i> if I
+</I>&gt;<i> change the params (specially, ports) will be automatically taken.
+</I>
+I've implemented the Blast algorithm myself. It is fully compatible  
+with NCBI blastall version 2.2.7 (I believe). That's how I can do  
+blast searches against the results of a boolean MRS query.
+
+&gt;<i> 2 ) I indexed BLOCKS successfully BLOCKS but I can see it anywhere in
+</I>&gt;<i> the databanks. And there are some small databases that I want to index
+</I>&gt;<i> and fail. How can I trace why.
+</I>
+First of all, when you build a databank there will be logs files  
+written in $MRS_DATA_DIR/status . These log files are rotated so you  
+can see older versions as well. They contain the output for all steps  
+taken in mirroring and updating the data files.
+
+There is a script for these log files that produces a web page like  
+this:
+
+&lt;<A HREF="http://mrs.cmbi.ru.nl/mrs/cgi-bin/databanks.cgi">http://mrs.cmbi.ru.nl/mrs/cgi-bin/databanks.cgi</A>&gt;
+
+This script is part of the MRS 2 package, I've not yet created such a  
+page for MRS-3 but you can install the MRS-2 cgi scripts if you want.  
+They can be fetched from Berlios with svn from the location:
+
+<A HREF="https://svn.berlios.de/svnroot/repos/mrs/branches/2.0/web-simple/">https://svn.berlios.de/svnroot/repos/mrs/branches/2.0/web-simple/</A>
+
+Then, when the mrs file is created, you must make sure the file is  
+also readable by the mrsws application. (permissions) And if you  
+update a file by hand you have to tell the running mrsws application  
+that the data has been updated by issuing:
+
+killall -HUP mrsws
+
+That will tell the running mrsws to reload all datafiles.
+
+&gt;<i> 3 ) This last question is useful because I have had no time to look  
+</I>&gt;<i> into
+</I>&gt;<i> the make process of MRS. Is anybody with a good pointer to  
+</I>&gt;<i> documentation
+</I>&gt;<i> where to read about &quot;How to add my own/additional databanks to my  
+</I>&gt;<i> site&quot;
+</I>&gt;<i> and &quot;how to write parsers for them?&quot;.
+</I>
+Look at <A HREF="https://svn.berlios.de/svnroot/repos/mrs/branches/3.0.1/doc/">https://svn.berlios.de/svnroot/repos/mrs/branches/3.0.1/doc/</A>
+
+There's a file called mrs-plugin-tutorial.txt
+
+It contains most of the information you need to create your own parsers.
+
+&gt;<i> I have my own databases downloaded (Swissprot, EnsEMBL) and I would  
+</I>&gt;<i> like
+</I>&gt;<i> to try to index them. I haven't got very far until now in  
+</I>&gt;<i> understanding
+</I>&gt;<i> the make.pre and make.post mechanism but I hope for some help.
+</I>
+The tutorial tells you about the plugin architecture. The make files  
+are not fully documented yet I believe. You could try to write them  
+by homology for now and ask for help here. I'll try to write better  
+documentation soon.
+
+&gt;<i> 4 ) How to use successfully and develop a web client service for MRS?
+</I>&gt;<i> How can I use the 3 SOAP servers available?
+</I>
+The wsdl files are generated in the mrs/ws/*/Sources directories.
+
+The URL &lt;<A HREF="http://mrs.cmbi.ru.nl/mrs/doc/">http://mrs.cmbi.ru.nl/mrs/doc/</A>&gt; points to some documentation  
+about the C++ interface of the MRS library. This documentation can be  
+generated locally by issuing the command
+
+make doc
+
+in the plugin directory. You do need the tool doxygen for that  
+though. The Perl plugin is directly constructed from this C++  
+interface and thus has the same methods and parameters.
+
+To conclude, yes I know that documentation is an issue. I will devote  
+most of my time in the coming months on writing better documentation.  
+But until then feel free to ask questions here. I'll try to respond  
+to them the best I can.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000257.html">[Mrs-user] Questions and report after successful installation
+</A></li>
+	<LI>Next message: <A HREF="000259.html">[Mrs-user] Questions and report after successful installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#258">[ date ]</a>
+              <a href="thread.html#258">[ thread ]</a>
+              <a href="subject.html#258">[ subject ]</a>
+              <a href="author.html#258">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

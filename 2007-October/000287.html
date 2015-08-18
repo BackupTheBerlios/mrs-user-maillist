@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Antwort: Re:  Problems with tomcat struts java
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Antwort%3A%20Re%3A%20%20Problems%20with%20tomcat%20struts%20java&In-Reply-To=%3COF806AE9DD.42142A60-ONC125736F.005313A3-C125736F.0053729C%40basf-c-s.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000286.html">
+   <LINK REL="Next"  HREF="000288.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Antwort: Re:  Problems with tomcat struts java</H1>
+    <B>gregor.haberhauer at basf.com</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Antwort%3A%20Re%3A%20%20Problems%20with%20tomcat%20struts%20java&In-Reply-To=%3COF806AE9DD.42142A60-ONC125736F.005313A3-C125736F.0053729C%40basf-c-s.be%3E"
+       TITLE="[Mrs-user] Antwort: Re:  Problems with tomcat struts java">gregor.haberhauer at basf.com
+       </A><BR>
+    <I>Tue Oct  9 17:11:28 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000286.html">[Mrs-user] Problems with tomcat struts java
+</A></li>
+        <LI>Next message: <A HREF="000288.html">[Mrs-user] remark about nonexistant fields
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#287">[ date ]</a>
+              <a href="thread.html#287">[ thread ]</a>
+              <a href="subject.html#287">[ subject ]</a>
+              <a href="author.html#287">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Maarten,
+
+Thank you very much for the tip unfortunately this did not solve the 
+problem.
+
+What I have tried so far:
+
+* Installed the Sun JAVA JDK
+* Installed the Tomcat 5.5 
+
+But still got the same error:
+
+org.apache.jasper.JasperException: Cannot find global ActionForward for 
+name welcome
+ 
+org.apache.jasper.servlet.JspServletWrapper.handleJspException(JspServletWrapper.java:460)
+ 
+org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:355)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:329)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:265)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+
+root cause 
+javax.servlet.ServletException: Cannot find global ActionForward for name 
+welcome
+ 
+org.apache.jasper.runtime.PageContextImpl.doHandlePageException(PageContextImpl.java:841)
+ 
+org.apache.jasper.runtime.PageContextImpl.handlePageException(PageContextImpl.java:774)
+ org.apache.jsp.welcome_jsp._jspService(welcome_jsp.java:72)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:98)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+ 
+org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:331)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:329)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:265)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+
+root cause 
+javax.servlet.jsp.JspException: Cannot find global ActionForward for name 
+welcome
+ org.apache.struts.taglib.logic.ForwardTag.doEndTag(ForwardTag.java:92)
+ 
+org.apache.jsp.welcome_jsp._jspx_meth_logic_005fforward_005f0(welcome_jsp.java:89)
+ org.apache.jsp.welcome_jsp._jspService(welcome_jsp.java:62)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:98)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+ 
+org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:331)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:329)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:265)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+
+note The full stack trace of the root cause is available in the Apache 
+Tomcat/5.5.25 logs.
+
+
+Do you have any further ideas!! 
+
+Best,
+
+Gregor
+
+
+
+
+
+
+
+
+&quot;Maarten L. Hekkelman&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>&gt; 
+08.10.2007 20:19
+
+An
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">gregor.haberhauer at basf.com</A>
+Kopie
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+Thema
+Re: [Mrs-user] Problems with tomcat struts java (Plain)
+
+
+
+
+
+
+Dear Gregor,
+
+&gt;<i> I am right at the beginning of testing MRS and have downloaded the 
+</I>&gt;<i> tar file from the berlios archive.
+</I>&gt;<i>
+</I>&gt;<i> I was quiet easy to compile it under SuseEnterprisw Workstation 10.
+</I>
+good to hear, for the next release I hope to improve this part a bit 
+more.
+
+&gt;<i> But finaly I got problems with the Tomcat installation.
+</I>
+I recently tried MRS on an OpenSUSE 10.2 installation. I remember I 
+had some problems here similar to what you describe. I believe they 
+were caused by the fact that SuSE does not come with SUN's Java but 
+with Kaffe. Once you've installed SUN's Java SDK and edited the 
+tomcat startup scripts to use this Java then everything should work OK.
+
+You might also want to use Tomcat 5.5 to be sure, that's the version 
+I'm using myself. You can download it from <A HREF="http://tomcat.apache.org/">http://tomcat.apache.org/</A>
+
+Hope this helps. Please let me know if you need more help.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+06 26 750 799
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20071009/491155bb/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20071009/491155bb/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000286.html">[Mrs-user] Problems with tomcat struts java
+</A></li>
+	<LI>Next message: <A HREF="000288.html">[Mrs-user] remark about nonexistant fields
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#287">[ date ]</a>
+              <a href="thread.html#287">[ thread ]</a>
+              <a href="subject.html#287">[ subject ]</a>
+              <a href="author.html#287">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

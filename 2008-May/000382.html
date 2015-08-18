@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] bug fixes and extra's for Pfam
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20bug%20fixes%20and%20extra%27s%20for%20Pfam&In-Reply-To=%3C48295F74.3060101%40vub.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000381.html">
+   <LINK REL="Next"  HREF="000384.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] bug fixes and extra's for Pfam</H1>
+    <B>Guy Bottu</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20bug%20fixes%20and%20extra%27s%20for%20Pfam&In-Reply-To=%3C48295F74.3060101%40vub.ac.be%3E"
+       TITLE="[Mrs-user] bug fixes and extra's for Pfam">gbottu at vub.ac.be
+       </A><BR>
+    <I>Tue May 13 11:29:24 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000381.html">[Mrs-user] Contact List of surgeons etc..
+</A></li>
+        <LI>Next message: <A HREF="000384.html">[Mrs-user] bug fixes and extra's for Pfam
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#382">[ date ]</a>
+              <a href="thread.html#382">[ thread ]</a>
+              <a href="subject.html#382">[ subject ]</a>
+              <a href="author.html#382">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>	Dear Maarten, dear all,
+
+This weekend I was testing something and got surprised by the fact that in the 
+Pfam-A databank the field 'tp' contained a keyword 'tp'. I took a look and 
+understood why. I take the occasion to send you a modified version of the file 
+pfam.pm, with also and older fix for another problem :
+
+- There are two lines with
+    substr($line, 5)
+    but the file goes
+    #=GF TP   Domain
+    so the text to be parsed starts at posion 11 rather then 6. Putting
+    everywhere  $value  instead fixes it.
+-  The data files for Pfam-B and Pfam-A-seed had been inverted
+
+As well as with some enhancements, which you might or might not find useful :
+- a list of long field names
+- a numeric 'The number of sequences per cluster' field
+- not indexing some fields with technical information about how the model was
+   built
+- a version section (to make it work the updater must also retrieve
+   relnotes.txt)
+
+	Regards,
+	Guy Bottu,
+	Belgian EMBnet Node
+
+
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: pfam.pm
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20080513/ac598722/attachment.ksh">https://lists.berlios.de/pipermail/mrs-user/attachments/20080513/ac598722/attachment.ksh</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000381.html">[Mrs-user] Contact List of surgeons etc..
+</A></li>
+	<LI>Next message: <A HREF="000384.html">[Mrs-user] bug fixes and extra's for Pfam
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#382">[ date ]</a>
+              <a href="thread.html#382">[ thread ]</a>
+              <a href="subject.html#382">[ subject ]</a>
+              <a href="author.html#382">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

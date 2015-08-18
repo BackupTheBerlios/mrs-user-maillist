@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Perl script for retrieving entry in HTML format ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Perl%20script%20for%20retrieving%20entry%20in%20HTML%20format%20%3F&In-Reply-To=%3C7B727E6940204BAFAFF1C22C82263891%40xps%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000450.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Perl script for retrieving entry in HTML format ?</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Perl%20script%20for%20retrieving%20entry%20in%20HTML%20format%20%3F&In-Reply-To=%3C7B727E6940204BAFAFF1C22C82263891%40xps%3E"
+       TITLE="[Mrs-user] Perl script for retrieving entry in HTML format ?">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Sat Jul 25 17:16:53 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000450.html">[Mrs-user] Perl script for retrieving entry in HTML format ?
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#451">[ date ]</a>
+              <a href="thread.html#451">[ thread ]</a>
+              <a href="subject.html#451">[ subject ]</a>
+              <a href="author.html#451">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Guy,
+
+You were close. If you look at the pp subroutine in e.g. uniprot.pm you'll 
+see:
+
+sub pp
+{
+	my ($this, $q, $text, $id, $url) = @_;
+
+The this parameter is the pointer to the parser object itself, the other 
+parameters are:
+
+$q: An instance of CGI which is part of the standard Perl libraries. Use $q= 
+new CGI; to create one.
+
+$text is the raw entry as a string.
+
+$id is the ID for this entry, most scripts ignore this one.
+
+$url is used to find out the base url for this entry. Don't know if it is 
+still used anywhere.
+
+However, I'm not sure if this is all going to work. These scripts as I wrote 
+them are intended to be used by the embedded perl interpreters in 
+mrs-builder and mrs-ws. Problem is that the parsers are objects that are 
+derived from a base class MRS::Script which is defined in MRSScript.pm. The 
+base class has several functions used by the HTML generating routines in 
+some parser scripts. And if you create the parsers yourself, you might miss 
+those inherited routines.
+
+If you really need HTML, consider using a running mrs service instance. The 
+new mrs web service has a REST style interface so you could do the following 
+to retrieve the HTML for a Uniprot entry:
+
+#!/bin/perl
+use strict;
+use LWP::Simple;
+use XML::Simple;
+
+my $db = 'uniprot';
+my $id = '104k_thepa';
+my $format = 'html';
+my $url = 
+&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/search/rest/GetEntry/db/$db/id/$id/format/$format">http://mrs.cmbi.ru.nl/mrsws/search/rest/GetEntry/db/$db/id/$id/format/$format</A>&quot;;
+
+my $soap_env = get($url) or die $@;
+
+my $xml = XMLin($soap_env);
+my $html = $xml-&gt;{'env:Body'}-&gt;{'GetEntryResponse'}-&gt;{'entry'};
+
+print $html;
+
+As you can see, that's by far the easiest way to fetch an entry. Well, in my 
+eyes anyway. You can also use your webbrowser to see how this works by 
+entering the url. And you can see how to parse the results by simply looking 
+at the XML returned by the REST call.
+
+Best regards,
+
+-maarten
+
+
+--------------------------------------------------
+From: &quot;Guy Bottu&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">gbottu at vub.ac.be</A>&gt;
+Sent: Saturday, July 25, 2009 10:56 AM
+To: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>&gt;
+Subject: [Mrs-user] Perl script for retrieving entry in HTML format ?
+
+&gt;<i> Dear Maarten, dear all,
+</I>&gt;<i>
+</I>&gt;<i> I have started to integrate MRS version 4 under the wrappers4EMBOSS
+</I>&gt;<i> suite. You can see below a test script that accesses a local
+</I>&gt;<i> installation of MRS. I could figure out how to obtain the id, the
+</I>&gt;<i> complete entry and also just the sequence (by calling the &quot;sequence&quot;
+</I>&gt;<i> subroutine of the embl.pm file). I however could not figure out how to
+</I>&gt;<i> obtain an entry formatted in HTML ; maybe by calling the &quot;pp&quot;
+</I>&gt;<i> subroutine, but I could find nowhere information about how to do it.
+</I>&gt;<i> Does someone have a clue ?
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Guy Bottu,
+</I>&gt;<i> wEMBOSS development team
+</I>&gt;<i>
+</I>&gt;<i> -------------------------------------------------------------------------
+</I>&gt;<i> #!/usr/bin/perl -I/OPT/mrs/parser
+</I>&gt;<i> use MRS;
+</I>&gt;<i>
+</I>&gt;<i> $db = 'embl';
+</I>&gt;<i> $query = 'id:k00152';
+</I>&gt;<i> $format = $ARGV[0];
+</I>&gt;<i>
+</I>&gt;<i> $dbo = new MRS::MDatabank($db);
+</I>&gt;<i> $scriptname = $dbo-&gt;{script};
+</I>&gt;<i> eval &quot;use $scriptname&quot;;
+</I>&gt;<i> eval &quot;\$scripto = MRS::Script::$scriptname&quot;;
+</I>&gt;<i> $iter = $dbo-&gt;Find($query, 0);
+</I>&gt;<i>
+</I>&gt;<i> if ($format eq 'id') {
+</I>&gt;<i>   while ($id = $iter-&gt;Next) {
+</I>&gt;<i>       print &quot;$id\n&quot;;
+</I>&gt;<i>   }
+</I>&gt;<i> } elsif ($format eq 'entry') {
+</I>&gt;<i>   while ($id = $iter-&gt;Next) {
+</I>&gt;<i>       $entry = $dbo-&gt;Get($id);
+</I>&gt;<i>       print &quot;$entry&quot;;
+</I>&gt;<i>   }
+</I>&gt;<i> } elsif ($format eq 'seq') {
+</I>&gt;<i>   while ($id = $iter-&gt;Next) {
+</I>&gt;<i>     if ($id !~ /^#/) {
+</I>&gt;<i>       $seq = eval '$scripto-&gt;sequence($dbo-&gt;Get($id))';
+</I>&gt;<i>       print &quot;$seq&quot;;
+</I>&gt;<i>     }
+</I>&gt;<i>   }
+</I>&gt;<i> } elsif ($format eq 'html') {
+</I>&gt;<i>   while ($id = $iter-&gt;Next) {
+</I>&gt;<i>   ## CODE ???
+</I>&gt;<i>   }
+</I>&gt;<i> }
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>
+</I>
+ 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000450.html">[Mrs-user] Perl script for retrieving entry in HTML format ?
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#451">[ date ]</a>
+              <a href="thread.html#451">[ thread ]</a>
+              <a href="subject.html#451">[ subject ]</a>
+              <a href="author.html#451">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

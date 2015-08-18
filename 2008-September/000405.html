@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] EMBL indexing error and gcc 4.3.2 problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20EMBL%20indexing%20error%20and%20gcc%204.3.2%20problems&In-Reply-To=%3Cc7a1c9eb0809050852o115754c7mea9db0a900ede6d6%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000402.html">
+   <LINK REL="Next"  HREF="000406.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] EMBL indexing error and gcc 4.3.2 problems</H1>
+    <B>Przemys&#322;aw Stempor</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20EMBL%20indexing%20error%20and%20gcc%204.3.2%20problems&In-Reply-To=%3Cc7a1c9eb0809050852o115754c7mea9db0a900ede6d6%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] EMBL indexing error and gcc 4.3.2 problems">pstempor at gmail.com
+       </A><BR>
+    <I>Fri Sep  5 17:52:30 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000402.html">[Mrs-user] continuing a crashed indexing run
+</A></li>
+        <LI>Next message: <A HREF="000406.html">[Mrs-user] EMBL indexing error and gcc 4.3.2 problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#405">[ date ]</a>
+              <a href="thread.html#405">[ thread ]</a>
+              <a href="subject.html#405">[ subject ]</a>
+              <a href="author.html#405">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Maarten and MRS users,
+
+I came across a problem during indexing EMBL, the mrs-build crashed
+with &quot;glibc detected&quot; error.
+I'm working on Ubuntu 8.04 (hardy), AMD Athlon 64 x2, 8 GB of physical
+memory + 64 GB of swap.
+The MRS was compiled using GCC 4.1 with -O3 -march=athlon64 -pipe flags.
+MRS version 4 obtained by SVN, revision 745 (the same error accrued on
+previous version).
+I know there is newer revision, and I've already compiled this one and
+after a weekend I hope to send some new results, but still you may
+find my backtrace and memory dump useful.
+
+To eliminate possibility of compiler error I tried to compile MRS
+using gcc 4.3.2 compiler. From this version sse3 and some new other
+features of new processors are supported, so beside a possibility to
+eliminate some errors I expected also some better performance.
+Unfortunately from version 4.3.2 authors decided to make C++ syntax
+more strict, and remove some cleared header library to gain some
+compiling time boost.
+In most of the cases it's just enough to manually add some headers
+that previously added by default by gcc (like string.h or system.h),
+but in case of Cindex.cpp situation becomes more complicated. New
+version of gcc doesn't like &quot;typedef CIndexPage&lt;DD&gt; CIndexPage;&quot;
+definition, and this one is quite important for this file.
+My explanation sees not to be very precise, so here are some links
+about problems with porting to gcc 4.3:
+
+<A HREF="http://en.opensuse.org/GCC_4.3_Transition">http://en.opensuse.org/GCC_4.3_Transition</A>
+<A HREF="http://gcc.gnu.org/gcc-4.3/porting_to.html">http://gcc.gnu.org/gcc-4.3/porting_to.html</A>
+
+Here is the (very short) list of errors that I've came across while
+using gcc 4.3.2:
+CConfig.cpp =&gt; #include &lt;cstring&gt;
+CDatabank.h =&gt; error: multiple parameters named 'inOtherA'
+CDocIterator.h =&gt; #include &lt;memory&gt;
+lib/Sources/CDocument.cpp =&gt; #include &lt;string.h&gt;
+CFilter.cpp =&gt; #include &lt;string.h&gt;
+Cindex.cpp =&gt; typedef CIndexPage&lt;DD&gt; CIndexPage;
+./Sources/CIndex.cpp:824: error: declaration of 'typedef class
+CIndexPage&lt;DD&gt; CIndexPageCache&lt;DD&gt;::CIndexPage'
+./Sources/CIndex.cpp:450: error: changes meaning of 'CIndexPage' from
+'class CIndexPage&lt;DD&gt;'
+
+I hope you find my remarks useful for farther development of MRS.
+
+Kind regards,
+Przemylsaw Stempor
+
+PS: Backtrace and memory dump:
+
+####################Error 1 (revision 745)################################
+Building index 5206000000/14577988040 [ 35%] eta: 12h 23m 00s
+Building index 5207000000/14577988040 [ 35%] eta: 12h 22m 56s
+Building index 5208000000/14577988040 [ 35%] eta: 12h 22m 51s
+*** glibc detected *** mrs-build: double free or corruption (!prev):
+0x00007fa91ffe0ec0 ***
+======= Backtrace: =========
+/lib/libc.so.6[0x7fabc713008a]
+/lib/libc.so.6(cfree+0x8c)[0x7fabc7133c1c]
+mrs-build(_ZN11COBitStreamaSERKS_+0x60)[0x4b7140]
+mrs-build(_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPN15CSortedRunArrayIN14CFullTextIndex11BufferEntryESt4lessIS4_ELj800000ENS3_17BufferEntryWriterENS3_17BufferEntryReaderEE18run_entry_iteratorESt6vectorISA_SaISA_EEEElSA_NS9_17compare_run_entryEEvT_T0_SI_T1_T2_+0xb3)[0x547913]
+mrs-build(_ZN15CSortedRunArrayIN14CFullTextIndex11BufferEntryESt4lessIS1_ELj800000ENS0_17BufferEntryWriterENS0_17BufferEntryReaderEE8iterator4nextERS1_+0x24e)[0x547ebe]
+mrs-build(_ZN8CIndexer11CreateIndexER11HStreamBaseRxS2_bbP21CDBBuildProgressMixin+0x420)[0x4ed0f0]
+mrs-build(_ZN9CDatabank6FinishEbb+0x1a5)[0x4c3a95]
+mrs-build(_ZN8CBuilder3RunEib+0xec4)[0x46fc44]
+mrs-build(main+0x33f)[0x471c4f]
+/lib/libc.so.6(__libc_start_main+0xf4)[0x7fabc70da1c4]
+mrs-build(__gxx_personality_v0+0x411)[0x4681f9]
+======= Memory map: ========
+00400000-005b9000 r-xp 00000000 08:04 1518362
+  /usr/local/bin/mrs-build
+007b9000-007c4000 rw-p 001b9000 08:04 1518362
+  /usr/local/bin/mrs-build
+007c4000-40234000 rw-p 007c4000 00:00 0                                  [heap]
+4103a000-4103b000 ---p 4103a000 00:00 0
+4103b000-4183b000 rw-p 4103b000 00:00 0
+41fdd000-41fde000 ---p 41fdd000 00:00 0
+41fde000-427de000 rw-p 41fde000 00:00 0
+427de000-427df000 ---p 427de000 00:00 0
+427df000-42fdf000 rw-p 427df000 00:00 0
+42fdf000-42fe0000 ---p 42fdf000 00:00 0
+42fe0000-437e0000 rw-p 42fe0000 00:00 0
+437e0000-437e1000 ---p 437e0000 00:00 0
+437e1000-43fe1000 rw-p 437e1000 00:00 0
+43fe1000-43fe2000 ---p 43fe1000 00:00 0
+43fe2000-447e2000 rw-p 43fe2000 00:00 0
+447e2000-447e3000 ---p 447e2000 00:00 0
+447e3000-44fe3000 rw-p 447e3000 00:00 0
+44fe3000-44fe4000 ---p 44fe3000 00:00 0
+44fe4000-457e4000 rw-p 44fe4000 00:00 0
+457e4000-457e5000 ---p 457e4000 00:00 0
+457e5000-45fe5000 rw-p 457e5000 00:00 0
+45fe5000-45fe6000 ---p 45fe5000 00:00 0
+45fe6000-467e6000 rw-p 45fe6000 00:00 0
+467e6000-467e7000 ---p 467e6000 00:00 0
+467e7000-46fe7000 rw-p 467e7000 00:00 0
+46fe7000-46fe8000 ---p 46fe7000 00:00 0
+46fe8000-477e8000 rw-p 46fe8000 00:00 0
+477e8000-477e9000 ---p 477e8000 00:00 0
+477e9000-47fe9000 rw-p 477e9000 00:00 0
+47fe9000-47fea000 ---p 47fe9000 00:00 0
+47fea000-487ea000 rw-p 47fea000 00:00 0
+487ea000-487eb000 ---p 487ea000 00:00 0
+487eb000-48feb000 rw-p 487eb000 00:00 0
+48feb000-48fec000 ---p 48feb000 00:00 0
+48fec000-497ec000 rw-p 48fec000 00:00 0
+497ec000-497ed000 ---p 497ec000 00:00 0
+497ed000-49fed000 rw-p 497ed000 00:00 0
+49fed000-49fee000 ---p 49fed000 00:00 0
+49fee000-4a7ee000 rw-p 49fee000 00:00 0
+4a7ee000-4a7ef000 ---p 4a7ee000 00:00 0
+4a7ef000-4afef000 rw-p 4a7ef000 00:00 0
+4afef000-4aff0000 ---p 4afef000 00:00 0
+4aff0000-4b7f0000 rw-p 4aff0000 00:00 0
+7fa85f0e0000-7fa86f801000 rw-p 7fa85f0e0000 00:00 0
+7fa86f801000-7fa870000000 ---p 7fa86f801000 00:00 0
+7fa874000000-7fa877801000 rw-p 7fa874000000 00:00 0
+7fa877801000-7fa878000000 ---p 7fa877801000 00:00 0
+7fa87c000000-7fa87f801000 rw-p 7fa87c000000 00:00 0
+7fa87f801000-7fa880000000 ---p 7fa87f801000 00:00 0
+7fa884000000-7fa887ff3000 rw-p 7fa884000000 00:00 0
+7fa887ff3000-7fa888000000 ---p 7fa887ff3000 00:00 0
+7fa88c000000-7fa88fff4000 rw-p 7fa88c000000 00:00 0
+7fa88fff4000-7fa890000000 ---p 7fa88fff4000 00:00 0
+7fa894000000-7fa897ff5000 rw-p 7fa894000000 00:00 0
+7fa897ff5000-7fa898000000 ---p 7fa897ff5000 00:00 0
+7fa89c000000-7fa89fff5000 rw-p 7fa89c000000 00:00 0
+7fa89fff5000-7fa8a0000000 ---p 7fa89fff5000 00:00 0
+7fa8a4000000-7fa8a7ff3000 rw-p 7fa8a4000000 00:00 0
+7fa8a7ff3000-7fa8a8000000 ---p 7fa8a7ff3000 00:00 0
+7fa8a8000000-7fa8abff2000 rw-p 7fa8a8000000 00:00 0
+7fa8abff2000-7fa8ac000000 ---p 7fa8abff2000 00:00 0
+7fa8b0000000-7fa8b3ff4000 rw-p 7fa8b0000000 00:00 0
+7fa8b3ff4000-7fa8b4000000 ---p 7fa8b3ff4000 00:00 0
+7fa8b4000000-7fa8b7ff4000 rw-p 7fa8b4000000 00:00 0
+7fa8b7ff4000-7fa8b8000000 ---p 7fa8b7ff4000 00:00 0
+7fa8bc000000-7fa8bfd11000 rw-p 7fa8bc000000 00:00 0
+7fa8bfd11000-7fa8c0000000 ---p 7fa8bfd11000 00:00 0
+7fa8c4000000-7fa8c7ffd000 rw-p 7fa8c4000000 00:00 0
+7fa8c7ffd000-7fa8c8000000 ---p 7fa8c7ffd000 00:00 0
+7fa8c8000000-7fa8cc000000 rw-p 7fa8c8000000 00:00 0
+7fa8d0000000-7fa8d3ff2000 rw-p 7fa8d0000000 00:00 0
+7fa8d3ff2000-7fa8d4000000 ---p 7fa8d3ff2000 00:00 0
+7fa8d8000000-7fa8dbaa2000 rw-p 7fa8d8000000 00:00 0
+7fa8dbaa2000-7fa8dc000000 ---p 7fa8dbaa2000 00:00 0
+7fa8de7df000-7fa8e3e73000 rw-p 7fa8de7df000 00:00 0
+7fa8e3e73000-7fa8e4000000 ---p 7fa8e3e73000 00:00 0
+7fa8e4915000-7fa8ebf61000 rw-p 7fa8e4915000 00:00 0
+7fa8ebf61000-7fa8ec000000 ---p 7fa8ebf61000 00:00 0
+7fa8ec000000-7fa8eff22000 rw-pAborted
+###############################################################
+
+##################Error 2 (revision 729)#################################
+*** glibc detected *** mrs-build: free(): invalid next size (normal):
+0x00000000085b9ad0 ***
+======= Backtrace: =========
+/lib/libc.so.6[0x7fd8bfaba08a]
+/lib/libc.so.6(cfree+0x8c)[0x7fd8bfabdc1c]
+mrs-build(_ZN11CLexiconImpD1Ev+0x1c)[0x4f19ec]
+mrs-build(_ZN8CLexiconD1Ev+0x20)[0x4f1ad0]
+mrs-build(_ZN9CDocumentD1Ev+0x1d)[0x4da68d]
+mrs-build(_ZN5boost6detail17sp_counted_impl_pI9CDocumentE7disposeEv+0x12)[0x488662]
+mrs-build(_ZN8CBuilder11CompressDocEP7HBufferIN5boost10shared_ptrI9CDocumentEELj10EES6_+0x22c)[0x46be2c]
+/usr/local/lib/libboost_thread-gcc42-mt-1_36.so.1.36.0(thread_proxy+0x6d)[0x7fd8c101ae0d]
+/lib/libpthread.so.0[0x7fd8c02f13f7]
+/lib/libc.so.6(clone+0x6d)[0x7fd8bfb1db2d]
+======= Memory map: ========
+00400000-005b7000 r-xp 00000000 08:04 1518362
+  /usr/local/bin/mrs-build
+007b7000-007c2000 rw-p 001b7000 08:04 1518362
+  /usr/local/bin/mrs-build
+007c2000-08dda000 rw-p 007c2000 00:00 0                                  [heap]
+405b8000-405b9000 ---p 405b8000 00:00 0
+405b9000-40db9000 rw-p 405b9000 00:00 0
+412a0000-412a1000 ---p 412a0000 00:00 0
+412a1000-41aa1000 rw-p 412a1000 00:00 0
+41aa1000-41aa2000 ---p 41aa1000 00:00 0
+41aa2000-422a2000 rw-p 41aa2000 00:00 0
+422a2000-422a3000 ---p 422a2000 00:00 0
+422a3000-42aa3000 rw-p 422a3000 00:00 0
+42aa3000-42aa4000 ---p 42aa3000 00:00 0
+42aa4000-432a4000 rw-p 42aa4000 00:00 0
+432a4000-432a5000 ---p 432a4000 00:00 0
+432a5000-43aa5000 rw-p 432a5000 00:00 0
+43aa5000-43aa6000 ---p 43aa5000 00:00 0
+43aa6000-442a6000 rw-p 43aa6000 00:00 0
+442a6000-442a7000 ---p 442a6000 00:00 0
+442a7000-44aa7000 rw-p 442a7000 00:00 0
+44aa7000-44aa8000 ---p 44aa7000 00:00 0
+44aa8000-452a8000 rw-p 44aa8000 00:00 0
+7fd826f29000-7fd837ffd000 rw-p 7fd826f29000 00:00 0
+7fd837ffd000-7fd840867000 rw-p 7fd8907ca000 00:00 0
+7fd848000000-7fd84bca0000 rw-p 7fd848000000 00:00 0
+7fd84bca0000-7fd84c000000 ---p 7fd84bca0000 00:00 0
+7fd850000000-7fd853843000 rw-p 7fd850000000 00:00 0
+7fd853843000-7fd854000000 ---p 7fd853843000 00:00 0
+7fd858000000-7fd85b801000 rw-p 7fd858000000 00:00 0
+7fd85b801000-7fd85c000000 ---p 7fd85b801000 00:00 0
+7fd85c000000-7fd85f836000 rw-p 7fd85c000000 00:00 0
+7fd85f836000-7fd860000000 ---p 7fd85f836000 00:00 0
+7fd860000000-7fd863801000 rw-p 7fd860000000 00:00 0
+7fd863801000-7fd864000000 ---p 7fd863801000 00:00 0
+7fd864000000-7fd867801000 rw-p 7fd864000000 00:00 0
+7fd867801000-7fd868000000 ---p 7fd867801000 00:00 0
+7fd86c000000-7fd86f801000 rw-p 7fd86c000000 00:00 0
+7fd86f801000-7fd870000000 ---p 7fd86f801000 00:00 0
+7fd870000000-7fd873801000 rw-p 7fd870000000 00:00 0
+7fd873801000-7fd874000000 ---p 7fd873801000 00:00 0
+7fd874000000-7fd877ca0000 rw-p 7fd874000000 00:00 0
+7fd877ca0000-7fd878000000 ---p 7fd877ca0000 00:00 0
+7fd878000000-7fd87b801000 rw-p 7fd878000000 00:00 0
+7fd87b801000-7fd87c000000 ---p 7fd87b801000 00:00 0
+7fd87c000000-7fd87f801000 rw-p 7fd87c000000 00:00 0
+7fd87f801000-7fd880000000 ---p 7fd87f801000 00:00 0
+7fd880000000-7fd883801000 rw-p 7fd880000000 00:00 0
+7fd883801000-7fd884000000 ---p 7fd883801000 00:00 0
+7fd884000000-7fd887801000 rw-p 7fd884000000 00:00 0
+7fd887801000-7fd888000000 ---p 7fd887801000 00:00 0
+7fd888000000-7fd88be89000 rw-p 7fd888000000 00:00 0
+7fd88be89000-7fd88c000000 ---p 7fd88be89000 00:00 0
+7fd88c000000-7fd88f84a000 rw-p 7fd88c000000 00:00 0
+7fd88f84a000-7fd890000000 ---p 7fd88f84a000 00:00 0
+7fd894000000-7fd897801000 rw-p 7fd894000000 00:00 0
+7fd897801000-7fd898000000 ---p 7fd897801000 00:00 0
+7fd898000000-7fd89b847000 rw-p 7fd898000000 00:00 0
+7fd89b847000-7fd89c000000 ---p 7fd89b847000 00:00 0
+7fd89c35f000-7fd89db60000 rw-p 7fd89c35f000 00:00 0
+7fd89e7ff000-7fd8a3801000 rw-p 7fd89e7ff000 00:00 0
+7fd8a3801000-7fd8a4000000 ---p 7fd8a3801000 00:00 0
+7fd8a4000000-7fd8a7921000 rw-p 7fd8a4000000 00:00 0
+7fd8a7921000-7fd8a8000000 ---p 7fd8a7921000 00:00 0
+7fd8a835f000-7fd8aff1b000 rw-p 7fd8a835f000 00:00 0
+7fd8aff1b000-7fd8b0000000 ---p 7fd8aff1b000 00:00 0
+7fd8b0000000-7fd8b397e000 rw-p 7fd8b0000000 00:00 0
+7fd8b397e000-7fd8b4000000 ---p 7fd8b397e000 00:Aborted
+#######################################################
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000402.html">[Mrs-user] continuing a crashed indexing run
+</A></li>
+	<LI>Next message: <A HREF="000406.html">[Mrs-user] EMBL indexing error and gcc 4.3.2 problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#405">[ date ]</a>
+              <a href="thread.html#405">[ thread ]</a>
+              <a href="subject.html#405">[ subject ]</a>
+              <a href="author.html#405">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

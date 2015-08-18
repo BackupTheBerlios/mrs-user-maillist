@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Redesign,	feedback requested - Checked by AntiVir DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Redesign%2C%0A%09feedback%20requested%20-%20Checked%20by%20AntiVir%20DEMO%20version%20-&In-Reply-To=%3C297A4FA7-7C4B-4F14-A3A8-8A5E66889ECE%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000137.html">
+   <LINK REL="Next"  HREF="000138.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Redesign,	feedback requested - Checked by AntiVir DEMO version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Redesign%2C%0A%09feedback%20requested%20-%20Checked%20by%20AntiVir%20DEMO%20version%20-&In-Reply-To=%3C297A4FA7-7C4B-4F14-A3A8-8A5E66889ECE%40hekkelman.com%3E"
+       TITLE="[Mrs-user] Redesign,	feedback requested - Checked by AntiVir DEMO version -">maarten at hekkelman.com
+       </A><BR>
+    <I>Fri Nov 17 08:15:15 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000137.html">[Mrs-user] Redesign,	feedback requested - Checked by AntiVir DEMO version -
+</A></li>
+        <LI>Next message: <A HREF="000138.html">[Mrs-user] The Web services time-out problem - Checked by AntiVir	DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#139">[ date ]</a>
+              <a href="thread.html#139">[ thread ]</a>
+              <a href="subject.html#139">[ subject ]</a>
+              <a href="author.html#139">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Guy,
+
+First of all, thanks for your feedback.
+
+&gt;&gt;<i> To replace the concatenated databanks, you can merge the parts.
+</I>&gt;&gt;<i> Merging sprot and trembl on my server takes about 15 minutes. And it
+</I>&gt;&gt;<i> is possible to create a merged databank that doesn't copy the
+</I>&gt;&gt;<i> document data, in that case you need to keep the parts around. Only
+</I>&gt;&gt;<i> problem in this case is that when you update sprot, the uniprot
+</I>&gt;&gt;<i> merged databank is no longer accessible until it is recreated itself.
+</I>&gt;&gt;<i> I don't know yet if this will be a problem in real life.
+</I>&gt;<i>
+</I>&gt;<i> Could be. The fact that during an appreciable period of time the
+</I>&gt;<i> UniProt databank is not accessible, even in the middle of the night,
+</I>&gt;<i> could be a problem, certainly if some automated script tries to  
+</I>&gt;<i> retrieve a
+</I>&gt;<i> sequence.
+</I>&gt;<i> Is a mechanism where the index files for SwissProt, TrEMBL and  
+</I>&gt;<i> UniProt are
+</I>&gt;<i> first created under another name and only then all together &quot;moved&quot;  
+</I>&gt;<i> over
+</I>&gt;<i> the old version (kinda like the on-line/off-line mechanism of SRS)
+</I>&gt;<i> thinkable ?
+</I>
+The new setup will use a dedicated daemon process that serves the  
+entries using a SOAP protocol. I've designed the server so that it  
+keeps the databanks loaded continuously. In that case it doesn't  
+matter if you delete a file while it is being used since the file  
+will actually be deleted only once the last process has closed it.  
+The idea is to send a SIGHUP signal to the daemon once indexing is  
+done and the daemon will reload the databanks.
+
+But maybe it is better to simply copy over the data for UniProt,  
+after all we're talking about ~5 Gb and that's peanuts. If I do it  
+this way, there's no risk of having an unaccessible UniProt during an  
+update.
+
+As for EMBL, I think I will create this new update databank that uses  
+the release databank and links to it. I will then also implement some  
+fall back mechanism to use when the release databank has changed. I  
+don't think that will be too hard to do.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000137.html">[Mrs-user] Redesign,	feedback requested - Checked by AntiVir DEMO version -
+</A></li>
+	<LI>Next message: <A HREF="000138.html">[Mrs-user] The Web services time-out problem - Checked by AntiVir	DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#139">[ date ]</a>
+              <a href="thread.html#139">[ thread ]</a>
+              <a href="subject.html#139">[ subject ]</a>
+              <a href="author.html#139">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

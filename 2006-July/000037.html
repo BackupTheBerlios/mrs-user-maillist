@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Compilation error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Compilation%20error&In-Reply-To=%3C1152625167.44b3aa0f1cd78%40biol.unlp.edu.ar%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000036.html">
+   <LINK REL="Next"  HREF="000039.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Compilation error</H1>
+    <B>dbellante at biol.unlp.edu.ar</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Compilation%20error&In-Reply-To=%3C1152625167.44b3aa0f1cd78%40biol.unlp.edu.ar%3E"
+       TITLE="[Mrs-user] Compilation error">dbellante at biol.unlp.edu.ar
+       </A><BR>
+    <I>Tue Jul 11 15:39:27 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000036.html">[Mrs-user] MRSCommon.pm and some stray hard-coded paths
+</A></li>
+        <LI>Next message: <A HREF="000039.html">[Mrs-user] Compilation error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+
+  I am trying to install MRS on a linux machine (Fedora Core 4- 64bit) .During
+compilation step I get the following error:
+
+
+./Sources/CIndexer.cpp:64:42: error: boost/functional/hash/hash.hpp: No such
+file or directory
+./Sources/CIndexer.cpp:65:46: error: boost/ptr_container/ptr_vector.hpp: No such
+file or directory
+./Sources/CIndexer.cpp:573: error: &#226;hash&#226; is not a member of &#226;boost&#226;
+./Sources/CIndexer.cpp:573: error: &#226;hash&#226; is not a member of &#226;boost&#226;
+./Sources/CIndexer.cpp:573: error: template argument 2 is invalid
+./Sources/CIndexer.cpp:573: error: expected unqualified-id before &#226;&gt;&#226; token
+./Sources/CIndexer.cpp:580: error: &#226;CHashedSet&#226; does not name a type
+./Sources/CIndexer.cpp: In member function &#226;bool
+CFullTextIndex::IsStopWord(uint32) const&#226;:
+./Sources/CIndexer.cpp:485: error: &#226;fStopWords&#226; was not declared in this scope
+./Sources/CIndexer.cpp: In member function &#226;void
+CFullTextIndex::SetStopWords(const std::vector&lt;std::basic_string&lt;char,
+std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,
+std::allocator&lt;std::basic_string&lt;char, std::char_traits&lt;char&gt;,
+std::allocator&lt;char&gt; &gt; &gt; &gt;&amp;)&#226;:
+./Sources/CIndexer.cpp:609: error: &#226;fStopWords&#226; was not declared in this scope
+./Sources/CIndexer.cpp: In member function &#226;void
+CIndexer::MergeIndices(HStreamBase&amp;, std::vector&lt;CDatabank*,
+std::allocator&lt;CDatabank*&gt; &gt;&amp;)&#226;:
+./Sources/CIndexer.cpp:2123: error: &#226;ptr_vector&#226; is not a member of &#226;boost&#226;
+./Sources/CIndexer.cpp:2123: error: expected primary-expression before &#226;&gt;&#226; token
+./Sources/CIndexer.cpp:2123: error: &#226;docIters&#226; was not declared in this scope
+make: *** [Obj.NoDebug/CIndexer.o] Error 1
+
+
+
+
+            Thanks!!
+
+  Diego Bellante
+  AR.EMBnet
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000036.html">[Mrs-user] MRSCommon.pm and some stray hard-coded paths
+</A></li>
+	<LI>Next message: <A HREF="000039.html">[Mrs-user] Compilation error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

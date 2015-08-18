@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] install script  **CLAP**
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20install%20script%20%20%2A%2ACLAP%2A%2A&In-Reply-To=%3CE3AA8D39-3021-4827-9711-09B1A87170E1%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000172.html">
+   <LINK REL="Next"  HREF="000167.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] install script  **CLAP**</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20install%20script%20%20%2A%2ACLAP%2A%2A&In-Reply-To=%3CE3AA8D39-3021-4827-9711-09B1A87170E1%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] install script  **CLAP**">M.Hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Fri Jan 19 11:50:21 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000172.html">[Mrs-user] install script  **CLAP**
+</A></li>
+        <LI>Next message: <A HREF="000167.html">[Mrs-user] installing mrs3 afresh
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#176">[ date ]</a>
+              <a href="thread.html#176">[ thread ]</a>
+              <a href="subject.html#176">[ subject ]</a>
+              <a href="author.html#176">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 16-jan-2007, om 15:09 heeft david coornaert het volgende geschreven:
+
+&gt;<i> I got an mrs3 build 291 up on a gentoo-64 bit quite fast
+</I>&gt;<i> only trouble I met is that I needed to launch mrsws from its  
+</I>&gt;<i> compilation
+</I>&gt;<i> directory
+</I>&gt;<i> and not from the installed one (/usr/local/bin)
+</I>&gt;<i> the former one doesn't find WSFormatter.pm which seems essential
+</I>
+I've fixed this. The WSFormatter.pm script should now be located in  
+the mrs parser scripts directory.
+
+&gt;<i> I had *NOT* to add/correct the environment entry in tomcat admin tool,
+</I>&gt;<i> it automagically appeared
+</I>&gt;<i> by itself with correct appropriate values.
+</I>
+Well, let's say I chose a sensible default value :-) It is there so  
+that you can have the Java interface on a different machine than the  
+mrsws application. The mrs-3 application at the CMBI e.g. runs on  
+cmbi4 while the web service app runs on cmbi8.
+
+&gt;<i> Anyway I think the install script remains a wonderfull utility, but  
+</I>&gt;<i> for
+</I>&gt;<i> this latest glitch
+</I>
+Thanks, fix has been checked in.
+
+&gt;<i> I'm wondering now about a standard way of doing the updates..
+</I>&gt;<i> what am I supposed to do, when build 292 will be out ?
+</I>&gt;<i> svn update
+</I>&gt;<i> and then ????
+</I>
+Good question. I think I will create a downloadable tarball now. I'm  
+afraid that's what people expect. Apart from this tarball I will also  
+make an archive of the old Perl based web scripts so that those who  
+download it have something to play with. The Java version is not  
+ready for public consumption as discussed before.
+
+-maarten
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000172.html">[Mrs-user] install script  **CLAP**
+</A></li>
+	<LI>Next message: <A HREF="000167.html">[Mrs-user] installing mrs3 afresh
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#176">[ date ]</a>
+              <a href="thread.html#176">[ thread ]</a>
+              <a href="subject.html#176">[ subject ]</a>
+              <a href="author.html#176">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

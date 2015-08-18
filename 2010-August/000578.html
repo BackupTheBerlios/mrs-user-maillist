@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] How to install MRS?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20How%20to%20install%20MRS%3F&In-Reply-To=%3C4C567A25.4000205%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000577.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] How to install MRS?</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20How%20to%20install%20MRS%3F&In-Reply-To=%3C4C567A25.4000205%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] How to install MRS?">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Mon Aug  2 09:56:21 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000577.html">[Mrs-user] How to install MRS?
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#578">[ date ]</a>
+              <a href="thread.html#578">[ thread ]</a>
+              <a href="subject.html#578">[ subject ]</a>
+              <a href="author.html#578">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Alex,
+
+ &gt; I am still running MRS-3 on our Mac OS X Server and would like to move
+ &gt; MRS to a new Linux based system.
+
+Good choice. I'm certainly not a Linux fanboy, but it is the best OS to 
+run MRS at the moment.
+
+ &gt; Could you give me advise on which is the easiest way to get a fresh
+ &gt; running MRS system.
+ &gt;
+ &gt; Which Linux should I go for? Do you have some detailled instructions?
+
+If you plan on building EMBL or other large databanks you'd best buy 
+multicore hardware with sufficient memory. We have 32 GB of main memory 
+which is good enough. The disks we're using are MD1120's from Dell, a 
+very fast and reliable 2.5&quot; RAID cabinet that can be expanded (we just 
+added a second enclosure).
+
+As for the OS, best is to use the same as I use: Ubuntu 10.04 64-bit. 
+(Lucid)
+
+To install you could follow the instructions here:
+
+<A HREF="http://mrs.cmbi.ru.nl/mrs-web/help.do?page=50">http://mrs.cmbi.ru.nl/mrs-web/help.do?page=50</A>
+
+But I think it may be better to use the HEAD revision from the SVN 
+repository right now. To do so, you should check out the source code 
+using subversion. First install subversion (apt-get install subversion) 
+and then type:
+
+svn checkout <A HREF="https://svn.cmbi.ru.nl/mrs/trunk">https://svn.cmbi.ru.nl/mrs/trunk</A> mrs
+
+And then continue the process as indicated in the help pages. The help 
+page hasn't been updated in some time, but I think they're still useful.
+
+If you run into trouble, let me know and I'll try to help you out. I 
+wouldn't be surprised if there are still some small problems left in the 
+code. I haven't had time to polish it for a new release.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000577.html">[Mrs-user] How to install MRS?
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#578">[ date ]</a>
+              <a href="thread.html#578">[ thread ]</a>
+              <a href="subject.html#578">[ subject ]</a>
+              <a href="author.html#578">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

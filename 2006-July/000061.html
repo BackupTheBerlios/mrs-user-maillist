@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] starting BLAST with batch on Debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20starting%20BLAST%20with%20batch%20on%20Debian&In-Reply-To=%3C44BC0892.5050402%40aamodels.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000056.html">
+   <LINK REL="Next"  HREF="000063.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] starting BLAST with batch on Debian</H1>
+    <B>Robert HERZOG</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20starting%20BLAST%20with%20batch%20on%20Debian&In-Reply-To=%3C44BC0892.5050402%40aamodels.be%3E"
+       TITLE="[Mrs-user] starting BLAST with batch on Debian">rherzog at aamodels.be
+       </A><BR>
+    <I>Tue Jul 18 00:00:50 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000056.html">[Mrs-user] Excuse me
+</A></li>
+        <LI>Next message: <A HREF="000063.html">[Mrs-user] MRS Installations - some recent recommendations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+I finally found out how to get the BLAST jobs started on the Debian 
+(Ubuntu) box. On this machine, the batch command does not take 
+arguments, while the mrs-submit.cgi says in essence &quot;batch -f queryxxx.csh&quot;.
+1. I had to put www-data in the at.allow file, as this is the user name 
+for the apache job.
+2. I replaced the &quot;-f&quot; parameter with &quot;&lt;&quot; in line 165 of the 
+mrs-submit.cgi file
+In this way, the BLAST jobs start readily on the Debian configuration. 
+On SuSE and Gentoo, the line is valid as is.
+The at.allow and at.deny files have to be adapted in all cases, as you 
+may guess.
+Robert
+
+-- 
+Robert Herzog
+Elewijtsesteenweg 190
+B-1980 Eppegem BELGIUM
+T.+32 15 621004 F.+32 15 627030
+<A HREF="http://mail.map24.com/herzog-robert">http://mail.map24.com/herzog-robert</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000056.html">[Mrs-user] Excuse me
+</A></li>
+	<LI>Next message: <A HREF="000063.html">[Mrs-user] MRS Installations - some recent recommendations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

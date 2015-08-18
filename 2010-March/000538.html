@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS boolean operators and memory issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20boolean%20operators%20and%20memory%20issues&In-Reply-To=%3C4BAAED58.3000304%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000536.html">
+   <LINK REL="Next"  HREF="000539.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS boolean operators and memory issues</H1>
+    <B>Georgios Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20boolean%20operators%20and%20memory%20issues&In-Reply-To=%3C4BAAED58.3000304%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] MRS boolean operators and memory issues">georgios at biotek.uio.no
+       </A><BR>
+    <I>Thu Mar 25 05:58:00 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000536.html">[Mrs-user] Mrs-user Digest, Vol 40, Issue 10
+</A></li>
+        <LI>Next message: <A HREF="000539.html">[Mrs-user] MRS boolean operators and memory issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#538">[ date ]</a>
+              <a href="thread.html#538">[ thread ]</a>
+              <a href="subject.html#538">[ subject ]</a>
+              <a href="author.html#538">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi folks,
+
+Two quick issues/suggestions:
+
+a)The MRS manual page for Boolean Operators states:
+&quot;Since version 3 MRS no longer accepts the text versions of the 
+operators, you now have to use the single character ones &amp;, | and !.&quot;
+
+This is not true as far as I can see. The text representations (AND, OR, 
+NOT) are still functioning both on the web interface and the 
+command-line client. So, the above text needs to change.
+
+de:H1N1 AND  NOT(os:human)      gives the same results as
+
+de:H1N1 !os:human
+
+In addition, when it comes to the command-line world (mrs-query) and the 
+programmatic access world (MRS::Client), the symbol representations 
+might create problems (! and &amp; for example need proper shell 
+escaping...etc). For these reasons, I suggest that it would be better to 
+have the textual representations of the binary operators as the default 
+ones.
+
+b)This could be really a Tomcat / Java server admin issue, but after 
+giving a course that included MRS 4, I found that is best to really set 
+up the JAVA heap size and memory limits quite high. During the first 
+part of the course (about 20 students, hence 20 active sessions), I 
+started the Tomcat server with the default options, only to realize that 
+the SOAP server was giving up due to the fact that it was reaching a 
+certain memory size. So, I reset the Catalina file JAVA_OPTS to the 
+following (on a 64 Gb RAM box)
+
+JAVA_OPTS=&quot;$JAVA_OPTS -Xms32768m -Xmx49152m 
+-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager&quot;
+
+and I found that this solved the issue of the SOAP server giving up. 
+Right ? (I mean have you seen these issues during heavy usage scenarios?)
+
+
+Thanks for any comments, insights.
+GM
+
+-- 
+Best regards,
+--
+
+George Magklaras BSc (Hons) MPhil RHCE
+IT Systems Manager/Senior Systems Engineer
+The Biotechnology Center of Oslo
+University of Oslo
+
+<A HREF="http://www.biotek.uio.no">http://www.biotek.uio.no</A>
+<A HREF="http://www.no.embnet.org">http://www.no.embnet.org</A>
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000536.html">[Mrs-user] Mrs-user Digest, Vol 40, Issue 10
+</A></li>
+	<LI>Next message: <A HREF="000539.html">[Mrs-user] MRS boolean operators and memory issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#538">[ date ]</a>
+              <a href="thread.html#538">[ thread ]</a>
+              <a href="subject.html#538">[ subject ]</a>
+              <a href="author.html#538">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

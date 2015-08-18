@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Software error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Software%20error&In-Reply-To=%3C1155651853.44e1d90d39007%40webmail.biol.unlp.edu.ar%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000093.html">
+   <LINK REL="Next"  HREF="000095.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Software error</H1>
+    <B>dbellante at biol.unlp.edu.ar</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Software%20error&In-Reply-To=%3C1155651853.44e1d90d39007%40webmail.biol.unlp.edu.ar%3E"
+       TITLE="[Mrs-user] Software error">dbellante at biol.unlp.edu.ar
+       </A><BR>
+    <I>Tue Aug 15 16:24:13 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000093.html">[Mrs-user] Fwd: 131
+</A></li>
+        <LI>Next message: <A HREF="000095.html">[Mrs-user] Software error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#94">[ date ]</a>
+              <a href="thread.html#94">[ thread ]</a>
+              <a href="subject.html#94">[ subject ]</a>
+              <a href="author.html#94">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all!
+   I am having some problems...
+
+When I try to view an entry after searching INTERPRO , I get:
+-------------------
+Software error:
+
+Can't locate object method &quot;new&quot; via package &quot;XML::XSLT&quot; (perhaps you forgot to
+load &quot;XML::XSLT&quot;?) at Format_interpro.pm line 74.
+
+---------------------
+
+
+
+
+(That module is installed)
+
+The only &quot;interesting&quot; log was:
+
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">root at srsfed</A> status]# more interpro.mirror_log
+make[3]: Entering directory `/raid/usr/local/mrs-update'
+/usr/bin/perl /raid/usr/local/mrs-update/mirror.pl -d
+/raid/db/mrsdata/raw/interpro/ -c <A HREF="ftp://ftp.ebi.ac.uk/pub">ftp://ftp.ebi.ac.uk/pub</A>
+/databases/interpro
+entry.list
+interpro.dtd
+interpro.xml.gz
+
+
+Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+
+Retrying...
+
+
+Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 1001
+
+Retrying...
+interpro.xml.gz
+interpro2go
+match.dtd
+match.xml.gz
+
+
+Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+
+Retrying...
+match.xml.gz
+
+
+Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+
+Retrying...
+match.xml.gz
+
+
+Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+
+Retrying...
+match.xml.gz
+
+
+Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+
+make[3]: Leaving directory `/raid/usr/local/mrs-update'
+
+
+          Thanks!!
+
+            Diego
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000093.html">[Mrs-user] Fwd: 131
+</A></li>
+	<LI>Next message: <A HREF="000095.html">[Mrs-user] Software error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#94">[ date ]</a>
+              <a href="thread.html#94">[ thread ]</a>
+              <a href="subject.html#94">[ subject ]</a>
+              <a href="author.html#94">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

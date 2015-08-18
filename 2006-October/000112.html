@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20case%20sensitive%20identifiers%20-%20Checked%20by%20AntiVir%20DEMO%0A%09version%20-&In-Reply-To=%3C1C9E6DD3-4A50-46FE-A8B6-4B4CA3C6154E%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000113.html">
+   <LINK REL="Next"  HREF="000114.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20case%20sensitive%20identifiers%20-%20Checked%20by%20AntiVir%20DEMO%0A%09version%20-&In-Reply-To=%3C1C9E6DD3-4A50-46FE-A8B6-4B4CA3C6154E%40hekkelman.com%3E"
+       TITLE="[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	version -">maarten at hekkelman.com
+       </A><BR>
+    <I>Wed Oct  4 10:08:23 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000113.html">[Mrs-user] serious trouble with SOAP - Checked by AntiVir DEMO	version -
+</A></li>
+        <LI>Next message: <A HREF="000114.html">[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	ver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#112">[ date ]</a>
+              <a href="thread.html#112">[ thread ]</a>
+              <a href="subject.html#112">[ subject ]</a>
+              <a href="author.html#112">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Guy,
+
+Adding a case sensitive index is possible and not that much work.
+
+The reason to allow multiple ID's by rewriting the duplicates is that  
+it is very frustrating to have indexing fail for a databank that  
+contains a duplicate ID. Esp. if it is e.g. Genbank and it took you  
+three days to find out there was a duplicate ID. The current solution  
+allows you to at least find the data even though the returned ID's  
+don not make much sense.
+
+Rewriting different case in ID's to something like LC_id can be done  
+in the parser scripts. No change is needed in MRS itself to allow for  
+this. Though I get the feeling that you trying to find a workaround  
+for a problem that should be solved elsewhere.
+
+-maarten
+
+
+Op 28-sep-2006, om 15:57 heeft Guy Bottu het volgende geschreven:
+
+&gt;<i> 	Dear colleagues,
+</I>&gt;<i>
+</I>&gt;<i> Thure Etzold, the developer of SRS, once said &quot;You cannot imagine  
+</I>&gt;<i> anything
+</I>&gt;<i> that crazy or there is at least one database manager who really  
+</I>&gt;<i> does it&quot;.
+</I>&gt;<i> While trying to put in our MRS server databanks with the protein and
+</I>&gt;<i> nucleic acid sequences extracted from the PDB, I bumped on the  
+</I>&gt;<i> following
+</I>&gt;<i> problem : some have identifiers only different by case. E.g. there  
+</I>&gt;<i> is a
+</I>&gt;<i> 1fnt_A and a 1fnt_a. Now, most bioinformatic software is not case
+</I>&gt;<i> sensitive. I understand that MRS stores indices so that they can be
+</I>&gt;<i> displayed in their original case, but can only be searched
+</I>&gt;<i> case-insensitively ; it does automatically modify redundant  
+</I>&gt;<i> indices, e.g.
+</I>&gt;<i> 1fnt_a is stored as 1fnt_a_12835. This is however not ideal. Should  
+</I>&gt;<i> MRS
+</I>&gt;<i> be adapted so that it can handle case sensitive indices ? This will
+</I>&gt;<i> however not solve everything, since other software like EMBOSS or  
+</I>&gt;<i> GCG is
+</I>&gt;<i> also case insensitive. My idea is to let the MRS parser store 1fnt_aLC
+</I>&gt;<i> (LC means lowercase) as identifier. A user can then search for the
+</I>&gt;<i> sequence he needs in MRS and in EMBOSS (if the EMBOSS installation  
+</I>&gt;<i> uses
+</I>&gt;<i> MRS as databank access mechanism) ask for the sequence pdbprot: 
+</I>&gt;<i> 1fnt_alc.
+</I>&gt;<i> This would of course also work with 1fnt_a_12835 but it avoids the  
+</I>&gt;<i> use of
+</I>&gt;<i> a meaningless and irreproducible number. Anybody a comment ?
+</I>&gt;<i>
+</I>&gt;<i> 	Regards,
+</I>&gt;<i> 	Guy Bottu,
+</I>&gt;<i> 	Belgian EMBnet Node
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000113.html">[Mrs-user] serious trouble with SOAP - Checked by AntiVir DEMO	version -
+</A></li>
+	<LI>Next message: <A HREF="000114.html">[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	ver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#112">[ date ]</a>
+              <a href="thread.html#112">[ thread ]</a>
+              <a href="subject.html#112">[ subject ]</a>
+              <a href="author.html#112">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

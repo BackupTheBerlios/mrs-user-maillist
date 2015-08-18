@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] mrs-3 update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs-3%20update&In-Reply-To=%3CFFC31BF8-BBAC-4142-9245-72FD102C9708%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000192.html">
+   <LINK REL="Next"  HREF="000186.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] mrs-3 update</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs-3%20update&In-Reply-To=%3CFFC31BF8-BBAC-4142-9245-72FD102C9708%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] mrs-3 update">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Thu Feb  8 14:47:12 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000192.html">[Mrs-user] MRS3
+</A></li>
+        <LI>Next message: <A HREF="000186.html">[Mrs-user] sorry, Debian-Ubuntu's security trapped me again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#185">[ date ]</a>
+              <a href="thread.html#185">[ thread ]</a>
+              <a href="subject.html#185">[ subject ]</a>
+              <a href="author.html#185">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 8-feb-2007, om 12:58 heeft Sergei Spirin het volgende geschreven:
+
+&gt;<i> Dear developers,
+</I>&gt;<i>
+</I>&gt;<i> At the interface at <A HREF="http://mrs.cmbi.ru.nl/mrs-3,">http://mrs.cmbi.ru.nl/mrs-3,</A> something is wrong  
+</I>&gt;<i> with the numeration of records. See the attached screenshot.
+</I>&gt;<i> At the blue ribbon it is written: &quot;Records 26-50 of 399&quot; , although  
+</I>&gt;<i> really the records 26-41 of 41 are presented (the next page is empty).
+</I>&gt;<i>
+</I>&gt;<i> The query was:
+</I>&gt;<i> de:cytochrome &amp; de:b5 &amp; oc:viridiplantae ! de:reductase ! de:fragment
+</I>&gt;<i> in UniProt KB.
+</I>
+This is fixed now. But please note that I had to change the behaviour  
+of one of the Perl interface calls to fix this problem.
+
+The MQueryResults::Count call takes a boolean argument. When this is  
+true, the iterator is not longer useable to fetch results. That means  
+that if you have code like this:
+
+my $db = new MRS::MDatabank('sprot');
+my $r = $db-&gt;Find('blablabla');
+
+my $count = $r-&gt;Count(1);
+
+while (my $hit = $r-&gt;Next) {
+	...
+}
+
+This will no longer work. You have to call Count after fetching your  
+results using Next.
+
+At the same time I fixed the query parsing in the web interface. You  
+can now add glob style patterns to a query and so
+
+rds -respir*    ( &lt;= results in all records containing RDS but  
+excluding those that contain words starting with respir)
+
+works again.
+
+-maarten
+
+
+&gt;<i> ----- Original Message ----- From: &quot;Maarten L. Hekkelman&quot;  
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">m.hekkelman at cmbi.ru.nl</A>&gt;
+</I>&gt;<i> To: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>&gt;
+</I>&gt;<i> Sent: Wednesday, February 07, 2007 6:35 PM
+</I>&gt;<i> Subject: [Mrs-user] mrs-3 update
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hi,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I just updated the mrs-3 trunk.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The code is in the usual place: <A HREF="https://svn.berlios.de/svnroot/repos/">https://svn.berlios.de/svnroot/repos/</A>
+</I>&gt;&gt;<i> mrs/trunk
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> This new version brings you a SOAP server for ClustalW which is only
+</I>&gt;&gt;<i> a thin wrapper around the good old clustalw executable.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The interface (not included in the distribution (yet?)) using this
+</I>&gt;&gt;<i> new mrs is at <A HREF="http://www.cmbi.ru.nl/mrs-3/">http://www.cmbi.ru.nl/mrs-3/</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -maarten
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Mrs-user mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;&gt;<i> &lt;MRS_screenshot.GIF&gt;
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000192.html">[Mrs-user] MRS3
+</A></li>
+	<LI>Next message: <A HREF="000186.html">[Mrs-user] sorry, Debian-Ubuntu's security trapped me again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#185">[ date ]</a>
+              <a href="thread.html#185">[ thread ]</a>
+              <a href="subject.html#185">[ subject ]</a>
+              <a href="author.html#185">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

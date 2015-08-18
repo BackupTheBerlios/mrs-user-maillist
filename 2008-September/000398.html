@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] continuing a crashed indexing run
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20continuing%20a%20crashed%20indexing%20run&In-Reply-To=%3C48BD04ED.9010503%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000397.html">
+   <LINK REL="Next"  HREF="000399.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] continuing a crashed indexing run</H1>
+    <B>George Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20continuing%20a%20crashed%20indexing%20run&In-Reply-To=%3C48BD04ED.9010503%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] continuing a crashed indexing run">georgios at biotek.uio.no
+       </A><BR>
+    <I>Tue Sep  2 11:18:37 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000397.html">[Mrs-user] continuing a crashed indexing run
+</A></li>
+        <LI>Next message: <A HREF="000399.html">[Mrs-user] continuing a crashed indexing run
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#398">[ date ]</a>
+              <a href="thread.html#398">[ thread ]</a>
+              <a href="subject.html#398">[ subject ]</a>
+              <a href="author.html#398">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Normally (I assume you are still under 3.x, if you are at 4.x I don't 
+know, haven't tried that), when something bad happens you get lots of 
+indermediate files that the system creates for sorting, etc like:
+
+databasename-[number].cmp.XXlDjejb.
+
+The best way is to clear these files and re-index but in your case, if 
+you are memory starved, I am not sure this is a good idea. You are not 
+the only one facing this problem, so I 'll tell you what: I shall place 
+a copy of the indexed embl release 95 with updates here:
+
+<A HREF="ftp://ftp.no.embnet.org/biodatabases/mrsindex/">ftp://ftp.no.embnet.org/biodatabases/mrsindex/</A>
+
+Feel free to hit the server, we don't mind. But wait for the next hour 
+or so, until all files sync with the FTP server (the copy is in 
+progress). They need to be placed in the mrsdata mrs dir.
+
+I hope that this helps, and if more people face these problems, it might 
+be an idea to maintain this dir in the ftp server, as not all have 
+systems packed with memory and I read from Marteen that version 4 is 
+going to be even more memory hungry.
+
+
+-- 
+-- 
+George Magklaras
+
+Senior Computer Systems Engineer/UNIX Systems Administrator
+EMBnet Technical Management Board The Biotechnology Centre of Oslo,
+University of Oslo
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+
+
+Koen Cuelenaere wrote:
+&gt;<i> Hi all/Maarten
+</I>&gt;<i> 
+</I>&gt;<i> is there an option/workaround to continue a
+</I>&gt;<i> certain time-consuming indexing run after it crashed?
+</I>&gt;<i> 
+</I>&gt;<i> In particular, we try to index EMBL, and it seems
+</I>&gt;<i> to have finished the first phase (parsing?), in
+</I>&gt;<i> approx 2 days. When it then tries to continue (eta 1 day),
+</I>&gt;<i> approx halfway, probably due to a memory limit on the OS/hardware
+</I>&gt;<i> level, it stopped. So we'ld like to not have to redo the
+</I>&gt;<i> 1st 2days worth of processing...
+</I>&gt;<i> 
+</I>&gt;<i> PS: I guess no intermediate files are written which
+</I>&gt;<i> could be picked up for the next phase/rerun?
+</I>&gt;<i> How about a memory snapshot after certain well-defined
+</I>&gt;<i> steps?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> thanks &amp; regards
+</I>&gt;<i> Koen
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000397.html">[Mrs-user] continuing a crashed indexing run
+</A></li>
+	<LI>Next message: <A HREF="000399.html">[Mrs-user] continuing a crashed indexing run
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#398">[ date ]</a>
+              <a href="thread.html#398">[ thread ]</a>
+              <a href="subject.html#398">[ subject ]</a>
+              <a href="author.html#398">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

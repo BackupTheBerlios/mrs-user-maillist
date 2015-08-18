@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] query parser - parenthesis
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20query%20parser%20-%20parenthesis&In-Reply-To=%3CAANLkTikjWH3FASL6VIM8ibadiuMXXly5xtSrbZk9c4JU%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000573.html">
+   <LINK REL="Next"  HREF="000575.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] query parser - parenthesis</H1>
+    <B>Martin Senger</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20query%20parser%20-%20parenthesis&In-Reply-To=%3CAANLkTikjWH3FASL6VIM8ibadiuMXXly5xtSrbZk9c4JU%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] query parser - parenthesis">martin.senger at gmail.com
+       </A><BR>
+    <I>Tue Jun 22 09:25:01 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000573.html">[Mrs-user] query parser - parenthesis
+</A></li>
+        <LI>Next message: <A HREF="000575.html">[Mrs-user] query parser - parenthesis
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#574">[ date ]</a>
+              <a href="thread.html#574">[ thread ]</a>
+              <a href="subject.html#574">[ subject ]</a>
+              <a href="author.html#574">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Many thanks for a quick reply.
+
+I know that my examples with parenthesis seemed a bit artificial. The reason
+I came across this issues is that I am updating the MRS::Client and trying
+to add there a similar search string parser that is present in the mrs-web.
+Therefore, I am trying to understand what is the &quot;small language&quot; behind it.
+
+If I read it correctly, the result of parsing a search string (before
+sending it to the MRS server) is a list of query terms (the ones that will
+be searched for by the AND operator) and a filter string (that will be
+applied additionally to the query terms). For example, I am getting these:
+
+Search string                   Query terms                 Filter string
+a AND b AND c                   [a, b, c]                   null
+a AND NOT b                     [a]                         NOT b
+
+So far, so good. But for a search string &quot;a AND b OR c&quot;, I would expect that
+&quot;a AND b&quot; should have precedence but it does not seem so:
+
+Search string                   Query terms                 Filter string
+a AND b OR c                    [a]                         b OR c
+
+And now coming back to the parenthesis. If I would like to set the
+preferences myself, I need the parenthesis: &quot;(a AND b) OR c&quot; (which does not
+work; as reported). So that's why I came to the issue.
+
+Many thanks and cheers,
+Martin
+
+-- 
+Martin Senger
+email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+skype: martinsenger
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20100622/0668e29b/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20100622/0668e29b/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000573.html">[Mrs-user] query parser - parenthesis
+</A></li>
+	<LI>Next message: <A HREF="000575.html">[Mrs-user] query parser - parenthesis
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#574">[ date ]</a>
+              <a href="thread.html#574">[ thread ]</a>
+              <a href="subject.html#574">[ subject ]</a>
+              <a href="author.html#574">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

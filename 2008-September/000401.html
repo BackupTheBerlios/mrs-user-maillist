@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] continuing a crashed indexing run
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20continuing%20a%20crashed%20indexing%20run&In-Reply-To=%3C48BD4947.5070407%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000399.html">
+   <LINK REL="Next"  HREF="000403.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] continuing a crashed indexing run</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20continuing%20a%20crashed%20indexing%20run&In-Reply-To=%3C48BD4947.5070407%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] continuing a crashed indexing run">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue Sep  2 16:10:15 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000399.html">[Mrs-user] continuing a crashed indexing run
+</A></li>
+        <LI>Next message: <A HREF="000403.html">[Mrs-user] continuing a crashed indexing run
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#401">[ date ]</a>
+              <a href="thread.html#401">[ thread ]</a>
+              <a href="subject.html#401">[ subject ]</a>
+              <a href="author.html#401">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Koen Cuelenaere schreef:
+
+&gt;<i> is there an option/workaround to continue a
+</I>&gt;<i> certain time-consuming indexing run after it crashed?
+</I>
+No, there isn't.
+
+Technically, what MRS does is create a data structure in memory that 
+assigns a number to each unique string found during parsing (called a 
+lexicon). It is this technique that makes MRS fast, but also makes it 
+resource hungry. Besides, suppose mrs was to run out of memory, one 
+would have to dump this structure to disk. Obviously, that's not very 
+useful since you need  as much memory to read this back in again.
+
+With MRS 4 it will be possible to index EMBL within 24 hours but at the 
+cost of 16 GB of memory. (We recently upgraded our server to 32 GB which 
+cost us 1500 euro.)
+
+Suppose I was to bring down memory consumption, which is technically 
+possible of course, this will mean there will be a hit somewhere else. 
+If I rewrite the lexicon to use disk backing store, performance will 
+collapse. If I reintroduce merging, lots of time will be lost with this 
+merging step.
+
+As a 'solution' you can build smaller databanks. E.g. you can split EMBL 
+into the separate sections 'EST', 'ANN', etc. and index those. Then, 
+using the mrs-config file you can link those together to create one new 
+virtual databank. However, query performance will then be not as good 
+and there are issues with ranking.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000399.html">[Mrs-user] continuing a crashed indexing run
+</A></li>
+	<LI>Next message: <A HREF="000403.html">[Mrs-user] continuing a crashed indexing run
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#401">[ date ]</a>
+              <a href="thread.html#401">[ thread ]</a>
+              <a href="subject.html#401">[ subject ]</a>
+              <a href="author.html#401">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

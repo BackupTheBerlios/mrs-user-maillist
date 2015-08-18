@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] small bug in pfam.pm - Checked by AntiVir DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20small%20bug%20in%20pfam.pm%20-%20Checked%20by%20AntiVir%20DEMO%20version%20-&In-Reply-To=%3C20070302120019.GA5698%40bigben.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000207.html">
+   <LINK REL="Next"  HREF="000213.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] small bug in pfam.pm - Checked by AntiVir DEMO version -</H1>
+    <B>Guy Bottu</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20small%20bug%20in%20pfam.pm%20-%20Checked%20by%20AntiVir%20DEMO%20version%20-&In-Reply-To=%3C20070302120019.GA5698%40bigben.ulb.ac.be%3E"
+       TITLE="[Mrs-user] small bug in pfam.pm - Checked by AntiVir DEMO version -">gbottu at ben.vub.ac.be
+       </A><BR>
+    <I>Fri Mar  2 13:00:19 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000207.html">[Mrs-user] Yann-Francois Bizouerne/CSBIY/FR/BCS/BAYER is on holiday
+</A></li>
+        <LI>Next message: <A HREF="000213.html">[Mrs-user] gene2xml ? - Checked by AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#212">[ date ]</a>
+              <a href="thread.html#212">[ thread ]</a>
+              <a href="subject.html#212">[ subject ]</a>
+              <a href="author.html#212">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>	Dear Maarten,
+
+I just noticed a small bug in the file pfam.pm of MRS3. It contains :
+
+                my %FILES = (
+                        pfama           =&gt; qr/Pfam-A\.full\.gz/,
+                        pfamb           =&gt; qr/Pfam-A\.seed\.gz/,
+                        pfamseed        =&gt; qr/Pfam-B\.gz/,
+                );
+
+with as consequence that the indexes for Pfam-seed and Pfam-B are 
+swapped.
+
+	Guy Bottu,
+	BEN
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000207.html">[Mrs-user] Yann-Francois Bizouerne/CSBIY/FR/BCS/BAYER is on holiday
+</A></li>
+	<LI>Next message: <A HREF="000213.html">[Mrs-user] gene2xml ? - Checked by AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#212">[ date ]</a>
+              <a href="thread.html#212">[ thread ]</a>
+              <a href="subject.html#212">[ subject ]</a>
+              <a href="author.html#212">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

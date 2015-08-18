@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [mrs-user] problems with SOAP search
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20problems%20with%20SOAP%20search&In-Reply-To=%3C3AAB6D011903954EBDFFF6F364ACD6B77B00D2FD%40UMCEXMBX02.umcn.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000675.html">
+   <LINK REL="Next"  HREF="000677.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[mrs-user] problems with SOAP search</H1>
+    <B>M.Hekkelman at umcn.nl</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20problems%20with%20SOAP%20search&In-Reply-To=%3C3AAB6D011903954EBDFFF6F364ACD6B77B00D2FD%40UMCEXMBX02.umcn.nl%3E"
+       TITLE="[mrs-user] problems with SOAP search">M.Hekkelman at umcn.nl
+       </A><BR>
+    <I>Wed Sep 18 10:58:57 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000675.html">[mrs-user] problems with SOAP search
+</A></li>
+        <LI>Next message: <A HREF="000677.html">[mrs-user] problems with SOAP search
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#676">[ date ]</a>
+              <a href="thread.html#676">[ thread ]</a>
+              <a href="subject.html#676">[ subject ]</a>
+              <a href="author.html#676">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Joshua,
+
+As far as I can see, there's nothing wrong with this SOAP message. But to be sure, I need to know more, like what the 'rejection page' is you get. If it is from the proxy server, then you should talk to the network manager for your location.
+
+Technically, all SOAP is, is sending a POST containing the XML SOAP request in the payload over HTTP. So nothing exciting there, unless your proxy disallows content other than text/html e.g.
+
+BTW, since you mention Java, I assume you're using XCF? That's what we use here and I know many other using this without any problem.
+
+Good luck debugging this problem.
+
+-maarten
+
+Van: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user-bounces at lists.berlios.de</A> [mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user-bounces at lists.berlios.de</A>] Namens Joshua Guptill - Network
+Verzonden: dinsdag 17 september 2013 20:38
+Aan: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+Onderwerp: [mrs-user] problems with SOAP search
+
+All,
+I'm having difficulty implementing the soap search.  I'm using Java.  So far I've generated the stubs, and I believe I'm composing the request correctly.  I started out coding the request and I had problems (see below).  I changed tactics and now I moved on to testing with SoapUI, in case there was some sort of issue in my code.
+
+I'm getting a rejection page from sending a simple message to the soap server.  See below for the message I'm sending:
+
+&lt;soapenv:Envelope xmlns:soapenv=&quot;<A HREF="http://schemas.xmlsoap.org/soap/envelope/">http://schemas.xmlsoap.org/soap/envelope/</A>&quot; xmlns:sear=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/search">http://mrs.cmbi.ru.nl/mrsws/search</A>&quot;&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;sear:GetDatabankInfo&gt;
+         &lt;sear:db&gt;Taxonomy&lt;/sear:db&gt;
+      &lt;/sear:GetDatabankInfo&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+
+There is one other thing at play here.  The server is hosted behind my company's network.  To make external calls outside the network (browsing, for example), I have to utilize a proxy server.   For some reason, I have to utilize the proxy server to at least get a rejection page from the proxy server.  If I don't, I just get a connection refused.
+
+I am trying to get my networking questions answered.  In the meantime, does there look to be anything incorrect with my request?  This is the first time I've used soap, so I'm a bit of a n00b.
+
+Thanks,
+Josh
+
+
+
+
+Het UMC St Radboud staat geregistreerd bij de Kamer van Koophandel in het handelsregister onder nummer 41055629.
+The Radboud University Nijmegen Medical Centre is listed in the Commercial Register of the Chamber of Commerce under file number 41055629.
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20130918/e7637e5f/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20130918/e7637e5f/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000675.html">[mrs-user] problems with SOAP search
+</A></li>
+	<LI>Next message: <A HREF="000677.html">[mrs-user] problems with SOAP search
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#676">[ date ]</a>
+              <a href="thread.html#676">[ thread ]</a>
+              <a href="subject.html#676">[ subject ]</a>
+              <a href="author.html#676">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the mrs-user
+mailing list</a><br>
+</body></html>

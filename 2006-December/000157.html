@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] version 3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20version%203&In-Reply-To=%3CB32E0D31-88F6-4654-980B-83FCD1050734%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000156.html">
+   <LINK REL="Next"  HREF="000158.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] version 3</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20version%203&In-Reply-To=%3CB32E0D31-88F6-4654-980B-83FCD1050734%40hekkelman.com%3E"
+       TITLE="[Mrs-user] version 3">maarten at hekkelman.com
+       </A><BR>
+    <I>Mon Dec 18 11:47:22 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000156.html">[Mrs-user] mirror fix
+</A></li>
+        <LI>Next message: <A HREF="000158.html">[Mrs-user] mrs3 compilation...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've been working on updating the backend of MRS for version 3 and I  
+believe I've done most of the work.
+
+Apart from being faster, the new version has these new features:
+
+- meta data fields. You can store extra data along with the document.  
+I'm using this for the title only but other fields could be added  
+like e.g. species. The size of the databank increases only slightly  
+since e.g. the title data is redundant and the compression algorithms  
+take care of detecting this.
+
+- update databank support. A databank can contain a so called omit  
+vector which is a bit vector that stores which documents in the  
+databank have been superseded by new ones. This works by detecting  
+duplicate ID's being entered, only the last document is searchable.  
+Together with an increased merging speed this replaces the previous  
+update databank mechanism using the pipe symbol.
+
+- a new and much better SOAP server. It is created using gSoap and is  
+a very fast SOAP interface together with a WSDL file describing what  
+can be done.
+
+- the parser and format scripts have been merged into one new script.  
+I also changed the script support a bit to make it easier to add new  
+databanks.
+
+The frontend is not yet finished. Although the perl scripts from mrs  
+2.0 still work (maybe there are a few modifications required, I'll  
+have to check that) I decided to drop the Perl/CGI approach in favor  
+of a Java/Struts based application. That allows me to create a much  
+nicer user experience IMHO.
+
+You can see the new interface at work here: <A HREF="http://www.cmbi.ru.nl/mrs-3/">http://www.cmbi.ru.nl/mrs-3/</A>
+
+The code for this new version of mrs is at <A HREF="https://svn.berlios.de/">https://svn.berlios.de/</A> 
+svnroot/repos/mrs/trunk
+
+I did some changes in the installer script, but I never tested this  
+so don't expect it to work.
+
+Hopefully there are some of you willing to test this new version?
+
+Robert: I hope to have some time soon to revise your documentation  
+for this new version.
+
+-maarten
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000156.html">[Mrs-user] mirror fix
+</A></li>
+	<LI>Next message: <A HREF="000158.html">[Mrs-user] mrs3 compilation...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] unresolved/unreplaced variables in hyperlinks in	mrsweb
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20unresolved/unreplaced%20variables%20in%20hyperlinks%20in%0A%09mrsweb&In-Reply-To=%3C4d93f07c1002270255v54110b62le740da2a1f12083%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000514.html">
+   <LINK REL="Next"  HREF="000516.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] unresolved/unreplaced variables in hyperlinks in	mrsweb</H1>
+    <B>Martin Senger</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20unresolved/unreplaced%20variables%20in%20hyperlinks%20in%0A%09mrsweb&In-Reply-To=%3C4d93f07c1002270255v54110b62le740da2a1f12083%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] unresolved/unreplaced variables in hyperlinks in	mrsweb">martin.senger at gmail.com
+       </A><BR>
+    <I>Sat Feb 27 11:55:33 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000514.html">[Mrs-user] unresolved/unreplaced variables in hyperlinks in	mrsweb
+</A></li>
+        <LI>Next message: <A HREF="000516.html">[Mrs-user] need monster.0.9.9
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#517">[ date ]</a>
+              <a href="thread.html#517">[ thread ]</a>
+              <a href="subject.html#517">[ subject ]</a>
+              <a href="author.html#517">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+So I fixed both gene.pm and gene_xslt.xsl. You can fetch the latest from
+&gt;<i> SVN.
+</I>&gt;<i>
+</I>
+Unfortunately, the problem persists. I have took from the SVN updated
+versions of these files:
+
+$ svn update
+U    parser_scripts/medline.pm
+U    parser_scripts/gene_xslt.xml
+U    parser_scripts/gene.pm
+U    parser_scripts/pmc.pm
+Updated to revision 985.
+
+I copied them to the /usr/local/share/mrs/parser_scripts/. I restarted
+mrs-web (even though I believe it was not necessary). And with the same
+query:
+
+<A HREF="http://.../mrs-web/entry.do?db=gene&amp;id=33212&amp;query=cone+snail">http://.../mrs-web/entry.do?db=gene&amp;id=33212&amp;query=cone+snail</A>
+
+I am getting this error:
+
+Error in formatting entry: Attempt to reload XML/LibXSLT.pm aborted.
+Compilation failed in require at (eval 77) line 42. BEGIN
+failed--compilation aborted at (eval 77) line 42.
+
+My XML/XSLT libraries are of these versions:
+
+$ perl -MXML::LibXSLT -e 'print $XML::LibXSLT::VERSION . &quot;\n&quot;'
+1.70
+$ perl -MXML::LibXML -e 'print $XML::LibXML::VERSION . &quot;\n&quot;'
+1.70
+
+Thanks for your help to solve this problem,
+Martin
+
+
+-- 
+Martin Senger
+email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+skype: martinsenger
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20100227/fcdcc755/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20100227/fcdcc755/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000514.html">[Mrs-user] unresolved/unreplaced variables in hyperlinks in	mrsweb
+</A></li>
+	<LI>Next message: <A HREF="000516.html">[Mrs-user] need monster.0.9.9
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#517">[ date ]</a>
+              <a href="thread.html#517">[ thread ]</a>
+              <a href="subject.html#517">[ subject ]</a>
+              <a href="author.html#517">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

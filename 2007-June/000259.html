@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Questions and report after successful installation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20successful%20installation&In-Reply-To=%3C41DE5583-6818-4673-81C7-3DCAAE4E08C5%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000258.html">
+   <LINK REL="Next"  HREF="000260.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Questions and report after successful installation</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20successful%20installation&In-Reply-To=%3C41DE5583-6818-4673-81C7-3DCAAE4E08C5%40hekkelman.com%3E"
+       TITLE="[Mrs-user] Questions and report after successful installation">maarten at hekkelman.com
+       </A><BR>
+    <I>Fri Jun  8 17:48:00 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000258.html">[Mrs-user] Questions and report after successful installation
+</A></li>
+        <LI>Next message: <A HREF="000260.html">[Mrs-user] (no subject)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Alvaro,
+
+I answered this question in a previous mail, but realised I forgot to  
+add one essential bit of information
+
+&gt;<i> 2 ) I indexed BLOCKS successfully BLOCKS but I can see it anywhere in
+</I>&gt;<i> the databanks. And there are some small databases that I want to index
+</I>&gt;<i> and fail. How can I trace why.
+</I>
+To make a new databanks show up in the SOAP servers you have to add  
+it to the mrs-config.xml file in /usr/local/etc/. If you edit this  
+file while mrsws is running it will re-read the file each time it is  
+saved.
+
+It is possible to run mrsws without a config file, in that case it  
+will read all databanks in the $MRS_DATA_DIR directory and then you  
+have to 'kill -HUP' it to make it re-read the datafiles.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000258.html">[Mrs-user] Questions and report after successful installation
+</A></li>
+	<LI>Next message: <A HREF="000260.html">[Mrs-user] (no subject)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

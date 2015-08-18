@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] how to get and how to install MRS 5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2012-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20how%20to%20get%20and%20how%20to%20install%20MRS%205&In-Reply-To=%3C4F3B5BE9.5020109%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000640.html">
+   <LINK REL="Next"  HREF="000642.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] how to get and how to install MRS 5</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20how%20to%20get%20and%20how%20to%20install%20MRS%205&In-Reply-To=%3C4F3B5BE9.5020109%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] how to get and how to install MRS 5">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Feb 15 08:16:57 CET 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000640.html">[Mrs-user] how to get and how to install MRS 5
+</A></li>
+        <LI>Next message: <A HREF="000642.html">[Mrs-user] how to get and how to install MRS 5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#641">[ date ]</a>
+              <a href="thread.html#641">[ thread ]</a>
+              <a href="subject.html#641">[ subject ]</a>
+              <a href="author.html#641">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 14-2-2012 13:38, Martin Senger schreef:
+
+&gt;<i> It seems that finally I am able to test the MRS::Client module with the
+</I>&gt;<i> MRS version 5 (don't ask why it took so long to get the version 5
+</I>&gt;<i> running :-)).
+</I>
+:<i>-) I think I know...
+</I>
+&gt;<i> Unfortunately, the MRS::Client code does not seem to work fully.
+</I> &gt; ...
+&gt;<i> when I try to get more information about the databases, like
+</I>&gt;<i> the record counts, I am getting an error message. Perhaps the SOAP
+</I>&gt;<i> interface for this request changed? If so, is there a new WSDL with the
+</I>&gt;<i> latest interface? This is what I send and get (an example for the
+</I>&gt;<i> 'dbest' database):
+</I>
+The WSDL is generated automatically by mrs-ws based on the exposed 
+interface. There can be no mismatch between the WSDL and the actual 
+interface.
+
+But in this case, you ran into a line of code I added to prevent DOS 
+attacks. I checked the booleanquery to see if it contained more than 
+just a couple of asterisks. If you search ** the implementation of my 
+wildcard matching goes berserk, but I should have checked for multiple 
+asterisks, not a single one of course.
+
+Sorry about this. I've updated the source code.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000640.html">[Mrs-user] how to get and how to install MRS 5
+</A></li>
+	<LI>Next message: <A HREF="000642.html">[Mrs-user] how to get and how to install MRS 5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#641">[ date ]</a>
+              <a href="thread.html#641">[ thread ]</a>
+              <a href="subject.html#641">[ subject ]</a>
+              <a href="author.html#641">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

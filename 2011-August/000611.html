@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS 5 -- location of external binaries -- mrs-config.xml	file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%205%20--%20location%20of%20external%20binaries%20--%20mrs-config.xml%0A%09file&In-Reply-To=%3C4E4B93D1.9000005%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000610.html">
+   <LINK REL="Next"  HREF="000612.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS 5 -- location of external binaries -- mrs-config.xml	file</H1>
+    <B>Georgios Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%205%20--%20location%20of%20external%20binaries%20--%20mrs-config.xml%0A%09file&In-Reply-To=%3C4E4B93D1.9000005%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] MRS 5 -- location of external binaries -- mrs-config.xml	file">georgios at biotek.uio.no
+       </A><BR>
+    <I>Wed Aug 17 12:11:29 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000610.html">[Mrs-user] John N Calley/AM/LLY is out of the office.
+</A></li>
+        <LI>Next message: <A HREF="000612.html">[Mrs-user] MRS 5 -- location of external binaries -- mrs-config.xml file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#611">[ date ]</a>
+              <a href="thread.html#611">[ thread ]</a>
+              <a href="subject.html#611">[ subject ]</a>
+              <a href="author.html#611">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hei Maarten,
+
+Thanks for a much better system (5). Throwing Java off the Server Side 
+of things makes a big difference in response time for queries, as far as 
+I can see with the dataset I have so far:
+
+<A HREF="http://cn1.uio.no:18080/">http://cn1.uio.no:18080/</A>
+
+I will blog the setup on a RHEL 6 platform (unless you have a proper 
+4.4.5 gcc/g++ RHEL 5/CentOS 5 is out of the question), however on to a 
+small issue:
+
+In the server, I have setup the location of the BLAST related external 
+binaries in the mrs-config file in the 'tools' section :
+
+&lt;!-- Tools section, specify external executables used by MRS --&gt;
+&lt;tools&gt;
+&lt;tool name=&quot;clustalw&quot;&gt;/biotek/cn1/storage/mrs/external/clustalw&lt;/tool&gt;
+&lt;tool name=&quot;blastall&quot;&gt;/biotek/cn1/storage/mrs/external/blastall&lt;/tool&gt;
+&lt;tool name=&quot;formatdb&quot;&gt;/biotek/cn1/storage/mrs/external/formatdb&lt;/tool&gt;
+&lt;tool name=&quot;fastacmd&quot;&gt;/biotek/cn1/storage/mrs/external/fastacmd&lt;/tool&gt;
+&lt;/tools&gt;
+
+I know this works for basic blast queries because when I submit one, I 
+can see the blastall executable referenced properly in the defined path 
+('globin' as a search term, select a result from TrEMBL, click on Blast, 
+verify the data entry is in Fasta format, submit BLAST query against 
+'PDB'). My understanding is that BLAST-ing against PDB uses the external 
+blastall binary, whereas other queries against say 'UniProt' appear to 
+show the mrs-ws handling things.
+
+Now, the error/question:
+If I select a PDB entry and try to grab it by hitting BLAST, the system 
+produces an error saying:
+&quot;Unfortunately, an error occurred. Maybe the following message may 
+reveal what happened:
+
+         The fastacmd executable '/usr/bin/fastacmd' does not seem to exist&quot;
+
+Obviously the system is referencing fastacmd on the wrong path and yes, 
+I could resolve it with a symlink to the external binaries dir. My 
+question is why, when you specify in the file the binaries, the BLAST 
+button is still trying to see things under /usr/bin?
+
+Cheers,
+
+GM
+
+
+
+
+
+
+
+-- 
+-- 
+George Magklaras PhD
+RHCE no: 805008309135525
+
+Senior Systems Engineer/IT Manager
+Biotek Center, University of Oslo
+EMBnet TMPC Chair
+
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+Tel: +47 22840535
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000610.html">[Mrs-user] John N Calley/AM/LLY is out of the office.
+</A></li>
+	<LI>Next message: <A HREF="000612.html">[Mrs-user] MRS 5 -- location of external binaries -- mrs-config.xml file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#611">[ date ]</a>
+              <a href="thread.html#611">[ thread ]</a>
+              <a href="subject.html#611">[ subject ]</a>
+              <a href="author.html#611">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

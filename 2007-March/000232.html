@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] problem with indexing RefSeq - Checked by AntiVir	DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20problem%20with%20indexing%20RefSeq%20-%20Checked%20by%20AntiVir%0A%09DEMO%20version%20-&In-Reply-To=%3C205E547C-5E13-4EE6-A49C-89D77312836C%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000231.html">
+   <LINK REL="Next"  HREF="000233.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] problem with indexing RefSeq - Checked by AntiVir	DEMO version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20problem%20with%20indexing%20RefSeq%20-%20Checked%20by%20AntiVir%0A%09DEMO%20version%20-&In-Reply-To=%3C205E547C-5E13-4EE6-A49C-89D77312836C%40hekkelman.com%3E"
+       TITLE="[Mrs-user] problem with indexing RefSeq - Checked by AntiVir	DEMO version -">maarten at hekkelman.com
+       </A><BR>
+    <I>Mon Mar 26 08:35:01 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000231.html">[Mrs-user] problem with indexing RefSeq - Checked by AntiVir DEMO	version -
+</A></li>
+        <LI>Next message: <A HREF="000233.html">[Mrs-user] problem with some links in MRS 3 - Checked by AntiVir	DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#232">[ date ]</a>
+              <a href="thread.html#232">[ thread ]</a>
+              <a href="subject.html#232">[ subject ]</a>
+              <a href="author.html#232">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 25-mrt-2007, om 19:03 heeft Guy Bottu het volgende geschreven:
+&gt;<i>
+</I>&gt;<i> The indexing of the last release of RefSeq on our MRS 3 installation
+</I>&gt;<i> crashes with message :
+</I>
+Not that it makes a difference for your experience, but a crash means  
+the program is aborted by the OS because it behaved badly. In this  
+case the application is detecting an error and stops and that was  
+intentional.
+
+Just had to say this to defend myself :-)
+
+&gt;<i> /usr/bin/perl /usr/local/bin/mrs.pl create -d refseqn_release -p 4 - 
+</I>&gt;<i> P 4 -b
+</I>&gt;<i> 5 -w stop.txt -s genbank
+</I>&gt;<i> Could not open stop.txt
+</I>&gt;<i> Parsing done, creating index... Exception building ID table: Error
+</I>&gt;<i> creating ID table: duplicate id for document 5548 (bbur &lt;=&gt; nc_001318)
+</I>&gt;<i> Error creating ID table: duplicate id for document 5548 (bbur &lt;=&gt;
+</I>&gt;<i> nc_001318)make[4]: *** [/usr/local/data/mrs/refseqn_release-4.cmp]  
+</I>&gt;<i> Error 2
+</I>&gt;<i>
+</I>&gt;<i> What does Error 2 mean ?
+</I>
+Error 2 comes from GNU's make. The mrs.pl script died after the  
+plugin called exit(-1).
+
+The error message indicates a problem in the data though. Could it be  
+that the mirror step failed halfway and you still have files from the  
+previous release lying around?
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000231.html">[Mrs-user] problem with indexing RefSeq - Checked by AntiVir DEMO	version -
+</A></li>
+	<LI>Next message: <A HREF="000233.html">[Mrs-user] problem with some links in MRS 3 - Checked by AntiVir	DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#232">[ date ]</a>
+              <a href="thread.html#232">[ thread ]</a>
+              <a href="subject.html#232">[ subject ]</a>
+              <a href="author.html#232">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

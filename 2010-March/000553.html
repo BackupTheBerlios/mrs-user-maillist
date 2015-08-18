@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] FASTA format for dbest is not working
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20FASTA%20format%20for%20dbest%20is%20not%20working&In-Reply-To=%3C4BB1203E.50109%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000551.html">
+   <LINK REL="Next"  HREF="000554.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] FASTA format for dbest is not working</H1>
+    <B>Georgios Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20FASTA%20format%20for%20dbest%20is%20not%20working&In-Reply-To=%3C4BB1203E.50109%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] FASTA format for dbest is not working">georgios at biotek.uio.no
+       </A><BR>
+    <I>Mon Mar 29 23:48:46 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000551.html">[Mrs-user] FASTA format for dbest is not working
+</A></li>
+        <LI>Next message: <A HREF="000554.html">[Mrs-user] FASTA format for genbank is not working
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#553">[ date ]</a>
+              <a href="thread.html#553">[ thread ]</a>
+              <a href="subject.html#553">[ subject ]</a>
+              <a href="author.html#553">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>dbEST is an EST subset of Genbank. If you use MRS, you could retrieve 
+sequences in FASTA format by asking Genbank directly. Use your sequence 
+search terms and make sure to include the index keyword (for Genbank). 
+For example:
+
+keywords:EST Myxococcus xanthus
+
+
+This should allow you to return the sequence(s) in question in FASTA format.
+
+GM
+
+
+-- 
+Best regards,
+--
+
+George Magklaras BSc (Hons) MPhil RHCE
+IT Systems Manager/Senior Systems Engineer
+The Biotechnology Center of Oslo
+University of Oslo
+
+<A HREF="http://www.biotek.uio.no">http://www.biotek.uio.no</A>
+<A HREF="http://www.no.embnet.org">http://www.no.embnet.org</A>
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+
+On 03/29/2010 09:50 PM, Uma Mahesh (?????)  wrote:
+&gt;<i> Dear Maarten,
+</I>&gt;<i>
+</I>&gt;<i> There is a section called SEQUENCE and that has sequence in it. For 
+</I>&gt;<i> your kind reference, I am pasting a part here.
+</I>&gt;<i>
+</I>&gt;<i> *IDENTIFIERS
+</I>&gt;<i>
+</I>&gt;<i> dbEST Id:       999999
+</I>&gt;<i> EST name:       EST67596
+</I>&gt;<i>
+</I>&gt;<i> GenBank Acc:    AA358620
+</I>&gt;<i> GenBank gi:     2011010
+</I>&gt;<i>
+</I>&gt;<i> CLONE INFO
+</I>&gt;<i> Clone Id:       (3' end)
+</I>&gt;<i> Source:         ATCC
+</I>&gt;<i> Id in host:     105215
+</I>&gt;<i> Other ESTs on clone:EST67597 THC169394
+</I>&gt;<i> DNA type:       cDNA
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> PRIMERS
+</I>&gt;<i> Sequencing:     M13-21
+</I>&gt;<i> PolyA Tail:     Unknown
+</I>&gt;<i>
+</I>&gt;<i> SEQUENCE
+</I>&gt;<i>                  GGCTACATTGCCAGCACCCGTGACTTGGTGGACATGGTGCGCTCCTATGCTGCAGGCTTC
+</I>&gt;<i>                  ATCTTTACCACTTCTCTGCCCCCCATGGTGCTCTCTGGAGCTCTAGAATCTGTGCGGCTG
+</I>&gt;<i>
+</I>&gt;<i>                  CTCAAGGGAGAGGAGGGCCAAGCCCTGAGGCGAGCCCACCAGCGCAATGTCAAGCACATG
+</I>&gt;<i>                  CGCCANTACTCATGGACAGGGGCCTTCCTGTCATCCCCTGCCCCAGCCACATCATCCCCA
+</I>&gt;<i>                  TCCGGGTGGGCAATGCAGCACTCAACAGCAAGCTCTGTGATCTNCTGCTCTCCAAGCATG
+</I>&gt;<i>
+</I>&gt;<i>                  GCATCTATGTGCAGGCCATCAACTACCCAACTGT
+</I>&gt;<i>
+</I>&gt;<i> Entry Created:  Apr 21 1997
+</I>&gt;<i> Last Updated:   Apr 21 1997
+</I>&gt;<i>
+</I>&gt;<i> COMMENTS
+</I>&gt;<i>                  For clone availability, additional sequence and expression
+</I>&gt;<i>                  information related to this EST, please check the TIGR Human
+</I>&gt;<i>
+</I>&gt;<i>                  Gene Index (<A HREF="http://www.tigr.org/tdb/hgi/hgi.html">http://www.tigr.org/tdb/hgi/hgi.html</A>)
+</I>&gt;<i>
+</I>&gt;<i> *
+</I>&gt;<i>    
+</I>&gt;<i> Thanks and Best Regards,
+</I>&gt;<i> Uma Mahesh.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Mon, Mar 29, 2010 at 2:57 PM, Maarten L. Hekkelman 
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">m.hekkelman at cmbi.ru.nl</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">m.hekkelman at cmbi.ru.nl</A>&gt;&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>     Dear Uma Mahesh,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>         I have noticed an error while retrieving dbEST records in
+</I>&gt;<i>         fasta format, using mrsclient. The same behavior is found
+</I>&gt;<i>         again in the web interface too. Could you please help me in
+</I>&gt;<i>         fixing this issue with dbEST.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     To my best knowledge, dbEST does not contain any sequences.
+</I>&gt;<i>     Therefore it will be difficult to return the records in FastA format.
+</I>&gt;<i>
+</I>&gt;<i>     Best regards,
+</I>&gt;<i>
+</I>&gt;<i>     -maarten hekkelman
+</I>&gt;<i>
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Mrs-user mailing list
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>&gt;
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -- 
+</I>&gt;<i> Think big, think fast, think ahead. Ideas are no one's monopoly
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>    
+</I>
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20100329/e1ad2925/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20100329/e1ad2925/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000551.html">[Mrs-user] FASTA format for dbest is not working
+</A></li>
+	<LI>Next message: <A HREF="000554.html">[Mrs-user] FASTA format for genbank is not working
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#553">[ date ]</a>
+              <a href="thread.html#553">[ thread ]</a>
+              <a href="subject.html#553">[ subject ]</a>
+              <a href="author.html#553">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

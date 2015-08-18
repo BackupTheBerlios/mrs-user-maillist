@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS install on Ubuntu 10.04 server
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20install%20on%20Ubuntu%2010.04%20server&In-Reply-To=%3CAANLkTi%3DyTkHqDknWSxmFuJCt3%3DFAR63QzuuSoqUK-cp2%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000580.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS install on Ubuntu 10.04 server</H1>
+    <B>Oscar Eriksson</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20install%20on%20Ubuntu%2010.04%20server&In-Reply-To=%3CAANLkTi%3DyTkHqDknWSxmFuJCt3%3DFAR63QzuuSoqUK-cp2%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] MRS install on Ubuntu 10.04 server">oscer803 at student.liu.se
+       </A><BR>
+    <I>Mon Sep 20 09:12:10 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000580.html">[Mrs-user] MRS install on Ubuntu 10.04 server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#579">[ date ]</a>
+              <a href="thread.html#579">[ thread ]</a>
+              <a href="subject.html#579">[ subject ]</a>
+              <a href="author.html#579">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello!
+
+I'm having a bit of trouble installing MRS on a fresh ubuntu server
+10.04 distro. After a bit of research, I decided to try installing mrs
+from the head subversion revision.
+
+First I installed libzeep 2.0 into /usr/local/libzeep. I also changed
+the boost paths in the makefile to suit my system and the install
+worked fine.
+
+As the next step I checked out mrs revision 1007. When I run the
+configure script:
+$&#160;perl configure.pl --data-dir=/media/data_tmp/mrs --zeep=/usr/local/libzeep/
+it doesn't find the zeep library.
+
+Then I tried checking out the head revision of libzeep from svn. After
+removing an install command of header file that don't exist from the
+makefile, it compiles and installs. But the same error with mrs
+occurs.
+
+Does any of you have any idea of how I should proceed?
+
+Best regards,
+Oscar Eriksson
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000580.html">[Mrs-user] MRS install on Ubuntu 10.04 server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#579">[ date ]</a>
+              <a href="thread.html#579">[ thread ]</a>
+              <a href="subject.html#579">[ subject ]</a>
+              <a href="author.html#579">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

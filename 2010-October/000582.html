@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] How to add more indices to Gene
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20How%20to%20add%20more%20indices%20to%20Gene&In-Reply-To=%3CAANLkTin6UxKFOU5e2Ls3ZxaRX8u-Uiy%3D3%3D6t%2B0xEbHOB%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000583.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] How to add more indices to Gene</H1>
+    <B>Uma Mahesh (&#3118;&#3129;&#3143;&#3127;&#3149;) </B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20How%20to%20add%20more%20indices%20to%20Gene&In-Reply-To=%3CAANLkTin6UxKFOU5e2Ls3ZxaRX8u-Uiy%3D3%3D6t%2B0xEbHOB%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] How to add more indices to Gene">chanchalauma at gmail.com
+       </A><BR>
+    <I>Tue Oct  5 18:42:00 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000583.html">[Mrs-user] How to add more indices to Gene
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#582">[ date ]</a>
+              <a href="thread.html#582">[ thread ]</a>
+              <a href="subject.html#582">[ subject ]</a>
+              <a href="author.html#582">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten,
+
+My heartfelt thanks to you for providing such a nice tool. I have MRS
+running on RHEL 5 (5.4 to be more precise).
+we need to add organism and locus indices to Gene database. I added the
+following lines in gene.pm, followed by a mrs-build of gene database and a
+server restart.
+
+elsif ($line =~ m|^&lt;Org-ref_taxname&gt;(\.+)&lt;/Org-ref_taxname&gt;|)
+                {
+                        $self-&gt;IndexTextAndNumbers('organism', $1);
+                }
+                elsif ($line =~
+m|^&lt;Gene-ref_locus-tag&gt;(\.+)&lt;/Gene-ref_locus-tag&gt;|)
+                {
+                        $self-&gt;IndexTextAndNumbers('locus', $1);
+                }
+
+
+However, mrsclient (Maarten's perl module) still not showing the new indices
+i.e. organism and locus.
+
+The command i used was &quot;mrsclient -e 'mylocal search wsdl' -d gene&quot;
+
+Please help me add new indices to gene.
+
+Thanks in advance.
+Best Regards,
+Uma Mahesh.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20101005/de280747/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20101005/de280747/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000583.html">[Mrs-user] How to add more indices to Gene
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#582">[ date ]</a>
+              <a href="thread.html#582">[ thread ]</a>
+              <a href="subject.html#582">[ subject ]</a>
+              <a href="author.html#582">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

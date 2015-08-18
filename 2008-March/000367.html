@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Problems with indexing the pdb
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Problems%20with%20indexing%20the%20pdb&In-Reply-To=%3C2fab80e60803180550l14cb5106yfade9d50e0a667f7%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000370.html">
+   <LINK REL="Next"  HREF="000369.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Problems with indexing the pdb</H1>
+    <B>Uli</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Problems%20with%20indexing%20the%20pdb&In-Reply-To=%3C2fab80e60803180550l14cb5106yfade9d50e0a667f7%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] Problems with indexing the pdb">ulihorn at gmail.com
+       </A><BR>
+    <I>Tue Mar 18 13:50:12 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000370.html">[Mrs-user] Mrs-user Digest, Vol 21, Issue 1
+</A></li>
+        <LI>Next message: <A HREF="000369.html">[Mrs-user] Problems with indexing the pdb
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#367">[ date ]</a>
+              <a href="thread.html#367">[ thread ]</a>
+              <a href="subject.html#367">[ subject ]</a>
+              <a href="author.html#367">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+
+I have managed to index numerous databases including enzyme, go pfam prosite
+sprot trembl and uniprot.  I have now tried to index the pdb (make pdb)
+without success. Because it is relatively large I wanted to test it on an
+older version (2004) to see if I can get it to work. I am able to copy the
+raw and uncompressed files from a local mirror into the .../data/raw/pdb/??
+and .../data/uncompressed/pdb files with no problem - I had to make a small
+changes to use gz rather than .Z files in the pdb.make file.  The problem
+seems to arise when it tries to build the pdb-1.cmp and pdb-2.cmp files.
+Their size remains at 216.
+
+The tails of the logs are as follows:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">uli at biosym1</A>:/media/nodem1/data/status$ tail pdb.make pdb.make_log
+pdb.mirror_log
+==&gt; pdb.make &lt;==
+
+==&gt; pdb.make_log &lt;==
+make[3]: Nothing to be done for `data'.
+make -f pdb.make /media/nodem1/data/mrs/pdb-1.cmp/media/nodem1/data/mrs/pdb-
+2.cmp
+make[4]: Entering directory `/usr/local/share/mrs/update_scripts'
+/usr/bin/perl /usr/local/bin/mrs.pl create -d pdb -p 1 -P 2 -b 5 -w stop.txt
+Could not open stop.txt
+not enough raw files to create all parts at /usr/local/bin/mrs.pl line 325.
+make[4]: *** [/media/nodem1/data/mrs/pdb-1.cmp] Error 2
+make[4]: Leaving directory `/usr/local/share/mrs/update_scripts'
+make[3]: *** [/media/nodem1/data/mrs/pdb.cmp] Error 2
+make[3]: Leaving directory `/usr/local/share/mrs/update_scripts'
+
+==&gt; pdb.mirror_log &lt;==
+make[3]: Entering directory `/usr/local/share/mrs/update_scripts'
+rm -rf pdb.deps
+rsync -rltpvz --delete --port=33444 \
+        /media/nodem1/pdb/ \
+        /media/nodem1/data/raw/pdb/
+building file list ... done
+
+sent 424916 bytes  received 20 bytes  121410.29 bytes/sec
+total size is 4075110271  speedup is 9589.94
+make[3]: Leaving directory `/usr/local/share/mrs/update_scripts'
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">uli at biosym1</A>:/media/nodem1/data/status$
+
+tail from pdb.make_log.1:
+
+zcat /media/nodem1/data/raw/pdb/zz/pdb1zzzent.gz &gt;
+/media/nodem1/data/uncompressed/pdb/pdb1zzzent
+touch -cr /media/nodem1/data/raw/pdb/zz/pdb1zzzent.gz
+/media/nodem1/data/uncompressed/pdb/pdb1zzzent
+make -f pdb.make /media/nodem1/data/mrs/pdb-1.cmp/media/nodem1/data/mrs/pdb-
+2.cmp
+make[4]: Entering directory `/usr/local/share/mrs/update_scripts'
+make[4]: `/media/nodem1/data/mrs/pdb-1.cmp' is up to date.
+make[4]: `/media/nodem1/data/mrs/pdb-2.cmp' is up to date.
+make[4]: Leaving directory `/usr/local/share/mrs/update_scripts'
+/usr/bin/perl /usr/local/bin/mrs.pl merge -d pdb -P 2
+Invalid mrs data filemake[3]: *** [/media/nodem1/data/mrs/pdb.cmp] Error 2
+make[3]: Leaving directory `/usr/local/share/mrs/update_scripts'
+
+although I don't think applicable here the site for the rcsb rsync url also
+seems to be down permanently.
+
+The files in .../data/raw are of the form:
+.../data/raw/pdb/at/pdb1at0ent.gz
+
+and the files in .../data/uncompressed are:
+.../data/uncompressed/pdb/pdb1at0ent
+
+command limitations arise when for instance using ls or rm on all files in
+the uncompressed directory i.e. they won't display/delete all the files
+although they are there.  I don't know if this is part of the problem?
+
+However I would assume that the problem would be even worse when trying to
+index genbank or embl.
+
+Could you point me in the right direction regarding this?
+
+Regards
+Uli
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20080318/d14c56b3/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20080318/d14c56b3/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000370.html">[Mrs-user] Mrs-user Digest, Vol 21, Issue 1
+</A></li>
+	<LI>Next message: <A HREF="000369.html">[Mrs-user] Problems with indexing the pdb
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#367">[ date ]</a>
+              <a href="thread.html#367">[ thread ]</a>
+              <a href="subject.html#367">[ subject ]</a>
+              <a href="author.html#367">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

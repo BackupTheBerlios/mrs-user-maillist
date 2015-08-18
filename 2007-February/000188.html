@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS3&In-Reply-To=%3C1170951130.45cb4bda867df%40webmail.biol.unlp.edu.ar%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000184.html">
+   <LINK REL="Next"  HREF="000192.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS3</H1>
+    <B>dbellante at biol.unlp.edu.ar</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS3&In-Reply-To=%3C1170951130.45cb4bda867df%40webmail.biol.unlp.edu.ar%3E"
+       TITLE="[Mrs-user] MRS3">dbellante at biol.unlp.edu.ar
+       </A><BR>
+    <I>Thu Feb  8 17:12:10 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000184.html">[Mrs-user] MRS3
+</A></li>
+        <LI>Next message: <A HREF="000192.html">[Mrs-user] MRS3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#188">[ date ]</a>
+              <a href="thread.html#188">[ thread ]</a>
+              <a href="subject.html#188">[ subject ]</a>
+              <a href="author.html#188">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Maarten:
+
+       I did the svn update but I still get the error.
+       It exactly appears as the result of executing the following in
+&quot;install.pl&quot;
+
+           eval {
+                my $b_cc = $cc;
+                $b_cc .= &quot; -I$boost_inc &quot; if defined $boost_inc;
+                $b_cc .= &quot; -L$d &quot; if defined $d;
+                my $test = &amp;compile($C_file, &quot;$b_cc
+-lboost_regex$boost_lib_suffix&quot;);
+                die &quot;Boost versions do not match\n&quot; unless $test eq
+$boost_version;
+                };
+
+
+This is the error:
+
+
+Could not compile: /usr/bin/ld: skipping incompatible /usr/lib/libboost_regex.so
+when searching for -lboost_regex
+/usr/bin/ld: skipping incompatible /usr/lib/libboost_regex.a when searching for
+-lboost_regex
+/usr/bin/ld: skipping incompatible
+/usr/lib/gcc/x86_64-redhat-linux/4.0.2/../../../libboost_regex.so when
+searching for -lboost_regex
+/usr/bin/ld: skipping incompatible
+/usr/lib/gcc/x86_64-redhat-linux/4.0.2/../../../libboost_regex.a when searching
+for -lboost_regex
+/usr/bin/ld: skipping incompatible /usr/lib/libboost_regex.so when searching for
+-lboost_regex
+/usr/bin/ld: skipping incompatible /usr/lib/libboost_regex.a when searching for
+-lboost_regex
+/usr/bin/ld: cannot find -lboost_regex
+collect2: ld returned 1 exit status
+
+
+
+
+           Thanks!!
+
+                   Diego
+
+
+
+
+Quoting &quot;Maarten L. Hekkelman&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">m.hekkelman at cmbi.ru.nl</A>&gt;:
+
+&gt;<i> Hi Diego,
+</I>&gt;<i>
+</I>&gt;<i> It might be that you've hit a problem in the Makefile's for the web
+</I>&gt;<i> services. I fixed this on one of my machines but forgot to check it
+</I>&gt;<i> in, until late this afternoon.
+</I>&gt;<i>
+</I>&gt;<i> Please do a 'svn update' and try again.
+</I>&gt;<i>
+</I>&gt;<i> -maarten
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Op 7-feb-2007, om 19:41 heeft <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dbellante at biol.unlp.edu.ar</A> het volgende
+</I>&gt;<i> geschreven:
+</I>&gt;<i>
+</I>&gt;<i> &gt; Hi all!
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   I am testing mrs3.0 installation in an Intel Dual Xeon with
+</I>&gt;<i> &gt; Fedora Core 4
+</I>&gt;<i> &gt; (64bits).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;  When I try to install mrs3.0 I get the following error:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ---------------------------------------------------------------
+</I>&gt;<i> &gt; Could not compile: /usr/bin/ld: skipping incompatible /usr/lib/
+</I>&gt;<i> &gt; libboost_regex.so
+</I>&gt;<i> &gt; when searching for -lboost_regex
+</I>&gt;<i> &gt; /usr/bin/ld: skipping incompatible /usr/lib/libboost_regex.a when
+</I>&gt;<i> &gt; searching for
+</I>&gt;<i> &gt; -lboost_regex
+</I>&gt;<i> &gt; /usr/bin/ld: skipping incompatible
+</I>&gt;<i> &gt; /usr/lib/gcc/x86_64-redhat-linux/4.0.2/../../../libboost_regex.so when
+</I>&gt;<i> &gt; searching for -lboost_regex
+</I>&gt;<i> &gt; /usr/bin/ld: skipping incompatible
+</I>&gt;<i> &gt; /usr/lib/gcc/x86_64-redhat-linux/4.0.2/../../../libboost_regex.a
+</I>&gt;<i> &gt; when searching
+</I>&gt;<i> &gt; for -lboost_regex
+</I>&gt;<i> &gt; /usr/bin/ld: skipping incompatible /usr/lib/libboost_regex.so when
+</I>&gt;<i> &gt; searching for
+</I>&gt;<i> &gt; -lboost_regex
+</I>&gt;<i> &gt; /usr/bin/ld: skipping incompatible /usr/lib/libboost_regex.a when
+</I>&gt;<i> &gt; searching for
+</I>&gt;<i> &gt; -lboost_regex
+</I>&gt;<i> &gt; /usr/bin/ld: cannot find -lboost_regex
+</I>&gt;<i> &gt; collect2: ld returned 1 exit status
+</I>&gt;<i> &gt; -------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I probed it with boost y boost-devel version 1.32.0-6 , 1.33.0-3
+</I>&gt;<i> &gt; and 1.33.1-5 .
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Can anybody help me?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;  Thanks!!
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;         Diego Bellante (AR.EMBnet)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Mrs-user mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> mvg,
+</I>&gt;<i>
+</I>&gt;<i> Maarten L. Hekkelman
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000184.html">[Mrs-user] MRS3
+</A></li>
+	<LI>Next message: <A HREF="000192.html">[Mrs-user] MRS3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#188">[ date ]</a>
+              <a href="thread.html#188">[ thread ]</a>
+              <a href="subject.html#188">[ subject ]</a>
+              <a href="author.html#188">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

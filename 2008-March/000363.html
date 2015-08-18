@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS configure error on revision 521
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20configure%20error%20on%20revision%20521&In-Reply-To=%3C47D506D6.2030604%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000362.html">
+   <LINK REL="Next"  HREF="000364.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS configure error on revision 521</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20configure%20error%20on%20revision%20521&In-Reply-To=%3C47D506D6.2030604%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] MRS configure error on revision 521">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Mon Mar 10 11:00:54 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000362.html">[Mrs-user] mrsws-clustal
+</A></li>
+        <LI>Next message: <A HREF="000364.html">[Mrs-user] {Spam Score:11} Medical Doctor Listing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#363">[ date ]</a>
+              <a href="thread.html#363">[ thread ]</a>
+              <a href="subject.html#363">[ subject ]</a>
+              <a href="author.html#363">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Alex,
+
+&gt;<i> I tried also to install the libraries manually, and also in this case 
+</I>&gt;<i> the boost gave lots of problems.
+</I>
+(Alex was trying to build MRS on Mac OS X Leopard)
+
+I finally found the problem behind all this. It appears that the Perl 
+installed in MacOS tries to create 'fat' binary plug ins by default. I'm 
+using the perl flags to create the web service applications and hence 
+they too try to become fat. And that's not going to work since you don't 
+have the required fat libraries.
+
+I've fixed all this by changing the ws/*/Makefiles like this:
+
+zuinig:~/projects/mrs/ws/search&gt; svn diff Makefile
+Index: Makefile
+===================================================================
+--- Makefile    (revision 536)
++++ Makefile    (working copy)
+@@ -101,6 +101,14 @@
+  # Perl's flags
+  LDFLAGS                += $(shell $(PERL) -MExtUtils::Embed -e ldopts)
+
++ifeq ($(OS),Darwin)
++ifeq ($(CPU),x86)
++LDFLAGS := $(shell echo $(LDFLAGS) | sed -e 's/-arch ppc//')
++else
++LDFLAGS := $(shell echo $(LDFLAGS) | sed -e 's/-arch i386//')
++endif
++endif
++
+  all: $(TARGET)
+
+  # build rules
+
+Best regards,
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000362.html">[Mrs-user] mrsws-clustal
+</A></li>
+	<LI>Next message: <A HREF="000364.html">[Mrs-user] {Spam Score:11} Medical Doctor Listing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#363">[ date ]</a>
+              <a href="thread.html#363">[ thread ]</a>
+              <a href="subject.html#363">[ subject ]</a>
+              <a href="author.html#363">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

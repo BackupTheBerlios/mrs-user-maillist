@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] usage of DATABASES in conf file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20usage%20of%20DATABASES%20in%20conf%20file&In-Reply-To=%3C52A4E28B-F7B8-40E6-BB6E-D9AA8344A3FC%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000068.html">
+   <LINK REL="Next"  HREF="000070.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] usage of DATABASES in conf file</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20usage%20of%20DATABASES%20in%20conf%20file&In-Reply-To=%3C52A4E28B-F7B8-40E6-BB6E-D9AA8344A3FC%40hekkelman.com%3E"
+       TITLE="[Mrs-user] usage of DATABASES in conf file">maarten at hekkelman.com
+       </A><BR>
+    <I>Wed Jul 26 13:20:17 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000068.html">[Mrs-user] usage of DATABASES in conf file
+</A></li>
+        <LI>Next message: <A HREF="000070.html">[Mrs-user] usage of DATABASES in conf file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#69">[ date ]</a>
+              <a href="thread.html#69">[ thread ]</a>
+              <a href="subject.html#69">[ subject ]</a>
+              <a href="author.html#69">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 26-jul-2006, om 12:50 heeft Dr. Andrea Schafferhans het volgende  
+geschreven:
+&gt;<i>
+</I>&gt;<i> after looking at the output of make -n in the update_scripts  
+</I>&gt;<i> directory I
+</I>&gt;<i> have the suspicion that my setting of the DATABASES variable in my
+</I>&gt;<i> make_xxx.conf file is not used.
+</I>&gt;<i>
+</I>&gt;<i> Could it be that the line defining DBALLFLAGS in the Makefile should
+</I>&gt;<i> refer to the variable $DATABASES instead of referring to  
+</I>&gt;<i> $ALL_DATABASES?
+</I>
+No, that should make no difference. The ALL_DATABASES is used only to  
+create all the rules for all possible dbs. The db's actually made  
+depends on DATABASES.
+
+You can play around with the rule test:
+
+	make test
+
+It should echo the current value of DATABASES, and replace the  
+statements in line 115 of Makefile to print out anything you want the  
+value of.
+
+Simply running make -n without an argument should run a make all, but  
+I'm not sure if that will always work. What argument did you specify?
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000068.html">[Mrs-user] usage of DATABASES in conf file
+</A></li>
+	<LI>Next message: <A HREF="000070.html">[Mrs-user] usage of DATABASES in conf file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#69">[ date ]</a>
+              <a href="thread.html#69">[ thread ]</a>
+              <a href="subject.html#69">[ subject ]</a>
+              <a href="author.html#69">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

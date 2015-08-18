@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] installing mrs3 afresh
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20installing%20mrs3%20afresh&In-Reply-To=%3CB93FE846-0874-43B9-B2D1-3758D36F16E7%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000167.html">
+   <LINK REL="Next"  HREF="000169.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] installing mrs3 afresh</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20installing%20mrs3%20afresh&In-Reply-To=%3CB93FE846-0874-43B9-B2D1-3758D36F16E7%40hekkelman.com%3E"
+       TITLE="[Mrs-user] installing mrs3 afresh">maarten at hekkelman.com
+       </A><BR>
+    <I>Wed Jan 10 20:18:28 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000167.html">[Mrs-user] installing mrs3 afresh
+</A></li>
+        <LI>Next message: <A HREF="000169.html">[Mrs-user] Gsoap blues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#168">[ date ]</a>
+              <a href="thread.html#168">[ thread ]</a>
+              <a href="subject.html#168">[ subject ]</a>
+              <a href="author.html#168">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Robert,
+
+&gt;<i> I took a fresh Ubuntu installation on a Pentium box in order to  
+</I>&gt;<i> test the
+</I>&gt;<i> installation of MRS as recently updated by Maarten.
+</I>&gt;<i>
+</I>&gt;<i> Here are my findings:
+</I>&gt;<i> I had to add to the initially simple vanilla Ubuntu 6.10 installation
+</I>&gt;<i> the following packages that the &quot;perl install.pl&quot; procedure complained
+</I>&gt;<i> about:
+</I>&gt;<i> - gsoap
+</I>&gt;<i> - boost, the libboost-regex and libboost_fielsystem packages including
+</I>&gt;<i> the _dev derivatives (the _dev rerivatives are generally the include
+</I>&gt;<i> files not provided by the basic packages)
+</I>&gt;<i> - g++ (the g++4.1 was already there but loading the basic g++ provided
+</I>&gt;<i> the required logical links c++ and g++ to it)
+</I>&gt;<i> - libg++.dev
+</I>&gt;<i> - libaatr1.dev
+</I>&gt;<i> - libxml2 and libxml2.dev
+</I>
+I had this list somewhere, I compiled it today. Should have added it  
+to my previous mail, sorry.
+
+&gt;<i> With all this, the perl install was satisfied.
+</I>&gt;<i>
+</I>&gt;<i> Now the make command revealde a few more requirements:
+</I>&gt;<i> - libbz2.dev (to ptovide the bzlib.h file)
+</I>&gt;<i> - libperl.dev
+</I>&gt;<i> - libexpat1 and libexpat1.dev
+</I>
+Those were on that list too... But it is good you mention them here,  
+I will add those to the install script. BTW, perhaps I should rename  
+that script to 'configure'.
+
+&gt;<i> And with this the make succeeded, which means it produced all that is
+</I>&gt;<i> required in the plugin and ws subdirectories.
+</I>&gt;<i>
+</I>&gt;<i> A last issue was raised when starting the ws/mrsws module... It
+</I>&gt;<i> complained about /usr/local/data/mrs not being a valid directory. This
+</I>&gt;<i> is indeed correct on my machine, as I declared my intention to  
+</I>&gt;<i> store the
+</I>&gt;<i> MRS files in my /data directory. Thus the installation script did not
+</I>&gt;<i> take care of my choice. Putting a link to it from /usr/local and
+</I>&gt;<i> creating the mrs subdirectory solved this minor issue.
+</I>
+Yes, I need to fix that. You can override the default value using the  
+mrsws config file of which I've included a sample in the ws directory  
+(mrs-config.xml) or by passing in the correct value with a switch on  
+the commandline. Run 'mrsws -h' for more options.
+
+The mrsws config file should be installed in some common location  
+(e.g. /usr/local/etc) during installation.
+
+&gt;<i> Now downloading and building MRS datasets could start in the ususal  
+</I>&gt;<i> way
+</I>&gt;<i> : go to the update_scripts directory and type e.g. make omim or  
+</I>&gt;<i> make go.
+</I>&gt;<i> Soon the corresponding raw directories get filled and corresponding
+</I>&gt;<i> mrs-formatted files become available.
+</I>&gt;<i>
+</I>&gt;<i> I could also install the MRS3 system in a very similar way on a
+</I>&gt;<i> dual-opteron (64bit) computer where databank downloading and indexing
+</I>&gt;<i> just started. Soon GO, OMIM and UNIPROT became available. As I ask for
+</I>&gt;<i> the embl_release on this one, I will have to wait a few hours to be  
+</I>&gt;<i> able
+</I>&gt;<i> to claim about success...;-) This system had already previously  
+</I>&gt;<i> received
+</I>&gt;<i> several additional packages &quot;by hand&quot; and I cannot claim precisely  
+</I>&gt;<i> about
+</I>&gt;<i> which are really required for a proper MRS installation.
+</I>
+Good.
+
+Indexing large databanks like embl_release should be noticable faster  
+compared to the previous release. The reason for this is that I  
+changed the lexicon structure from a binary tree to a patricia tree.
+
+Be careful though, files created with version 3 are not backward  
+compatible with version 2.
+
+&gt;<i> I still have to install the access to the webserver on my machines.
+</I>
+I will write a Sys V init script for mrsws so you can put it in /etc/ 
+init.d/ on a Linux system. I think I know how to do that on Red Hat,  
+I have no idea if this will work on other Linux flavours though. Help  
+in this area would be appreciated.
+
+&gt;<i> Congratulation to Maarten for providing a nice  installation system
+</I>&gt;<i> which is essentially bugfree.
+</I>
+Thank you.
+
+I'll fix the last few quirks tomorrow and will then continue writing/ 
+revising documentation.
+
+I'm not sure what to do with the web interface at the moment. The  
+perl based scripts are no longer part of the 3.0 distribution but I  
+haven't released the Java based web app either. The web app still  
+needs some work, like adding integration with blast and clustal like  
+the current web site has.
+
+For the blast part I want to write a SOAP wrapper around mrs_blast.  
+That's pretty straightforward. But for the clustal/multiple alignment  
+I had hope to find code in Java to do this. But I haven't found any  
+yet. Is there anyone on this list who knows of a freely available  
+Java implementation of a multiple alignment algorithm?
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000167.html">[Mrs-user] installing mrs3 afresh
+</A></li>
+	<LI>Next message: <A HREF="000169.html">[Mrs-user] Gsoap blues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#168">[ date ]</a>
+              <a href="thread.html#168">[ thread ]</a>
+              <a href="subject.html#168">[ subject ]</a>
+              <a href="author.html#168">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS3 perl process segfaults during the merge of embl_release and embl_updates --&gt; embl 92
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS3%20perl%20process%20segfaults%20during%20the%20merge%20of%0A%20embl_release%20and%20embl_updates%20--%3E%20embl%2092&In-Reply-To=%3C4704AFB4.4060104%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000281.html">
+   <LINK REL="Next"  HREF="000283.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS3 perl process segfaults during the merge of embl_release and embl_updates --&gt; embl 92</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS3%20perl%20process%20segfaults%20during%20the%20merge%20of%0A%20embl_release%20and%20embl_updates%20--%3E%20embl%2092&In-Reply-To=%3C4704AFB4.4060104%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] MRS3 perl process segfaults during the merge of embl_release and embl_updates --&gt; embl 92">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Thu Oct  4 11:17:40 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000281.html">[Mrs-user] MRS3 perl process segfaults during the merge of embl_release and embl_updates --&gt; embl 92
+</A></li>
+        <LI>Next message: <A HREF="000283.html">[Mrs-user] MRS3 perl process segfaults during the merge of embl_release and embl_updates --&gt; embl 92
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#282">[ date ]</a>
+              <a href="thread.html#282">[ thread ]</a>
+              <a href="subject.html#282">[ subject ]</a>
+              <a href="author.html#282">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>George Magklaras schreef:
+
+&gt;<i>  &gt;&gt; perl appears to segfault breaking the merge of
+</I>&gt;<i>  &gt;&gt; embl_release and embl_updates databanks to produce the embl databank.
+</I>&gt;<i>  &gt;
+</I>&gt;<i>  &gt; Does it crash after finishing the merge, or during?
+</I>&gt;<i> As I was saying in the initial problem report, I assume that it is 
+</I>&gt;<i> during the merging stage, because I see in the mrsdata/mrs subdir that 
+</I>&gt;<i> the embl.cmp series of files is not finished and quering the 
+</I>&gt;<i> embl_release and embl_updates works. So, it is just the merge that fails 
+</I>&gt;<i> in my case. Here is the embl.cmp contents :
+</I>&gt;<i> 
+</I>&gt;<i> -rw------- 1 root root 4.1G Oct  4 00:44 embl.cmp.indexbits.XXFbtPIf
+</I>&gt;<i> -rw-r--r-- 1 root root 4.5G Oct  4 00:44 embl.cmp_merge_indx
+</I>&gt;<i> -rw------- 1 root root    0 Oct  3 23:14 embl.cmp.fulltext_indx.XX0h5Ut5
+</I>&gt;<i> -rw------- 1 root root    0 Oct  3 23:14 embl.cmp.fulltext_indx.XXLu4SlV
+</I>&gt;<i> -rw------- 1 root root    0 Oct  3 23:14 embl.cmp.offsets.XXaSACsP
+</I>&gt;<i> -rw------- 1 root root 4.1G Oct  2 15:00 embl.cmp.indexbits.XXE6dQ5u
+</I>&gt;<i> -rw------- 1 root root    0 Oct  2 12:43 embl.cmp.fulltext_indx.XXyjbOvn
+</I>&gt;<i> -rw------- 1 root root    0 Oct  2 12:43 embl.cmp.fulltext_indx.XXKyG3dg
+</I>&gt;<i> -rw------- 1 root root    0 Oct  2 12:43 embl.cmp.offsets.XXwp2sGi
+</I>&gt;<i> 
+</I>&gt;<i> (I assume that the fulltext, offsets and all the other temp files should 
+</I>&gt;<i>   go if the merge process was completed, right?)
+</I>
+Yes. If all finishes correctly, they are deleted.
+
+I don't see the embl.cmp.XXwhatever file so I assume this file was 
+deleted by make after the merge failed. That leads met to the conclusion 
+that the crash happened at the end of the attempt to merge the 
+__ALL_INDEX__ index.
+
+
+&gt;<i>  &gt; You can specify the '-v' flag to the 'mrs.pl merge' command to see some
+</I>&gt;<i>  &gt; progress information.
+</I>&gt;<i>  &gt;
+</I>&gt;<i> Will do. I might also try to strace it.
+</I>
+Would be very interesting.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000281.html">[Mrs-user] MRS3 perl process segfaults during the merge of embl_release and embl_updates --&gt; embl 92
+</A></li>
+	<LI>Next message: <A HREF="000283.html">[Mrs-user] MRS3 perl process segfaults during the merge of embl_release and embl_updates --&gt; embl 92
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#282">[ date ]</a>
+              <a href="thread.html#282">[ thread ]</a>
+              <a href="subject.html#282">[ subject ]</a>
+              <a href="author.html#282">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

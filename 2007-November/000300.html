@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] I can't install the Revision 498
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20I%20can%27t%20install%20the%20Revision%20498&In-Reply-To=%3C47381D03.6030705%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000299.html">
+   <LINK REL="Next"  HREF="000301.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] I can't install the Revision 498</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20I%20can%27t%20install%20the%20Revision%20498&In-Reply-To=%3C47381D03.6030705%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] I can't install the Revision 498">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Mon Nov 12 10:29:39 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000299.html">[Mrs-user] I can't install the Revision 498
+</A></li>
+        <LI>Next message: <A HREF="000301.html">[Mrs-user] Problem with web interface and the MRS instalation (new	version)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#300">[ date ]</a>
+              <a href="thread.html#300">[ thread ]</a>
+              <a href="subject.html#300">[ subject ]</a>
+              <a href="author.html#300">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Luis-Miguel Rodr&#237;guez Rojas schreef:
+
+&gt;<i> I'm trying to install Mrs (Revision 498) on my web-server.  I surpassed
+</I>&gt;<i> the dependencies, and I think the machine is ready for Mrs, but I just
+</I>&gt;<i> can't make it.
+</I>
+Thanks for trying.
+
+&gt;<i> I had to modify the configure.pl file in two lines:
+</I>&gt;<i> 303         if ($vl =~ m|\*\*\s+The gSOAP Stub and Skeleton Compiler for
+</I>&gt;<i> C and C\+\+\s+(.+)|) {
+</I>&gt;<i> by 303         if ($vl =~ m|gSOAP compiler version ([^C]+)Copyright
+</I>&gt;<i> \(C\) 2001-2004 Genivia, Inc\. All Rights Reserved\.|) {
+</I>&gt;<i> 
+</I>&gt;<i> 329        my $ld_opts = &quot;-L$lib_dir -lgsoap&quot;;
+</I>&gt;<i> by 329        my $ld_opts = &quot;&quot;;
+</I>&gt;<i> 
+</I>&gt;<i> The reasons: On 303 the expected line is the normal output when soapcpp2
+</I>&gt;<i> is called, but it's different when called as soapcpp2 -v.  On 329 I just
+</I>&gt;<i> can't compile the trial program with the ld extra options, but it works
+</I>&gt;<i> without them.
+</I>
+OK, I'll see if I can add this to the script.
+
+&gt;<i> The big trouble comes with 'make', I published the make output on
+</I>&gt;<i> *MailScanner has detected a possible fraud attempt from &quot;168.176.139.17&quot;
+</I>&gt;<i> claiming to be* <A HREF="http://168.176.139.17/mrs/make.out,">http://168.176.139.17/mrs/make.out,</A> because I have no
+</I>&gt;<i> idea where to start.  The ld errors seems to be the same than those on
+</I>&gt;<i> configure.pl line 329 (when using ld options).
+</I>
+Duh, my error. There is a line 'include ../make.config' in the makefiles
+in the ws/* directories that should have read 'include
+../../make.config' I'll fix this.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000299.html">[Mrs-user] I can't install the Revision 498
+</A></li>
+	<LI>Next message: <A HREF="000301.html">[Mrs-user] Problem with web interface and the MRS instalation (new	version)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#300">[ date ]</a>
+              <a href="thread.html#300">[ thread ]</a>
+              <a href="subject.html#300">[ subject ]</a>
+              <a href="author.html#300">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

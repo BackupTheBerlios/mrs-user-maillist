@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Trivial%20OMIM%20retrieval%20issue%20and%20302%20error%20on%0A%20retrieving%20cross%20database%20links&In-Reply-To=%3C4E79EC3A.7060304%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000618.html">
+   <LINK REL="Next"  HREF="000620.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Trivial%20OMIM%20retrieval%20issue%20and%20302%20error%20on%0A%20retrieving%20cross%20database%20links&In-Reply-To=%3C4E79EC3A.7060304%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Sep 21 15:52:58 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000618.html">[Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links
+</A></li>
+        <LI>Next message: <A HREF="000620.html">[Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#619">[ date ]</a>
+              <a href="thread.html#619">[ thread ]</a>
+              <a href="subject.html#619">[ subject ]</a>
+              <a href="author.html#619">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hey Georgios,
+
+&gt;<i> Just to let you know that you should probably register another URL than
+</I>&gt;<i> the '<A HREF="rsync://ftp.ncbi.nih.gov/repository/OMIM/">rsync://ftp.ncbi.nih.gov/repository/OMIM/</A> in the databank.info'.
+</I>&gt;<i> NCBI no longer maintains the OMIM rsync/ftp repository. OMIM has moved
+</I>&gt;<i> to omim.org and there is anonymous FTP now on:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="ftp://anonymous@grcf.jhmi.edu/OMIM/">ftp://anonymous@grcf.jhmi.edu/OMIM/</A>
+</I>&gt;<i>
+</I>&gt;<i> Trivial issue to fix.
+</I>
+I found something in a readme telling me I needed to apply for a license 
+to use OMIM from now on. Never had time to investigate. Is this link 
+here publicly available?
+
+&gt;<i> However, I have another issue with a 302 error on 5.1.2. You can
+</I>&gt;<i> reproduce the error at the following link:
+</I>
+I think I know what is going on here. Could you please build a new 
+libzeep (using the trunk from the subversion repository at 
+<A HREF="https://svn.cmbi.ru.nl/libzeep/trunk">https://svn.cmbi.ru.nl/libzeep/trunk</A> ) and then rebuild your MRS. I 
+believe I made a change is the http reply class that might fix this 
+particular problem. If this new code works, please let me know and I 
+will release a new version.
+
+Best regards,
+
+-maarten
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000618.html">[Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links
+</A></li>
+	<LI>Next message: <A HREF="000620.html">[Mrs-user] Trivial OMIM retrieval issue and 302 error on retrieving cross database links
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#619">[ date ]</a>
+              <a href="thread.html#619">[ thread ]</a>
+              <a href="subject.html#619">[ subject ]</a>
+              <a href="author.html#619">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

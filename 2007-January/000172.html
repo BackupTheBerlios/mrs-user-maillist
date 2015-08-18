@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] install script  **CLAP**
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20install%20script%20%20%2A%2ACLAP%2A%2A&In-Reply-To=%3C45ACDC9F.9090404%40dbm.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000166.html">
+   <LINK REL="Next"  HREF="000176.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] install script  **CLAP**</H1>
+    <B>david coornaert</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20install%20script%20%20%2A%2ACLAP%2A%2A&In-Reply-To=%3C45ACDC9F.9090404%40dbm.ulb.ac.be%3E"
+       TITLE="[Mrs-user] install script  **CLAP**">dcoorna at dbm.ulb.ac.be
+       </A><BR>
+    <I>Tue Jan 16 15:09:35 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000166.html">[Mrs-user] install script
+</A></li>
+        <LI>Next message: <A HREF="000176.html">[Mrs-user] install script  **CLAP**
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#172">[ date ]</a>
+              <a href="thread.html#172">[ thread ]</a>
+              <a href="subject.html#172">[ subject ]</a>
+              <a href="author.html#172">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I got an mrs3 build 291 up on a gentoo-64 bit quite fast
+only trouble I met is that I needed to launch mrsws from its compilation 
+directory
+and not from the installed one (/usr/local/bin)
+the former one doesn't find WSFormatter.pm which seems essential
+I had *NOT* to add/correct the environment entry in tomcat admin tool, 
+it automagically appeared
+by itself with correct appropriate values.
+
+
+Anyway I think the install script remains a wonderfull utility, but for 
+this latest glitch
+
+I'm wondering now about a standard way of doing the updates..
+what am I supposed to do, when build 292 will be out ?
+svn update
+and then ????
+
+
+===============================================
+David Coornaert [PhD]   (<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dcoorna at dbm.ulb.ac.be</A>)
+
+Belgian Embnet Node (<A HREF="http://www.be.embnet.org">http://www.be.embnet.org</A>)
+Universite' Libre de Bruxelles
+
+Laboratoire de Bioinformatique
+12, Rue des Professeurs Jeener &amp; Brachet
+6041  Gosselies
+BELGIQUE
+
+Te'l:  +3226509975
+Fax:  +3226509998
+===============================================
+
+
+
+Maarten L. Hekkelman wrote:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I just checked in a new install script for MRS 3. Now if you have  
+</I>&gt;<i> checked out mrs 3.0 you can simply run the install script to  
+</I>&gt;<i> regenerate the plugin/make.config and ws/make.config files. The  
+</I>&gt;<i> script will test the availability of all libraries needed to build  
+</I>&gt;<i> both the Perl plugin and the mrsws web-services application. There is  
+</I>&gt;<i> also a very simple new makefile in the root of this version that  
+</I>&gt;<i> builds both the plugin and the mrsws application.
+</I>&gt;<i>
+</I>&gt;<i> You can abort the script once it asks for the location of the data.  
+</I>&gt;<i> At that point the make.config files have been written. This way you  
+</I>&gt;<i> don't overwrite the scripts in your update_scripts and parser_scripts  
+</I>&gt;<i> directories.
+</I>&gt;<i>
+</I>&gt;<i> -maarten 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000166.html">[Mrs-user] install script
+</A></li>
+	<LI>Next message: <A HREF="000176.html">[Mrs-user] install script  **CLAP**
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#172">[ date ]</a>
+              <a href="thread.html#172">[ thread ]</a>
+              <a href="subject.html#172">[ subject ]</a>
+              <a href="author.html#172">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

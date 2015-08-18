@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] gzcat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20gzcat&In-Reply-To=%3C367FCA1B-3C3B-45D6-B31D-A37C00E40A35%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000009.html">
+   <LINK REL="Next"  HREF="000010.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] gzcat</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20gzcat&In-Reply-To=%3C367FCA1B-3C3B-45D6-B31D-A37C00E40A35%40hekkelman.com%3E"
+       TITLE="[Mrs-user] gzcat">maarten at hekkelman.com
+       </A><BR>
+    <I>Sat Jun 24 09:40:29 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000009.html">[Mrs-user] gzcat
+</A></li>
+        <LI>Next message: <A HREF="000010.html">[Mrs-user] GCC3.3.4 not OK ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 24-jun-2006, om 8:03 heeft Robert HERZOG het volgende geschreven:
+&gt;<i>
+</I>&gt;<i> On the vanilla SuSE 10.0 and Fedora Core 5 installations, gzcat is  
+</I>&gt;<i> unknown. This is the reason why e.g. &quot;make uniprot&quot; chokes on a  
+</I>&gt;<i> fresh MRS_2.0 installation. Putting a logical link to zcat solves  
+</I>&gt;<i> the issue.
+</I>
+Duh...
+
+I knew this would happen, since I burned myself on this topic several  
+times. Problem is that as you may remember there used to be two tools  
+for compression on UNIX systems, compress (with zcat) and gzip (with  
+gzcat). However, since gzip is now capable of reading compress files  
+the zcat tools seems to be dropped and gzcat is renamed to zcat.
+
+In make_xxx.conf you can find a statement:
+
+GZCAT = /bin/zcat
+
+Unfortunately I didn't use the variable $(GZCAT) everywhere, the file  
+make.post contains several statements that still use gzcat. I've  
+fixed that, will check this in later today.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000009.html">[Mrs-user] gzcat
+</A></li>
+	<LI>Next message: <A HREF="000010.html">[Mrs-user] GCC3.3.4 not OK ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

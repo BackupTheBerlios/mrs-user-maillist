@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] (no subject)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20%28no%20subject%29&In-Reply-To=%3C1181843916.467181ccd0381%40webmail.biol.unlp.edu.ar%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000262.html">
+   <LINK REL="Next"  HREF="000264.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] (no subject)</H1>
+    <B>dbellante at biol.unlp.edu.ar</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20%28no%20subject%29&In-Reply-To=%3C1181843916.467181ccd0381%40webmail.biol.unlp.edu.ar%3E"
+       TITLE="[Mrs-user] (no subject)">dbellante at biol.unlp.edu.ar
+       </A><BR>
+    <I>Thu Jun 14 19:58:36 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000262.html">[Mrs-user] (no subject)
+</A></li>
+        <LI>Next message: <A HREF="000264.html">[Mrs-user] (no subject)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#263">[ date ]</a>
+              <a href="thread.html#263">[ thread ]</a>
+              <a href="subject.html#263">[ subject ]</a>
+              <a href="author.html#263">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all:
+
+   I solved the boost problem installing the 64bits libraries.
+   Now, the &quot;install.pl&quot; finishes successfully.
+   However,I am having another problem after executing &quot;make&quot;. I get the
+following:
+
+cc1plus: warning: command line option &quot;-Wdeclaration-after-statement&quot; is valid
+for C/ObjC but not for C++
+./Sources/soapC.cpp: In function &#145;int soap_putelement(soap*, const void*, const
+char*, int, int)&#146;:
+./Sources/soapC.cpp:390: warning: dereferencing type-punned pointer will break
+strict-aliasing rules
+./Sources/soapC.cpp:392: warning: dereferencing type-punned pointer will break
+strict-aliasing rules
+./Sources/soapC.cpp: In function &#145;void soap_markelement(soap*, const void*,
+int)&#146;:
+./Sources/soapC.cpp:444: warning: dereferencing type-punned pointer will break
+strict-aliasing rules
+./Sources/soapC.cpp:447: warning: dereferencing type-punned pointer will break
+strict-aliasing rules
+/usr/local/include/stdsoap2.h: In function &#145;ns__JobStatus*
+soap_in_ns__JobStatus(soap*, const char*, ns__JobStatus*, const char*)&#146;:
+/usr/local/include/stdsoap2.h:1968: error: too few arguments to function &#145;int
+soap_element_begin_in(soap*, const char*, int, const char*)&#146;
+./Sources/soapC.cpp:910: error: at this point in file
+/usr/local/include/stdsoap2.h: In function &#145;bool* soap_in_bool(soap*, const
+char*, bool*, const char*)&#146;:
+/usr/local/include/stdsoap2.h:1968: error: too few arguments to function &#145;int
+soap_element_begin_in(soap*, const char*, int, const char*)&#146;
+./Sources/soapC.cpp:993: error: at this point in file
+/usr/local/include/stdsoap2.h: In function &#145;std::string*
+soap_in_xsd__string(soap*, const char*, std::string*, const char*)&#146;:
+/usr/local/include/stdsoap2.h:1968: error: too few arguments to function &#145;int
+soap_element_begin_in(soap*, const char*, int, const char*)&#146;
+./Sources/soapC.cpp:1045: error: at this point in file
+./Sources/soapC.cpp: In function &#145;std::string*
+soap_instantiate_xsd__string(soap*, int, const char*, const char*, size_t*)&#146;:
+./Sources/soapC.cpp:1083: error: invalid conversion from &#145;void (*)(soap_clist*)&#146;
+to &#145;int (*)(soap_clist*)&#146;
+./Sources/soapC.cpp:1083: error:   initializing argument 5 of &#145;soap_clist*
+soap_link(soap*, void*, int, int, int (*)(soap_clist*))&#146;
+/usr/local/include/stdsoap2.h: In function &#145;std::string*
+soap_in_std__string(soap*, const char*, std::string*, const char*)&#146;:
+/usr/local/include/stdsoap2.h:1968: error: too few arguments to function &#145;int
+soap_element_begin_in(soap*, const char*, int, const char*)&#146;
+
+
+ and so on...
+
+ I have already installed &quot;gsoap_2.7.9f.tar.gz&quot;.
+
+ Can you help me???
+
+      Thanks!
+
+                     Diego
+
+
+
+
+
+
+Mensaje citado por &quot;Maarten L. Hekkelman&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>&gt;:
+
+&gt;<i> Hi Diego,
+</I>&gt;<i>
+</I>&gt;<i> &gt;    I am trying to install MRS 3.1 on a Fedora Core 6-(64bits) machine.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;    I installed the packages:
+</I>&gt;<i> &gt;               boost-1.33.1-11.fc6.i386.rpm
+</I>&gt;<i> &gt;               boost-devel-1.33.1-11.fc6.i386.rpm
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;    However, during installation I get the following error message:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;    Which c++ compiler to use (gcc 4.1 is preferred) [/usr/bin/c++]:
+</I>&gt;<i> &gt; Use of uninitialized value in concatenation (.) or string at
+</I>&gt;<i> &gt; install.pl line
+</I>&gt;<i> &gt; 231, &lt;&gt; line 7.
+</I>&gt;<i> &gt; the boost library boost_regex seems to be missing at install.pl
+</I>&gt;<i> &gt; line 247, &lt;&gt;
+</I>&gt;<i> &gt; line 7.
+</I>&gt;<i>
+</I>&gt;<i> The install script tries to find out the location where
+</I>&gt;<i> libboost_regex.a is located. Apparently it fails. If you look at the
+</I>&gt;<i> lines 225 and following in the install.pl script you'll see what
+</I>&gt;<i> files it tries to find (libboost_regex.a and libboost_regex-gcc.a)
+</I>&gt;<i> and in what directories. If you know where your boost libraries are
+</I>&gt;<i> located you can try to add the location yourself or mail me the
+</I>&gt;<i> location and I will edit the install.pl script for you.
+</I>&gt;<i>
+</I>&gt;<i> mvg,
+</I>&gt;<i>
+</I>&gt;<i> Maarten L. Hekkelman
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000262.html">[Mrs-user] (no subject)
+</A></li>
+	<LI>Next message: <A HREF="000264.html">[Mrs-user] (no subject)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#263">[ date ]</a>
+              <a href="thread.html#263">[ thread ]</a>
+              <a href="subject.html#263">[ subject ]</a>
+              <a href="author.html#263">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

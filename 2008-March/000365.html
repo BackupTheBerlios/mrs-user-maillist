@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Mrs-user Digest, Vol 21,	Issue 1 - Segmentation fault when running mrsws-clustal
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs-user%20Digest%2C%20Vol%2021%2C%0A%09Issue%201%20-%20Segmentation%20fault%20when%20running%20mrsws-clustal&In-Reply-To=%3C2fab80e60803180422j40f29e42vbe38294d9608d2c6%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000364.html">
+   <LINK REL="Next"  HREF="000366.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Mrs-user Digest, Vol 21,	Issue 1 - Segmentation fault when running mrsws-clustal</H1>
+    <B>Uli</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs-user%20Digest%2C%20Vol%2021%2C%0A%09Issue%201%20-%20Segmentation%20fault%20when%20running%20mrsws-clustal&In-Reply-To=%3C2fab80e60803180422j40f29e42vbe38294d9608d2c6%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] Mrs-user Digest, Vol 21,	Issue 1 - Segmentation fault when running mrsws-clustal">ulihorn at gmail.com
+       </A><BR>
+    <I>Tue Mar 18 12:22:30 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000364.html">[Mrs-user] {Spam Score:11} Medical Doctor Listing
+</A></li>
+        <LI>Next message: <A HREF="000366.html">[Mrs-user] Mrs-user Digest, Vol 21, Issue 1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#365">[ date ]</a>
+              <a href="thread.html#365">[ thread ]</a>
+              <a href="subject.html#365">[ subject ]</a>
+              <a href="author.html#365">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten
+
+Thank you very much for pointing out the problem.  I fixed the xml file and
+clustal now works like a dream.
+
+Regards
+Uli
+
+
+
+On Wed, Mar 5, 2008 at 1:03 PM, &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user-request at lists.berlios.de</A>&gt; wrote:
+
+&gt;<i> Send Mrs-user mailing list submissions to
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i> or, via email, send a message with subject or body 'help' to
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user-request at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> You can reach the person managing the list at
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user-owner at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> than &quot;Re: Contents of Mrs-user digest...&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Today's Topics:
+</I>&gt;<i>
+</I>&gt;<i>   1. mrsws-clustal (Maarten L. Hekkelman)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ----------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 1
+</I>&gt;<i> Date: Wed, 05 Mar 2008 11:08:45 +0100
+</I>&gt;<i> From: &quot;Maarten L. Hekkelman&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">m.hekkelman at cmbi.ru.nl</A>&gt;
+</I>&gt;<i> Subject: [Mrs-user] mrsws-clustal
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+</I>&gt;<i> Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">47CE712D.6090000 at cmbi.ru.nl</A>&gt;
+</I>&gt;<i> Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+</I>&gt;<i>
+</I>&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> Someone mailed me/the list to tell that mrsws-clustal would crash at
+</I>&gt;<i> launch with a segmentation violation. I've found out that this can
+</I>&gt;<i> happen when there was no clustalw installed when the
+</I>&gt;<i> /usr/local/etc/mrs-config.xml file was generated. The &lt;clustalw-exe&gt;
+</I>&gt;<i> entry would be left empty and I just found out you get a nil pointer at
+</I>&gt;<i> a location I didn't expect from libxml2...
+</I>&gt;<i>
+</I>&gt;<i> Anyway, if you want to use mrsws-clustal you have to have clustalw
+</I>&gt;<i> installed and have to enter it's path in the mrs-config.xml file. I'll
+</I>&gt;<i> fix the crash nevertheless.
+</I>&gt;<i>
+</I>&gt;<i> -maarten
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> End of Mrs-user Digest, Vol 21, Issue 1
+</I>&gt;<i> ***************************************
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20080318/1c998407/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20080318/1c998407/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000364.html">[Mrs-user] {Spam Score:11} Medical Doctor Listing
+</A></li>
+	<LI>Next message: <A HREF="000366.html">[Mrs-user] Mrs-user Digest, Vol 21, Issue 1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#365">[ date ]</a>
+              <a href="thread.html#365">[ thread ]</a>
+              <a href="subject.html#365">[ subject ]</a>
+              <a href="author.html#365">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

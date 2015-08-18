@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] The integration of MRS and EMBOSS,
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20The%20integration%20of%20MRS%20and%20EMBOSS%2C&In-Reply-To=%3C475015AD.3060003%40vub.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000331.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] The integration of MRS and EMBOSS,</H1>
+    <B>Guy Bottu</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20The%20integration%20of%20MRS%20and%20EMBOSS%2C&In-Reply-To=%3C475015AD.3060003%40vub.ac.be%3E"
+       TITLE="[Mrs-user] The integration of MRS and EMBOSS,">gbottu at vub.ac.be
+       </A><BR>
+    <I>Fri Nov 30 14:52:45 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000331.html">[Mrs-user] Installling mrs on an intel mac book pro
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#332">[ date ]</a>
+              <a href="thread.html#332">[ thread ]</a>
+              <a href="subject.html#332">[ subject ]</a>
+              <a href="author.html#332">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>	Dear users of MRS,
+
+You have probably heard about EMBOSS, a software package for sequence analysis, 
+developed by a team headed by Peter Rice and Alan Bleasby at the European 
+Bioinformatics Institute. wrappers4EMBOSS is a suite that allows to integrate 
+3rd party software like BLAST and MUSCLE under EMBOSS. It has very recently been 
+enriched with a new module &quot;MRS&quot;. The &quot;MRS&quot; module uses Perl scripts to access a 
+local installation of MRS version 3. I contains the following :
+- a script that allows to use MRS as sequence database access for EMBOSS, so
+   that you can let any EMBOSS program operate on a &quot;public&quot; sequence by typing
+   simply e.g. swissprot:papa1_carpa
+- a program mrsindexsearch that allows to search in sequence databanks by
+   providing keywords for the different fields and that returns the result as
+   either a multiple sequence file in fastA format or as an EMBOSS List File (a
+   list of names that can directly be given as input to an EMBOSS program). The
+   program can be run interactively in a UNIX terminal or it can be integrated
+   under a GUI like wEMBOSS, where it presents a page with multiple boxes.
+- a scripting tool mrsget (which actually has nothing to do with EMBOSS) that
+   allows to type in a query in MRS query language and retrieve the result in any
+   of a series of formats.
+You can download it from <A HREF="http://www.wemboss.org/.">http://www.wemboss.org/.</A> The included README and 
+0README1 files explain how to proceed.
+
+	Regards,
+	Guy Bottu,
+	Belgian EMBnet Node - wEMBOSS development team
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000331.html">[Mrs-user] Installling mrs on an intel mac book pro
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#332">[ date ]</a>
+              <a href="thread.html#332">[ thread ]</a>
+              <a href="subject.html#332">[ subject ]</a>
+              <a href="author.html#332">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

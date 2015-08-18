@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] medline.pm parser error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20medline.pm%20parser%20error&In-Reply-To=%3C4B94A251.3050305%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000527.html">
+   <LINK REL="Next"  HREF="000532.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] medline.pm parser error</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20medline.pm%20parser%20error&In-Reply-To=%3C4B94A251.3050305%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] medline.pm parser error">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Mon Mar  8 08:08:01 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000527.html">[Mrs-user] medline.pm parser error
+</A></li>
+        <LI>Next message: <A HREF="000532.html">[Mrs-user] medline.pm parser error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#531">[ date ]</a>
+              <a href="thread.html#531">[ thread ]</a>
+              <a href="subject.html#531">[ subject ]</a>
+              <a href="author.html#531">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 06-03-10 19:51, Martin Senger schreef:
+&gt;<i> I am trying to parse medline xml file by saying (being in the standard
+</I>&gt;<i> place /usr/local/share/mrs/update_scripts):
+</I>&gt;<i>
+</I>&gt;<i> make mrs DATABANK=medline
+</I>&gt;<i>
+</I>&gt;<i> It complains:
+</I>&gt;<i>
+</I>&gt;<i> /usr/local/bin/mrs-build -d medline -a4 -v    || \
+</I>&gt;<i>                  (echo medline &gt;&gt; /usr/local/data/status/failed_dbs.txt;
+</I>&gt;<i> false)
+</I>&gt;<i> mrs-build failed with exception:
+</I>&gt;<i> Perl error creating script object: Global symbol &quot;$result&quot; requires
+</I>&gt;<i> explicit package name at (eval 2) line 170.
+</I>&gt;<i> Global symbol &quot;$result&quot; requires explicit package name at (eval 2) line 177.
+</I>&gt;<i>
+</I>&gt;<i> make: *** [/usr/local/data/flags/medline.mrs_done] Error 1
+</I>&gt;<i>
+</I>&gt;<i> When I declare $result as 'my $result' (before the eval block), it
+</I>&gt;<i> starts working
+</I>
+Ah, yet another XML databank... I haven't used medline myself for a long 
+time. The fix you suggest is correct for the 'pp' subroutine.
+
+&gt;<i> but it produces suspicious, repeating, lines:
+</I>&gt;<i>
+</I>&gt;<i> Using fastlz compression
+</I>&gt;<i> Processing 1 raw files totalling 145017308 bytes
+</I>&gt;<i> medline-2010-02-20.x 1/1 -  16M/138M [ 11%] docs: 0 text: 0B eta: 43s
+</I>&gt;<i> medline-2010-02-20.x 1/1 - 138M/138M [100%] docs: 0 text: 0B eta: 0s
+</I> &gt; ...
+&gt;<i>
+</I>&gt;<i> And the new files in the /usr/local/data/mrs do not seem to be changing,
+</I>&gt;<i> growing or whatever. Am I just making a mistake by stopping it, or is
+</I>&gt;<i> there a cycle?
+</I>
+Hmmm.. Apparently the the Parse subroutine isn't working any more. 
+Problem is, we dropped medline recently since it was never searched at 
+our server and updating the databank was labour intensive.
+
+And since we only have a very old copy of medline I cannot test if the 
+data format changed or if the parser contains an error.
+
+You might want to debug the parser script yourself, to do this you could 
+e.g. add some print statements to the parser script and then start 
+mrs-build by hand to see what happens. I always start mrs-build with the 
+-pvf options.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000527.html">[Mrs-user] medline.pm parser error
+</A></li>
+	<LI>Next message: <A HREF="000532.html">[Mrs-user] medline.pm parser error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#531">[ date ]</a>
+              <a href="thread.html#531">[ thread ]</a>
+              <a href="subject.html#531">[ subject ]</a>
+              <a href="author.html#531">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

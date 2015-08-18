@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20The%20Web%20services%20time-out%20problem%20-%20Checked%20by%0A%09AntiVir%20DEMO%20version%20-&In-Reply-To=%3C6945493D-3E76-4F2C-A8CE-F67CEB2AEF07%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000138.html">
+   <LINK REL="Next"  HREF="000141.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20The%20Web%20services%20time-out%20problem%20-%20Checked%20by%0A%09AntiVir%20DEMO%20version%20-&In-Reply-To=%3C6945493D-3E76-4F2C-A8CE-F67CEB2AEF07%40hekkelman.com%3E"
+       TITLE="[Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -">maarten at hekkelman.com
+       </A><BR>
+    <I>Fri Nov 17 08:25:25 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000138.html">[Mrs-user] The Web services time-out problem - Checked by AntiVir	DEMO version -
+</A></li>
+        <LI>Next message: <A HREF="000141.html">[Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#140">[ date ]</a>
+              <a href="thread.html#140">[ thread ]</a>
+              <a href="subject.html#140">[ subject ]</a>
+              <a href="author.html#140">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Dear support,
+</I>
+:<i>-)
+</I>
+&gt;<i> I have looked again at the Web Services time-out problem. On a test
+</I>&gt;<i> machine (a rather weak one) I performed a query that times out.  
+</I>&gt;<i> Then, in
+</I>&gt;<i> the httpd.conf file of Apache I put :
+</I>&gt;<i> TimeOut 6000
+</I>&gt;<i>
+</I>&gt;<i> Then (from another machine) I tried the following :
+</I>&gt;<i> date ; ./smrsget sprot 'id:*_human' &gt; HUM ; date
+</I>
+To understand why this query takes such a long time, I'll explain how  
+MRS handles it. I agree that this could be improved, quite easily in  
+fact for this particular case.
+
+Anyway, the current MRS uses the regular expression to find all keys  
+in the BTree that match. Since your pattern has not fixed first  
+character, it has to consider all entries. In case of swissprot that  
+means evaluating all 241000 keys. It then goes on to create an  
+Iterator object for each entry and create a UnionIterator to contain  
+all of the found results.
+
+That's a bit inefficient I'm afraid...
+
+I'll fix this, especially since you're searching a value index this  
+can be greatly improved.
+
+&gt;<i> On the test machine mrs_soap.cgi goes on running and finally stops  
+</I>&gt;<i> after a
+</I>&gt;<i> long time. Is it possible that the problem is not (only) at the server
+</I>&gt;<i> side but (also) at the client side ?
+</I>
+If you're using perl at the client side there might be a problem  
+there too. But I expect the server to be too slow.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000138.html">[Mrs-user] The Web services time-out problem - Checked by AntiVir	DEMO version -
+</A></li>
+	<LI>Next message: <A HREF="000141.html">[Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#140">[ date ]</a>
+              <a href="thread.html#140">[ thread ]</a>
+              <a href="subject.html#140">[ subject ]</a>
+              <a href="author.html#140">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

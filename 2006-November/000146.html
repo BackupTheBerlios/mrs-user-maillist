@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] about the new Web services - Checked by AntiVir DEMO	version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20about%20the%20new%20Web%20services%20-%20Checked%20by%20AntiVir%20DEMO%0A%09version%20-&In-Reply-To=%3C48B7669D-2FFC-4FEA-8C86-9048D23BDD97%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000145.html">
+   <LINK REL="Next"  HREF="000147.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] about the new Web services - Checked by AntiVir DEMO	version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20about%20the%20new%20Web%20services%20-%20Checked%20by%20AntiVir%20DEMO%0A%09version%20-&In-Reply-To=%3C48B7669D-2FFC-4FEA-8C86-9048D23BDD97%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] about the new Web services - Checked by AntiVir DEMO	version -">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue Nov 21 11:35:06 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000145.html">[Mrs-user] about the new Web services - Checked by AntiVir DEMO version -
+</A></li>
+        <LI>Next message: <A HREF="000147.html">[Mrs-user] documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#146">[ date ]</a>
+              <a href="thread.html#146">[ thread ]</a>
+              <a href="subject.html#146">[ subject ]</a>
+              <a href="author.html#146">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Guy,
+
+&gt;<i> I hear that you are, amongst other things, developing a new and more
+</I>&gt;<i> efficient version of the Web services.
+</I>
+Correct. The code for this is in the trunk in svn. To check out this  
+code, you have to enter this command:
+
+svn co <A HREF="https://svn.berlios.de/svnroot/repos/mrs/trunk/">https://svn.berlios.de/svnroot/repos/mrs/trunk/</A>
+
+The web service is in mrs/ws and you need to have gsoap installed to  
+build it.
+
+&gt;<i> I noticed that mrs-soap.cgi can
+</I>&gt;<i> perform a query and send back the ID's + optionally the description  
+</I>&gt;<i> lines ;
+</I>&gt;<i> it can also take a list of ID's and send back the complete entries.  
+</I>&gt;<i> The
+</I>&gt;<i> experimental mrsws, developed for SIMDAT, does not have the option of
+</I>&gt;<i> sending the description lines. I find the possiblity to get the
+</I>&gt;<i> description very useful ; could it be recovered ?
+</I>
+The new interface is far more powerful and does not resemble the  
+simdat version. When doing a search you get back a list of ID's plus  
+the description line. The soap server has an embedded perl  
+interpreter that uses the same formatting scripts as the current  
+website.
+
+&gt;<i> Also, for sequences the
+</I>&gt;<i> possibility to get the sequence in fastA format instead of the  
+</I>&gt;<i> entry in
+</I>&gt;<i> &quot;native&quot; format would be useful.
+</I>
+I've already taken care of that, a full fasta format is one of the  
+options.
+
+&gt;<i> Of course, the possibility to get any
+</I>&gt;<i> data field would be even better, but I think that this would not be
+</I>&gt;<i> possible without a complete rewrite of the parser files.
+</I>
+I also changed the MRS file format a little so that you can supply  
+meta data along with the full record. That way you can store the  
+title/description directly instead of having to use a formatting  
+script to retrieve it. Although this works nicely, I'm not sure if  
+this really is a useful feature.
+
+&gt;<i> Another idea : besides the WWW interface and the Web services  
+</I>&gt;<i> interface,
+</I>&gt;<i> is it possible to write a Perl program that queries a local  
+</I>&gt;<i> installation
+</I>&gt;<i> of MRS and gives the same kind of result as the Web services, but then
+</I>&gt;<i> faster, since it avoids the overhead of SOAP ?
+</I>
+Yes, you can already do that.
+
+E.g., the following script uses the local MRS to do a simple query:
+
+#!perl
+use MRS;
+my $db = new MRS::MDatabank('sprot') or die 'could not find sprot'; #  
+You have to have MRS_DATA_DIR set
+my $iter = $db-&gt;Find('rds os:human');
+while (my $id = $iter-&gt;Next) {
+	print &quot;$id\n&quot;;
+}
+
+To know what you can do with the perl interface, have a look at the  
+MRSInterface.h file in mrs/plugin/Sources. It is in C++ but you can  
+get an idea of what is possible. I'm afraid I will have to write some  
+documentation for this interface one day.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000145.html">[Mrs-user] about the new Web services - Checked by AntiVir DEMO version -
+</A></li>
+	<LI>Next message: <A HREF="000147.html">[Mrs-user] documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#146">[ date ]</a>
+              <a href="thread.html#146">[ thread ]</a>
+              <a href="subject.html#146">[ subject ]</a>
+              <a href="author.html#146">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

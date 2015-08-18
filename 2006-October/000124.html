@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] The Web service time-out issue - Checked by AntiVir	DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20The%20Web%20service%20time-out%20issue%20-%20Checked%20by%20AntiVir%0A%09DEMO%20version%20-&In-Reply-To=%3C99DFA04C-0E6C-4F5A-A6A6-5F70DAD7F926%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000123.html">
+   <LINK REL="Next"  HREF="000125.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] The Web service time-out issue - Checked by AntiVir	DEMO version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20The%20Web%20service%20time-out%20issue%20-%20Checked%20by%20AntiVir%0A%09DEMO%20version%20-&In-Reply-To=%3C99DFA04C-0E6C-4F5A-A6A6-5F70DAD7F926%40hekkelman.com%3E"
+       TITLE="[Mrs-user] The Web service time-out issue - Checked by AntiVir	DEMO version -">maarten at hekkelman.com
+       </A><BR>
+    <I>Mon Oct 23 12:28:37 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000123.html">[Mrs-user] The Web service time-out issue - Checked by AntiVir DEMO	version -
+</A></li>
+        <LI>Next message: <A HREF="000125.html">[Mrs-user] bug for queries in composite databank - Checked by	AntiVir DEMO version
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#124">[ date ]</a>
+              <a href="thread.html#124">[ thread ]</a>
+              <a href="subject.html#124">[ subject ]</a>
+              <a href="author.html#124">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 19-okt-2006, om 12:56 heeft Guy Bottu het volgende geschreven:
+&gt;<i>
+</I>&gt;<i> At the Belgian EMBnet Node we have started to use MRS as sequence  
+</I>&gt;<i> access
+</I>&gt;<i> method and with this a problem has become visible : the time-out of  
+</I>&gt;<i> the
+</I>&gt;<i> Web Services. It is convenient to use the MRS Web Services to  
+</I>&gt;<i> retrieve one
+</I>&gt;<i> or a few sequences and give them as input to a program. It does  
+</I>&gt;<i> however
+</I>&gt;<i> not work if the sequences are with too many. E.g. a query  
+</I>&gt;<i> id:*_mouse in
+</I>&gt;<i> UniProt is convenient to obtain all the mouse sequences, but in our  
+</I>&gt;<i> hands
+</I>&gt;<i> it often times out.
+</I>&gt;<i>
+</I>&gt;<i> A question for the developper : do you think the problem is inside  
+</I>&gt;<i> MRS (and
+</I>&gt;<i> could be fixed) or is it due to the configuration of our httpd  
+</I>&gt;<i> server ?
+</I>
+I'm not sure about this, but what I do know is that MRS can be  
+improved. I am going to write a new web services implementation  
+that's not Perl but C++ based and this should be much faster.
+
+I have one question though, do you use MRS to retrieve sequences (and  
+thus e.g. extract a record and parse it for the sequence) or do you  
+mean you want to use for fetching entire records only?
+
+The reason I'm asking this is, I believe that often you're interested  
+in only three or four parts of information from a record. The entire  
+record (duh..), the sequence, the description or title and the the  
+record ID which indicates that the record actually exists. For two of  
+these four cases you need to parse the record and that's time  
+consuming. Especially when this parsing is done at the client side so  
+that all records have to be passed over the wire.
+
+What I would like to do is add the title (or description) of a record  
+to the databank. If you then use a GetEntry call to fetch some data  
+you can specify if you want the entire record, a description or the  
+sequence of the record. When properly implemented this can be done by  
+adding only a couple of bytes per record in the databank.
+
+Another possibility might be to convert each record to XML before  
+storing it. If done properly, you could regenerate the original  
+record from this XML using a XML stylesheet. The interesting new  
+opportunities you get this way are the ability to use xpaths to  
+search and retrieve data. But I'm afraid this is going to be a bit  
+too much change for now.
+
+I would appreciate hearing any idea on this topic.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000123.html">[Mrs-user] The Web service time-out issue - Checked by AntiVir DEMO	version -
+</A></li>
+	<LI>Next message: <A HREF="000125.html">[Mrs-user] bug for queries in composite databank - Checked by	AntiVir DEMO version
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#124">[ date ]</a>
+              <a href="thread.html#124">[ thread ]</a>
+              <a href="subject.html#124">[ subject ]</a>
+              <a href="author.html#124">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

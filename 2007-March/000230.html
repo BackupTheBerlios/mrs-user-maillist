@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] port features MRS 2 -&gt; MRS 3 - Checked by AntiVir	DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20port%20features%20MRS%202%20-%3E%20MRS%203%20-%20Checked%20by%20AntiVir%0A%09DEMO%20version%20-&In-Reply-To=%3CA3B89BC8-762F-45E1-AEA0-06C25A7597F7%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000227.html">
+   <LINK REL="Next"  HREF="000228.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] port features MRS 2 -&gt; MRS 3 - Checked by AntiVir	DEMO version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20port%20features%20MRS%202%20-%3E%20MRS%203%20-%20Checked%20by%20AntiVir%0A%09DEMO%20version%20-&In-Reply-To=%3CA3B89BC8-762F-45E1-AEA0-06C25A7597F7%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] port features MRS 2 -&gt; MRS 3 - Checked by AntiVir	DEMO version -">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue Mar 20 09:45:30 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000227.html">[Mrs-user] port features MRS 2 -&gt; MRS 3 - Checked by AntiVir DEMO	version -
+</A></li>
+        <LI>Next message: <A HREF="000228.html">[Mrs-user] some questions - Checked by AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#230">[ date ]</a>
+              <a href="thread.html#230">[ thread ]</a>
+              <a href="subject.html#230">[ subject ]</a>
+              <a href="author.html#230">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 19-mrt-2007, om 18:14 heeft Guy Bottu het volgende geschreven:
+&gt;&gt;<i>
+</I>&gt;&gt;<i> I think that with these changes--along with a couple of small fixes I
+</I>&gt;&gt;<i> checked in today--I've finished the transition from MRS 2 to MRS 3.
+</I>&gt;&gt;<i> All the functionality that was there in MRS2 is now available in
+</I>&gt;&gt;<i> MRS3. Unless I've overlooked something of course.
+</I>&gt;<i>
+</I>&gt;<i> Well, a few things are still lacking :
+</I>&gt;<i> - the &quot;wildcard&quot; check box
+</I>
+I removed that one on purpose. MRS is not SRS and using the wildcard  
+checkbox would mean you can no longer use vector matching. And if you  
+really want to append wildcards it is not that difficult to type them  
+in yourself.
+
+&gt;<i> - the possibility to save sequences in fastA format
+</I>
+That's a bug, you're right. Should have added it. I'll see if I can  
+fix this.
+
+&gt;<i> - the possibiliy to search for groups of word (the famous &quot;abnormal
+</I>&gt;<i>   auricles&quot;)
+</I>
+The way this was implemented was a hack. And a hack that took way to  
+many resources on the server. I will re-implement this feature very  
+soon again but in a decent way. I'm afraid this means I will have to  
+extend the MRS file format for this and that will take time.
+
+&gt;<i> - the on-line help about the MRS query language
+</I>
+Yes, I really have to do something in that area.
+
+-maarten
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000227.html">[Mrs-user] port features MRS 2 -&gt; MRS 3 - Checked by AntiVir DEMO	version -
+</A></li>
+	<LI>Next message: <A HREF="000228.html">[Mrs-user] some questions - Checked by AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#230">[ date ]</a>
+              <a href="thread.html#230">[ thread ]</a>
+              <a href="subject.html#230">[ subject ]</a>
+              <a href="author.html#230">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

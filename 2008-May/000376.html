@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Mrs embl_release BLAST
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs%20embl_release%20BLAST&In-Reply-To=%3C2fab80e60805060628nd1328b1y3714b7a1f10610e7%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000380.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Mrs embl_release BLAST</H1>
+    <B>Uli</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs%20embl_release%20BLAST&In-Reply-To=%3C2fab80e60805060628nd1328b1y3714b7a1f10610e7%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] Mrs embl_release BLAST">ulihorn at gmail.com
+       </A><BR>
+    <I>Tue May  6 15:28:09 CEST 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000380.html">[Mrs-user] Mrs embl_release BLAST
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#376">[ date ]</a>
+              <a href="thread.html#376">[ thread ]</a>
+              <a href="subject.html#376">[ subject ]</a>
+              <a href="author.html#376">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Email without attachments - bounced because of size of attachments.
+
+On Tue, May 6, 2008 at 2:40 PM, Uli &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">ulihorn at gmail.com</A>&gt; wrote:
+
+&gt;<i> Dear Maarten
+</I>&gt;<i>
+</I>&gt;<i> I have been trying to get BLAST up and working for the EMBL_release
+</I>&gt;<i> database.  The indexing for embl_release seemed to complete with no problem
+</I>&gt;<i> and searches can be done.  As far as I can see I have downloaded all the raw
+</I>&gt;<i> zipped files (not sure about the gss, htg and htgo files though). The BLAST
+</I>&gt;<i> files were not built automatically just running &quot;make embl_release&quot;.  Steps
+</I>&gt;<i> that I have taken in the embl_release.make file are:
+</I>&gt;<i>
+</I>&gt;<i> 1. uncomment the following lines:
+</I>&gt;<i> BLAST_FILES = $(addprefix $(BLASTDIR), $(addsuffix .formatted,
+</I>&gt;<i> $(SECTIONS)))
+</I>&gt;<i> ...
+</I>&gt;<i> blast: $(BLAST_FILES)
+</I>&gt;<i>         echo &quot;TITLE &quot;$(DATABANK) &gt; $(BLASTDIR)/$(DATABANK).nal
+</I>&gt;<i>        echo &quot;DBLIST &quot;$(SECTIONS) &gt;&gt; $(BLASTDIR)/$(DATABANK).nal
+</I>&gt;<i>
+</I>&gt;<i> although the latter lines should not matter - or may cause a problem since
+</I>&gt;<i> there is a
+</I>&gt;<i> blast target in make.post
+</I>&gt;<i>
+</I>&gt;<i> 2. run &quot;sudo make embl_release blast&quot; from the update_scripts file. (I had
+</I>&gt;<i> previously run the make embl_release and that worked fine but did not
+</I>&gt;<i> produce the blast files).
+</I>&gt;<i>
+</I>&gt;<i> 3. after approximately 24hrs the run completes with the following message:
+</I>&gt;<i>
+</I>&gt;<i>   &quot;make: *** No rule to make target `blast'.  Stop.&quot;
+</I>&gt;<i>
+</I>&gt;<i> which is correct but does that mean it has built the blast files
+</I>&gt;<i> correctly?
+</I>&gt;<i> The list of files built are are given in the attached file
+</I>&gt;<i> myblastfiles.txt
+</I>&gt;<i>
+</I>&gt;<i> 4.Checked the log files in the status sub directory:
+</I>&gt;<i> (see attached file) I seem to have gss htg and htgo files missing.
+</I>&gt;<i>
+</I>&gt;<i> 5.If the embl_release files have been built correctly this does not seem
+</I>&gt;<i> to be reflected in the BLAST menu on the web front-end.  I presume there
+</I>&gt;<i> should be an entry for the  embl_release database in the &quot;Choose the
+</I>&gt;<i> databank to search&quot; drop down box.
+</I>&gt;<i> (Here I am not sure if you make a distinction between the protein (AA) and
+</I>&gt;<i> genomic data) i.e. have another web page for the genomic blast data.
+</I>&gt;<i>
+</I>&gt;<i> Do you have any suggestions what I might have done wrong?
+</I>&gt;<i>
+</I>&gt;<i> Kind regards
+</I>&gt;<i> Uli Horn
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20080506/a599b1c4/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20080506/a599b1c4/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000380.html">[Mrs-user] Mrs embl_release BLAST
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#376">[ date ]</a>
+              <a href="thread.html#376">[ thread ]</a>
+              <a href="subject.html#376">[ subject ]</a>
+              <a href="author.html#376">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

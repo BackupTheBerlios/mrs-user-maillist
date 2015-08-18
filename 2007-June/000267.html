@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Successful installation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Successful%20installation&In-Reply-To=%3C6F7EBE00-830D-4193-86E4-2B7FAE1D6104%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000266.html">
+   <LINK REL="Next"  HREF="000268.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Successful installation</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Successful%20installation&In-Reply-To=%3C6F7EBE00-830D-4193-86E4-2B7FAE1D6104%40hekkelman.com%3E"
+       TITLE="[Mrs-user] Successful installation">maarten at hekkelman.com
+       </A><BR>
+    <I>Thu Jun 21 20:32:20 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000266.html">[Mrs-user] Successful installation
+</A></li>
+        <LI>Next message: <A HREF="000268.html">[Mrs-user] merging in several stages ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#267">[ date ]</a>
+              <a href="thread.html#267">[ thread ]</a>
+              <a href="subject.html#267">[ subject ]</a>
+              <a href="author.html#267">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 21-jun-2007, om 19:33 heeft <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dbellante at biol.unlp.edu.ar</A> het  
+volgende geschreven:
+&gt;<i>
+</I>&gt;<i>        The &quot;Databanks&quot; option in the MRS 3.0.1 menu shows a white  
+</I>&gt;<i> screen. Should
+</I>&gt;<i> it work? It references to ActionServlet with &quot;status.do&quot;.
+</I>
+A lot can go wrong.
+
+First of all, make sure you run mrsws from the command-line. It  
+should display a list of databanks it loads and then a line for each  
+SOAP command processed.
+
+The /usr/local/etc/mrsws-config.xml file contains the settings that  
+define to what port mrsws listens, and what address. Perhaps you  
+should change the address in this file for each server to '0.0.0.0',  
+that way the server will listen to all addresses.
+
+Then you will have to specify where the Java web application needs to  
+connect to find the data. If tomcat runs on the same machine as  
+mrsws, this should not be necessary. But if you do need to change it,  
+use the Tomcat Admininstration tool. The variables you need to change  
+can be found at:
+
+Tomcat Server/Service (Catalina)/Host (localhost)/Context (mrs-3)/ 
+Environment Entries/
+
+Change the address and port number to the ones used in the /usr/local/ 
+etc/mrsws-config.xml file.
+
+Hope this helps?
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000266.html">[Mrs-user] Successful installation
+</A></li>
+	<LI>Next message: <A HREF="000268.html">[Mrs-user] merging in several stages ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#267">[ date ]</a>
+              <a href="thread.html#267">[ thread ]</a>
+              <a href="subject.html#267">[ subject ]</a>
+              <a href="author.html#267">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

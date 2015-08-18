@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] the trouble with cross-references not using an id
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20the%20trouble%20with%20cross-references%20not%20using%20an%20id&In-Reply-To=%3C4933E92A-F67F-40CF-B49F-3836AC4F0966%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000352.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] the trouble with cross-references not using an id</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20the%20trouble%20with%20cross-references%20not%20using%20an%20id&In-Reply-To=%3C4933E92A-F67F-40CF-B49F-3836AC4F0966%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] the trouble with cross-references not using an id">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Jan 23 19:04:25 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000352.html">[Mrs-user] the trouble with cross-references not using an id
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#353">[ date ]</a>
+              <a href="thread.html#353">[ thread ]</a>
+              <a href="subject.html#353">[ subject ]</a>
+              <a href="author.html#353">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 23-jan-2008, om 15:20 heeft Guy Bottu het volgende geschreven:
+&gt;<i>
+</I>&gt;<i> Have you noticed that there is a problem : the cross-references in  
+</I>&gt;<i> databanks
+</I>&gt;<i> sometimes are not based on the ID but instead on an accession  
+</I>&gt;<i> number. With MRS 2
+</I>&gt;<i>   there was no problem, but with MRS 3 there is. Take as example :
+</I>&gt;<i> EMBL entry AF410477
+</I>&gt;<i> click on link CDS db_xref UniProtKB/Swiss-Prot:Q96P20
+</I>&gt;<i> This yields the URL   <A HREF="http://..../entry.do?db=uniprot&amp;query=ac:Q96P20">http://..../entry.do?db=uniprot&amp;query=ac:Q96P20</A>
+</I>&gt;<i> and an error
+</I>&gt;<i>
+</I>&gt;<i> Should the behaviour of the entry.do function be changed ? Or  
+</I>&gt;<i> should we use
+</I>&gt;<i> query.do instead ?
+</I>
+
+I believe you should use query.do as URL in this case.
+
+I've committed a couple of fixes for crosslinks (in genbank.pm,  
+goa.pm and embl.pm).
+
+I'm afraid there are quite a few incorrect links left.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+06 26 750 799
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000352.html">[Mrs-user] the trouble with cross-references not using an id
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#353">[ date ]</a>
+              <a href="thread.html#353">[ thread ]</a>
+              <a href="subject.html#353">[ subject ]</a>
+              <a href="author.html#353">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

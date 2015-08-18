@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS: Web Service
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%3A%20Web%20Service&In-Reply-To=%3C89202C68-C0D9-45F7-A4EF-1A293C8F2F9A%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000321.html">
+   <LINK REL="Next"  HREF="000298.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS: Web Service</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%3A%20Web%20Service&In-Reply-To=%3C89202C68-C0D9-45F7-A4EF-1A293C8F2F9A%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] MRS: Web Service">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Sat Nov 24 09:31:03 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000321.html">[Mrs-user] MRS: Web Service
+</A></li>
+        <LI>Next message: <A HREF="000298.html">[Mrs-user] beta testers needed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#322">[ date ]</a>
+              <a href="thread.html#322">[ thread ]</a>
+              <a href="subject.html#322">[ subject ]</a>
+              <a href="author.html#322">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 23-nov-2007, om 17:42 heeft Alvaro Martinez Barrio het volgende  
+geschreven:
+
+&gt;<i> Just the Clustal client (to my WS) I don't get to work. It is just I
+</I>&gt;<i> need the work around to the parameter passing thing. Still the same  
+</I>&gt;<i> failure.
+</I>
+Maybe a similar problem, is the path to clustalw specified in the mrs- 
+config.xml file? Is the user who runs the mrsws-clustal daemon  
+allowed to launch clustalw?
+
+What you could do is try to build a debug version of the clustal  
+daemon. You can do this by running the command:
+
+$ make DEBUG=1
+
+in the mrs/ws/clustal directory. Then run this application with the - 
+v flag and look at what is send to the terminal when you try to do a  
+clustal from the web interface.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+06 26 750 799
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000321.html">[Mrs-user] MRS: Web Service
+</A></li>
+	<LI>Next message: <A HREF="000298.html">[Mrs-user] beta testers needed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#322">[ date ]</a>
+              <a href="thread.html#322">[ thread ]</a>
+              <a href="subject.html#322">[ subject ]</a>
+              <a href="author.html#322">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

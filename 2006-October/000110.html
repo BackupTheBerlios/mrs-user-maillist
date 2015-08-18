@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] serious trouble with SOAP - Checked by AntiVir DEMO	version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20serious%20trouble%20with%20SOAP%20-%20Checked%20by%20AntiVir%20DEMO%0A%09version%20-&In-Reply-To=%3C20061002140902.GA9375%40bigben.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000111.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] serious trouble with SOAP - Checked by AntiVir DEMO	version -</H1>
+    <B>Guy Bottu</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20serious%20trouble%20with%20SOAP%20-%20Checked%20by%20AntiVir%20DEMO%0A%09version%20-&In-Reply-To=%3C20061002140902.GA9375%40bigben.ulb.ac.be%3E"
+       TITLE="[Mrs-user] serious trouble with SOAP - Checked by AntiVir DEMO	version -">gbottu at ben.vub.ac.be
+       </A><BR>
+    <I>Mon Oct  2 16:09:02 CEST 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000111.html">[Mrs-user] serious trouble with SOAP - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#110">[ date ]</a>
+              <a href="thread.html#110">[ thread ]</a>
+              <a href="subject.html#110">[ subject ]</a>
+              <a href="author.html#110">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>	Dear Maarten,
+
+We recently upgraded our Perl libraries (we have now SOAP::Lite version 
+0.66) and, as a consequence, a strange misbehaviour has appeared. The 
+command 
+
+smrsget sprot 'id:papa?_carpa'
+
+gives as output :
+
+not well-formed (invalid token) at line 667, column 19, byte 27441 at 
+/usr/lib64/perl5/vendor_perl/5.8.8/x86_64-linux-thread-multi/XML/Parser.pm 
+line 187
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;soap:Envelope 
+xmlns:xsi=&quot;<A HREF="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</A>&quot; 
+xmlns:soapenc=&quot;<A HREF="http://schemas.xmlsoap.org/soap/encoding/">http://schemas.xmlsoap.org/soap/encoding/</A>&quot; 
+xmlns:xsd=&quot;<A HREF="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</A>&quot; 
+xmlns:namesp2=&quot;<A HREF="http://namespaces.soaplite.com/perl">http://namespaces.soaplite.com/perl</A>&quot; 
+soap:encodingStyle=&quot;<A HREF="http://schemas.xmlsoap.org/soap/encoding/">http://schemas.xmlsoap.org/soap/encoding/</A>&quot; 
+xmlns:soap=&quot;<A HREF="http://schemas.xmlsoap.org/soap/envelope/">http://schemas.xmlsoap.org/soap/envelope/</A>&quot;&gt;&lt;soap:Body&gt;&lt;entryResponse 
+xmlns=&quot;<A HREF="http://localhost/mrs">http://localhost/mrs</A>&quot;&gt;&lt;namesp1:result 
+xmlns:namesp1=&quot;<A HREF="http://cmbidb1.cmbi.kun.nl/">http://cmbidb1.cmbi.kun.nl/</A>&quot; 
+soapenc:arrayType=&quot;xsd:anyURI[5]&quot; xsi:type=&quot;namesp2:array&quot;&gt;&lt;item 
+xsi:type=&quot;xsd:anyURI&quot;&gt;ID   PAPA1_CARPA    STANDARD;      PRT;   345 AA.
+AC   P00784;
+DT   21-JUL-1986, integrated into UniProtKB/Swiss-Prot.
+....
+SQ   SEQUENCE   96 AA;  10474 MW;  A0EE213D2540B405 CRC64;
+     GPLAVAINAA YMQTYIGGVS CPYICSRRLN HGVLLVGYGS AGYAPIRLKE KPYWVIKNSW
+     GENWGENGYY KICRGRNICG VDSMVSTVAA VHTTSQ
+//
+&lt;/item&gt;&lt;/namesp1:result&gt;&lt;/entryResponse&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt; at 
+./smrsget line 26
+
+This occurs only with the databanks sprot and trembl and only if you 
+make a query that yields more than one entry. What could be the cause of 
+this ?
+
+	Guy Bottu,
+	Belgian EMBnet Node
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000111.html">[Mrs-user] serious trouble with SOAP - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#110">[ date ]</a>
+              <a href="thread.html#110">[ thread ]</a>
+              <a href="subject.html#110">[ subject ]</a>
+              <a href="author.html#110">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] RFC: planning ahead for mrs 4.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20RFC%3A%20planning%20ahead%20for%20mrs%204.1&In-Reply-To=%3C48E5CD93.1010407%40ebi.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000424.html">
+   <LINK REL="Next"  HREF="000426.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] RFC: planning ahead for mrs 4.1</H1>
+    <B>Peter Rice</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20RFC%3A%20planning%20ahead%20for%20mrs%204.1&In-Reply-To=%3C48E5CD93.1010407%40ebi.ac.uk%3E"
+       TITLE="[Mrs-user] RFC: planning ahead for mrs 4.1">pmr at ebi.ac.uk
+       </A><BR>
+    <I>Fri Oct  3 09:45:23 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000424.html">[Mrs-user] RFC: planning ahead for mrs 4.1
+</A></li>
+        <LI>Next message: <A HREF="000426.html">[Mrs-user] mrs 4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#425">[ date ]</a>
+              <a href="thread.html#425">[ thread ]</a>
+              <a href="subject.html#425">[ subject ]</a>
+              <a href="author.html#425">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Koen Cuelenaere wrote:
+  &gt; prio: 4
+&gt;&gt;<i> - linking
+</I>&gt;&gt;<i> 	The SRS way of linking results from one databank to records in another.
+</I>&gt;&gt;<i>   
+</I>&gt;<i> prio: 4
+</I>&gt;<i> What I would like to have here, is not (like SRS) have just one way of 
+</I>&gt;<i> linking 2 databanks, but several
+</I>&gt;<i> ways of linking them... That also means expanding the query language to 
+</I>&gt;<i> be able to express what  link route to
+</I>&gt;<i> use... Also, one thing that would not be needed from my point of view, 
+</I>&gt;<i> is the &quot;shortest route&quot; type of linking,
+</I>&gt;<i> where you can link database A to Z while there are no direct links 
+</I>&gt;<i> available and the system could get
+</I>&gt;<i> their using a shortest route approach. Reason is, often you don't end up 
+</I>&gt;<i> with the things you want; so you
+</I>&gt;<i> just end up writing out the route in the query language from hop to hop...
+</I>
+I am thinking of something similar for EMBOSS (using MRS as database access 
+would make this easy - some others we'd have to hand craft).
+
+Syntax is certainly an issue - we use SRS syntax at present but it can't 
+cope with multiple links.
+
+I considered naming the links and including the link name in the syntax. It 
+becomes complicated with multiple databases and multiple links so link 
+names may need to be reused where there are obvious combinations (embl and 
+updates to uniprot and updates for example)
+
+I agree about the shortest route ... from uniprot in 2 hops to another 
+database there are often far too many choices and link weighting is a pain.
+
+regards,
+
+Peter Rice
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000424.html">[Mrs-user] RFC: planning ahead for mrs 4.1
+</A></li>
+	<LI>Next message: <A HREF="000426.html">[Mrs-user] mrs 4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#425">[ date ]</a>
+              <a href="thread.html#425">[ thread ]</a>
+              <a href="subject.html#425">[ subject ]</a>
+              <a href="author.html#425">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

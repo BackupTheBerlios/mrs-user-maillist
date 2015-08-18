@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] parser scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20parser%20scripts&In-Reply-To=%3C474AC649.9050609%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000324.html">
+   <LINK REL="Next"  HREF="000326.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] parser scripts</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20parser%20scripts&In-Reply-To=%3C474AC649.9050609%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] parser scripts">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Mon Nov 26 14:12:41 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000324.html">[Mrs-user] make enzyme problem
+</A></li>
+        <LI>Next message: <A HREF="000326.html">[Mrs-user] stop.txt~ ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#325">[ date ]</a>
+              <a href="thread.html#325">[ thread ]</a>
+              <a href="subject.html#325">[ subject ]</a>
+              <a href="author.html#325">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>For those who are tracking the changes in MRS' trunk. Be careful. I just
+updated the parserscripts, there are some changes you should review
+before using them.
+
+E.g. the PDB script now looks for .gz files instead of .Z files to
+reflect the use of the new PDB server. The embl parser contains the
+changes Guy Bottu made for separate update and creation date indices.
+And finally, the WSFormatter.pm script was modified to spit out less
+warnings.
+
+The reason you need be careful is that if you have created an embl
+release file with the old embl parser and create an update with the new
+one, merging might fail due to differences in the indices. So you should
+only start using the new embl parser when you're ready to do a rebuild
+of embl release.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000324.html">[Mrs-user] make enzyme problem
+</A></li>
+	<LI>Next message: <A HREF="000326.html">[Mrs-user] stop.txt~ ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#325">[ date ]</a>
+              <a href="thread.html#325">[ thread ]</a>
+              <a href="subject.html#325">[ subject ]</a>
+              <a href="author.html#325">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

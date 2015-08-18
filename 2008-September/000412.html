@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] perl interface
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20perl%20interface&In-Reply-To=%3C48C8DD38.4000200%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000411.html">
+   <LINK REL="Next"  HREF="000413.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] perl interface</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20perl%20interface&In-Reply-To=%3C48C8DD38.4000200%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] perl interface">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Thu Sep 11 10:56:24 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000411.html">[Mrs-user] mrs status
+</A></li>
+        <LI>Next message: <A HREF="000413.html">[Mrs-user] perl interface documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#412">[ date ]</a>
+              <a href="thread.html#412">[ thread ]</a>
+              <a href="subject.html#412">[ subject ]</a>
+              <a href="author.html#412">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I checked in version 762 and this version contains the new Perl 
+interface. I've tried to keep this interface as close to the previous 
+one as possible while still making it more useful and clean (IMHO). You 
+no longer need SWIG to build the plugin.
+
+There's some preliminary documentation in the MRS.pm file. I will extend 
+this over time.
+
+A small example of what you can do with the plugin:
+
+#!/usr/bin/perl
+
+use MRS;
+
+my $db = new MRS::MDatabank('sprot')
+	or die &quot;Could not open databank sprot\n&quot;;
+
+if (my $r = $db-&gt;Find(&quot;crambin&quot;))
+{
+	my $count = $r-&gt;{count};
+	print &quot;Found $count hits for crambin:\n&quot;;
+
+	while (my $id = $r-&gt;Next)
+	{
+		my $title = $db-&gt;GetMetaData($id, 'title');
+		print &quot;$id\t$title\n&quot;;
+	}
+}
+
+If you run this script, you'll notice that the count is not correct. 
+That's because this was a boolean search and the count here is an 
+estimate. :-)
+
+We can improve on this, using ranked queries. Like this:
+
+my $q = $db-&gt;RankedQuery;
+$q-&gt;AddTerm('crambin');
+if (my $r = $q-&gt;Perform())
+{
+	my $count = $r-&gt;{count};
+	print &quot;Found $count hits for crambin:\n&quot;;
+
+	for (;;)
+	{
+		my ($id, $score) = $r-&gt;Next;
+		last unless defined $id;
+		my $title = $db-&gt;GetMetaData($id, 'title');
+		print &quot;$id\t$score\t$title\n&quot;;
+	}
+}
+
+Now count is correct and we also have the results printed out in ranked 
+order.
+
+Now a more complex example, we want to do a Blast search and report the 
+results in some fixed format report like fashion. Improving the output 
+is left as an exercise to the reader :-)
+
+my ($hnr, $nr, $bh, $hsp);
+
+format HIT_TOP =
+Blast hits
+Nr.   ID             Title
+----  -------------  --------------------------------------------------
+.
+
+format HIT =
+@&gt;&gt;&gt;: @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;  @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;...
+$nr,  $bh-&gt;{id},     $bh-&gt;{title}
+
+.
+
+format HSP =
+     Nr.   Alignment                                   Expect    Score
+     ----  ------------------------------------------  --------  -------
+     @&gt;&gt;&gt;: @&gt;&gt;&gt;&gt;: @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;...  @###.###  @#######
+$hnr,$hsp-&gt;{query_start},$hsp-&gt;{query_alignment},$hsp-&gt;{expect},$hsp-&gt;{score},
+                  @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;...
+                  $hsp-&gt;{midline},
+           @&gt;&gt;&gt;&gt;: @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;...
+           $hsp-&gt;{subject_start}, $hsp-&gt;{subject_alignment}
+
+.
+
+my $seq = $db-&gt;Sequence('cram_craab');
+my $b = $db-&gt;Blast($seq);
+while ($bh = $b-&gt;Next)
+{
+	$FORMAT_TOP_NAME = &quot;HIT_TOP&quot;;
+	$FORMAT_NAME = &quot;HIT&quot;;
+
+	++$nr;
+	write;
+	
+	$FORMAT_NAME = &quot;HSP&quot;;
+	
+	$hnr = 1;
+	foreach $hsp (@{$bh-&gt;{hsps}})
+	{
+		write;
+		++$hnr;
+	}
+}
+
+And now I will spend some days writing documentation.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000411.html">[Mrs-user] mrs status
+</A></li>
+	<LI>Next message: <A HREF="000413.html">[Mrs-user] perl interface documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#412">[ date ]</a>
+              <a href="thread.html#412">[ thread ]</a>
+              <a href="subject.html#412">[ subject ]</a>
+              <a href="author.html#412">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [mrs-user] mrs 6
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20mrs%206&In-Reply-To=%3C3AAB6D011903954EBDFFF6F364ACD6B735C4B470%40UMCEXMBX02.umcn.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000664.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[mrs-user] mrs 6</H1>
+    <B>M.Hekkelman at ncmls.ru.nl</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20mrs%206&In-Reply-To=%3C3AAB6D011903954EBDFFF6F364ACD6B735C4B470%40UMCEXMBX02.umcn.nl%3E"
+       TITLE="[mrs-user] mrs 6">M.Hekkelman at ncmls.ru.nl
+       </A><BR>
+    <I>Tue Nov 13 09:49:17 CET 2012</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000664.html">[mrs-user] mrs 6
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#663">[ date ]</a>
+              <a href="thread.html#663">[ thread ]</a>
+              <a href="subject.html#663">[ subject ]</a>
+              <a href="author.html#663">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear all,
+
+Today I've reached a milestone in the development of MRS 6 (aka M6). I 
+believe I implemented all the end-user functionality of the old MRS 5 
+and then some. For the administrator I still have some work to do.
+
+To see for yourself: <A HREF="http://mrs.cmbi.ru.nl/m6/">http://mrs.cmbi.ru.nl/m6/</A>
+
+As you can see, it still looks the same. (Although the search term 
+suggestion drop down menu in the search form is gone. I can reimplement 
+it, but I'm not convinced it is very useful since it was a bit slow. I 
+could make it an option though.)
+
+M6 is a total rewrite of MRS, sometimes it's better to start all over. 
+The result is:
+
+For end users:
+
+- Better search results. The new tokenizer now works with utf-8 natively 
+and splits more aggressively resulting in better recall. The same 
+tokenizer is now used in document parsing and query parsing.
+- Searching is much faster and less memory is used in the server.
+- Linking has been improved. You can now search records that are linked 
+to records in another databank by entering a query like: 
+[sprot/PRPH2_CANFA] and this will return records in the searched 
+databank that are linked to the record PRPH2_CANFA in the databank sprot 
+(swissprot). You can have multiple records between the brackets and you 
+can combine this with other query statements.
+- A lot more links are now available in the default configuration.
+- Rendering of a pretty layout (SwissProt e.g.) is now done with 
+JavaScript at the client side. That means that if there's an error in 
+the layout code, the raw record is displayed instead of an error page.
+- Blast for protein databanks is still available and now uses a disk 
+based caching system. This means results remain available until the 
+databank is updated, even between restarts of the server. The blast 
+works on FastA files directly and you can specify where they are located.
+- Most web service calls remain the same, but some have been dropped 
+after examining the log files (e.g. cooccurrence and clusterdocuments 
+were never used).
+
+For administrators
+
+- Configuration is different. A parser is now much more bare-bones, it 
+only provides parsing functionality. All the other configuration is done 
+in the main configuration file.
+- FTP mirror code is now implemented in C++. The source is specified in 
+the standard configuration file. If you need rsync, you'll have to set 
+that up yourself.
+- Data is no longer stored in a single file, MRS now uses directories 
+containing all the data files instead.
+- There will be administration pages protected by a password, but I'd 
+like to hear from you what should be in there.
+- Installation now consists of only three executables. In the final 
+release I will reduce that to one.
+
+I'm now planning to do some serious testing and implement code to make 
+administration easier. I could e.g. create a webapp to change the 
+configuration file. And I will spend a lot of time trying to write 
+decent documentation. I believe that was one of the main weaknesses of 
+the previous MRS releases...
+
+It would be nice if some of you could also try this new MRS. I could use 
+some feedback. MRS 6 source code can be checked out from
+
+<A HREF="https://svn.cmbi.ru.nl/m6/tags/6.0b1/">https://svn.cmbi.ru.nl/m6/tags/6.0b1/</A>
+
+There's a document called 00-readme.txt that describes how to build M6 
+from source code for both Linux and Windows. I can also send you 
+binaries directly, just send me an e-mail.
+
+Looking forward to your feedback.
+
+Best regards,
+
+-maarten hekkelman
+The Radboud University Nijmegen Medical Centre is listed in the Commercial Register of the Chamber of Commerce under file number 41055629.
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000664.html">[mrs-user] mrs 6
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#663">[ date ]</a>
+              <a href="thread.html#663">[ thread ]</a>
+              <a href="subject.html#663">[ subject ]</a>
+              <a href="author.html#663">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the mrs-user
+mailing list</a><br>
+</body></html>

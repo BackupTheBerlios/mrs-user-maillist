@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] I can't install the Revision 498
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20I%20can%27t%20install%20the%20Revision%20498&In-Reply-To=%3Cd6ffdae30711111706g34ed177x9dce57bf4e4d89d6%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000298.html">
+   <LINK REL="Next"  HREF="000300.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] I can't install the Revision 498</H1>
+    <B>Luis-Miguel Rodr&#237;guez Rojas</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20I%20can%27t%20install%20the%20Revision%20498&In-Reply-To=%3Cd6ffdae30711111706g34ed177x9dce57bf4e4d89d6%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] I can't install the Revision 498">lmrodriguezr at gmail.com
+       </A><BR>
+    <I>Mon Nov 12 02:06:11 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000298.html">[Mrs-user] beta testers needed
+</A></li>
+        <LI>Next message: <A HREF="000300.html">[Mrs-user] I can't install the Revision 498
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#299">[ date ]</a>
+              <a href="thread.html#299">[ thread ]</a>
+              <a href="subject.html#299">[ subject ]</a>
+              <a href="author.html#299">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Maarten,
+
+I'm trying to install Mrs (Revision 498) on my web-server.  I surpassed the
+dependencies, and I think the machine is ready for Mrs, but I just can't
+make it.
+
+I had to modify the configure.pl file in two lines:
+303         if ($vl =~ m|\*\*\s+The gSOAP Stub and Skeleton Compiler for C
+and C\+\+\s+(.+)|) {
+by 303         if ($vl =~ m|gSOAP compiler version ([^C]+)Copyright \(C\)
+2001-2004 Genivia, Inc\. All Rights Reserved\.|) {
+
+329        my $ld_opts = &quot;-L$lib_dir -lgsoap&quot;;
+by 329        my $ld_opts = &quot;&quot;;
+
+The reasons: On 303 the expected line is the normal output when soapcpp2 is
+called, but it's different when called as soapcpp2 -v.  On 329 I just can't
+compile the trial program with the ld extra options, but it works without
+them.
+
+The big trouble comes with 'make', I published the make output on
+<A HREF="http://168.176.139.17/mrs/make.out,">http://168.176.139.17/mrs/make.out,</A> because I have no idea where to start.
+The ld errors seems to be the same than those on configure.pl line 329 (when
+using ld options).
+
+Thanks a lot.
+
+
+-- 
+Luis Miguel Rodr&#237;guez
+[<A HREF="http://bioinf.ibun.unal.edu.co/~miguel/">http://bioinf.ibun.unal.edu.co/~miguel/</A>]
+---------------------------------
+Centro de Bioinform&#225;tica del Instituto de Biotecnolog&#237;a [
+<A HREF="http://bioinf.ibun.unal.edu.co/">http://bioinf.ibun.unal.edu.co/</A>]
+EMBnet node Colombia [<A HREF="http://co.embnet.org/">http://co.embnet.org/</A>]
+Universidad Nacional de Colombia [<A HREF="http://www.unal.edu.co">http://www.unal.edu.co</A>]
+
++ 57 1 3165000 ext 16961
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">lmrodriguezr at unal.edu.co</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">lmrodriguezr at gmail.com</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20071111/35bd0ca0/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20071111/35bd0ca0/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000298.html">[Mrs-user] beta testers needed
+</A></li>
+	<LI>Next message: <A HREF="000300.html">[Mrs-user] I can't install the Revision 498
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#299">[ date ]</a>
+              <a href="thread.html#299">[ thread ]</a>
+              <a href="subject.html#299">[ subject ]</a>
+              <a href="author.html#299">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

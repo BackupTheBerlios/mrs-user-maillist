@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] problem with some links in MRS 3 - Checked by	AntiVir DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20problem%20with%20some%20links%20in%20MRS%203%20-%20Checked%20by%0A%09AntiVir%20DEMO%20version%20-&In-Reply-To=%3CECEAF877-5C2D-4A87-98A4-A843E576812B%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000233.html">
+   <LINK REL="Next"  HREF="000235.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] problem with some links in MRS 3 - Checked by	AntiVir DEMO version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20problem%20with%20some%20links%20in%20MRS%203%20-%20Checked%20by%0A%09AntiVir%20DEMO%20version%20-&In-Reply-To=%3CECEAF877-5C2D-4A87-98A4-A843E576812B%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] problem with some links in MRS 3 - Checked by	AntiVir DEMO version -">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue Mar 27 15:39:21 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000233.html">[Mrs-user] problem with some links in MRS 3 - Checked by AntiVir	DEMO version -
+</A></li>
+        <LI>Next message: <A HREF="000235.html">[Mrs-user] No more &quot;rules&quot; in PROSITE - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#234">[ date ]</a>
+              <a href="thread.html#234">[ thread ]</a>
+              <a href="subject.html#234">[ subject ]</a>
+              <a href="author.html#234">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 27-mrt-2007, om 15:21 heeft Guy Bottu het volgende geschreven:
+
+&gt;<i> 	Dear support,
+</I>
+:<i>-)
+</I>
+'We' have your attention
+
+&gt;<i> I just discovered that the files embl.pm, gene.pm, gene_xslt.xml,
+</I>&gt;<i> prints.pm, prosite.pm and uniprot.pm still contain code
+</I>&gt;<i> $url?db=sprot%2Btrembl instead of $url?db=uniprot, which in MRS 3  
+</I>&gt;<i> usually
+</I>&gt;<i> does not work.
+</I>
+nasty. I'll fix that.
+(fixes are in <A HREF="https://svn.berlios.de/svnroot/repos/mrs/branches/3.0.1">https://svn.berlios.de/svnroot/repos/mrs/branches/3.0.1</A>  
+release 415)
+
+&gt;<i> Another problem is with enzyme. In an entry like e.g. 3.4.22.2  
+</I>&gt;<i> there is a
+</I>&gt;<i> line
+</I>&gt;<i> DR   P00784, PAPA1_CARPA;
+</I>&gt;<i> and the link entry.do?db=uniprot&amp;query=ac:P00784 does not work.
+</I>&gt;<i> I am however amazed and do not understand what is wrong.
+</I>
+The link generated should read:
+
+entry.do?db=uniprot&amp;id=PAPA1_CARPA
+
+or
+
+query.do?db=uniprot&amp;query=ac:P00784
+
+The first link retrieves one entry but that fails if there is no  
+entry ID specified (or the ID does no longer exist).
+
+The second link does a real query for one accession code MRS 3.0 then  
+display the found entry if it is the only one. (BTW, I've changed  
+this behaviour. In MRS 4.0 if there's only one hit the entry will be  
+displayed only when the search term was the ID for this entry).
+
+-maarten
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000233.html">[Mrs-user] problem with some links in MRS 3 - Checked by AntiVir	DEMO version -
+</A></li>
+	<LI>Next message: <A HREF="000235.html">[Mrs-user] No more &quot;rules&quot; in PROSITE - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#234">[ date ]</a>
+              <a href="thread.html#234">[ thread ]</a>
+              <a href="subject.html#234">[ subject ]</a>
+              <a href="author.html#234">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

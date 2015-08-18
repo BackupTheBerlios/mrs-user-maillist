@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] bug in taxonomy parser
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20bug%20in%20taxonomy%20parser&In-Reply-To=%3C47F9F18C.9030002%40vub.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000373.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] bug in taxonomy parser</H1>
+    <B>Guy Bottu</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20bug%20in%20taxonomy%20parser&In-Reply-To=%3C47F9F18C.9030002%40vub.ac.be%3E"
+       TITLE="[Mrs-user] bug in taxonomy parser">gbottu at vub.ac.be
+       </A><BR>
+    <I>Mon Apr  7 12:03:56 CEST 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000373.html">[Mrs-user] bug in taxonomy parser
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#372">[ date ]</a>
+              <a href="thread.html#372">[ thread ]</a>
+              <a href="subject.html#372">[ subject ]</a>
+              <a href="author.html#372">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>	Dear Maarten,
+
+My eye just fell on a bug in the parser for taxonomy. Try for example to search 
+in Taxonomy for &quot;mesocricetus&quot;. The list of hits contains nonsense like
+&quot;Helicobacter mesocricetorum Mediterranean spur-thighed tortoise&quot;. The cause is 
+evidently that the parser contains :
+...
+$n .= &quot; $cn&quot; if defined $cn;
+...
+$cn = $value if $fld eq 'COMMON NAME';
+...
+But there are entries that do not have a 'COMMON NAME' field and they thus 
+inherit a common name from a previous entry. I guess this bug is easy to fix.
+
+	Regards,
+	Guy Bottu,
+	BEN
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000373.html">[Mrs-user] bug in taxonomy parser
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#372">[ date ]</a>
+              <a href="thread.html#372">[ thread ]</a>
+              <a href="subject.html#372">[ subject ]</a>
+              <a href="author.html#372">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

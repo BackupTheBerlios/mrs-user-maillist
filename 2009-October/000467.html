@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] mrs rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs%20rpm&In-Reply-To=%3CD07446B3ECAE4DF590FE69547F235C0A%40lordjim%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000466.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] mrs rpm</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs%20rpm&In-Reply-To=%3CD07446B3ECAE4DF590FE69547F235C0A%40lordjim%3E"
+       TITLE="[Mrs-user] mrs rpm">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Thu Oct 15 10:30:08 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000466.html">[Mrs-user] mrs support
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#467">[ date ]</a>
+              <a href="thread.html#467">[ thread ]</a>
+              <a href="subject.html#467">[ subject ]</a>
+              <a href="author.html#467">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've uploaded a MRS rpm to <A HREF="ftp://ftp.cmbi.ru.nl/pub/software/mrs">ftp://ftp.cmbi.ru.nl/pub/software/mrs</A> The source rpm is there as well.
+
+Took some time to create this, never created an rpm before. The rpm's have a few dependencies you'll have to solve before installation will succeed. One dependency I could not add though: XML::XSLT or XML::LibXSLT and so I commented out the 'use XML::XSLT' in the parser scripts that use this module. You'll have to uncomment these lines yourself and then install XML::XSLT and XML::LibXSLT by hand using cpan if you want to index interpro, medline or gene.
+
+Looking forward to feedback.
+
+BTW, this is MRS 4.1.1 which is the new stable version. I'll create a tag for it in the repository and make a normal source distribution as well. It is a very stable version of MRS, at least it is for us here at the CMBI.
+
+Best regards,
+
+-maarten
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20091015/7019d2e2/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20091015/7019d2e2/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000466.html">[Mrs-user] mrs support
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#467">[ date ]</a>
+              <a href="thread.html#467">[ thread ]</a>
+              <a href="subject.html#467">[ subject ]</a>
+              <a href="author.html#467">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

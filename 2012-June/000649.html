@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [mrs-user] MRS via Proxy
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2012-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20MRS%20via%20Proxy&In-Reply-To=%3CCA%2BYjnUtmpZvJoxvF9XH6Laap4nohfu1jQo%3Dq%2Bc9sD-gXgiPFtQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000648.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[mrs-user] MRS via Proxy</H1>
+    <B>Linlin Yan (&#39068;&#26519;&#26519;)</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20MRS%20via%20Proxy&In-Reply-To=%3CCA%2BYjnUtmpZvJoxvF9XH6Laap4nohfu1jQo%3Dq%2Bc9sD-gXgiPFtQ%40mail.gmail.com%3E"
+       TITLE="[mrs-user] MRS via Proxy">yanlinlin82 at gmail.com
+       </A><BR>
+    <I>Thu Jun  7 10:18:37 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000648.html">[mrs-user] MRS via Proxy
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#649">[ date ]</a>
+              <a href="thread.html#649">[ thread ]</a>
+              <a href="subject.html#649">[ subject ]</a>
+              <a href="author.html#649">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks! It solved by:
+$ FTP_FIREWALL=user:<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">pass at xx.xx.xx.xx</A>:xxxx mrs-update &lt;db&gt;
+
+On Wed, Jun 6, 2012 at 6:58 PM, Maarten L. Hekkelman
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">m.hekkelman at cmbi.ru.nl</A>&gt; wrote:
+&gt;<i> Ah! Now I understand.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> There are&#160;three main methods to retrieve external data. One is rsync, and
+</I>&gt;<i> for this you can add an environmental variable if I understand the man page
+</I>&gt;<i> for rsync correctly.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> The other tool is mrs-mirror which uses the FTP protocol. If you read the
+</I>&gt;<i> man page for Net::FTP you'll see a reference for some kind of proxy mode
+</I>&gt;<i> there too. Seems like the environmental variable FTP_FIREWALL should be used
+</I>&gt;<i> here.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Finally, snarf is used for HTTP access. And the snarf man page specifies
+</I>&gt;<i> proxy settings as well.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> So, I think it should be possible, but you have to set up things yourself.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hope this helps.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Best regards,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -maarten hekkelman
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ________________________________
+</I>&gt;<i> Van: Linlin Yan (&#39068;&#26519;&#26519;) [<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">yanlinlin82 at gmail.com</A>]
+</I>&gt;<i> Verzonden: woensdag 6 juni 2012 10:32
+</I>&gt;<i> Aan: Maarten L. Hekkelman
+</I>&gt;<i> CC: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+</I>&gt;<i> Onderwerp: Re: [mrs-user] MRS via Proxy
+</I>&gt;<i>
+</I>&gt;<i> I tried to install MRS on an internal server, on which it should use
+</I>&gt;<i> proxy to access Internet. Therefore, when I type &quot;mrs-update enzyme&quot;,
+</I>&gt;<i> it prompts &quot;/usr/bin/make: failed&quot; after a while. I guess it should be
+</I>&gt;<i> &quot;timeout&quot;.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Tue, Jun 5, 2012 at 9:17 PM, Maarten L. Hekkelman
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">m.hekkelman at cmbi.ru.nl</A>&gt; wrote:
+</I>&gt;&gt;<i> Hi &#39068;&#26519;&#26519;,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Is there any possible to use MRS behind an authorized proxy? I tried
+</I>&gt;&gt;&gt;<i> setting $http_proxy but it does not work. Thanks!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hmmm... what is it you are trying to accomplish? We have MRS behind a
+</I>&gt;&gt;<i> (reverse-)proxy and it would be easy to add authorization to that, but
+</I>&gt;&gt;<i> that's something you have to manage in Apache.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -maarten
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> mrs-user mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> The Radboud University Nijmegen Medical Centre is listed in the Commercial
+</I>&gt;<i> Register of the Chamber of Commerce under file number 41055629.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000648.html">[mrs-user] MRS via Proxy
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#649">[ date ]</a>
+              <a href="thread.html#649">[ thread ]</a>
+              <a href="subject.html#649">[ subject ]</a>
+              <a href="author.html#649">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the mrs-user
+mailing list</a><br>
+</body></html>

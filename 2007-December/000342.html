@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Questions and report after installation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20installation&In-Reply-To=%3C4F80340A-DE9D-4774-940C-41AD935C5CC9%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000341.html">
+   <LINK REL="Next"  HREF="000343.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Questions and report after installation</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20installation&In-Reply-To=%3C4F80340A-DE9D-4774-940C-41AD935C5CC9%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Questions and report after installation">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Dec 26 11:36:32 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000341.html">[Mrs-user]  Questions and report after installation
+</A></li>
+        <LI>Next message: <A HREF="000343.html">[Mrs-user] Questions and report after installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#342">[ date ]</a>
+              <a href="thread.html#342">[ thread ]</a>
+              <a href="subject.html#342">[ subject ]</a>
+              <a href="author.html#342">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Alexandre,
+
+&gt;<i> I have installed mrs-3.1-rc1 on Fedora 8 x86_64 + jdk-1.6.0_03 +
+</I>&gt;<i> gsoap-2.7.9-0.1.l + swig-1.3.33 + tomcat5-5.5.25-1 + axis-1.2.1-2.
+</I>&gt;<i>
+</I>&gt;<i> First edit configure.pl and change
+</I>&gt;<i>     my $ld_opts = &quot;-L$lib_dir -lgsoap&quot;;
+</I>&gt;<i> to the
+</I>&gt;<i>    my $ld_opts = &quot;&quot;;
+</I>&gt;<i>
+</I>&gt;<i> Else after
+</I>&gt;<i>    perl configure.pl
+</I>&gt;<i> I have
+</I>&gt;<i> ....
+</I>&gt;<i> Could not build a soap application
+</I>
+This is very strange. I would have expected things the other way around.
+
+Does the make step create the mrsws* executables? Are they installed?
+
+&gt;<i> =====================================
+</I>&gt;<i> When I loaded &quot;<A HREF="http://localhost:8080/mrs-3/">http://localhost:8080/mrs-3/</A>&quot;, I have:
+</I>&gt;<i>
+</I>&gt;<i> Could not connect to SOAP server at <A HREF="http://localhost:8081/mrs/soap,">http://localhost:8081/mrs/soap,</A>
+</I>&gt;<i> please inform administrator.
+</I>
+This means that the web application is working properly, but there is  
+no mrsws running.
+
+So first you should make sure that mrsws is built properly, then you  
+need to launch this application by hand or by using the scripts in  
+mrs/ws/init.d (install those in /etc/init.d and use the RedHat  
+service command to start mrsws, e.g.: 'sudo service mrsws start')
+
+Then the web app should be able to connect to the server.
+
+The mrsws server creates a log file named /var/log/mrsws-search.log  
+and mrsws-blast and mrsws-clustal have a log file too.
+
+I'm not so sure about the java/tomcat error you're seeing. And I'm  
+not sure it is relevant here.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+06 26 750 799
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000341.html">[Mrs-user]  Questions and report after installation
+</A></li>
+	<LI>Next message: <A HREF="000343.html">[Mrs-user] Questions and report after installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#342">[ date ]</a>
+              <a href="thread.html#342">[ thread ]</a>
+              <a href="subject.html#342">[ subject ]</a>
+              <a href="author.html#342">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] performance issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20performance%20issues&In-Reply-To=%3C48EEF8A2.7030507%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000426.html">
+   <LINK REL="Next"  HREF="000428.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] performance issues</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20performance%20issues&In-Reply-To=%3C48EEF8A2.7030507%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] performance issues">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Fri Oct 10 08:39:30 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000426.html">[Mrs-user] mrs 4
+</A></li>
+        <LI>Next message: <A HREF="000428.html">[Mrs-user] performance issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#427">[ date ]</a>
+              <a href="thread.html#427">[ thread ]</a>
+              <a href="subject.html#427">[ subject ]</a>
+              <a href="author.html#427">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I noticed performance of the website was not exactly what I had hoped 
+and so I did some benchmarking on the hardware I was using. Our server 
+has three sets of disks, one is an RAID0 configured set of six 2.5&quot; SAS 
+disks, an Apple X-RAID with 7 RAID5 configured disks (2.8TB) and 
+connected through fibre channel and we have an iSCSI configured computer 
+with 4 1TB disks connected with a dedicated 10 GB cross-link cable.
+
+Unfortunately the SAS disks are not big enough to store the MRS files, I 
+only have 400 GB available there so I use this as the scratch area 
+during indexing.
+
+The sustained throughput to the iSCSI device was higher than the XRAID 
+and so I decided to store the MRS file on the iSCSI device. But I should 
+have been wiser. The problem is, the mrs server application caches a lot 
+of the index to avoid excessive disk access. However, when you do a 
+search on all databanks you will end up with quite a list of documents 
+that match. And for each document the server has to retrieve the 
+document's title. This means the disk has to seek each document.
+
+I ran bonnie on all three disks and noticed that the number of seeks per 
+second differed dramatically. The SAS disks were capable of 960 seeks/s, 
+the XRAID did 300 and the iSCSI device only 60...
+
+That explains why simple searches could take up to a minute without 
+taking any CPU.
+
+So I moved the MRS files over to the XRAID and query times are now 
+reduced by a factor 5.
+
+duh...
+
+And so everything works again as I intended.
+
+What this means for the average MRS site is, try to configure your 
+server with fibre channel if you can spare the money, choose directly 
+attached disks (preferably with a real RAID controller) otherwise.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000426.html">[Mrs-user] mrs 4
+</A></li>
+	<LI>Next message: <A HREF="000428.html">[Mrs-user] performance issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#427">[ date ]</a>
+              <a href="thread.html#427">[ thread ]</a>
+              <a href="subject.html#427">[ subject ]</a>
+              <a href="author.html#427">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

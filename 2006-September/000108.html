@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20case%20sensitive%20identifiers%20-%20Checked%20by%20AntiVir%20DEMO%0A%09version%20-&In-Reply-To=%3C20060928135740.GA14320%40bigben.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000107.html">
+   <LINK REL="Next"  HREF="000109.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	version -</H1>
+    <B>Guy Bottu</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20case%20sensitive%20identifiers%20-%20Checked%20by%20AntiVir%20DEMO%0A%09version%20-&In-Reply-To=%3C20060928135740.GA14320%40bigben.ulb.ac.be%3E"
+       TITLE="[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	version -">gbottu at ben.vub.ac.be
+       </A><BR>
+    <I>Thu Sep 28 15:57:40 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000107.html">[Mrs-user] ??? CRITICAL MRS fix required ???
+</A></li>
+        <LI>Next message: <A HREF="000109.html">[Mrs-user] case sensitive identifiers
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#108">[ date ]</a>
+              <a href="thread.html#108">[ thread ]</a>
+              <a href="subject.html#108">[ subject ]</a>
+              <a href="author.html#108">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>	Dear colleagues,
+
+Thure Etzold, the developer of SRS, once said &quot;You cannot imagine anything 
+that crazy or there is at least one database manager who really does it&quot;. 
+While trying to put in our MRS server databanks with the protein and 
+nucleic acid sequences extracted from the PDB, I bumped on the following 
+problem : some have identifiers only different by case. E.g. there is a 
+1fnt_A and a 1fnt_a. Now, most bioinformatic software is not case 
+sensitive. I understand that MRS stores indices so that they can be 
+displayed in their original case, but can only be searched
+case-insensitively ; it does automatically modify redundant indices, e.g. 
+1fnt_a is stored as 1fnt_a_12835. This is however not ideal. Should MRS 
+be adapted so that it can handle case sensitive indices ? This will 
+however not solve everything, since other software like EMBOSS or GCG is 
+also case insensitive. My idea is to let the MRS parser store 1fnt_aLC
+(LC means lowercase) as identifier. A user can then search for the 
+sequence he needs in MRS and in EMBOSS (if the EMBOSS installation uses 
+MRS as databank access mechanism) ask for the sequence pdbprot:1fnt_alc.
+This would of course also work with 1fnt_a_12835 but it avoids the use of 
+a meaningless and irreproducible number. Anybody a comment ?
+
+	Regards,
+	Guy Bottu,
+	Belgian EMBnet Node
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000107.html">[Mrs-user] ??? CRITICAL MRS fix required ???
+</A></li>
+	<LI>Next message: <A HREF="000109.html">[Mrs-user] case sensitive identifiers
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#108">[ date ]</a>
+              <a href="thread.html#108">[ thread ]</a>
+              <a href="subject.html#108">[ subject ]</a>
+              <a href="author.html#108">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

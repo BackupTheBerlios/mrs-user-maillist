@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [mrs-user] Me and M6 are still alive
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2012-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20Me%20and%20M6%20are%20still%20alive&In-Reply-To=%3C615A9213-067C-4EB5-B718-866F35757204%40mimectl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000651.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[mrs-user] Me and M6 are still alive</H1>
+    <B>M.Hekkelman at ncmls.ru.nl</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20Me%20and%20M6%20are%20still%20alive&In-Reply-To=%3C615A9213-067C-4EB5-B718-866F35757204%40mimectl%3E"
+       TITLE="[mrs-user] Me and M6 are still alive">M.Hekkelman at ncmls.ru.nl
+       </A><BR>
+    <I>Fri Jul  6 10:29:22 CEST 2012</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000651.html">[mrs-user] Me and M6 are still alive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#650">[ date ]</a>
+              <a href="thread.html#650">[ thread ]</a>
+              <a href="subject.html#650">[ subject ]</a>
+              <a href="author.html#650">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Since I had to work on another project (a new HSSP creator) for the last half year, I didn't have time to work on the new MRS. Now that HSSP seems to be working, I can pick up MRS again.
+
+
+
+I'd like to know if there are others willing to help. Since the code is still in development, it is still possible to change direction. I would also appreciate help in writing parsers and formatting code for the new MRS.
+
+
+
+My original goal with MRS 6 (aka M6) was a single executable capable of doing everything. I still would like to do that, but it is rather ambitious. Perhaps I will have to create an early release that delivers the improvements for the end user and keep the improvements for the maintainers for a later release? The improvement in responsiveness may be worth this split.
+
+
+
+What I did so far:
+
+- Complete rewrite of the index and search algorithms. New file format (actually, data is now stored in folders) which is much more space efficient (EMBL is now 353GB instead of 456GB)
+
+- There are now three executables, 'm6' is the driver for several actions like 'build'. 'm6-server' is the new mrs-ws. And there is a m6-passwd that generates password hashes for the new admin pages.
+
+- m6 build indexes databanks based on a simple XML script. No more Perl plugins. (Eventually this script should be editable with a graphical editor. This is one of those features that can be pushed back?)
+
+- The m6-server has a subset of the current mrs-ws functionality, but a lot is still missing. Formatting of databank records is now done in the browser using JavaScript and that seems to work very nice.
+
+- I have a new protein blast implementation (fixing some performance reducing bugs I introduced years after writing the original code). This blast works on FastA formatted files directly. (It is used in HSSP too).
+
+
+
+What needs to be implemented:
+
+- a blast and clustal interface in the server
+
+- all the SOAP calls of mrs-ws (should be simple: copy and adapt the mrs-ws code).
+
+- status pages
+
+- an automatic update system. (I might keep this for a later release and instead use makefiles for now.)
+
+- A test framework and a thorough testing of the entire system to make sure I did not forget anything.
+
+
+
+If you're willing to help me with this new MRS, please let me know. I'm especially looking for feedback on the design decissions I made and help in writing new parser and formatter code.
+
+
+
+best regards,
+
+
+
+-maarten
+
+
+The Radboud University Nijmegen Medical Centre is listed in the Commercial Register of the Chamber of Commerce under file number 41055629.
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20120706/add10c47/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20120706/add10c47/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000651.html">[mrs-user] Me and M6 are still alive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#650">[ date ]</a>
+              <a href="thread.html#650">[ thread ]</a>
+              <a href="subject.html#650">[ subject ]</a>
+              <a href="author.html#650">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the mrs-user
+mailing list</a><br>
+</body></html>

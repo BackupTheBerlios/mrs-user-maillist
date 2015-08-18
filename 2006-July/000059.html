@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS Installations - some recent recommendations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20Installations%20-%20some%20recent%20recommendations&In-Reply-To=%3C44BBF015.7000804%40sga.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000057.html">
+   <LINK REL="Next"  HREF="000062.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS Installations - some recent recommendations</H1>
+    <B>Robert Herzog</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20Installations%20-%20some%20recent%20recommendations&In-Reply-To=%3C44BBF015.7000804%40sga.ulb.ac.be%3E"
+       TITLE="[Mrs-user] MRS Installations - some recent recommendations">rherzog at sga.ulb.ac.be
+       </A><BR>
+    <I>Mon Jul 17 22:16:21 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000057.html">[Mrs-user] db installation problem
+</A></li>
+        <LI>Next message: <A HREF="000062.html">[Mrs-user] MRS Installations - some recent recommendations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Laurent Falquet wrote:
+
+&gt;<i>Dear Maarten,
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;&gt;<i>- install a fresh Fedora core4 on an old PC.
+</I>&gt;&gt;&gt;<i>      
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>An old PC is not the right PC to use with MRS. Hosting MRS is not a
+</I>&gt;&gt;<i>problem, but indexing really requires a lot of CPU horsepower.
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Of course I know about indexing times, but just 
+</I>&gt;<i>for testing purposes I don't want to
+</I>&gt;<i>create problems on our main servers, especially when there are so many modules
+</I>&gt;<i>and packages to install they might create conflicts...
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>Apparently MRS is crashing on your computer. Since you were talking
+</I>&gt;&gt;<i>about an old computer, what CPU does this computer have? Illegal
+</I>&gt;&gt;<i>instruction often means it is compiled for another CPU than the one
+</I>&gt;&gt;<i>you're using. It might very well be that you e.g. have a PIII and
+</I>&gt;&gt;<i>try to run a P4 compiled application on it. That won't work.
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Well then why do we need to recompile it ? I mean a recompilation should
+</I>&gt;<i>take care of this problem. (or do you distribute executables?)
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>And then, sometime ago someone at GNU headquarters decided it was a
+</I>&gt;&gt;<i>good idea to rename gzcat to zcat. You can try to edit the GZCAT
+</I>&gt;&gt;<i>variable in your make_xxx.conf file to point to your copy of zcat.
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>I checked for this variable and it is correctly set in the file make_xxx.conf:
+</I>&gt;<i>...
+</I>&gt;<i>FORMATDB                = formatdb
+</I>&gt;<i>SWISS_TO_FASTA  = $(SCRIPTDIR)swiss2fasta
+</I>&gt;<i>BASH                    = /bin/bash
+</I>&gt;<i>GZCAT                   = /bin/zcat
+</I>&gt;<i>...
+</I>&gt;<i>
+</I>&gt;<i>The problem must be elsewhere.
+</I>&gt;<i>Any idea?
+</I>&gt;<i>
+</I>&gt;<i>Thanks again.
+</I>&gt;<i>Laurent
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>I can certainly agree with Maarten that &quot;an old PC&quot; is not the right 
+infrastructure to install a functional &quot;production&quot; MRS. But an old PC 
+can be fully blown up and easily turned into a functional MRS server.
+ From Laurent's remark, I conclude that he is trying to build a not 
+really recent version of MRS. The current installations no longer have a 
+mrs_xxx.conf file ! A valid mrs.conf file is automatically build at 
+installation time. Don't try to install this, Laurent. Rather drop 
+everything and go for the latest installation procedure from the svn 
+server (see below) !
+
+I continued my exploration of installations of MRS on various Linux 
+distributions.
+
+Here are my findings :
+/_Source of the software_/
+ From my past experience, the easiest (the only ?) way to install an MRS 
+server is to use the
+&quot;svn co <A HREF="http://svn.berlios.de/svnroot/repos/mrs/branches/2.0">http://svn.berlios.de/svnroot/repos/mrs/branches/2.0</A> mrs_2.0&quot; 
+command.
+This provided you with the best known current status of the software. 
+Today monday July 17, the current release was 129 where a few minors 
+flaws had again been ironed out (thanks , Maarten !).
+To my knowledge, the tarball on the Berlios site is now several versions 
+old and its installation requires hand edition in various corners. Not 
+really hard but requires some experience.
+Certainly DO NOT take the tarballs mentioned under &quot;Download&quot; from a 
+working MRS server. These are really old versions 1 that can be 
+installed, but it took me tens of hours to identify all the tweaks 
+required to succeed...
+
+/_Apache server_/
+As Apache servers, I always install the latest Apache 2.2.2 I add the 
+following lines to the httpd.conf:
+
+ScriptAlias /mrs/cgi-bin/ /usr/local/share/mrs/www/cgi-bin/
+&lt;Directory /usr/local/share/mrs/www/cgi-bin&gt;
+        Order allow,deny
+        Options +ExecCGI FollowSymLinks
+        AddHandler cgi-script .cgi .pl
+        Allow from all
+&lt;/Directory&gt;
+Alias /mrs /usr/local/share/mrs/www/htdocs/
+&lt;Directory /usr/local/share/mrs/www/htdocs&gt;
+        Options FollowSymLinks
+        Order allow,deny
+        Allow from all
+&lt;/Directory&gt;
+
+/_Installations_/
+The easiest installation was on a fresh SuSE 10.1. I made a functional 
+MRS server in less than two hours, with interpro installed and indexed. 
+I copied sprot.cmp made on another box and also, but this did take more 
+time over our local 10Mbit network, a copy of trembl. This was a dual 
+Pentium3 500 MHz with only 500 Mbyte ram. Not the kind of contemporary 
+super-power box ! This machine is at <A HREF="http://plone.ulb.ac.be/mrs">http://plone.ulb.ac.be/mrs</A>
+
+I also installed MRS on an Ubuntu 6.06 Linux distribution (a very 
+user-friendly derivative of Debian - 6.06 is a very recent packaging). 
+This was on a 700 MHz Celeron with only 250 MByte RAM. As Debian is by 
+essence &quot;minimalist&quot;, I had to add several items not part of the basic 
+installation. But Ubuntu uses the popular way to access packages with 
+apt (I like the &quot;aptitude&quot; GUI for apt.) I must say I hate the way a 
+Debian box prevents you to take full rights. The use of sudo is 
+essential, but I do intend to take up this habit...
+What I had to add to the basic distribution was :
+GCC4.0, make, boost (1.33.1) and the several perl modules required by 
+MRS and mentioned when the command &quot;perl install.pl&quot; aborts. Identifying 
+which packages to load from the servers is kind of a guessing game, thus 
+I probably installed also some useless things when my guess was not 
+correct. This box behaves but its lack of memory led to bad swapping as 
+you can guess. Definitely too small hardware, but Debian and Ubuntu are 
+perfectly OK.
+
+I installed last week on a Fedora Core 5. This was also rather easy, but 
+Fedora proposes most packages as rather large lumps, thus a lot of 
+ballast probably comes on board. This machine is a dual Pentium3 500MHz 
+with 500 Mbyte RAM. I build the small datasets reasonably well, but 
+starts swapping while building trembl. I rather took a copy of the 
+trembl.cmp file from one of my other MRS servers. A matter of a couple 
+of hours on my 10 Mbit network. This computer can be reached on the net 
+at <A HREF="http://biovault.ulb.ac.be/mrs">http://biovault.ulb.ac.be/mrs</A>
+
+I tried to install on Fedora Core 4 but this was too painful to 
+complete, as the resident Gcc 3.3 was a bad start. Also boost was a 
+source of problem. If someone succeds, tell the list about it, anfd try 
+to describe what you precisely did to reach functionality.
+
+/_Databanks to start with_/
+In earlier messages, I proposed to install some small datasets to start 
+with. Alas, some explicit support of some of these was dropped. E.g. 
+Prints can be installed but requires editing. Thus today, I strongly 
+suggest that your first databank to install should be &quot;go&quot; (Gene 
+ontology). This is a small one and is fully supported by the web 
+interface. If it succeded, try interpro. The next on the list might be 
+uniprot, but this one is going to require resources to complete indexing 
+trembl. Do not try it if your RAM is below 1 Gigabyte. Goa is also among 
+the easy boys. And today embl_updates is still reasonably small. For 
+embl_release, you are really going to require your resources... And some 
+hand edition will help here: change MRS_PART = 8 to MRS_PARTS = 32. This 
+will be much easier on machines with limited RAM.
+
+/_Main issues_/
+Definitely the main problem encountered by most candidate installers is 
+the &quot;boost&quot; package. You definitely require at least 1.33 (1.33.1 is OK) 
+and you need both the boost and the boost-dev packages. Note that these 
+&quot;-dev&quot; packages are required as sources for many libraries needed at 
+compile time. The recent versions of MRS no longer require swig to compile.
+
+Please when reporting problems on the list, give details about your 
+configuration.
+
+/_As a conclusion _/:
+DO NOT try to install old releases or the tarballs, unless they are 
+labeled in sync with the latest svn version. You are losing your time.
+I also recommend that you accept all defaults proposed by the install 
+script (this will considerably easy the support of your installation by 
+otehrs. And put your data in a sensible directory, separate from the 
+software installation.
+
+Greetings to all
+Robert
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000057.html">[Mrs-user] db installation problem
+</A></li>
+	<LI>Next message: <A HREF="000062.html">[Mrs-user] MRS Installations - some recent recommendations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

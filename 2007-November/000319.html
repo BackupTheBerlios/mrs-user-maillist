@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] make enzyme problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20make%20enzyme%20problem&In-Reply-To=%3C4746CD03.2090502%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000318.html">
+   <LINK REL="Next"  HREF="000320.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] make enzyme problem</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20make%20enzyme%20problem&In-Reply-To=%3C4746CD03.2090502%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] make enzyme problem">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Fri Nov 23 13:52:19 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000318.html">[Mrs-user] update
+</A></li>
+        <LI>Next message: <A HREF="000320.html">[Mrs-user] svn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#319">[ date ]</a>
+              <a href="thread.html#319">[ thread ]</a>
+              <a href="subject.html#319">[ subject ]</a>
+              <a href="author.html#319">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Uli schreef:
+
+&gt;<i> Many thanks for all this prompt advice. 
+</I>&gt;<i> 
+</I>&gt;<i> I did a &quot;make install&quot; and then ran the perl -MMRS  from the plugin
+</I>&gt;<i> directory - however the prompt just remains on the next line.  I am not
+</I>&gt;<i> quite sure if this is what it is supposed to do.
+</I>
+:<i>-)
+</I>
+Sorry, I should have explained. If perl fails to load the MRS plugin it
+would have complained. If it just hangs, it is waiting for standard
+input, a script e.g., and so it seems to work properly.
+
+&gt;<i> I then did the replication (is this the right word for this from the
+</I>&gt;<i> trunk (first using the update method (svn switch) and then doing a
+</I>&gt;<i> replication from scratch using (svn co).  The files were copied to
+</I>&gt;<i> /usr/local/mrs_trunk for want of a better place.
+</I>&gt;<i> 
+</I>&gt;<i> I then ran ./configure.pl, make and make install from the trunk
+</I>&gt;<i> directory.  One of the issues has already been picked up by Herzog
+</I>&gt;<i> namely that the / is missing between data and its subdirectories
+</I>&gt;<i> resulting in new directories at the data level.
+</I>
+That should have been fixed in the current code in trunk.
+
+&gt;<i> The other problem that
+</I>&gt;<i> I have is that the update_script and parser_script directories have
+</I>&gt;<i> somehow been created in each other i.e. they are now
+</I>&gt;<i> /usr/local/share/mrs/update_script/update_script and
+</I>&gt;<i> .../parser_script/parser_script respectively and even if I copy the
+</I>&gt;<i> files into the correct directory there still is a problem.
+</I>
+remove the /usr/local/data and /usr/local/share/mrs directories
+recursively and then rerun 'make' and 'make install'. This should fix
+this particular problem.
+
+&gt;<i> In the status log file there seems to be a clue:
+</I>&gt;<i> ... at /usr/local/share/mrs/parser_scripts//enzyme.pm line 100 - there
+</I>&gt;<i> seems to be a double forward slash.
+</I>&gt;<i> and most probably the error:
+</I>&gt;<i> Can't locate auto/MRS/MDatabank/StoreMetaDa.al in @INC ...
+</I>&gt;<i> 
+</I>&gt;<i> How can I best fix this problem?
+</I>
+Do you happen to have multiple versions of perl installed on your
+computer? Shouldn't be a problem since the configure.pl script should
+take care of that, but nevertheless.
+
+And maybe you have an old MRS version located in some other Perl install
+directory. If you have locate you might want to look for all occurrences
+of MRS.pm and MRS.so on your computer and remove them before
+reinstalling. If you don't have locate you might want to use find, like so:
+
+find /usr/lib (or wherever your perl modules are) -name MRS.pm
+
+If this doesn't help, please let me know.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000318.html">[Mrs-user] update
+</A></li>
+	<LI>Next message: <A HREF="000320.html">[Mrs-user] svn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#319">[ date ]</a>
+              <a href="thread.html#319">[ thread ]</a>
+              <a href="subject.html#319">[ subject ]</a>
+              <a href="author.html#319">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

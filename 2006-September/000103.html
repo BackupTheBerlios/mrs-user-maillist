@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] remark about field names - Checked by AntiVir DEMO	version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20remark%20about%20field%20names%20-%20Checked%20by%20AntiVir%20DEMO%0A%09version%20-&In-Reply-To=%3C4D98F52F-7A6A-46A3-BD68-EB5855F26970%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000100.html">
+   <LINK REL="Next"  HREF="000101.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] remark about field names - Checked by AntiVir DEMO	version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20remark%20about%20field%20names%20-%20Checked%20by%20AntiVir%20DEMO%0A%09version%20-&In-Reply-To=%3C4D98F52F-7A6A-46A3-BD68-EB5855F26970%40hekkelman.com%3E"
+       TITLE="[Mrs-user] remark about field names - Checked by AntiVir DEMO	version -">maarten at hekkelman.com
+       </A><BR>
+    <I>Wed Sep 13 21:28:40 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000100.html">[Mrs-user] remark about field names - Checked by AntiVir DEMO	version -
+</A></li>
+        <LI>Next message: <A HREF="000101.html">[Mrs-user] Question about keywords with blanks - Checked by AntiVir	DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#103">[ date ]</a>
+              <a href="thread.html#103">[ thread ]</a>
+              <a href="subject.html#103">[ subject ]</a>
+              <a href="author.html#103">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Guy,
+
+&gt;<i> I noted that for EMBL and UniProt the fields are named de, os, kw, ft,
+</I>&gt;<i> etc., while for GenBank and RefSeq they are named definition,  
+</I>&gt;<i> organism,
+</I>&gt;<i> keywords, features, ... . Would it not be nicer to systematically  
+</I>&gt;<i> use the
+</I>&gt;<i> same field names for all databanks ? This would surely be helpful  
+</I>&gt;<i> for the
+</I>&gt;<i> development of scripts that use the MRS Web services. (I am actually
+</I>&gt;<i> writing such a script to search sequence databanks and generate List
+</I>&gt;<i> Files usable under EMBOSS).
+</I>
+The reason for the way MRS works is simple. It allowed me to write  
+fault tolerant parsers. Whenever a new field shows up in a databank  
+like SwissProt it is being indexed automatically into a new index. No  
+user intervention needed here.
+
+Of course, this can be extended so that we use a predefined list of  
+index names along with a mapping to current fields in SwissProt and  
+GenBank. But then someone has to come up with this mapping. I'd  
+rather not make that list myself since I would be afraid to make  
+mistakes.
+
+There is another tiny problem associated with this, I always hear my  
+colleagues talking about the 'DE' record, they are completely  
+conditioned to think in two letter codes. If we change this they will  
+have to learn to use the new names.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000100.html">[Mrs-user] remark about field names - Checked by AntiVir DEMO	version -
+</A></li>
+	<LI>Next message: <A HREF="000101.html">[Mrs-user] Question about keywords with blanks - Checked by AntiVir	DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#103">[ date ]</a>
+              <a href="thread.html#103">[ thread ]</a>
+              <a href="subject.html#103">[ subject ]</a>
+              <a href="author.html#103">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

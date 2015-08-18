@@ -1,0 +1,358 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS: Web Service
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%3A%20Web%20Service&In-Reply-To=%3C473DCB8E.7060205%40lcb.uu.se%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000297.html">
+   <LINK REL="Next"  HREF="000307.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS: Web Service</H1>
+    <B>Alvaro Martinez Barrio</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%3A%20Web%20Service&In-Reply-To=%3C473DCB8E.7060205%40lcb.uu.se%3E"
+       TITLE="[Mrs-user] MRS: Web Service">Alvaro.Martinez.Barrio at lcb.uu.se
+       </A><BR>
+    <I>Fri Nov 16 17:55:42 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000297.html">[Mrs-user] MRS: Web Service
+</A></li>
+        <LI>Next message: <A HREF="000307.html">[Mrs-user] MRS: Web Service
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#305">[ date ]</a>
+              <a href="thread.html#305">[ thread ]</a>
+              <a href="subject.html#305">[ subject ]</a>
+              <a href="author.html#305">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hej!
+
+Jumping in this &quot;Web Service&quot; thread and taking the chance of getting 
+advise from the developers who I took code from (Maarten and Guy), I 
+hope you can help me on solving my problem.
+
+I am having troubles to create a client for our Mrs server in Perl. We 
+have already created one in Ruby and another in Java few days ago. (It 
+looks like it was pretty straight to create the Java one). I could use 
+those ones but I want to create a Perl one.
+
+I don't know if it is something with the guy I pass the data, call the 
+service, namespaces or anything else... I have no clue.
+
+The ports where the Mrs server is listening are open to all addresses so 
+there should not be a problem with that. Other clients work perfectly.
+
+I approached the problem by copying and adapting the code you have been 
+posting in this list and also, trying to autogenerate the client from 
+the SOAP::Lite utility &quot;stubmaker.pl&quot;.
+
+In both approaches I get the same error (see below).
+
+I include also some parts of my code. I chose localhost in this case as 
+my server name.
+
+Thanks for any help,
+&#225;lvaro
+
+=============CODE========================================
+#!/usr/bin/perl -w
+
+use strict;
+use vars qw( $soap
+			 $client
+			 $format
+			 $ns     );
+
+use XMLRPC::Lite +trace =&gt; 'all';
+use constant URI =&gt; '<A HREF="http://localhost/">http://localhost/</A>';
+use constant NS_URL =&gt; '<A HREF="http://mrs.localhost">http://mrs.localhost</A>';
+
+my $ns = 'mrsws';
+
+my $db = &quot;omim&quot;;
+my $db1 = &quot;sprot&quot;;
+
+my $query = &quot;gfap&quot;;
+my $query1 = &quot;id:papa?_carpa&quot;;
+
+
+use SOAP::Lite +trace =&gt; 'all';
+
+## main ##
+
+   my $serviceDNS = URI;
+   my $uriDNS = URI;
+
+   my $soap = SOAP::Lite
+# address
+#    address of endpoint that will handle you call
+     -&gt; proxy( $serviceDNS . 'mrsws')
+# namespace
+#    namespace (URI) of method element, which will help the SOAP server 
+in handling your request
+     -&gt; uri  ( $uriDNS . 'mrsws');
+
+
+   print $soap
+# method and parameters
+#    method name with parameters
+     -&gt; Find ($db1,$query1)
+     -&gt; result;
+
+#Results in:
+#&lt;SOAP-ENV:Envelope 
+#xmlns:SOAP-ENV=&quot;<A HREF="http://schemas.xmlsoap.org/soap/envelope/">http://schemas.xmlsoap.org/soap/envelope/</A>&quot; 
+#xmlns:SOAP-ENC=&quot;<A HREF="http://schemas.xmlsoap.org/soap/encoding/">http://schemas.xmlsoap.org/soap/encoding/</A>&quot; 
+#xmlns:xsi=&quot;<A HREF="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</A>&quot; 
+#xmlns:xsd=&quot;<A HREF="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</A>&quot; 
+#xmlns:ns=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws">http://mrs.cmbi.ru.nl/mrsws</A>&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;SOAP-ENV:Fault&gt;&lt;faultcode&gt;SOAP-ENV:Server&lt;/faultcode&gt;&lt;faultstring&gt;Timeout&lt;/faultstring&gt;&lt;detail&gt;accept 
+#failed in 
+#soap_accept()&lt;/detail&gt;&lt;/SOAP-ENV:Fault&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+
+
+   print &amp;getEntry($db1,$query1),&quot;\n&quot;;
+
+#Results in:
+#&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+#&lt;SOAP-ENV:Envelope 
+#xmlns:SOAP-ENV=&quot;<A HREF="http://schemas.xmlsoap.org/soap/envelope/">http://schemas.xmlsoap.org/soap/envelope/</A>&quot; 
+#xmlns:SOAP-ENC=&quot;<A HREF="http://schemas.xmlsoap.org/soap/encoding/">http://schemas.xmlsoap.org/soap/encoding/</A>&quot; 
+#xmlns:xsi=&quot;<A HREF="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</A>&quot; 
+#xmlns:xsd=&quot;<A HREF="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</A>&quot; 
+#xmlns:ns=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws">http://mrs.cmbi.ru.nl/mrsws</A>&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;SOAP-ENV:Fault&gt;&lt;faultcode&gt;SOAP-ENV:Client&lt;/faultcode&gt;&lt;faultstring&gt;Method 
+#'Find' not implemented: method name or namespace not 
+#recognized&lt;/faultstring&gt;&lt;/SOAP-ENV:Fault&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+exit;
+
+
+
+sub getEntry
+{
+	my ($db, $acc) = @_;
+	my $ns_url = NS_URL;
+	
+	$format = 'plain' unless defined $format;
+
+	my $result =
+$soap-&gt;call(SOAP::Data-&gt;name(&quot;Find&quot;)-&gt;attr({&quot;xmlns&quot; =&gt; $ns_url})
+	    =&gt; (
+	        SOAP::Data-&gt;name(&quot;db&quot;)        -&gt;type('xsd:string' =&gt; $db),
+	        SOAP::Data-&gt;name(&quot;booleanfilter&quot;)
+	        						      -&gt;type('xsd:string' =&gt; &quot;ac:$acc&quot;)
+	    ));
+	
+	my @r = $result-&gt;paramsall;
+	
+	if ($r[0] == 1) {
+		return
+			&amp;soapCall(SOAP::Data-&gt;name(&quot;GetEntry&quot;)-&gt;attr({&quot;xmlns:$ns&quot; =&gt; $ns_url})
+			    =&gt; (
+			        SOAP::Data-&gt;name(&quot;db&quot;)        -&gt;type('xsd:string' =&gt; $db),
+			        SOAP::Data-&gt;name(&quot;id&quot;)        -&gt;type('xsd:string' =&gt; 
+$result-&gt;valueof('//id'))
+			    ));
+	}
+	else {
+		die &quot;not one hit for $db:$acc\n&quot;;
+	}
+}
+
+__END__
+
+=============ERROR=======================================
+alvaro$ perl -Mmrsws -e 'mrsws::Find(shift,shift)' &quot;sprot&quot; &quot;id:papa?_carpa&quot;
+
+..............
+SOAP::Data::new: ()
+SOAP::Transport::new: ()
+SOAP::Serializer::new: ()
+SOAP::Deserializer::new: ()
+SOAP::Parser::new: ()
+SOAP::Lite::new: ()
+SOAP::Transport::HTTP::Client::new: ()
+SOAP::Lite::call: ()
+SOAP::Serializer::envelope: ()
+SOAP::Serializer::envelope: Find SOAP::Data=HASH(0x183af5c) 
+SOAP::Data=HASH(0x183afe0)
+SOAP::Data::new: ()
+SOAP::Data::new: ()
+SOAP::Data::new: ()
+SOAP::Data::new: ()
+SOAP::Data::new: ()
+SOAP::Transport::HTTP::Client::send_receive: HTTP::Request=HASH(0x1891d30)
+SOAP::Transport::HTTP::Client::send_receive: POST <A HREF="http://hostname">http://hostname</A> HTTP/1.1
+Accept: text/xml
+Accept: multipart/*
+Accept: application/soap
+Content-Length: 804
+Content-Type: text/xml; charset=utf-8
+SOAPAction: &quot;&quot;
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;SOAP-ENV:Envelope 
+xmlns:SOAP-ENV=&quot;<A HREF="http://schemas.xmlsoap.org/soap/envelope/">http://schemas.xmlsoap.org/soap/envelope/</A>&quot; 
+xmlns:ns=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws">http://mrs.cmbi.ru.nl/mrsws</A>&quot; 
+xmlns:SOAP=&quot;<A HREF="http://schemas.xmlsoap.org/wsdl/soap/">http://schemas.xmlsoap.org/wsdl/soap/</A>&quot; 
+xmlns:MIME=&quot;<A HREF="http://schemas.xmlsoap.org/wsdl/mime/">http://schemas.xmlsoap.org/wsdl/mime/</A>&quot; 
+xmlns:xsi=&quot;<A HREF="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</A>&quot; 
+xmlns:SOAP-ENC=&quot;<A HREF="http://schemas.xmlsoap.org/soap/encoding/">http://schemas.xmlsoap.org/soap/encoding/</A>&quot; 
+xmlns:tns=&quot;<A HREF="http://hostname/mrsws">http://hostname/mrsws</A>&quot; 
+xmlns:WSDL=&quot;<A HREF="http://schemas.xmlsoap.org/wsdl/">http://schemas.xmlsoap.org/wsdl/</A>&quot; 
+xmlns:xsd=&quot;<A HREF="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</A>&quot; 
+SOAP-ENV:encodingStyle=&quot;<A HREF="http://schemas.xmlsoap.org/soap/encoding/">http://schemas.xmlsoap.org/soap/encoding/</A>&quot; 
+xmlns:DIME=&quot;<A HREF="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/">http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/</A>&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;tns:Find&gt;&lt;db 
+xsi:type=&quot;xsd:string&quot;&gt;sprot&lt;/db&gt;&lt;queryterms 
+xsi:type=&quot;xsd:string&quot;&gt;id:papa?_carpa&lt;/queryterms&gt;&lt;/tns:Find&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+SOAP::Transport::HTTP::Client::send_receive: HTTP::Response=HASH(0x96f0)
+SOAP::Transport::HTTP::Client::send_receive: HTTP/1.1 500 Internal 
+Server Error
+Connection: close
+Server: gSOAP/2.7
+Content-Length: 517
+Content-Type: text/xml; charset=utf-8
+Client-Date: Fri, 16 Nov 2007 14:53:34 GMT
+Client-Peer: 130.238.39.171:8081
+Client-Response-Num: 1
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope 
+xmlns:SOAP-ENV=&quot;<A HREF="http://schemas.xmlsoap.org/soap/envelope/">http://schemas.xmlsoap.org/soap/envelope/</A>&quot; 
+xmlns:SOAP-ENC=&quot;<A HREF="http://schemas.xmlsoap.org/soap/encoding/">http://schemas.xmlsoap.org/soap/encoding/</A>&quot; 
+xmlns:xsi=&quot;<A HREF="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</A>&quot; 
+xmlns:xsd=&quot;<A HREF="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</A>&quot; 
+xmlns:ns=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws">http://mrs.cmbi.ru.nl/mrsws</A>&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;SOAP-ENV:Fault&gt;&lt;faultcode&gt;SOAP-ENV:Server&lt;/faultcode&gt;&lt;faultstring&gt;Timeout&lt;/faultstring&gt;&lt;detail&gt;accept 
+failed in 
+soap_accept()&lt;/detail&gt;&lt;/SOAP-ENV:Fault&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+SOAP::Deserializer::deserialize: ()
+SOAP::Parser::decode: ()
+SOAP::SOM::new: ()
+SOAP::SOM::DESTROY: ()
+SOAP::Data::DESTROY: ()
+SOAP::Data::DESTROY: ()
+SOAP::Data::DESTROY: ()
+SOAP::Transport::HTTP::Client::DESTROY: ()
+SOAP::Parser::DESTROY: ()
+SOAP::Transport::DESTROY: ()
+SOAP::Serializer::DESTROY: ()
+SOAP::Data::DESTROY: ()
+SOAP::Data::DESTROY: ()
+SOAP::Deserializer::DESTROY: ()
+SOAP::Data::DESTROY: ()
+....
+
+Maarten L. Hekkelman wrote:
+&gt;<i> Guy Bottu schreef:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> I have difficulty in accessing the Web servives from the outside. I tried the 
+</I>&gt;&gt;<i> following Perl code :
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> $db = 'sprot'; $query = 'id:papa?_carpa';
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> $result = &amp;soapCall(SOAP::Data-&gt;name('ns:Find')-&gt;
+</I>&gt;&gt;<i>    attr({'xmlns:ns' =&gt; $ns_url}) =&gt; (
+</I>&gt;&gt;<i>        SOAP::Data-&gt;name('ns:db')-&gt;type('xsd:string' =&gt; $db),
+</I>&gt;&gt;<i>        SOAP::Data-&gt;name('ns:queryterms')-&gt;type('xsd:string' =&gt; $query),
+</I>&gt;&gt;<i>    )
+</I>&gt;&gt;<i> );
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> but
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> print  $result-&gt;result;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> just returns the number of hits/
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Data::Dumper is your friend.
+</I>&gt;<i> 
+</I>&gt;<i> I don't know exactly right now, but you could look at what is in result
+</I>&gt;<i> like this:
+</I>&gt;<i> 
+</I>&gt;<i> use Data::Dumper;
+</I>&gt;<i> print Dumper(\$result);
+</I>&gt;<i> 
+</I>&gt;<i> For your information, I've copied here a part of a script I created to
+</I>&gt;<i> fetch embl entries based on accession code. It returns the entry only
+</I>&gt;<i> when there's exactly one record id returned for each accession code:
+</I>&gt;<i> 
+</I>&gt;<i> sub getEntry
+</I>&gt;<i> {
+</I>&gt;<i> 	my ($db, $acc) = @_;
+</I>&gt;<i> 	
+</I>&gt;<i> 	$format = 'plain' unless defined $format;
+</I>&gt;<i> 
+</I>&gt;<i> 	my $result =
+</I>&gt;<i> $soap-&gt;call(SOAP::Data-&gt;name(&quot;$ns:Find&quot;)-&gt;attr({&quot;xmlns:$ns&quot; =&gt; $ns_url})
+</I>&gt;<i> 	    =&gt; (
+</I>&gt;<i> 	        SOAP::Data-&gt;name(&quot;$ns:db&quot;)        -&gt;type('xsd:string' =&gt; $db),
+</I>&gt;<i> 	        SOAP::Data-&gt;name(&quot;$ns:booleanfilter&quot;)
+</I>&gt;<i> 	        						          -&gt;type('xsd:string' =&gt; &quot;ac:$acc&quot;)
+</I>&gt;<i> 	    ));
+</I>&gt;<i> 	
+</I>&gt;<i> 	my @r = $result-&gt;paramsall;
+</I>&gt;<i> 	
+</I>&gt;<i> 	if ($r[0] == 1) {
+</I>&gt;<i> 		return
+</I>&gt;<i> 			&amp;soapCall(SOAP::Data-&gt;name(&quot;$ns:GetEntry&quot;)-&gt;attr({&quot;xmlns:$ns&quot; =&gt;
+</I>&gt;<i> $ns_url})
+</I>&gt;<i> 			    =&gt; (
+</I>&gt;<i> 			        SOAP::Data-&gt;name(&quot;$ns:db&quot;)        -&gt;type('xsd:string' =&gt; $db),
+</I>&gt;<i> 			        SOAP::Data-&gt;name(&quot;$ns:id&quot;)        -&gt;type('xsd:string' =&gt;
+</I>&gt;<i> $result-&gt;valueof('//id'))
+</I>&gt;<i> 			    ));
+</I>&gt;<i> 	}
+</I>&gt;<i> 	else {
+</I>&gt;<i> 		die &quot;not one hit for $db:$acc\n&quot;;
+</I>&gt;<i> 	}
+</I>&gt;<i> }
+</I>&gt;<i> 
+</I>&gt;<i> -maarten
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i> 
+</I>
+
+-- 
+Alvaro Martinez Barrio
+The Linnaeus Centre for Bioinformatics
+Husargatan 3, Box 598
+SE 751 24 Uppsala SWEDEN
+
+Tel: +46 18 471 6685 - Fax: +46 18 471 6698
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000297.html">[Mrs-user] MRS: Web Service
+</A></li>
+	<LI>Next message: <A HREF="000307.html">[Mrs-user] MRS: Web Service
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#305">[ date ]</a>
+              <a href="thread.html#305">[ thread ]</a>
+              <a href="subject.html#305">[ subject ]</a>
+              <a href="author.html#305">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

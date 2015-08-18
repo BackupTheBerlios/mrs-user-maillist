@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS index repositories and smart ways to distribute it across EMBnet members
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20index%20repositories%20and%20smart%20ways%20to%20distribute%0A%20it%20across%20EMBnet%20members&In-Reply-To=%3C48D79764.7040903%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000420.html">
+   <LINK REL="Next"  HREF="000422.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS index repositories and smart ways to distribute it across EMBnet members</H1>
+    <B>George Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20index%20repositories%20and%20smart%20ways%20to%20distribute%0A%20it%20across%20EMBnet%20members&In-Reply-To=%3C48D79764.7040903%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] MRS index repositories and smart ways to distribute it across EMBnet members">georgios at biotek.uio.no
+       </A><BR>
+    <I>Mon Sep 22 15:02:28 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000420.html">[Mrs-user] MRS index repositories and smart ways to distribute it across EMBnet members
+</A></li>
+        <LI>Next message: <A HREF="000422.html">[Mrs-user] 4.0 rc1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#421">[ date ]</a>
+              <a href="thread.html#421">[ thread ]</a>
+              <a href="subject.html#421">[ subject ]</a>
+              <a href="author.html#421">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten,
+
+Thanks for your detailed comments. Let me just clarify some issues. The 
+comments I have made/referred to/addressed were not a complain about the 
+MRS RAM consumption. I think it is architecturally very good to rely on 
+RAM rather than disk activity and that is something that works well for 
+us here, so I (personally) appreciate very much your choice to make the 
+indexing process more RAM-aware and the work you have placed into this 
+is by all counts impressive. And yes, we at EMBnet should have been 
+clearer about our needs, our current hardware resources (I believe there 
+are nodes/environments, where a 16 Gig server might be in place, but 
+swapping due to other applications might be prohibitive for a number of 
+reasons). But, yes, this is very easy to overcome this.
+
+At the recent EMBnet AGM conference there was yet another presentation 
+of MRS from a user perspective given by Guy (Belgium EMBnet). Frankly, I 
+do not know the extent to which other EMBnet members use MRS, but Norway 
+and Belgium seem to be into it quite heavily. I also know there is the 
+incentive for many ex SRS users to have a productive local functioning 
+MRS installation.
+
+The EMBnet Technical Management Project Committee is interested in a 
+suitable MRS index replication technique, as well as other distributed 
+storage related issues. I would, therefore, really suggest that we 
+invite you to a Video Group Meeting with the EMBnet's technical folks, 
+where we can explain more our issues. Details about time slot(s) and 
+connection methods will be forwarded to you in time.
+
+Best regards,
+GM
+
+-- 
+--
+George Magklaras
+
+Senior Computer Systems Engineer/UNIX Systems Administrator
+EMBnet Technical Management Board
+The Biotechnology Centre of Oslo,
+University of Oslo
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+
+
+
+Maarten L. Hekkelman wrote:
+&gt;<i> Dear all,
+</I>&gt;<i> 
+</I>&gt;<i> I received the quoted e-mail this weekend, and I must say I'm a bit 
+</I>&gt;<i> surprised by the content. I'll try to comment on it a bit.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> George Magklaras a &#233;crit :
+</I>&gt;<i>  &gt;
+</I>&gt;&gt;&gt;<i> This is meant to be a follow up on various issues with MRS (referring 
+</I>&gt;&gt;&gt;<i> to version 3, not 4). I have seen from time-to-time messages with 
+</I>&gt;&gt;&gt;<i> people complaining about slow/broken/memory starved indexing processes 
+</I>&gt;&gt;&gt;<i> for large datasets (embl, genbank, etc).
+</I>&gt;<i> 
+</I>&gt;<i> When complaining, one should realize that EMBL now consists of some 630 
+</I>&gt;<i> Gigabytes of raw text. This is really quite a lot of bytes. If your 
+</I>&gt;<i> computer has a hard disk capable of transfering 60 Megabytes per second 
+</I>&gt;<i> (which is still quite common) it will take you at least 3 hours to only 
+</I>&gt;<i> read through this data. Writing out the data along with an index will 
+</I>&gt;<i> take at least the same amount of time. Now we have to construct an index 
+</I>&gt;<i> for all the unique words in this pile of data, and if you consider that 
+</I>&gt;<i> there are 138 million documents in EMBL, you can imagine this to be 
+</I>&gt;<i> quite a lot.
+</I>&gt;<i> 
+</I>&gt;<i> MRS is capable of finishing a complete cycle of parsing and indexing of 
+</I>&gt;<i> EMBL in 24 hours. But this comes at a cost, it uses a lot of memory. 
+</I>&gt;<i> Fortunately, memory is cheap these days. I could have opted for an 
+</I>&gt;<i> approach that uses less memory, but then I would either have to use more 
+</I>&gt;<i> disk space or more time. MRS 3 used to slice the databank and create 
+</I>&gt;<i> parts, but this meant you needed intermediate diskspace of up to a 
+</I>&gt;<i> terabyte to create EMBL. The price of a terabyte of _extra_ diskspace is 
+</I>&gt;<i> high, higher than 16 Gigabytes of memory. And since this terabyte has to 
+</I>&gt;<i> be written out and read in again, you can see that it takes many hours 
+</I>&gt;<i> extra.
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i> I have been also following 
+</I>&gt;&gt;&gt;<i> the discussions about the forthcoming 4 release (currently in beta), 
+</I>&gt;&gt;&gt;<i> which needs currently around 17 Gigs of resident RAM (gulp!) to 
+</I>&gt;&gt;&gt;<i> perform the same process, requiring realistically a 32 Gig RAM server, 
+</I>&gt;&gt;&gt;<i> something clearly out of the bounds of more EMBnet nodes (?).
+</I>&gt;<i> 
+</I>&gt;<i> It's not that bad, it seems. I've received reports of others indexing 
+</I>&gt;<i> EMBL on a computer with just 8 Gigabyte of memory and 20 GB of swap. It 
+</I>&gt;<i> took over two days to complete the indexing, but it worked.
+</I>&gt;<i> 
+</I>&gt;<i> I just configured on-line a Dell server with two AMD dual core 
+</I>&gt;<i> processors, 16 GB of memory and 2 1-Terabyte disks. It will cost you 
+</I>&gt;<i> roughly 2800 euro's, ex. VAT. This would be a fine computer to do MRS 
+</I>&gt;<i> indexing, 16 GB is enough to do EMBL for the year to come. Is this 
+</I>&gt;<i> really out of bounds?
+</I>&gt;<i> 
+</I>&gt;<i>  &gt;&gt; And the
+</I>&gt;&gt;&gt;<i> thing is (if you follow the recent discussions of the mrs-user mailing 
+</I>&gt;&gt;&gt;<i> list) that this process is asymmetrical (you require large amounts of 
+</I>&gt;&gt;&gt;<i> RAM to index, but modest amounts of RAM to use the dataset).
+</I>&gt;<i> 
+</I>&gt;<i> correct
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i> After many smaller labs wanting to use MRS on the large datasets 
+</I>&gt;&gt;&gt;<i> locally requested from us to help with this process, I was wondering 
+</I>&gt;&gt;&gt;<i> whether it would be sensible to setup either a set of mirrored/synced 
+</I>&gt;&gt;&gt;<i> FTP sites, so people can download already formatted databases for MRS. 
+</I>&gt;&gt;&gt;<i> For example, we place the formatted files (currently for MRS version 
+</I>&gt;&gt;&gt;<i> 3) for the EMBL release plus updates here:
+</I>&gt;&gt;&gt;<i> <A HREF="ftp://ftp.no.embnet.org/biodatabases/mrsindex/">ftp://ftp.no.embnet.org/biodatabases/mrsindex/</A>
+</I>&gt;&gt;&gt;<i> allowing people with desktop spec machines to download the dataset and 
+</I>&gt;&gt;&gt;<i> use MRS locally.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> In terms of scalability- a set of torrent/P2P nodes that could 
+</I>&gt;&gt;&gt;<i> commonly perform this process more effectively  due to the size of the 
+</I>&gt;&gt;&gt;<i> datasets.  This could help the MRS community a lot, save them time and 
+</I>&gt;&gt;&gt;<i> disk space  and it would be another nice example of collaborating to 
+</I>&gt;&gt;&gt;<i> produce vital datasets. Comments /suggestions/volunteers are welcome.
+</I>&gt;<i> 
+</I>&gt;<i> I've already suggested a better solution to this. I can write a 
+</I>&gt;<i> replication tool to help distribute MRS files. Esp. with EMBL it is not 
+</I>&gt;<i> necessary to transfer all the data, you could limit it to just create a 
+</I>&gt;<i> 'diff' or 'patch' file and use that. This would limit bandwidth 
+</I>&gt;<i> considerably.
+</I>&gt;<i> 
+</I>&gt;<i> But before I spend the time on writing something like this, I really 
+</I>&gt;<i> want to be sure there's a demand for this. There are other things my 
+</I>&gt;<i> boss wants me to do.
+</I>&gt;<i> 
+</I>&gt;<i> Robert Herzog wrote:
+</I>&gt;&gt;<i> I am no longer actively using MRS, as those who know me may understand. 
+</I>&gt;&gt;<i> But this news about an MRS server needing only limited capacity to 
+</I>&gt;&gt;<i> provide MRS service is great. It is typically a case for an MRS 
+</I>&gt;&gt;<i> Federation, like the SRS federation we tried to set up some years ago, 
+</I>&gt;&gt;<i> before Lion and SRS went down.
+</I>&gt;&gt;<i> I hope this idea will find  roots during the current EMBnet meeting in 
+</I>&gt;&gt;<i> Italy.
+</I>&gt;<i> 
+</I>&gt;<i> And that's another thing I could do. Since the retrieval of data in MRS 
+</I>&gt;<i> is completely web services based, it is trivial to link several servers 
+</I>&gt;<i> together and pass requests for data from one to another. I've discussed 
+</I>&gt;<i> this before with Robert, but someone has to step forward to help design 
+</I>&gt;<i> and organize this. I'm not a member of EMB-NET and so I have no idea 
+</I>&gt;<i> what you guys need.
+</I>&gt;<i> 
+</I>&gt;<i> What disturbs me a bit though, is that MRS is apparently discussed but 
+</I>&gt;<i> nobody took the time to inform me about this. If there are problems with 
+</I>&gt;<i> MRS, you should really contact me, if you need changes you can ask for 
+</I>&gt;<i> them. Since I hardly ever get feedback on MRS, I got the impression 
+</I>&gt;<i> nobody was interested.
+</I>&gt;<i> 
+</I>&gt;<i> MRS 4 has been in development for a long time. There has been plenty of 
+</I>&gt;<i> opportunity to steer its direction. If no one cares to comment on my 
+</I>&gt;<i> proposals I make my own choices. The two choices I made for MRS 4 were 
+</I>&gt;<i> to optimize more, so I could continue to index EMBL for a few more years 
+</I>&gt;<i> and to make installation and management easier.
+</I>&gt;<i> 
+</I>&gt;<i> So, if you have suggestions on how to improve things, you now know where 
+</I>&gt;<i> you should direct them.
+</I>&gt;<i> 
+</I>&gt;<i> Best regards,
+</I>&gt;<i> 
+</I>&gt;<i> -maarten
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000420.html">[Mrs-user] MRS index repositories and smart ways to distribute it across EMBnet members
+</A></li>
+	<LI>Next message: <A HREF="000422.html">[Mrs-user] 4.0 rc1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#421">[ date ]</a>
+              <a href="thread.html#421">[ thread ]</a>
+              <a href="subject.html#421">[ subject ]</a>
+              <a href="author.html#421">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

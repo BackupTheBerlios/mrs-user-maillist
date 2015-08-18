@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS: Web Service
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%3A%20Web%20Service&In-Reply-To=%3C4745F780.9090203%40lcb.uu.se%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000315.html">
+   <LINK REL="Next"  HREF="000321.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS: Web Service</H1>
+    <B>Alvaro Martinez Barrio</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%3A%20Web%20Service&In-Reply-To=%3C4745F780.9090203%40lcb.uu.se%3E"
+       TITLE="[Mrs-user] MRS: Web Service">Alvaro.Martinez.Barrio at lcb.uu.se
+       </A><BR>
+    <I>Thu Nov 22 22:41:20 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000315.html">[Mrs-user] MRS: Web Service
+</A></li>
+        <LI>Next message: <A HREF="000321.html">[Mrs-user] MRS: Web Service
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#317">[ date ]</a>
+              <a href="thread.html#317">[ thread ]</a>
+              <a href="subject.html#317">[ subject ]</a>
+              <a href="author.html#317">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks Maarten! Don't worry. You are excelent replying post asking for help.
+
+I don't have the threads parameter in my mrs-config.xml :( Could it be 
+that???
+
+How should I write it?
+  &lt;threads&gt;2&lt;/threads&gt;
+
+Like that?
+
+These are the lines I get from the '/var/log/mrsws-blast.log' file, not 
+much...
+
+IP [22/Nov/2007:22:22:39] ns__BlastAsync sprot LCLYTHIGRNIYYGSYL...  0.000
+IP [22/Nov/2007:22:22:40] ns__BlastJobStatus 
+90c1a4ac-978c-11dc-b9ed-1b8bb5da29e5 0.000
+IP [22/Nov/2007:22:22:41] ns__BlastJobStatus 
+90c1a4ac-978c-11dc-b9ed-1b8bb5da29e5 0.000
+.....
+
+If I start the blast WS with the flag -v (I haven't got the -f so I just 
+skipped it and it goes into foreground as opposite to using -b -perhaps 
+a very old version?-):
+
+Loading pdb from /usr/local/mrs/data//mrs/pdb.cmp ... failed
+Loading sprot from /usr/local/mrs/data//mrs/sprot.cmp ...Using file 
+<A HREF="file:///usr/local/mrs/data/mrs/sprot.cmp">file:///usr/local/mrs/data/mrs/sprot.cmp</A>
+  done
+Loading trembl from /usr/local/mrs/data//mrs/trembl.cmp ...Using file 
+<A HREF="file:///usr/local/mrs/data/mrs/trembl.cmp">file:///usr/local/mrs/data/mrs/trembl.cmp</A>
+  done
+
+IP [22/Nov/2007:22:31:00] ns__BlastAsync sprot LCLYTHIGRNIYYGSYL...  0.001
+IP [22/Nov/2007:22:31:01] ns__BlastJobStatus 
+38881eda-9942-11dc-bff8-9718883c6a85 0.000
+
+params
+db:                    sprot
+query: 
+LCLYTHIGRNIYYGSYLYSETWNTGIMLLLITMATAFMGYVLPWGQMSFWGATVITN...
+program:               blastp
+matrix:                BLOSUM62
+word_size:             3
+expect:                10.000
+low_complexity_filter: 1
+gapped:                1
+gap_open:              11
+gap_extend:            1
+
+IP [22/Nov/2007:22:31:02] ns__BlastJobStatus 
+38881eda-9942-11dc-bff8-9718883c6a85 0.000
+Using memory mapped blast index
+...........IP [22/Nov/2007:22:31:03] ns__BlastJobStatus 
+38881eda-9942-11dc-bff8-9718883c6a85 0.000
+130.238.37.103 [22/Nov/2007:22:31:04] ns__BlastJobStatus 
+38881eda-9942-11dc-bff8-9718883c6a85 0.000
+................IP [22/Nov/2007:22:31:05] ns__BlastJobStatus 
+38881eda-9942-11dc-bff8-9718883c6a85 0.000
+....................IP [22/Nov/2007:22:31:06] ns__BlastJobStatus 
+38881eda-9942-11dc-bff8-9718883c6a85 0.000
+.....................IP [22/Nov/2007:22:31:07] ns__BlastJobStatus 
+38881eda-9942-11dc-bff8-9718883c6a85 0.000
+
+
+
+And it stalls there. I think it might be the thread thing so as threads 
+are not created, blast jobs don't get delivered.... Is that right? How 
+do I configure then the .xml file?
+
+
+MVH,
+&#225;lvaro
+
+Maarten L. Hekkelman wrote:
+&gt;<i> Op 21-nov-2007, om 16:32 heeft Alvaro Martinez Barrio het volgende 
+</I>&gt;<i> geschreven:
+</I>&gt;<i> 
+</I>&gt;<i> Sorry for not responding sooner to your previous e-mail. I'm very busy 
+</I>&gt;<i> with other things at the moment.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> I have developed better this script for querying MRS blast service and
+</I>&gt;&gt;<i> now works better. But just against your MRS in Netherlands, Maarten.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> If I query my server (see first trace) it stalls on the queue. The
+</I>&gt;&gt;<i> second trace correspond to querying yours. You see how it goes to the
+</I>&gt;&gt;<i> different status.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> What do I have to look for? As you said you implemented your own blast.
+</I>&gt;&gt;<i> Some kind of queuing system should be present perhaps???
+</I>&gt;<i> 
+</I>&gt;<i> If you get back a message at all from the blast server that means the 
+</I>&gt;<i> server is running. And yes I did implement my own blast algorithm as 
+</I>&gt;<i> well as the queueing mechanism and all.
+</I>&gt;<i> 
+</I>&gt;<i> You could start the blast server but without forking it so it stays in 
+</I>&gt;<i> the foreground. You can do so by starting it with the -f flags from 
+</I>&gt;<i> within a terminal. And then you can specify the -v flag to get more 
+</I>&gt;<i> verbose output. These two should give you some more feedback about what 
+</I>&gt;<i> is going on.
+</I>&gt;<i> 
+</I>&gt;<i> There are some extra options that might influence the way blast works. 
+</I>&gt;<i> E.g. there's a threads parameter in the mrs-config.xml file, you might 
+</I>&gt;<i> want to change that to two e.g.
+</I>&gt;<i> 
+</I>&gt;<i> mvg,
+</I>&gt;<i> 
+</I>&gt;<i> Maarten L. Hekkelman
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+</I>&gt;<i> 06 26 750 799
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+
+-- 
+Alvaro Martinez Barrio
+The Linnaeus Centre for Bioinformatics
+Husargatan 3, Box 598
+SE 751 24 Uppsala SWEDEN
+
+Tel: +46 18 471 6685 - Fax: +46 18 471 6698
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000315.html">[Mrs-user] MRS: Web Service
+</A></li>
+	<LI>Next message: <A HREF="000321.html">[Mrs-user] MRS: Web Service
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#317">[ date ]</a>
+              <a href="thread.html#317">[ thread ]</a>
+              <a href="subject.html#317">[ subject ]</a>
+              <a href="author.html#317">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

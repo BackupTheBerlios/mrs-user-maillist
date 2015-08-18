@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] mrs support
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs%20support&In-Reply-To=%3C763537ABF4934B739E3F7004B0BB9C9E%40lordjim%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000465.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] mrs support</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs%20support&In-Reply-To=%3C763537ABF4934B739E3F7004B0BB9C9E%40lordjim%3E"
+       TITLE="[Mrs-user] mrs support">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Oct  7 10:26:22 CEST 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000465.html">[Mrs-user] mrs support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#464">[ date ]</a>
+              <a href="thread.html#464">[ thread ]</a>
+              <a href="subject.html#464">[ subject ]</a>
+              <a href="author.html#464">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>George,
+
+I've created a CentOS version of MRS and I'm about to release this as a RPM. 
+I've used the 5.3 version of CentOS and had to install several libraries by 
+hand since they were either missing or too old. Therefore I had to link the 
+executables statically against these libraries.
+
+This raises a new point though, I cannot create a binary perl plugin since 
+my hand-build versions of the libraries are not position independent (-fPIC) 
+but the libperl.a is and mixing those is not allowed. Since using the perl 
+plugin is a deprecated technology in my eyes anyway, would it be a real 
+problem leaving this one out of the RPM?
+
+Another potential problem is libstdc++, since I've used CentOS 5.3 I hope I 
+can assume that everyone has the right version installed? Trying to link 
+that one statically is proving to be difficult.
+
+-maarten
+
+--------------------------------------------------
+From: &quot;George Magklaras&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">georgios at biotek.uio.no</A>&gt;
+Sent: Thursday, September 10, 2009 11:16 AM
+To: &quot;Maarten L. Hekkelman&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">m.hekkelman at cmbi.ru.nl</A>&gt;
+Cc: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>&gt;
+Subject: Re: [Mrs-user] mrs support
+
+&gt;<i> If you support the latest RHEL (at the moment 5.4), this will solve many 
+</I>&gt;<i> problems with CentOS people. CentOS is basically derived from the RHEL 
+</I>&gt;<i> source rpms, so most of the library dependencies are/should be the same 
+</I>&gt;<i> with RHEL with very minor differences. So, CentOS 5 should be the same 
+</I>&gt;<i> with RHEL 5.
+</I>&gt;<i>
+</I>&gt;<i> GM
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Maarten L. Hekkelman wrote:
+</I>&gt;&gt;<i> George Magklaras schreef:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I would like to convince you to re-consider including the RedHat 
+</I>&gt;&gt;&gt;<i> derivatives (RHEL and CentOS). On behalf of EMBnet Norway at least in 
+</I>&gt;&gt;&gt;<i> our academic environment, I can say that there is a large number of 
+</I>&gt;&gt;&gt;<i> people that does not use Debian based distros. I can offer some help, 
+</I>&gt;&gt;&gt;<i> but I think it is wrong to exclude these two RedHat based distros, as I 
+</I>&gt;&gt;&gt;<i> am sure there are *many* people that use them in an academic setting, 
+</I>&gt;&gt;&gt;<i> due to restrictions from their IT department.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I could support one other OS release, but then I need to know which one 
+</I>&gt;&gt;<i> and it should be something recent. It has been quite a challenge to write 
+</I>&gt;&gt;<i> software for the RHEL 5.1 servers we have here. We're in the process of 
+</I>&gt;&gt;<i> moving all our servers to Ubuntu.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The only thing I know about CentOS is what I just read in the first lines 
+</I>&gt;&gt;<i> of their webpage. Do you have a suggestion for a version of this OS? I 
+</I>&gt;&gt;<i> could try to set it up in a virtual machine and then create an MRS rpm 
+</I>&gt;&gt;<i> (or yum?) archive for it.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -maarten
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Mrs-user mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -- 
+</I>&gt;<i> --
+</I>&gt;<i> George Magklaras BSc Hons MPhil
+</I>&gt;<i> RHCE:805008309135525
+</I>&gt;<i>
+</I>&gt;<i> Senior Computer Systems Engineer/UNIX-Linux Systems Administrator
+</I>&gt;<i> EMBnet Technical Management Board
+</I>&gt;<i> The Biotechnology Centre of Oslo,
+</I>&gt;<i> University of Oslo
+</I>&gt;<i> <A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+</I>&gt;<i>
+</I>&gt;<i> Tel: +47-22840535
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> 
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000465.html">[Mrs-user] mrs support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#464">[ date ]</a>
+              <a href="thread.html#464">[ thread ]</a>
+              <a href="subject.html#464">[ subject ]</a>
+              <a href="author.html#464">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

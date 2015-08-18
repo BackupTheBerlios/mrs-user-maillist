@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	ver
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20case%20sensitive%20identifiers%20-%20Checked%20by%20AntiVir%20DEMO%0A%09ver&In-Reply-To=%3C20061004100433.GA7290%40bigben.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000112.html">
+   <LINK REL="Next"  HREF="000117.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	ver</H1>
+    <B>Guy Bottu</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20case%20sensitive%20identifiers%20-%20Checked%20by%20AntiVir%20DEMO%0A%09ver&In-Reply-To=%3C20061004100433.GA7290%40bigben.ulb.ac.be%3E"
+       TITLE="[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	ver">gbottu at ben.vub.ac.be
+       </A><BR>
+    <I>Wed Oct  4 12:04:33 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000112.html">[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	version -
+</A></li>
+        <LI>Next message: <A HREF="000117.html">[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	ver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Oct 04, 2006 at 10:08:23AM +0200, Maarten L. Hekkelman wrote:
+&gt;<i> Adding a case sensitive index is possible and not that much work.
+</I>
+I think you should put this in your list of things-to-do. Most of the 
+time case-insensitive searches are the best, but there are few cases 
+where we might need a case-sensitive index for the primary key (ID) 
+(like for the PDB sequences) or for some other indexes (I cannot just 
+right now find an example). There must then be a way, in the parser 
+script or elsewhere, to explicitly state that a certain index must be 
+case-sensitive.
+
+&gt;<i> The reason to allow multiple ID's by rewriting the duplicates is that  
+</I>&gt;<i> it is very frustrating to have indexing fail for a databank that  
+</I>&gt;<i> contains a duplicate ID. Esp. if it is e.g. Genbank and it took you  
+</I>&gt;<i> three days to find out there was a duplicate ID. The current solution  
+</I>&gt;<i> allows you to at least find the data even though the returned ID's  
+</I>&gt;<i> don not make much sense.
+</I>
+Certainly a good idea to avoid MRS crashing on spurious duplicate ID's.
+
+As far as GenBank is concerned : duplicate ID's are a chronic disease, 
+they seem not to stick to their own rule of having the ID's unique. A 
+solution is to use the accession number as primary key. Is it allowed in 
+MRS to call the primary key index by another name than 'id' ? 
+
+&gt;<i> Rewriting different case in ID's to something like LC_id can be done  
+</I>&gt;<i> in the parser scripts. No change is needed in MRS itself to allow for  
+</I>&gt;<i> this. Though I get the feeling that you trying to find a workaround  
+</I>&gt;<i> for a problem that should be solved elsewhere.
+</I>
+I surely agree with that.
+
+	Regards,
+	Guy Bottu,
+	Belgian EMBnet Node
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000112.html">[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	version -
+</A></li>
+	<LI>Next message: <A HREF="000117.html">[Mrs-user] case sensitive identifiers - Checked by AntiVir DEMO	ver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

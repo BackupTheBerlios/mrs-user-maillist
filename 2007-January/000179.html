@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] new blast server
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20new%20blast%20server&In-Reply-To=%3C4716FD2E-4EED-48AC-B432-DA5EC66E881D%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000178.html">
+   <LINK REL="Next"  HREF="000180.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] new blast server</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20new%20blast%20server&In-Reply-To=%3C4716FD2E-4EED-48AC-B432-DA5EC66E881D%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] new blast server">M.Hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Fri Jan 26 14:04:08 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000178.html">[Mrs-user] MRS3 indexing time
+</A></li>
+        <LI>Next message: <A HREF="000180.html">[Mrs-user] a remark about the sections - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#179">[ date ]</a>
+              <a href="thread.html#179">[ thread ]</a>
+              <a href="subject.html#179">[ subject ]</a>
+              <a href="author.html#179">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I just checked in a first version for the mrsws-blast server. As the  
+name implies, this is a SOAP based server that does blast searches in  
+a MRS file. I don't have a good interface yet, but there is a test  
+script in ws/blast called test.pl. You will have to edit this script  
+to change the address from 'mini' to your local computer name.
+
+Blast jobs are cached, if the exact same search comes by within an  
+hour it is fetched from this cache. This is very useful for courses  
+where students do the same search over and over.
+
+The mrsws-blast application takes the same arguments as mrsws plus  
+the '-t n' option which specifies how many threads to use to do the  
+actual blast search.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000178.html">[Mrs-user] MRS3 indexing time
+</A></li>
+	<LI>Next message: <A HREF="000180.html">[Mrs-user] a remark about the sections - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#179">[ date ]</a>
+              <a href="thread.html#179">[ thread ]</a>
+              <a href="subject.html#179">[ subject ]</a>
+              <a href="author.html#179">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

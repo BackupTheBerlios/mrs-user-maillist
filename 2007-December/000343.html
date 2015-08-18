@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Questions and report after installation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20installation&In-Reply-To=%3C47723239.50E9F88A%40genebee.msu.su%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000342.html">
+   <LINK REL="Next"  HREF="000344.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Questions and report after installation</H1>
+    <B>Alexandre Kravchenko</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20installation&In-Reply-To=%3C47723239.50E9F88A%40genebee.msu.su%3E"
+       TITLE="[Mrs-user] Questions and report after installation">alexk at genebee.msu.su
+       </A><BR>
+    <I>Wed Dec 26 11:51:37 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000342.html">[Mrs-user] Questions and report after installation
+</A></li>
+        <LI>Next message: <A HREF="000344.html">[Mrs-user] Questions and report after installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#343">[ date ]</a>
+              <a href="thread.html#343">[ thread ]</a>
+              <a href="subject.html#343">[ subject ]</a>
+              <a href="author.html#343">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Dear Alexandre,
+</I>&gt;<i>
+</I>&gt;<i> &gt; I have installed mrs-3.1-rc1 on Fedora 8 x86_64 + jdk-1.6.0_03 +
+</I>&gt;<i> &gt; gsoap-2.7.9-0.1.l + swig-1.3.33 + tomcat5-5.5.25-1 + axis-1.2.1-2.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; First edit configure.pl and change
+</I>&gt;<i> &gt;     my $ld_opts = &quot;-L$lib_dir -lgsoap&quot;;
+</I>&gt;<i> &gt; to the
+</I>&gt;<i> &gt;    my $ld_opts = &quot;&quot;;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Else after
+</I>&gt;<i> &gt;    perl configure.pl
+</I>&gt;<i> &gt; I have
+</I>&gt;<i> &gt; ....
+</I>&gt;<i> &gt; Could not build a soap application
+</I>&gt;<i>
+</I>&gt;<i> This is very strange. I would have expected things the other way around.
+</I>&gt;<i>
+</I>&gt;<i> Does the make step create the mrsws* executables? Are they installed?
+</I>&gt;<i>
+</I>&gt;<i> &gt; =====================================
+</I>&gt;<i> &gt; When I loaded &quot;<A HREF="http://localhost:8080/mrs-3/">http://localhost:8080/mrs-3/</A>&quot;, I have:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Could not connect to SOAP server at <A HREF="http://localhost:8081/mrs/soap,">http://localhost:8081/mrs/soap,</A>
+</I>&gt;<i> &gt; please inform administrator.
+</I>&gt;<i>
+</I>&gt;<i> This means that the web application is working properly, but there is
+</I>&gt;<i> no mrsws running.
+</I>&gt;<i>
+</I>&gt;<i> So first you should make sure that mrsws is built properly, then you
+</I>&gt;<i> need to launch this application by hand or by using the scripts in
+</I>&gt;<i> mrs/ws/init.d (install those in /etc/init.d and use the RedHat
+</I>&gt;<i> service command to start mrsws, e.g.: 'sudo service mrsws start')
+</I>&gt;<i>
+</I>&gt;<i> Then the web app should be able to connect to the server.
+</I>&gt;<i>
+</I>&gt;<i> The mrsws server creates a log file named /var/log/mrsws-search.log
+</I>&gt;<i> and mrsws-blast and mrsws-clustal have a log file too.
+</I>&gt;<i>
+</I>&gt;<i> I'm not so sure about the java/tomcat error you're seeing. And I'm
+</I>&gt;<i> not sure it is relevant here.
+</I>&gt;<i>
+</I>&gt;<i> mvg,
+</I>&gt;<i>
+</I>&gt;<i> Maarten L. Hekkelman
+</I>&gt;<i> maarten at hekkelman.com
+</I>&gt;<i> 06 26 750 799
+</I>
+1) I don't receive letters (but I  subscribed). I look mails in archive.
+2) I have started mrsws  and atteched it's log:
+=====================================
+mrsws output in the mrsws-search.log:
+.....
+Error 35 fault: SOAP-ENV:VersionMismatch [no subcode]
+&quot;Invalid SOAP message or SOAP version mismatch&quot;
+Detail: [no detail]
+
+--
+Best regards,
+
+Alex
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000342.html">[Mrs-user] Questions and report after installation
+</A></li>
+	<LI>Next message: <A HREF="000344.html">[Mrs-user] Questions and report after installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#343">[ date ]</a>
+              <a href="thread.html#343">[ thread ]</a>
+              <a href="subject.html#343">[ subject ]</a>
+              <a href="author.html#343">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

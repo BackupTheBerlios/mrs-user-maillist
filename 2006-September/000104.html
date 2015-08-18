@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] ??? CRITICAL MRS fix required ???
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20%3F%3F%3F%20CRITICAL%20MRS%20fix%20required%20%3F%3F%3F&In-Reply-To=%3C45191630.4080500%40dbm.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000102.html">
+   <LINK REL="Next"  HREF="000105.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] ??? CRITICAL MRS fix required ???</H1>
+    <B>david coornaert</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20%3F%3F%3F%20CRITICAL%20MRS%20fix%20required%20%3F%3F%3F&In-Reply-To=%3C45191630.4080500%40dbm.ulb.ac.be%3E"
+       TITLE="[Mrs-user] ??? CRITICAL MRS fix required ???">dcoorna at dbm.ulb.ac.be
+       </A><BR>
+    <I>Tue Sep 26 13:59:44 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000102.html">[Mrs-user] Question about keywords with blanks - Checked by	AntiVir DEMO version -
+</A></li>
+        <LI>Next message: <A HREF="000105.html">[Mrs-user] ??? CRITICAL MRS fix required ???
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#104">[ date ]</a>
+              <a href="thread.html#104">[ thread ]</a>
+              <a href="subject.html#104">[ subject ]</a>
+              <a href="author.html#104">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>We need the mirror process to REMOVE obsolete files
+
+I suppose this is an artefact caused by the new naming convention of the 
+EMBL datafiles
+If you don't manually intervene
+the mirror proccess will currently maintain both releases 87 and 88 in 
+the raw dir
+and this will lead to a Bazillion of duplicate entries warning
+resulting in cosmologically-sized log files, whose in their turn will 
+block the databanks.cgi scripts
+from displaying the corresponding logs...
+Also it seems that the part number for embl-release reverted to 8 
+instead of 32
+Hence the indexing process was stuck at part 1 after 4 days, and with a 
+12 giga part1.log
+
+
+the same phenomenon occurs with cumulative_embl_updates:
+possibly due to the same file naming convention change
+
+If you suspect your MRS server's sick at indexing :
+here's what I deed :
+
+1) killall make
+2) in RAW/EMBLRELEASE  directory
+    rm *r87*
+3) in RAW/EMBLUPDATE dir
+    rm *r88*
+
+pay attention 87 in rel and 88 in updates..
+
+
+
+
+
+Did I say Urgent ?
+
+-- 
+===============================================
+David Coornaert [PhD]   (<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dcoorna at dbm.ulb.ac.be</A>)
+
+Belgian Embnet Node (<A HREF="http://www.be.embnet.org">http://www.be.embnet.org</A>)
+Universit&#233; Libre de Bruxelles
+
+Laboratoire de Bioinformatique
+12, Rue des Professeurs Jeener &amp; Brachet
+6041  Gosselies
+BELGIQUE
+
+T&#233;l:  +3226509975
+Fax:  +3226509998
+===============================================
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000102.html">[Mrs-user] Question about keywords with blanks - Checked by	AntiVir DEMO version -
+</A></li>
+	<LI>Next message: <A HREF="000105.html">[Mrs-user] ??? CRITICAL MRS fix required ???
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#104">[ date ]</a>
+              <a href="thread.html#104">[ thread ]</a>
+              <a href="subject.html#104">[ subject ]</a>
+              <a href="author.html#104">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

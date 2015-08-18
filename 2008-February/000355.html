@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Mrs-user Digest, Vol 20, Issue 1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs-user%20Digest%2C%20Vol%2020%2C%20Issue%201&In-Reply-To=%3C2fab80e60802140138t54baccaaq2c9dde8366e02c80%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000354.html">
+   <LINK REL="Next"  HREF="000356.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Mrs-user Digest, Vol 20, Issue 1</H1>
+    <B>Uli</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs-user%20Digest%2C%20Vol%2020%2C%20Issue%201&In-Reply-To=%3C2fab80e60802140138t54baccaaq2c9dde8366e02c80%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] Mrs-user Digest, Vol 20, Issue 1">ulihorn at gmail.com
+       </A><BR>
+    <I>Thu Feb 14 10:38:57 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000354.html">[Mrs-user] itanium
+</A></li>
+        <LI>Next message: <A HREF="000356.html">[Mrs-user] Doctor Listing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#355">[ date ]</a>
+              <a href="thread.html#355">[ thread ]</a>
+              <a href="subject.html#355">[ subject ]</a>
+              <a href="author.html#355">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Maarten
+
+I have picked up an error in the configure.pl file. line 65:
+
+  $cpu = `uname -m` if $cpu eq 'unknown';
+
+should be followed by a:
+
+  chomp($cpu);
+
+I don't know if this has been corrected.
+
+Regards
+Uli
+
+On Mon, Feb 11, 2008 at 1:01 PM, &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user-request at lists.berlios.de</A>&gt; wrote:
+
+&gt;<i> Send Mrs-user mailing list submissions to
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i> or, via email, send a message with subject or body 'help' to
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user-request at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> You can reach the person managing the list at
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user-owner at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> than &quot;Re: Contents of Mrs-user digest...&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Today's Topics:
+</I>&gt;<i>
+</I>&gt;<i>   1. itanium (Maarten L. Hekkelman)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ----------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 1
+</I>&gt;<i> Date: Mon, 11 Feb 2008 09:59:45 +0100
+</I>&gt;<i> From: &quot;Maarten L. Hekkelman&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">m.hekkelman at cmbi.ru.nl</A>&gt;
+</I>&gt;<i> Subject: [Mrs-user] itanium
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+</I>&gt;<i> Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">47B00E81.5040601 at cmbi.ru.nl</A>&gt;
+</I>&gt;<i> Content-Type: text/plain; charset=ISO-8859-1
+</I>&gt;<i>
+</I>&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> Is there anyone on this list with a working MRS on Itanium? Did you have
+</I>&gt;<i> to change anything? I'm getting reports that indicate MRS no longer
+</I>&gt;<i> works on Itanium but since I don't have such a machine myself I cannot
+</I>&gt;<i> test or debug this problem.
+</I>&gt;<i>
+</I>&gt;<i> -maarten
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> End of Mrs-user Digest, Vol 20, Issue 1
+</I>&gt;<i> ***************************************
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20080214/90a12085/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20080214/90a12085/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000354.html">[Mrs-user] itanium
+</A></li>
+	<LI>Next message: <A HREF="000356.html">[Mrs-user] Doctor Listing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#355">[ date ]</a>
+              <a href="thread.html#355">[ thread ]</a>
+              <a href="subject.html#355">[ subject ]</a>
+              <a href="author.html#355">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

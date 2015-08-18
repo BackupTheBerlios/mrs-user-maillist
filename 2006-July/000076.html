@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Blast problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Blast%20problem&In-Reply-To=%3C44C86345.2030607%40embl-heidelberg.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000080.html">
+   <LINK REL="Next"  HREF="000078.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Blast problem</H1>
+    <B>Dr. Andrea Schafferhans</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Blast%20problem&In-Reply-To=%3C44C86345.2030607%40embl-heidelberg.de%3E"
+       TITLE="[Mrs-user] Blast problem">andrea.schafferhans at embl-heidelberg.de
+       </A><BR>
+    <I>Thu Jul 27 08:55:01 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000080.html">[Mrs-user] MRS Database downloading
+</A></li>
+        <LI>Next message: <A HREF="000078.html">[Mrs-user] Blast problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#76">[ date ]</a>
+              <a href="thread.html#76">[ thread ]</a>
+              <a href="subject.html#76">[ subject ]</a>
+              <a href="author.html#76">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten, hi all,
+
+I'm sorry to come up with all those little problems, but I guess this is 
+just what happens once software tested in one place is let loose on the 
+world with all its different setups...
+
+
+This time, I tried to test blast. Since the job was never terminated 
+(according to the web interface) I had a look at the temp-directory 
+where it was supposed to run.
+The first thing I noticed is that there wasn't any output at all. So I 
+guess it wasn't really started either. Or shouldn't the output be found 
+in the temp directory? If it should, do you have any hint how to trace 
+why the script wasn't started?
+
+
+To find out more, I also tried to run the query_xxxxx.csh script and its 
+individual commands to find out what happens. And what I got was a core:
+
+pc-rschneid9:/tmp/71C52DF2-1CB9-11DB-BBCD-A1387CC08414 # tcsh
+pc-rschneid9 /tmp/71C52DF2-1CB9-11DB-BBCD-A1387CC08414#  setenv 
+MRS_DATA_DIR /g/data9/rschneider/MRS_data/mrs
+pc-rschneid9 /tmp/71C52DF2-1CB9-11DB-BBCD-A1387CC08414# 
+/usr/local/bin//mrs_blast -p blastp -F T -W 3 -M BLOSUM62 -e 10 -g T  -d 
+&quot;sprot&quot;  -i query_0001.fa -o query_0001.out
+terminate called after throwing an instance of 'HError'
+   what():  Posix error: Permission denied
+Abort (core dumped)
+
+The sprot files in the blast directory are definitely readable by all. 
+Do they need to be anything more?
+
+When I look at the core with gdb I get the following:
+
+(gdb) backtrace
+#0  0xffffe410 in __kernel_vsyscall ()
+#1  0xb7d5d541 in raise () from /lib/tls/libc.so.6
+#2  0xb7d5edbb in abort () from /lib/tls/libc.so.6
+#3  0xb7f4b4f1 in __gnu_cxx::__verbose_terminate_handler () from 
+/usr/lib/libstdc++.so.6
+#4  0xb7f48e15 in __gxx_personality_v0 () from /usr/lib/libstdc++.so.6
+#5  0xb7f48e52 in std::terminate () from /usr/lib/libstdc++.so.6
+#6  0xb7f48fba in __cxa_throw () from /usr/lib/libstdc++.so.6
+#7  0x080995ab in HFileStream (this=0x81205f0, inURL=@0x0, inMode=0) at 
+HStream.cpp:433
+#8  0x08099f90 in HBufferedFileStream (this=0x81205f0, inURL=@0x0, 
+inMode=0) at HStream.cpp:538
+#9  0x08064f33 in CDatabank (this=0x81204d8, inUrl=@0xbfcc3314, 
+inNew=false) at CDatabank.cpp:367
+#10 0x08055949 in MDatabankImp (this=0x81203f8, inDatabank=@0xbfcc36b8, 
+inNew=false)
+     at MRSInterface.cpp:487
+#11 0x08056260 in MDatabank (this=0xbfcc36a0, inDatabank=@0x0) at 
+MRSInterface.cpp:529
+#12 0x080502a4 in main (argc=19, argv=0xbfcc3744) at mrs_blast.cpp:190
+
+Does the stack trace help you to trace the problem any further?
+
+      Best wishes
+
+             Andrea
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000080.html">[Mrs-user] MRS Database downloading
+</A></li>
+	<LI>Next message: <A HREF="000078.html">[Mrs-user] Blast problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#76">[ date ]</a>
+              <a href="thread.html#76">[ thread ]</a>
+              <a href="subject.html#76">[ subject ]</a>
+              <a href="author.html#76">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

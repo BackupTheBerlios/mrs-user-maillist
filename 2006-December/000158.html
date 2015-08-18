@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] mrs3 compilation...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs3%20compilation...&In-Reply-To=%3C458B9711.20605%40aamodels.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000157.html">
+   <LINK REL="Next"  HREF="000159.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] mrs3 compilation...</H1>
+    <B>Robert HERZOG</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs3%20compilation...&In-Reply-To=%3C458B9711.20605%40aamodels.be%3E"
+       TITLE="[Mrs-user] mrs3 compilation...">rherzog at aamodels.be
+       </A><BR>
+    <I>Fri Dec 22 09:28:01 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000157.html">[Mrs-user] version 3
+</A></li>
+        <LI>Next message: <A HREF="000159.html">[Mrs-user] mrs3 compilation...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#158">[ date ]</a>
+              <a href="thread.html#158">[ thread ]</a>
+              <a href="subject.html#158">[ subject ]</a>
+              <a href="author.html#158">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+I started yesterday to try and install mrs3. I have problems during 
+compilation, in fact during the linking phase, where a lot of  failure 
+messages mention undefined references to boost::XXXX, like typically:
+---cut---
+/usr/include/boost/regex/v4/regex_raw_buffer.hpp:124: undefined 
+reference to `boost::re_detail::raw_storage::resize(unsigned long)'
+libmrs.a: In function `boost::re_detail::basic_regex_creator&lt;char, 
+boost::regex_traits&lt;char, boost::cpp_regex_traits&lt;char&gt; &gt; 
+ &gt;::append_state(boost::re_detail::syntax_element_type, unsigned long)':
+/usr/include/boost/regex/v4/regex_raw_buffer.hpp:124: undefined 
+reference to `boost::re_detail::raw_storage::resize(unsigned long)'
+/usr/include/boost/regex/v4/regex_raw_buffer.hpp:124: undefined 
+reference to `boost::re_detail::raw_storage::resize(unsigned long)'
+/usr/include/boost/regex/v4/regex_raw_buffer.hpp:124: undefined 
+reference to `boost::re_detail::raw_storage::resize(unsigned long)'
+libmrs.a: In function `boost::re_detail::basic_regex_parser&lt;char, 
+boost::regex_traits&lt;char, boost::cpp_regex_traits&lt;char&gt; &gt; 
+ &gt;::parse_match_any()':
+/usr/include/boost/regex/v4/regex_raw_buffer.hpp:124: undefined 
+reference to `boost::re_detail::raw_storage::resize(unsigned long)'
+collect2: ld returned 1 exit status
+---cut---
+It seems that the linker does not find my boost libraries, while the 
+path /usr/include, corresponding to the BOOST global is correct. The 
+version of boost is 1.33.1. The hardware is dual Opteron.
+I am on a SuSE 10.1 where the compiler is gcc4.1 and anything more or 
+less  related to boost is installed. On the same box, the compilation 
+and linking of mrs2 completes gracefully.
+Did anyone on the list (except Maarten, obviously...) succeed in 
+installing mrs3 ? If so, on which platform ?
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000157.html">[Mrs-user] version 3
+</A></li>
+	<LI>Next message: <A HREF="000159.html">[Mrs-user] mrs3 compilation...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#158">[ date ]</a>
+              <a href="thread.html#158">[ thread ]</a>
+              <a href="subject.html#158">[ subject ]</a>
+              <a href="author.html#158">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

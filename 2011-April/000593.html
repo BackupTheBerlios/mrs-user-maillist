@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] How to use MRS as Database for EMBOSS
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20How%20to%20use%20MRS%20as%20Database%20for%20EMBOSS&In-Reply-To=%3C4DB00086.4030707%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000592.html">
+   <LINK REL="Next"  HREF="000594.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] How to use MRS as Database for EMBOSS</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20How%20to%20use%20MRS%20as%20Database%20for%20EMBOSS&In-Reply-To=%3C4DB00086.4030707%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] How to use MRS as Database for EMBOSS">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Thu Apr 21 12:01:42 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000592.html">[Mrs-user] How to use MRS as Database for EMBOSS
+</A></li>
+        <LI>Next message: <A HREF="000594.html">[Mrs-user] How to use MRS as Database for EMBOSS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#593">[ date ]</a>
+              <a href="thread.html#593">[ thread ]</a>
+              <a href="subject.html#593">[ subject ]</a>
+              <a href="author.html#593">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 20-04-11 15:08, Peter Rice schreef:
+
+&gt;<i> (Yes, it was a year ago, but I'm revisiting an old thread!)
+</I>
+:<i>-)
+</I>
+&gt;<i> We are rewriting our database access methods in EMBOSS, and will switch
+</I>&gt;<i> to using the REST style call.
+</I>&gt;<i>
+</I>&gt;<i> Where can I find a guide to building the URLs?
+</I>
+REST calls in mrs follow the same syntax as SOAP calls. Perhaps you 
+should try to have a look at the WSDL for mrs, It may look intimidating 
+but it's not hard to figure out what's in there.
+
+If you look at the Find command e.g., you'll see in the WSDL that it 
+takes seven parameters, one of which is an array, the others are single 
+parameters. You the construct a URL that starts with:
+
+<A HREF="http://mrs.cmbi.ru.nl/mrsws/search/rest/">http://mrs.cmbi.ru.nl/mrsws/search/rest/</A>
+
+Then you add the function you want to call, e.g. GetEntry:
+
+<A HREF="http://mrs.cmbi.ru.nl/mrsws/search/rest/GetEntry/">http://mrs.cmbi.ru.nl/mrsws/search/rest/GetEntry/</A>
+
+And then the parameters, since they are name, order is not important:
+
+<A HREF="http://mrs.cmbi.ru.nl/mrsws/search/rest/GetEntry/db/sprot/id/104k_thepa">http://mrs.cmbi.ru.nl/mrsws/search/rest/GetEntry/db/sprot/id/104k_thepa</A>
+
+And that's it.
+
+For enumerations (e.g. Format type) you can find the accepted values in 
+the WSDL.
+
+Unfortunately, this rest call interface does not support nested objects, 
+so using FindBoolean is not an option I'm afraid since you'll have to 
+use SOAP calls for that. That's too bad, because FindBoolean allows you 
+to construct very efficient queries very easily.
+
+Suppose you would like to do SOAP, you could create a SOAP enveloped 
+message from your scripts and POST it to the MRS server. That way you 
+don't need a full SOAP library to do simple SOAP calls.
+
+Let me know if you would like to see some examples of this technique.
+
+-maarten
+
+
+
+&gt;<i> EMBOSS 6.4 will support queries in addition to simple retrieval by ID if
+</I>&gt;<i> we can define search fields.
+</I>&gt;<i>
+</I>&gt;<i> Any tips on how to do that (e.g. for queries that may return large
+</I>&gt;<i> numbers of entries)?
+</I>&gt;<i>
+</I>&gt;<i> Also, can the REST queries combine search fields (another new EMBOSS
+</I>&gt;<i> capability)? Or should we try SOAP for that?
+</I>&gt;<i>
+</I>&gt;<i> regards,
+</I>&gt;<i>
+</I>&gt;<i> Peter Rice
+</I>&gt;<i> EMBOSS Team
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000592.html">[Mrs-user] How to use MRS as Database for EMBOSS
+</A></li>
+	<LI>Next message: <A HREF="000594.html">[Mrs-user] How to use MRS as Database for EMBOSS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#593">[ date ]</a>
+              <a href="thread.html#593">[ thread ]</a>
+              <a href="subject.html#593">[ subject ]</a>
+              <a href="author.html#593">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

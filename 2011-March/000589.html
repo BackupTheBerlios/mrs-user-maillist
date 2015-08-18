@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] mrs-5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs-5&In-Reply-To=%3C4D81ED39.1020704%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000588.html">
+   <LINK REL="Next"  HREF="000590.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] mrs-5</H1>
+    <B>Georgios Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs-5&In-Reply-To=%3C4D81ED39.1020704%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] mrs-5">georgios at biotek.uio.no
+       </A><BR>
+    <I>Thu Mar 17 12:15:05 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000588.html">[Mrs-user] mrs-5
+</A></li>
+        <LI>Next message: <A HREF="000590.html">[Mrs-user] mrs-5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#589">[ date ]</a>
+              <a href="thread.html#589">[ thread ]</a>
+              <a href="subject.html#589">[ subject ]</a>
+              <a href="author.html#589">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 03/17/2011 12:00 PM, Maarten L. Hekkelman wrote:
+&gt;<i> Op 15-03-11 14:38, Maarten L. Hekkelman schreef:
+</I>&gt;<i>
+</I>&gt;&gt;<i> The code is not completely stable yet.
+</I>&gt;<i>
+</I>&gt;<i> I found out that an update I made to mrs since the release of version 
+</I>&gt;<i> 4 may cause crashes when doing a simple query. This only happens if 
+</I>&gt;<i> you have a joined upgrade databank (like EMBL) and the update of the 
+</I>&gt;<i> joined part of this databank went wrong.... Lots of if's there.
+</I>&gt;<i>
+</I>&gt;<i> Anyway, if you experience random crashes right now (since the latest 
+</I>&gt;<i> embl release update) and you have files in your mrs data directory 
+</I>&gt;<i> whose name ends in a UUID, you should remove these files and rebuild 
+</I>&gt;<i> them.
+</I>&gt;<i>
+</I>&gt;<i> -maarten
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>
+</I>
+Thanks Marten!
+
+However, I do experience crashes on other DBs on your servers. For 
+example this one:
+
+<A HREF="http://mrs.cmbi.ru.nl/mrs-5/entry?db=sprot&amp;id=fiba_human">http://mrs.cmbi.ru.nl/mrs-5/entry?db=sprot&amp;id=fiba_human</A> 
+&lt;<A HREF="http://mrs.cmbi.ru.nl/mrs-5/entry?db=sprot&amp;id=fiba_human">http://mrs.cmbi.ru.nl/mrs-5/entry?db=sprot&amp;id=fiba_human</A>&gt;
+
+Looks like the logic does not return an XML well formed document
+
+Error parsing entry: Document not well-formed: invalid entity found in content, missing semicolon?
+
+&lt;div class=&quot;entry&quot; xmlns:mrs=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrs-web/ml">http://mrs.cmbi.ru.nl/mrs-web/ml</A>&quot;&gt;&lt;script type=&quot;text/javascript&quot;&gt;
+//&lt;![CDATA[
+function getSeqSegmentsForID(id)
+{
+	var items = new Array();
+
+	if (id == '33') {
+		items[0] = document.getElementById('fs_89');
+	}
+	else if (id == '32') {
+		items[0] = document.getElementById('fs_87');
+	}
+	else if (id == '63') {
+		items[0] = document.getElementById('fs_34');
+		items[1] = document.getElementById('fs_35');
+		items[2] = document.getElementById('fs_36');
+	}
+......
+
+
+	else if (id == '21') {
+
+
+
+-- 
+-- 
+George Magklaras
+Senior Systems Engineer/IT Manager
+Biotek Center, University of Oslo
+EMBnet TMPC Chair
+
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+Tel: +47 22840535
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20110317/9c6318fd/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20110317/9c6318fd/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000588.html">[Mrs-user] mrs-5
+</A></li>
+	<LI>Next message: <A HREF="000590.html">[Mrs-user] mrs-5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#589">[ date ]</a>
+              <a href="thread.html#589">[ thread ]</a>
+              <a href="subject.html#589">[ subject ]</a>
+              <a href="author.html#589">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

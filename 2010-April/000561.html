@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] iterating over all entries
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20iterating%20over%20all%20entries&In-Reply-To=%3Cu2x4d93f07c1004070023x8cf7f592neb7eb3afb97c92f6%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000562.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] iterating over all entries</H1>
+    <B>Martin Senger</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20iterating%20over%20all%20entries&In-Reply-To=%3Cu2x4d93f07c1004070023x8cf7f592neb7eb3afb97c92f6%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] iterating over all entries">martin.senger at gmail.com
+       </A><BR>
+    <I>Wed Apr  7 09:23:17 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000562.html">[Mrs-user] iterating over all entries
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#561">[ date ]</a>
+              <a href="thread.html#561">[ thread ]</a>
+              <a href="subject.html#561">[ subject ]</a>
+              <a href="author.html#561">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I wonder what is the best way to iterate over all entries in a particular
+databank (when doing some data mining).
+
+Ideally, I would like to do it via the SOAP interface - the same way as the
+mrs-web application does it - but unfortunately, the SOAP interface does not
+keep any state - so every iteration seems to make a new search (at least I
+think so). Which takes time. Are there any plans to add this iterative
+approach to SOAP perhaps?
+
+What work fine and fast, is the MRS.pm plugin. This program reads the whole
+sprot (514212 documents) in about 30 seconds on my laptop:
+
+use MRS;
+my $db = new MRS::MDatabank ('sprot')
+    or die &quot;Could not open databank sprot\n&quot;;
+if (my $r = $db-&gt;Find (&quot;*&quot;)) {
+    while (my $id = $r-&gt;Next) {
+        my $doc = $db-&gt;Get ($id);
+    }
+}
+
+But the MRS.pm plugin can be used only on the same machine where the data
+are (am I right?).
+
+Thanks for your comments and suggestions about this issue.
+
+Cheers,
+Martin
+
+-- 
+Martin Senger
+email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+skype: martinsenger
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20100407/b753af0e/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20100407/b753af0e/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000562.html">[Mrs-user] iterating over all entries
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#561">[ date ]</a>
+              <a href="thread.html#561">[ thread ]</a>
+              <a href="subject.html#561">[ subject ]</a>
+              <a href="author.html#561">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

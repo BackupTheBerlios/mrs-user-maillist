@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Mrs mrsws web services data dir
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs%20mrsws%20web%20services%20data%20dir&In-Reply-To=%3C2fab80e60802190515l3a292c0eu6531fbd91659c347%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000356.html">
+   <LINK REL="Next"  HREF="000358.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Mrs mrsws web services data dir</H1>
+    <B>Uli</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs%20mrsws%20web%20services%20data%20dir&In-Reply-To=%3C2fab80e60802190515l3a292c0eu6531fbd91659c347%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] Mrs mrsws web services data dir">ulihorn at gmail.com
+       </A><BR>
+    <I>Tue Feb 19 14:15:20 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000356.html">[Mrs-user] Doctor Listing
+</A></li>
+        <LI>Next message: <A HREF="000358.html">[Mrs-user] Mrs mrsws web services data dir
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#357">[ date ]</a>
+              <a href="thread.html#357">[ thread ]</a>
+              <a href="subject.html#357">[ subject ]</a>
+              <a href="author.html#357">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+
+I have been trying to change the data dir for the webservices, but it seems
+to default back to the original data directory MRS_DATA_DIR =
+/usr/local/data.  I have tried the following:
+
+1.
+./configure.pl --data-dir /mypath/mydatadir
+make clean
+make
+make install
+
+
+2. hard coded it in configure.pl on line 77:
+ my $data_dir =&quot;/mypath/mydatadir&quot;
+make clean
+make
+make install
+
+for 1 and 2 above it seems to make the correct changes to make.config
+
+3. in ws/regular/Sources/mrsws.cpp on line 50:
+define MRS_DATA_DIR &quot;/mypath/mydatadir&quot;
+commenting out the ifndef compiler directive
+
+I have deliberately removed the /usr/local/data directory and if I start
+mrsws from /usr/local/bin I get:
+Data directory /usr/local/data/mrs is not a valid directory
+
+
+I have made sure that this is the correct (latest compiled) version of mrsws
+
+Where do I need to change the data directory
+
+Many thanks
+Uli
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20080219/b1668b3f/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20080219/b1668b3f/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000356.html">[Mrs-user] Doctor Listing
+</A></li>
+	<LI>Next message: <A HREF="000358.html">[Mrs-user] Mrs mrsws web services data dir
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#357">[ date ]</a>
+              <a href="thread.html#357">[ thread ]</a>
+              <a href="subject.html#357">[ subject ]</a>
+              <a href="author.html#357">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] errors during installation from the sources (kubuntu	Karmic 9.10, MacBookPro)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20errors%20during%20installation%20from%20the%20sources%20%28kubuntu%0A%09Karmic%209.10%2C%20MacBookPro%29&In-Reply-To=%3C4d93f07c1001302322k9d21adbsf238c9992d921773%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000485.html">
+   <LINK REL="Next"  HREF="000488.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] errors during installation from the sources (kubuntu	Karmic 9.10, MacBookPro)</H1>
+    <B>Martin Senger</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20errors%20during%20installation%20from%20the%20sources%20%28kubuntu%0A%09Karmic%209.10%2C%20MacBookPro%29&In-Reply-To=%3C4d93f07c1001302322k9d21adbsf238c9992d921773%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] errors during installation from the sources (kubuntu	Karmic 9.10, MacBookPro)">martin.senger at gmail.com
+       </A><BR>
+    <I>Sun Jan 31 08:22:14 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000485.html">[Mrs-user] Installation question
+</A></li>
+        <LI>Next message: <A HREF="000488.html">[Mrs-user] errors during installation from the sources (kubuntu Karmic 9.10, MacBookPro)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#487">[ date ]</a>
+              <a href="thread.html#487">[ thread ]</a>
+              <a href="subject.html#487">[ subject ]</a>
+              <a href="author.html#487">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I tried two ways - and unfortunately both failed. Very probably my fault; I
+would appreciate any help. Many thanks.
+
+1) Installing from the sources (from tgz, not from src.rpm). I have
+installed all needed packages first. Perhaps some of them are of the newer
+version than expected by mrs? Let's see what are the error messages.
+
+a) The 'perl configure.pl' shows all OKs. I was using this command-line:
+
+perl configure.pl --prefix=/home/senger/Software/mrs
+--data-dir=/home/senger/mrs-data
+--parser-script-dir=/home/senger/Software/mrs-scripts
+--update-script-dir=/home/senger/Software/mrs-scripts
+--boost=/usr/include/boost
+
+b) Then the 'make' (after the famous 'Obj.NoDebug' warnings) fails with an
+error:
+
+...
+Makefile:197: Obj.NoDebug/CNCBI.d: No such file or
+directory
+
+=&gt;
+CBitStream.o
+
+In file included from
+./uuid/boost/uuid/uuid.hpp:41,
+
+                 from
+./Sources/HStream.h:48,
+
+                 from
+./Sources/CBitStream.cpp:53:
+
+./uuid/boost/uuid/seed_rng.hpp: In member function &#8216;void
+boost::uuids::detail::seed_rng::sha1_random_digest_()&#8217;:
+
+./uuid/boost/uuid/seed_rng.hpp:132: error: &#8216;FILE&#8217; is not a member of
+&#8216;std&#8217;
+
+./uuid/boost/uuid/seed_rng.hpp:132: error: &#8216;f&#8217; was not declared in this
+scope
+
+./uuid/boost/uuid/seed_rng.hpp:132: error: &#8216;fopen&#8217; is not a member of
+&#8216;std&#8217;
+
+./uuid/boost/uuid/seed_rng.hpp:134: error: &#8216;fread&#8217; is not a member of
+&#8216;std&#8217;
+
+./uuid/boost/uuid/seed_rng.hpp:135: error: &#8216;fclose&#8217; is not a member of
+&#8216;std&#8217;
+
+./Sources/MRS.h: At global
+scope:
+
+./Sources/MRS.h:89: warning: &#8216;kInvalidDocID&#8217; defined but not
+used
+
+make[1]: *** [Obj.NoDebug/CBitStream.o] Error
+1
+
+make[1]: Leaving directory
+`/home/senger/Software/mrs-4.1.1/lib'
+
+make: *** [all] Error
+2
+
+
+2) As a second try, I installed in from the mrs-4.1.1-1.x86_64.rpm. First, I
+have converted to the .deb package (alien -k mrs-4.1.1-1.x86_64.rpm) and
+install by dpkg. No problem, so far. But this failed (I run it as a root
+which I was not too happy but I can fix the file permissions later, I
+guess):
+
+cd /usr/local/share/mrs/update_scripts/
+make enzyme
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">root at ShereKhan2</A>:/usr/local/share/mrs/update_scripts# make
+enzyme
+
+/usr/local/bin//mrs-run-and-log -r 5 -l
+/usr/local/data/status/enzyme.fetch_log make DATABANK=enzyme
+fetch
+
+make:
+success
+
+/usr/local/bin//mrs-run-and-log -r 5 -l
+/usr/local/data/status/enzyme.mrs_log make DATABANK=enzyme
+mrs
+
+make:
+failed
+
+make: *** [enzyme] Error 2
+
+When I checked the log files, I saw that the fetch finished, indeed,
+successfully (file enzyme.fetch_log):
+
+make[1]: Entering directory `/usr/local/share/mrs/update_scripts'
+/usr/bin/rsync -ltpvd --delete  <A HREF="rsync://">rsync://</A>
+bio-mirror.net/biomirror/enzyme/release_with_updates//usr/local/data/raw/enzyme/
+||<i> \
+</I>        (echo enzyme &gt;&gt; /usr/local/data/status/failed_dbs.txt; false)
+receiving file list ... done
+./
+
+sent 113 bytes  received 152 bytes  48.18 bytes/sec
+total size is 1287221  speedup is 4857.44
+touch /usr/local/data/status/enzyme.fetch_done
+touch /usr/local/data/flags/enzyme.fetch_done
+make[1]: Leaving directory `/usr/local/share/mrs/update_scripts'
+
+But the second part, enzyme, failed (file enzyme.mrs_log.1):
+
+make[1]: Entering directory `/usr/local/share/mrs/update_scripts'
+/usr/local/bin/mrs-build -d enzyme -a4 -v    || \
+        (echo enzyme &gt;&gt; /usr/local/data/status/failed_dbs.txt; false)
+Configuration file /usr/local/etc/mrs-config.xml does not exist, trying to
+continue anyway...
+Segmentation fault
+make[1]: *** [/usr/local/data/flags/enzyme.mrs_done] Error 1
+make[1]: Leaving directory `/usr/local/share/mrs/update_scripts'
+
+So I looked in the /usr/local/etc/ and found that there is only a file
+mrs-config.xml.dist. I made its copy under the name mrs-config.xml and run
+'make enzyme' again. But I got again segmentation fault:
+
+make[1]: Entering directory `/usr/local/share/mrs/update_scripts'
+/usr/local/bin/mrs-build -d enzyme -a4 -v    || \
+        (echo enzyme &gt;&gt; /usr/local/data/status/failed_dbs.txt; false)
+Segmentation fault
+make[1]: *** [/usr/local/data/flags/enzyme.mrs_done] Error 1
+make[1]: Leaving directory `/usr/local/share/mrs/update_scripts'
+
+I wonder if you can help me to go on...
+
+Thanks,
+Martin
+
+-- 
+Martin Senger
+email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+skype: martinsenger
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20100131/35f5c955/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20100131/35f5c955/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000485.html">[Mrs-user] Installation question
+</A></li>
+	<LI>Next message: <A HREF="000488.html">[Mrs-user] errors during installation from the sources (kubuntu Karmic 9.10, MacBookPro)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#487">[ date ]</a>
+              <a href="thread.html#487">[ thread ]</a>
+              <a href="subject.html#487">[ subject ]</a>
+              <a href="author.html#487">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS3 perl process segfaults during the merge of embl_release and embl_updates --&gt; embl 92
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS3%20perl%20process%20segfaults%20during%20the%20merge%20of%0A%20embl_release%20and%20embl_updates%20--%3E%20embl%2092&In-Reply-To=%3C47026330.2090509%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000277.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS3 perl process segfaults during the merge of embl_release and embl_updates --&gt; embl 92</H1>
+    <B>George Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS3%20perl%20process%20segfaults%20during%20the%20merge%20of%0A%20embl_release%20and%20embl_updates%20--%3E%20embl%2092&In-Reply-To=%3C47026330.2090509%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] MRS3 perl process segfaults during the merge of embl_release and embl_updates --&gt; embl 92">georgios at biotek.uio.no
+       </A><BR>
+    <I>Tue Oct  2 17:26:40 CEST 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000277.html">[Mrs-user] MRS3 perl process segfaults during the merge of	embl_release and embl_updates --&gt; embl 92
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#276">[ date ]</a>
+              <a href="thread.html#276">[ thread ]</a>
+              <a href="subject.html#276">[ subject ]</a>
+              <a href="author.html#276">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The problem:
+After a smooth and well functioning MRS installation, the building of 
+the new EMBL release 92 brakes at the merge stage. (The previous release 
+was built properly). perl appears to segfault breaking the merge of 
+embl_release and embl_updates databanks to produce the embl databank. 
+The process stops during the merge, quoting from dmesg:
+perl[29962]: segfault at 00002aac01c64340 rip 00002aaaaad5e830 rsp 
+00007fff535a4da0 error 4
+
+'embl_release' and 'embl_updates' are built properly but the fault 
+occurs at the merge stage. I assume this is the case because I can 
+clearly query the earlier two:
+
+dias.uio.no# ./mrs.pl info -d 
+/biotek/dias/storage/databases/mrsdata/mrs/embl_release.cmp | more
+File: /biotek/dias/storage/databases/mrsdata/mrs/embl_release.cmp
+
+Header:
+   signature:     MRSd
+   uuid:          df04c056-6f7b-11dc-af73-4718bed890c8
+   name:          EMBL Release
+   version:       Release 92 September 2007
+   url:           <A HREF="http://www.ebi.ac.uk/embl/index.html">http://www.ebi.ac.uk/embl/index.html</A>
+   script:        embl
+   section:       nucleotide
+   size:          120
+   entries:       105696243
+   data offset:   120
+   data size:     223650090889
+   raw data size: 534945665290
+   index offset:  223650091009
+   index size:    22678793161
+   info offset:   247736713545
+   info size:     622
+   id offset:     246328884170
+   id size:       1394617344
+   blast offset:  0
+   blast size:    0
+   omitvec offset:247723501514
+
+...
+
+File: /biotek/dias/storage/databases/mrsdata/mrs/embl_updates.cmp
+
+Header:
+   signature:     MRSd
+   uuid:          822b4b30-70d3-11dc-8926-359e329c7fb9
+   name:          EMBL Updates
+   version:       Updates from Release 93
+   url:           <A HREF="http://www.ebi.ac.uk/embl/index.html">http://www.ebi.ac.uk/embl/index.html</A>
+   script:        embl
+   section:       nucleotide
+   size:          120
+   entries:       1700447
+   data offset:   120
+   data size:     3404801928
+   raw data size: 8287179092
+   index offset:  3404802048
+   index size:    329589466
+   info offset:   3755142438
+   info size:     218
+   id offset:     3734391514
+   id size:       20538368
+   blast offset:  0
+   blast size:    0
+   omitvec offset:3754929882
+
+,whereas the picture at the mrsdata/mrs subdir clearly shows unfinished 
+business with regards to the embl.cmp entries:
+
+-rw------- 1 root root 4.1G Oct  2 15:00 embl.cmp.indexbits.XXE6dQ5u
+-rw-r--r-- 1 root root 4.5G Oct  2 15:00 embl.cmp_merge_indx
+-rw------- 1 root root    0 Oct  2 12:43 embl.cmp.fulltext_indx.XXyjbOvn
+-rw------- 1 root root    0 Oct  2 12:43 embl.cmp.fulltext_indx.XXKyG3dg
+-rw------- 1 root root    0 Oct  2 12:43 embl.cmp.offsets.XXwp2sGi
+-rw-r--r-- 1 root root 3.5G Oct  2 12:42 embl_updates.cmp
+-rw------- 1 root root 822M Oct  2 12:37 embl_updates-4.cmp
+-rw------- 1 root root 927M Oct  2 12:24 embl_updates-3.cmp
+-rw------- 1 root root 994M Oct  2 12:09 embl_updates-2.cmp
+-rw------- 1 root root 879M Oct  2 11:54 embl_updates-1.cmp
+-rw-r--r-- 1 root root 6.8M Oct  1 00:16 embl_release.dict
+-rw-r--r-- 1 root root 231G Sep 30 23:19 embl_release.cmp
+
+The box has plenty of space on the partition:
+dias.uio.no# df -h ./
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/mapper/diasstorage-LVdatabases
+                       3.0T  1.7T  1.2T  60% /biotek/dias/storage/databases
+
+
+and the shell has no ulimits that could stop the perl MRS process. RAM 
+is at 8 Gigs with a swap at 16 Gigs, so 24 Gigs of Virtual memory, with 
+no signs of swap during and after the index process. Also other 
+processes on the server run out fine (I rule out a hardware or other OS 
+issue) and other databanks crunch fine.
+
+Has anyone faced this problem and could provide guidance on how to 
+troubleshoot further and/or solve it? What puzzles me is that EMBL 
+worked worked fine before and now the merging brakes:
+
+
+
+Version info:
+OS: RedHat Enterprise Linux Server version 5
+Architecture and kernel:
+Linux dias.uio.no 2.6.18-8.1.14.el5xen #1 SMP Tue Sep 25 11:59:34 EDT 
+2007 x86_64 x86_64 x86_64 GNU/Linux
+gcc: gcc version 4.1.1 20070105 (Red Hat 4.1.1-52)
+
+Perl:v5.8.8 built for x86_64-linux-thread-multi
+MRS:3.0.1b,
+Apache Tomcat: 5.5.23,
+libxml2.x86_64: 2.6.26-2.1.2
+expat.x86_64: 1.95.8-8.2.1
+boost.x86_64: 1.33.1-10.el5
+
+
+-- 
+--
+George Magklaras
+
+Senior Computer Systems Engineer/UNIX Systems Administrator
+EMBnet Technical Management Board
+The Biotechnology Centre of Oslo,
+University of Oslo
+<A HREF="http://www.biotek.uio.no/">http://www.biotek.uio.no/</A>
+
+EMBnet Norway:	<A HREF="http://www.no.embnet.org/">http://www.no.embnet.org/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000277.html">[Mrs-user] MRS3 perl process segfaults during the merge of	embl_release and embl_updates --&gt; embl 92
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#276">[ date ]</a>
+              <a href="thread.html#276">[ thread ]</a>
+              <a href="subject.html#276">[ subject ]</a>
+              <a href="author.html#276">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

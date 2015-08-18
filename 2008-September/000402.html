@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] continuing a crashed indexing run
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20continuing%20a%20crashed%20indexing%20run&In-Reply-To=%3C48BD4DF8.3020309%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000400.html">
+   <LINK REL="Next"  HREF="000405.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] continuing a crashed indexing run</H1>
+    <B>George Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20continuing%20a%20crashed%20indexing%20run&In-Reply-To=%3C48BD4DF8.3020309%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] continuing a crashed indexing run">georgios at biotek.uio.no
+       </A><BR>
+    <I>Tue Sep  2 16:30:16 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000400.html">[Mrs-user] continuing a crashed indexing run
+</A></li>
+        <LI>Next message: <A HREF="000405.html">[Mrs-user] EMBL indexing error and gcc 4.3.2 problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#402">[ date ]</a>
+              <a href="thread.html#402">[ thread ]</a>
+              <a href="subject.html#402">[ subject ]</a>
+              <a href="author.html#402">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have tried many times to preserve the intermediate -n.cmp files, but 
+if the problem was memory starvation (likely to appear in the merging 
+stage), the crash would occur again (I had then a server with 8 Gigs 
+RAM). Which is why upgrading the RAM was the only way, especially if the 
+same box acts as a Tomcat frontend and as the index backend.
+
+GM
+
+
+Guy Bottu wrote:
+&gt;&gt;<i> PS: I guess no intermediate files are written which
+</I>&gt;&gt;<i> could be picked up for the next phase/rerun?
+</I>&gt;&gt;<i> How about a memory snapshot after certain well-defined
+</I>&gt;&gt;<i> steps?
+</I>&gt;<i> 
+</I>&gt;<i> 	Dear Koen,
+</I>&gt;<i> 
+</I>&gt;<i> Well, for what it is worth (we are still with MRS 3), at the BEN site we have
+</I>&gt;<i> had several times the same problem as you and we did the following :
+</I>&gt;<i> in /usr/local/share/mrs/update_scripts/make.post outcomment the line
+</I>&gt;<i> rm -rf ${PARTS:%=$(MRSDIR)$(@F:.cmp=)-%.cmp}
+</I>&gt;<i> so that the intermediate partial indexes ar preserved :
+</I>&gt;<i> -rw------- 1 root root  10148494152 Jun 14 16:41 embl_release-1.cmp
+</I>&gt;<i> -rw------- 1 root root   9243439972 Jun 14 16:47 embl_release-2.cmp
+</I>&gt;<i> ...
+</I>&gt;<i> -rw------- 1 root root  10454405416 Jun 16 00:11 embl_release-32.cmp
+</I>&gt;<i> If just the merging step failed, it is easy to re-do it with the command
+</I>&gt;<i> /usr/bin/perl /usr/local/bin/mrs.pl merge -d embl_release -P 32 -s embl
+</I>&gt;<i> 
+</I>&gt;<i> 	Regards,
+</I>&gt;<i> 	Guy Bottu,
+</I>&gt;<i> 	BEN
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i> 
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000400.html">[Mrs-user] continuing a crashed indexing run
+</A></li>
+	<LI>Next message: <A HREF="000405.html">[Mrs-user] EMBL indexing error and gcc 4.3.2 problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#402">[ date ]</a>
+              <a href="thread.html#402">[ thread ]</a>
+              <a href="subject.html#402">[ subject ]</a>
+              <a href="author.html#402">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

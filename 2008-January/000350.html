@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Questions and report after installation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20installation&In-Reply-To=%3C47836ED4.4080802%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000349.html">
+   <LINK REL="Next"  HREF="000351.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Questions and report after installation</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20installation&In-Reply-To=%3C47836ED4.4080802%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Questions and report after installation">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue Jan  8 13:38:44 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000349.html">[Mrs-user] Questions and report after installation
+</A></li>
+        <LI>Next message: <A HREF="000351.html">[Mrs-user] Questions and report after installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#350">[ date ]</a>
+              <a href="thread.html#350">[ thread ]</a>
+              <a href="subject.html#350">[ subject ]</a>
+              <a href="author.html#350">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alexandre Kravchenko schreef:
+
+&gt;<i> Another problem - database size ?
+</I>&gt;<i> When I start
+</I>&gt;<i> make -r -f embl_release.make mrs blast &amp;
+</I>&gt;<i> I got incorrect embl_release.cmp (too small ~ 232Gb).
+</I>&gt;<i> 
+</I>&gt;<i> mrs.pl info -d /data/mrs/embl_release.cmp
+</I>&gt;<i> show
+</I>&gt;<i> Invalid mrs data file.
+</I>&gt;<i> 
+</I>&gt;<i> -r-------- 1 root root 15608268672 2008-01-06 17:46 embl_release-10.cmp
+</I>&gt;<i> -r-------- 1 root root 14516531368 2008-01-06 21:44 embl_release-11.cmp
+</I>&gt;<i> -r-------- 1 root root 17537458008 2008-01-07 02:40 embl_release-12.cmp
+</I>&gt;<i> -r-------- 1 root root 16627879008 2008-01-07 21:14 embl_release-13.cmp
+</I>&gt;<i> -r-------- 1 root root 15833130704 2008-01-08 01:45 embl_release-14.cmp
+</I>&gt;<i> -r-------- 1 root root 17824284196 2008-01-08 06:19 embl_release-15.cmp
+</I>&gt;<i> -r-------- 1 root root 16144630828 2008-01-08 10:26 embl_release-16.cmp
+</I>&gt;<i> -r-------- 1 root root 17713359228 2008-01-04 23:56 embl_release-1.cmp
+</I>&gt;<i> -r-------- 1 root root 14488001488 2008-01-05 04:25 embl_release-2.cmp
+</I>&gt;<i> -r-------- 1 root root 15493107152 2008-01-05 08:59 embl_release-3.cmp
+</I>&gt;<i> -r-------- 1 root root 18057527364 2008-01-05 14:05 embl_release-4.cmp
+</I>&gt;<i> -r-------- 1 root root 14440505392 2008-01-05 18:15 embl_release-5.cmp
+</I>&gt;<i> -r-------- 1 root root 15541402364 2008-01-05 23:00 embl_release-6.cmp
+</I>&gt;<i> -r-------- 1 root root 15841231584 2008-01-06 03:24 embl_release-7.cmp
+</I>&gt;<i> -r-------- 1 root root 13462294188 2008-01-06 07:21 embl_release-8.cmp
+</I>&gt;<i> -r-------- 1 root root 18382113908 2008-01-06 13:23 embl_release-9.cmp
+</I>
+- try running `mrs.pl info` on each of the parts to see if they are correct.
+
+- Did the command you issued produce any error information?
+
+- What is the exact version of MRS you're using? There was a bug in the
+latest official release that might crash MRS when doing a merge on very
+large files. The version rc1 (available at
+<A HREF="ftp://ftp.cmbi.ru.nl/pub/software/mrs/mrs-3.1-rc1.tbz">ftp://ftp.cmbi.ru.nl/pub/software/mrs/mrs-3.1-rc1.tbz</A>) fixes this
+problem. You can also use the code from the subversion repository at
+Berlios, you should use the trunk version.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000349.html">[Mrs-user] Questions and report after installation
+</A></li>
+	<LI>Next message: <A HREF="000351.html">[Mrs-user] Questions and report after installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#350">[ date ]</a>
+              <a href="thread.html#350">[ thread ]</a>
+              <a href="subject.html#350">[ subject ]</a>
+              <a href="author.html#350">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

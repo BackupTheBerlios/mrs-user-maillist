@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] make enzyme problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20make%20enzyme%20problem&In-Reply-To=%3C47456932.60501%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000313.html">
+   <LINK REL="Next"  HREF="000318.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] make enzyme problem</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20make%20enzyme%20problem&In-Reply-To=%3C47456932.60501%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] make enzyme problem">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Thu Nov 22 12:34:10 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000313.html">[Mrs-user] make enzyme problem
+</A></li>
+        <LI>Next message: <A HREF="000318.html">[Mrs-user] update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#314">[ date ]</a>
+              <a href="thread.html#314">[ thread ]</a>
+              <a href="subject.html#314">[ subject ]</a>
+              <a href="author.html#314">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Uli schreef:
+
+&gt;<i> I managed to get svn to replicate the install files for mrs 3.0.1 :)
+</I>
+OK :-)
+
+&gt;<i> I then did the  usual:
+</I>&gt;<i> sudo perl install.pl
+</I>
+So you're not using the version from trunk since I removed install.pl
+recently. However, this should not be a problem.
+
+&gt;<i> I get the following error:
+</I>&gt;<i> Use of uninitialized value in concatenation (.) or string at install.pl
+</I>&gt;<i> line 231, &lt;&gt; line 7.
+</I>&gt;<i> 
+</I>&gt;<i> I don't know perl but in the fragment below if $d iterates through the
+</I>&gt;<i> list starting with 'undef' won't it always come up with an error in line
+</I>&gt;<i> 231 since $d would be undefined for the first iteration?  Anyway I get
+</I>&gt;<i> an undefined error here although all the boost libraries are loaded.
+</I>&gt;<i> 
+</I>&gt;<i> install.pl fragment starting at 225:
+</I>&gt;<i> 
+</I>&gt;<i> foreach my $d ( undef, '/usr/lib', '/usr/local/lib', '/opt/local/lib',
+</I>&gt;<i>     '/usr/pkg/lib', '/usr/lib64' )
+</I>&gt;<i> {
+</I>&gt;<i>     if (defined $d) {
+</I>&gt;<i>         next unless -e &quot;$d/libboost_regex.a&quot; or -e
+</I>&gt;<i> &quot;$d/libboost_regex-gcc.a&quot;;
+</I>&gt;<i>     }
+</I>&gt;<i>     $boost_lib_suffix = &quot;-gcc&quot; if -e &quot;$d/libboost_regex-gcc.a&quot; and not
+</I>&gt;<i> -e &quot;$d/libboost_regex.a&quot;;
+</I>
+the uninitialized warning is indeed caused by the undefined d. but it is
+a warning and not an error.
+
+
+&gt;<i> sudo make
+</I>&gt;<i> sudo make install
+</I>
+There were no error here?
+
+&gt;<i> and then:
+</I>
+... snip ...
+
+&gt;<i> *Log file output:*
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">uli at uhorn-nb1</A>:/usr/local/data/status$ more enzyme.make_log
+</I>&gt;<i> make[3]: Entering directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;<i> make[3]: Nothing to be done for `data'.
+</I>&gt;<i> /usr/bin/perl /usr/local/bin/mrs.pl create -d enzyme -b 5 -w stop.txt
+</I>&gt;<i> Could not open stop.txt
+</I>&gt;<i> Can't locate auto/MRS/MDatabank/StoreMetaDa.al in @INC (@INC contains:
+</I>&gt;<i> /etc/perl /usr/local/lib/perl/5.8.8 /usr/local/share/perl/5.8.8
+</I>&gt;<i> /usr/lib/perl5 /usr/share/perl5 /usr/lib/perl/5.8 /usr/share/perl/5.8
+</I>&gt;<i> /usr/local/lib/site_perl . /usr/local/share/mrs/parser_scripts/) at
+</I>&gt;<i> /usr/local/share/mrs/parser_scripts//enzyme.pm line 100
+</I>&gt;<i> make[3]: *** [/usr/local/data/mrs/enzyme.cmp] Error 9
+</I>&gt;<i> make[3]: Leaving directory `/usr/local/share/mrs/update_scripts'
+</I>
+This indicates that MRS.so was not installed properly.
+
+You might want to go into the plugin directory and run a 'make install'
+there. It should finish without any error. Next you can test whether the
+plugin was installed properly by running:
+
+$ perl -MMRS
+
+if that fails, you don't have MRS installed properly.
+
+If it does work, then there must be a mismatch between the MRS.pm script
+and the plugin. You might want to retrieve the code from the trunk:
+
+to do so, cd into the mrs directory and run:
+
+$ svn switch <A HREF="https://svn.berlios.de/svnroot/repos/mrs/trunk">https://svn.berlios.de/svnroot/repos/mrs/trunk</A>
+
+and try to build the code again.
+
+hope this helps?
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000313.html">[Mrs-user] make enzyme problem
+</A></li>
+	<LI>Next message: <A HREF="000318.html">[Mrs-user] update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#314">[ date ]</a>
+              <a href="thread.html#314">[ thread ]</a>
+              <a href="subject.html#314">[ subject ]</a>
+              <a href="author.html#314">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

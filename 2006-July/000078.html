@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Blast problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Blast%20problem&In-Reply-To=%3CBCF4B3B2-A150-4AAA-AD9F-A294E5EE9754%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000076.html">
+   <LINK REL="Next"  HREF="000084.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Blast problem</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Blast%20problem&In-Reply-To=%3CBCF4B3B2-A150-4AAA-AD9F-A294E5EE9754%40hekkelman.com%3E"
+       TITLE="[Mrs-user] Blast problem">maarten at hekkelman.com
+       </A><BR>
+    <I>Thu Jul 27 10:29:02 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000076.html">[Mrs-user] Blast problem
+</A></li>
+        <LI>Next message: <A HREF="000084.html">[Mrs-user] Blast problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#78">[ date ]</a>
+              <a href="thread.html#78">[ thread ]</a>
+              <a href="subject.html#78">[ subject ]</a>
+              <a href="author.html#78">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Andrea,
+
+&gt;<i> I'm sorry to come up with all those little problems, but I guess  
+</I>&gt;<i> this is
+</I>&gt;<i> just what happens once software tested in one place is let loose on  
+</I>&gt;<i> the
+</I>&gt;<i> world with all its different setups...
+</I>
+No, no! I really appreciate all the feedback I can get. That's the  
+only way to improve my software.
+
+&gt;<i> This time, I tried to test blast.
+</I>
+There needs to be a separate manual for this, it is not trivial to  
+set up.
+
+&gt;<i> Since the job was never terminated
+</I>&gt;<i> (according to the web interface) I had a look at the temp-directory
+</I>&gt;<i> where it was supposed to run.
+</I>&gt;<i> The first thing I noticed is that there wasn't any output at all. So I
+</I>&gt;<i> guess it wasn't really started either. Or shouldn't the output be  
+</I>&gt;<i> found
+</I>&gt;<i> in the temp directory? If it should, do you have any hint how to trace
+</I>&gt;<i> why the script wasn't started?
+</I>
+In the mrs-submit.cgi script you can find some lines that try to  
+start a job in a queueing mechanism. Some of these are commented out,  
+the one currently active uses the 'batch' command of your Linux  
+system. But for batch to work, you have to enable 'at'. There was a  
+posting on this list from Robert recently describing what he needed  
+to do in order to get at to work.
+
+To have a look at the current at queue there is a command called  
+'atq' and usually at runs every 5 minutes. That means your job might  
+wait until the next at run and that can take up to 5 minutes. You  
+have to config at to run in smaller intervals.
+
+&gt;<i> To find out more, I also tried to run the query_xxxxx.csh script  
+</I>&gt;<i> and its
+</I>&gt;<i> individual commands to find out what happens. And what I got was a  
+</I>&gt;<i> core:
+</I>
+The core you get is because mrs_blast tried to open your sprot.cmp  
+file but wasn't allowed to. Perhaps the permissions on sprot.cmp are  
+not correct? You might also make sure that mrs knows where to find  
+the mrs files. For this MRS uses the environmental variables  
+MRS_DATA_DIR which should contain the path to the MRS files.
+
+-maarten
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000076.html">[Mrs-user] Blast problem
+</A></li>
+	<LI>Next message: <A HREF="000084.html">[Mrs-user] Blast problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#78">[ date ]</a>
+              <a href="thread.html#78">[ thread ]</a>
+              <a href="subject.html#78">[ subject ]</a>
+              <a href="author.html#78">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

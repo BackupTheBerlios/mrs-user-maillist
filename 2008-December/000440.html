@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Brian's greeting,	plus questions on memory requirement and page layout
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Brian%27s%20greeting%2C%0A%09plus%20questions%20on%20memory%20requirement%20and%20page%20layout&In-Reply-To=%3Ctencent_0CACEFF36992C0A5659B44EC%40qq.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000439.html">
+   <LINK REL="Next"  HREF="000441.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Brian's greeting,	plus questions on memory requirement and page layout</H1>
+    <B>libo</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Brian%27s%20greeting%2C%0A%09plus%20questions%20on%20memory%20requirement%20and%20page%20layout&In-Reply-To=%3Ctencent_0CACEFF36992C0A5659B44EC%40qq.com%3E"
+       TITLE="[Mrs-user] Brian's greeting,	plus questions on memory requirement and page layout">brian_li at foxmail.com
+       </A><BR>
+    <I>Thu Dec 11 18:04:01 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000439.html">[Mrs-user] bug in MRS
+</A></li>
+        <LI>Next message: <A HREF="000441.html">[Mrs-user] Brian's greeting, plus questions on memory requirement and page layout
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#440">[ date ]</a>
+              <a href="thread.html#440">[ thread ]</a>
+              <a href="subject.html#440">[ subject ]</a>
+              <a href="author.html#440">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello, everyone! 
+ 
+ I have started to deploy MRS recently, as an aid for local research. Really appreciate this work after a little dip in, for the elaborate thoughts, clear structure, extensibility in it and its being quite friendly for newbies like me.
+ 
+ I have run into a little trouble though.
+ 
+ (1) Generally I use 'make databank' in update_scripts to build mrs files from raw. Sometimes I just use mrs-build as I have downloaded the raw files before. Everything goes well for small databanks. But when I build big databanks like refseq and trembl, I get errors. 
+ 
+ The error information for refseq build is &quot;Out of memory! Callback called exit&quot;, while it's a std::bad_alloc error for tremble build.
+ 
+ I assume the memory of my workstation is not enough, which is 2G. I want to know whether there is a solid memory requirement for MRS, 8G? 32G? Or more? And is there any chance to introduce more exchange between physical memory and disk so as to lower that requirement? 
+     
+ (2) I have tried the two mrs-web-4.*.wars in <A HREF="ftp://ftp.cmbi.ru.nl/pub/software/mrs/.">ftp://ftp.cmbi.ru.nl/pub/software/mrs/.</A>
+ 
+ For mrs-web-4.0, after deployment, the display of blast.do was a little weird. Different div with CSS class 'box' tend to overlap. I tried 4.1 and the blast.do page displayed well. 
+ 
+ At first I thought this happened because of CSS difference between 4.0 and 4.1, checked with '$diff', but found the CSS files hadn't changed. Then I '$diff' the blast.do files of 4.0 and 4.1 which I saved from the browser. Rather surprised, I found the '&lt;!DOCTYPE&gt;' seemed to be the cause.
+ 4.0: &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+ 4.1: &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;<A HREF="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</A>&quot;&gt;
+ I located the source of this line in mrs-web-4.*/pages/layout.jsp, and changed the 4.0 file according to the 4.1 file. Then the display of 4.0 blast.do turned ok.
+ 
+ Anyone knows how the doctype affected the page layout? Any introduced CSS tag unsupported for HTML 4.0  Transitional?  
+
+
+
+
+
+Any Help would be greatly appreciated! ^_^ 
+
+ 
+ 
+ 
+Brian
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20081212/135c5d58/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20081212/135c5d58/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000439.html">[Mrs-user] bug in MRS
+</A></li>
+	<LI>Next message: <A HREF="000441.html">[Mrs-user] Brian's greeting, plus questions on memory requirement and page layout
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#440">[ date ]</a>
+              <a href="thread.html#440">[ thread ]</a>
+              <a href="subject.html#440">[ subject ]</a>
+              <a href="author.html#440">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

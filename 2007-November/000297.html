@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS: Web Service
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%3A%20Web%20Service&In-Reply-To=%3C47319C73.6090901%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000296.html">
+   <LINK REL="Next"  HREF="000305.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS: Web Service</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%3A%20Web%20Service&In-Reply-To=%3C47319C73.6090901%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] MRS: Web Service">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Nov  7 12:07:31 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000296.html">[Mrs-user] MRS: Web Service
+</A></li>
+        <LI>Next message: <A HREF="000305.html">[Mrs-user] MRS: Web Service
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#297">[ date ]</a>
+              <a href="thread.html#297">[ thread ]</a>
+              <a href="subject.html#297">[ subject ]</a>
+              <a href="author.html#297">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Guy Bottu schreef:
+
+&gt;<i> I have difficulty in accessing the Web servives from the outside. I tried the 
+</I>&gt;<i> following Perl code :
+</I>&gt;<i> 
+</I>&gt;<i> $db = 'sprot'; $query = 'id:papa?_carpa';
+</I>&gt;<i> 
+</I>&gt;<i> $result = &amp;soapCall(SOAP::Data-&gt;name('ns:Find')-&gt;
+</I>&gt;<i>    attr({'xmlns:ns' =&gt; $ns_url}) =&gt; (
+</I>&gt;<i>        SOAP::Data-&gt;name('ns:db')-&gt;type('xsd:string' =&gt; $db),
+</I>&gt;<i>        SOAP::Data-&gt;name('ns:queryterms')-&gt;type('xsd:string' =&gt; $query),
+</I>&gt;<i>    )
+</I>&gt;<i> );
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> but
+</I>&gt;<i> 
+</I>&gt;<i> print  $result-&gt;result;
+</I>&gt;<i> 
+</I>&gt;<i> just returns the number of hits/
+</I>
+
+Data::Dumper is your friend.
+
+I don't know exactly right now, but you could look at what is in result
+like this:
+
+use Data::Dumper;
+print Dumper(\$result);
+
+For your information, I've copied here a part of a script I created to
+fetch embl entries based on accession code. It returns the entry only
+when there's exactly one record id returned for each accession code:
+
+sub getEntry
+{
+	my ($db, $acc) = @_;
+	
+	$format = 'plain' unless defined $format;
+
+	my $result =
+$soap-&gt;call(SOAP::Data-&gt;name(&quot;$ns:Find&quot;)-&gt;attr({&quot;xmlns:$ns&quot; =&gt; $ns_url})
+	    =&gt; (
+	        SOAP::Data-&gt;name(&quot;$ns:db&quot;)        -&gt;type('xsd:string' =&gt; $db),
+	        SOAP::Data-&gt;name(&quot;$ns:booleanfilter&quot;)
+	        						          -&gt;type('xsd:string' =&gt; &quot;ac:$acc&quot;)
+	    ));
+	
+	my @r = $result-&gt;paramsall;
+	
+	if ($r[0] == 1) {
+		return
+			&amp;soapCall(SOAP::Data-&gt;name(&quot;$ns:GetEntry&quot;)-&gt;attr({&quot;xmlns:$ns&quot; =&gt;
+$ns_url})
+			    =&gt; (
+			        SOAP::Data-&gt;name(&quot;$ns:db&quot;)        -&gt;type('xsd:string' =&gt; $db),
+			        SOAP::Data-&gt;name(&quot;$ns:id&quot;)        -&gt;type('xsd:string' =&gt;
+$result-&gt;valueof('//id'))
+			    ));
+	}
+	else {
+		die &quot;not one hit for $db:$acc\n&quot;;
+	}
+}
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000296.html">[Mrs-user] MRS: Web Service
+</A></li>
+	<LI>Next message: <A HREF="000305.html">[Mrs-user] MRS: Web Service
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#297">[ date ]</a>
+              <a href="thread.html#297">[ thread ]</a>
+              <a href="subject.html#297">[ subject ]</a>
+              <a href="author.html#297">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

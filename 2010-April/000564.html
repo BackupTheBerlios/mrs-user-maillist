@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] problem with finding an entry in Uniprot
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20problem%20with%20finding%20an%20entry%20in%20Uniprot&In-Reply-To=%3C4BC43DFC.4060200%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000563.html">
+   <LINK REL="Next"  HREF="000565.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] problem with finding an entry in Uniprot</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20problem%20with%20finding%20an%20entry%20in%20Uniprot&In-Reply-To=%3C4BC43DFC.4060200%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] problem with finding an entry in Uniprot">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue Apr 13 11:48:44 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000563.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+        <LI>Next message: <A HREF="000565.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#564">[ date ]</a>
+              <a href="thread.html#564">[ thread ]</a>
+              <a href="subject.html#564">[ subject ]</a>
+              <a href="author.html#564">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin,
+
+Could you check if the sprot file is OK?
+
+mrs-test -d sprot -t
+
+And you might as well test trembl and uniprot:
+
+mrs-test -d trembl -t
+mrs-test -d uniprot -t
+
+-maarten
+
+Op 13-04-10 11:36, Martin Senger schreef:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I found the following problem which I am not sure where it originates
+</I>&gt;<i> from: Using the mrs-web, I make a query for &quot;A7YL71&quot; in the databank
+</I>&gt;<i> &quot;Uniprot KB&quot;.
+</I>&gt;<i>
+</I>&gt;<i> 1) When doing it at <A HREF="http://mrs.cmbi.ru.nl/mrs-web/,">http://mrs.cmbi.ru.nl/mrs-web/,</A> it works fine: I am
+</I>&gt;<i> getting, indeed, an entry with the primary accession A7YL71**.
+</I>&gt;<i>
+</I>&gt;<i> 2) When doing in our installation, I am getting a completely different
+</I>&gt;<i> entry (primary accession A2T009). This whole entry even does not contain
+</I>&gt;<i> anywhere the searched string A7YL71.
+</I>&gt;<i>
+</I>&gt;<i> 3) When doing the same query (at our installation) only for &quot;TrEMBL&quot;,
+</I>&gt;<i> however, works fine; I am getting the right entry. Therefore, I have
+</I>&gt;<i> such entry in my data. BTW, I am using Uniprot data from March 23 -
+</I>&gt;<i> which seems to be the same as Uniprot used at
+</I>&gt;<i> <A HREF="http://mrs.cmbi.ru.nl/mrs-web/.">http://mrs.cmbi.ru.nl/mrs-web/.</A>
+</I>&gt;<i>
+</I>&gt;<i> I am not sure what data, or reports, should I send/show you in order to
+</I>&gt;<i> make it possible to suggest where things might go wrong in our installation.
+</I>&gt;<i>
+</I>&gt;<i> There is one thing which may be relevant: when I do &quot;mrs-test -d
+</I>&gt;<i> uniprot&quot; (but it also happened for other mrs command-line tools), I am
+</I>&gt;<i> getting a warning:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">senger at ShereKhan2</A>:/usr/local/data/mrs$ mrs-test -d uniprot
+</I>&gt;<i> *no file specified for db-join Uniprot KB*
+</I>&gt;<i> File: /usr/local/data/mrs/sprot.cmp
+</I>&gt;<i> ...
+</I>&gt;<i>
+</I>&gt;<i> So perhaps something is wrong in my mrs-config.xml? But I can't see
+</I>&gt;<i> there anything missing or wrong. Probably I am just blind. [I am
+</I>&gt;<i> attaching my mrs-config.xml here, but because I am not sure if this
+</I>&gt;<i> mailing list accepts attachments I am also cc-ing this even directly to
+</I>&gt;<i> Maarten. Sorry for this intrusion.]
+</I>&gt;<i>
+</I>&gt;<i> Thank you for any advise and help,
+</I>&gt;<i> Martin
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Martin Senger
+</I>&gt;<i> email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A>
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A>&gt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at kaust.edu.sa</A>&gt;
+</I>&gt;<i> skype: martinsenger
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000563.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+	<LI>Next message: <A HREF="000565.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#564">[ date ]</a>
+              <a href="thread.html#564">[ thread ]</a>
+              <a href="subject.html#564">[ subject ]</a>
+              <a href="author.html#564">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

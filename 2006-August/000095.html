@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Software error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Software%20error&In-Reply-To=%3CA5115446-9C6B-4DAE-B5FE-A85BCC363F32%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000094.html">
+   <LINK REL="Next"  HREF="000096.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Software error</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Software%20error&In-Reply-To=%3CA5115446-9C6B-4DAE-B5FE-A85BCC363F32%40hekkelman.com%3E"
+       TITLE="[Mrs-user] Software error">maarten at hekkelman.com
+       </A><BR>
+    <I>Wed Aug 16 08:42:29 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000094.html">[Mrs-user] Software error
+</A></li>
+        <LI>Next message: <A HREF="000096.html">[Mrs-user] updated mrs.pl
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#95">[ date ]</a>
+              <a href="thread.html#95">[ thread ]</a>
+              <a href="subject.html#95">[ subject ]</a>
+              <a href="author.html#95">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Diego,
+
+&gt;<i>    I am having some problems...
+</I>&gt;<i>
+</I>&gt;<i> When I try to view an entry after searching INTERPRO , I get:
+</I>&gt;<i> -------------------
+</I>&gt;<i> Software error:
+</I>&gt;<i>
+</I>&gt;<i> Can't locate object method &quot;new&quot; via package &quot;XML::XSLT&quot; (perhaps  
+</I>&gt;<i> you forgot to
+</I>&gt;<i> load &quot;XML::XSLT&quot;?) at Format_interpro.pm line 74.
+</I>&gt;<i>
+</I>&gt;<i> (That module is installed)
+</I>
+First thing to watch out for is, do you have more than one version of  
+Perl installed? If so, are you sure you are using the same Perl in  
+the mrs.cgi script as you used to install XML::XSLT. I'm asking this  
+since it happened to me more than once... :-)
+
+&gt;<i> The only &quot;interesting&quot; log was:
+</I>
+&lt;snip&gt;
+&gt;<i> Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line  
+</I>&gt;<i> 503
+</I>&gt;<i>
+</I>&gt;<i> make[3]: Leaving directory `/raid/usr/local/mrs-update'
+</I>
+Seems downloading failed, again. Your internet connection to the EBI  
+is not very good, is it? But if fetching and indexing succeeded once  
+before you should not see the error above. Is Interpro listed in the  
+'Overview' page? Do you have a link where I can have a look at your mrs?
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000094.html">[Mrs-user] Software error
+</A></li>
+	<LI>Next message: <A HREF="000096.html">[Mrs-user] updated mrs.pl
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#95">[ date ]</a>
+              <a href="thread.html#95">[ thread ]</a>
+              <a href="subject.html#95">[ subject ]</a>
+              <a href="author.html#95">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

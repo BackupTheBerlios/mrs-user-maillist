@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] how to set-up SOAP web services
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20how%20to%20set-up%20SOAP%20web%20services&In-Reply-To=%3C4B6EC558.9070908%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000502.html">
+   <LINK REL="Next"  HREF="000498.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] how to set-up SOAP web services</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20how%20to%20set-up%20SOAP%20web%20services&In-Reply-To=%3C4B6EC558.9070908%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] how to set-up SOAP web services">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Sun Feb  7 14:51:20 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000502.html">[Mrs-user] how to set-up SOAP web services
+</A></li>
+        <LI>Next message: <A HREF="000498.html">[Mrs-user] looking for package nl.ru.cmbi.mrs.mrsws
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#503">[ date ]</a>
+              <a href="thread.html#503">[ thread ]</a>
+              <a href="subject.html#503">[ subject ]</a>
+              <a href="author.html#503">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 7-2-2010 14:33, Martin Senger schreef:
+&gt;<i> Many thanks for your clarification. It's very helpful, and I think I 
+</I>&gt;<i> am almost there :-)
+</I>
+cool!
+
+&gt;<i> Just to re-iterate (to be sure that I got it right):
+</I>&gt;<i>
+</I>&gt;<i> * All SOAP requests are directed to the mrs-ws server (or servers). 
+</I>&gt;<i> Either directly, using just the needed port, e.g. 
+</I>&gt;<i> <A HREF="http://localhost:18081/,">http://localhost:18081/,</A> or (more often) using a reverse proxy that 
+</I>&gt;<i> maps various URLs - all usually coming via port 80 - to the individual 
+</I>&gt;<i> ports/machines of the mrs-ws(s).
+</I>
+Yup, e.g. the address <A HREF="http://mrs.cmbi.ru.nl/mrsws/search">http://mrs.cmbi.ru.nl/mrsws/search</A> is a reverse 
+proxy for <A HREF="http://mrs.cmbi.ru.nl:8087/">http://mrs.cmbi.ru.nl:8087/</A>
+
+&gt;<i> * The mrsweb application uses the mrs-ws - meaning that mrsweb is a 
+</I>&gt;<i> SOAP client (and it does the SOAP calls via classes generated from the 
+</I>&gt;<i> WSDL).
+</I>
+exactly.
+
+&gt;<i> Few things, however, are still a bit vague to me:
+</I>&gt;<i>
+</I>&gt;<i> * Who (what) generates WSDL - the one with my own service location 
+</I>&gt;<i> (taken from the &lt;external-address&gt; in mrs-config.xml)? Or perhaps 
+</I>&gt;<i> nobody generates it, perhaps I need to change it there manually? Then, 
+</I>&gt;<i> who is using the tag &lt;external-address&gt;? Does the mrs-ws server need 
+</I>&gt;<i> to know its own external address (probably not)?
+</I>
+The WSDL is generated on-the-fly by mrs-ws. I've used libzeep (one of my 
+other projects) to create mrs-ws and it automatically generates all SOAP 
+code based on the signture of exported C++ functions. Therefore, the 
+mrs-ws application needs to know the external address since it is part 
+of the WSDL and the reverse proxy does not translate this. (It does this 
+kind of magic on HTML e.g.).
+
+&gt;<i> * Why the released mrs war file has the WSDL files in the WEB-INF 
+</I>&gt;<i> directory? I would think that the WSDL files should be in the publicly 
+</I>&gt;<i> available space, not in the hidden WEB-INF. Or, perhaps they are 
+</I>&gt;<i> generated on the fly when requested for (something like that was 
+</I>&gt;<i> possible with axis1)?
+</I>
+Because CXF is not very smart, in my humble opinion. When setting up the 
+classes in the web application it needs to parse a WSDL and this file 
+needs to be present somewhere. Anyway, the web app is tightly bound to 
+the SOAP server and they need to be kept in sync.
+
+&gt;<i> * Finally, is there a SOAP operation returning the list of available 
+</I>&gt;<i> databanks? [Or is the select menu in the top of the main web page, the 
+</I>&gt;<i> &quot;All Databanks&quot;, hard-coded?]. Could it be the UpdateStatusInfo, perhaps?
+</I>
+<A HREF="http://mrs.cmbi.ru.nl/mrsws/search/rest/GetDatabankInfo/db/all">http://mrs.cmbi.ru.nl/mrsws/search/rest/GetDatabankInfo/db/all</A>
+
+&gt;<i> Thanks and I am sorry for bothering with so many questions (I promise 
+</I>&gt;<i> I will stop soon),
+</I>
+These questions don't bother me, I'm very happy someone took the time to 
+ask them.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000502.html">[Mrs-user] how to set-up SOAP web services
+</A></li>
+	<LI>Next message: <A HREF="000498.html">[Mrs-user] looking for package nl.ru.cmbi.mrs.mrsws
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#503">[ date ]</a>
+              <a href="thread.html#503">[ thread ]</a>
+              <a href="subject.html#503">[ subject ]</a>
+              <a href="author.html#503">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

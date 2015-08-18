@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] One Question On MRS-file updates
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20One%20Question%20On%20MRS-file%20updates&In-Reply-To=%3C49B77044.4020904%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000446.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] One Question On MRS-file updates</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20One%20Question%20On%20MRS-file%20updates&In-Reply-To=%3C49B77044.4020904%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] One Question On MRS-file updates">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Mar 11 09:03:16 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000446.html">[Mrs-user] One Question On MRS-file updates
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#447">[ date ]</a>
+              <a href="thread.html#447">[ thread ]</a>
+              <a href="subject.html#447">[ subject ]</a>
+              <a href="author.html#447">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Brian,
+
+&gt;<i> Our lab keeps a mirror of an international data bank, and every day 
+</I>&gt;<i> about 10 MB is added into the updates folder of the mirror.
+</I>&gt;<i> 
+</I>&gt;<i> I am wondering if I use &quot;mrs-build -d update_folder_name&quot;, will 
+</I>&gt;<i> mrs-build distinguish the new files from the old ones by name so that it 
+</I>&gt;<i> just builds the new ones into a temporary MRS-file and then merges the 
+</I>&gt;<i> old one with it, or deal with all the files in the folder, including the 
+</I>&gt;<i> old ones?
+</I>
+MRS used to have a merge functionality in version 3 but I've dropped that.
+
+Fortunately there is another way to work with these updates and that's 
+used in e.g. EMBL. What you do is distinguish 'Release' and 'Update' 
+versions of the databank. EMBL has real releases every 3 months and 
+updates daily in between. In this case we create a EMBL release file 
+once the release is made by EBI and then create a daily update file 
+every day for the files that are new. We then combine these two MRS 
+files into one EMBL file which is a combination of the two.
+
+You might be able to come up with some similar scheme. Things get 
+complicated a bit when there is no real release version of course, you 
+have to define what goes into the release and when to rebuild it 
+yourself in this case.
+
+One way to do this is, is to create two folders:
+
+/data/raw/my-db-release
+/data/raw/my-db-updates
+
+Now you copy over all the files you have into the release folder except 
+for the last which goes into the updates folder.
+
+Then you modify the /usr/local/etc/mrs-config.xml file and add in the
+server/dbs section:
+
+&lt;db&gt;my-db&lt;/db&gt;
+
+And in the db-files section in the bottom of this file you add:
+
+&lt;db-file id=&quot;my-db-release&quot; file=&quot;my-db-release.cmp&quot; /&gt;
+&lt;db-file id=&quot;my-db-updates&quot; file=&quot;my-db-updates.cmp&quot; /&gt;
+
+&lt;db-join id=&quot;my-db&quot; name=&quot;My DB&quot; update=&quot;1&quot;&gt;
+   &lt;db-part&gt;my-db-release&lt;/db-part&gt;
+   &lt;db-part&gt;my-db-updates&lt;/db-part&gt;
+&lt;/db-join&gt;
+
+The update attribute in the db-join tag tells MRS this is an updated 
+databank and queries are processed in a special way: if there are 
+multiple records with the same ID, all but the last are suppressed.
+
+Assuming your parser script is called my-db.pm, you next have to edit 
+the databank.info config file:
+
+DATABANKS                 += my-db-release
+MRS_FILES.my-db-release   = my-db-release
+MRS_SCRIPT.my-db-release  = my-db
+
+DATABANKS                 += my-db-updates
+MRS_FILES.my-db-updates   = my-db-updates
+MRS_SCRIPT.my-db-updates  = my-db
+
+I think this is all you need to know to do what you want. I hope, but if 
+you need more info, don't hesitate to ask.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000446.html">[Mrs-user] One Question On MRS-file updates
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#447">[ date ]</a>
+              <a href="thread.html#447">[ thread ]</a>
+              <a href="subject.html#447">[ subject ]</a>
+              <a href="author.html#447">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] errors during installation from the sources (kubuntu	Karmic 9.10, MacBookPro)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20errors%20during%20installation%20from%20the%20sources%20%28kubuntu%0A%09Karmic%209.10%2C%20MacBookPro%29&In-Reply-To=%3C4d93f07c1001310028q5396ea08y17114f6ab96755d4%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000488.html">
+   <LINK REL="Next"  HREF="000490.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] errors during installation from the sources (kubuntu	Karmic 9.10, MacBookPro)</H1>
+    <B>Martin Senger</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20errors%20during%20installation%20from%20the%20sources%20%28kubuntu%0A%09Karmic%209.10%2C%20MacBookPro%29&In-Reply-To=%3C4d93f07c1001310028q5396ea08y17114f6ab96755d4%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] errors during installation from the sources (kubuntu	Karmic 9.10, MacBookPro)">martin.senger at gmail.com
+       </A><BR>
+    <I>Sun Jan 31 09:28:37 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000488.html">[Mrs-user] errors during installation from the sources (kubuntu Karmic 9.10, MacBookPro)
+</A></li>
+        <LI>Next message: <A HREF="000490.html">[Mrs-user] errors during installation from the sources (kubuntu Karmic 9.10, MacBookPro)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#489">[ date ]</a>
+              <a href="thread.html#489">[ thread ]</a>
+              <a href="subject.html#489">[ subject ]</a>
+              <a href="author.html#489">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Many thanks for such fast reply.
+
+Karmic comes with a very recent build of GCC and this compiler no longer
+&gt;<i> accepts one of the constructs I use in my code. I'm not sure if this is my
+</I>&gt;<i> fault or the compiler's but I'm working on a fix for this.
+</I>&gt;<i>
+</I>
+Thanks for looking into it.
+The compiler version I am using is 4.4.1:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">senger at ShereKhan2</A>:~/Software/mrs-4.1.1$ c++ --version
+c++ (Ubuntu 4.4.1-4ubuntu9) 4.4.1
+
+
+
+&gt;<i> A quick fix might be to add #include &lt;cstdio&gt; somewhere in the top of the
+</I>&gt;<i> lib/uuid/boost/uuid/seed_rng.hpp file. But you'll undoubtedly run into
+</I>&gt;<i> problems later on.
+</I>&gt;<i>
+</I>
+Yes, I did :-)
+
+./libzeep/zeep/xml/node.hpp:153:   instantiated from here
+/usr/include/boost/mpl/not.hpp:43: error: &#8216;value&#8217; is not a member of
+/usr/include/boost/mpl/not.hpp:43: error:
+&#8216;boost::mpl::aux::nested_type_wknd&lt;boost::mpl::and_&lt;boost::is_POD&lt;const
+/usr/include/boost/mpl/not.hpp:43: error: zeep::xml::attribute&gt;,
+boost::detail::iterator_writability_disabled&lt;const
+/usr/include/boost/mpl/not.hpp:43: error: zeep::xml::attribute, const
+zeep::xml::attribute&amp;&gt;, mpl_::bool_&lt;true&gt;, mpl_::bool_&lt;true&gt;,
+/usr/include/boost/mpl/not.hpp:43: error: mpl_::bool_&lt;true&gt; &gt; &gt;&#8217;
+In file included from /usr/include/boost/mpl/eval_if.hpp:17,
+                 from
+/usr/include/boost/iterator/iterator_categories.hpp:15,
+                 from
+/usr/include/boost/iterator/detail/facade_iterator_category.hpp:7,
+                 from /usr/include/boost/iterator/iterator_facade.hpp:14,
+                 from /usr/include/boost/filesystem/path.hpp:22,
+                 from /usr/include/boost/filesystem/operations.hpp:17,
+                 from ./Sources/CConfig.cpp:18:
+/usr/include/boost/mpl/if.hpp: In instantiation of
+&#8216;boost::mpl::if_&lt;boost::detail::use_operator_brackets_proxy&lt;const
+zeep::xml::attribute, const zeep::xml::attribute&amp;&gt;,
+boost::detail::operator_brackets_proxy&lt;zeep::xml::node::const_attribute_iterator&gt;,
+const zeep::xml::attribute&gt;&#8217;:
+/usr/include/boost/iterator/iterator_facade.hpp:391:   instantiated from
+&#8216;boost::detail::operator_brackets_result&lt;zeep::xml::node::const_attribute_iterator,
+const zeep::xml::attribute, const zeep::xml::attribute&amp;&gt;&#8217;
+/usr/include/boost/iterator/iterator_facade.hpp:652:   instantiated from
+&#8216;boost::iterator_facade&lt;zeep::xml::node::const_attribute_iterator, const
+zeep::xml::attribute, boost::forward_traversal_tag, const
+zeep::xml::attribute&amp;, long int&gt;&#8217;
+./libzeep/zeep/xml/node.hpp:153:   instantiated from here
+/usr/include/boost/mpl/if.hpp:67: error: &#8216;value&#8217; is not a member of
+&#8216;boost::detail::use_operator_brackets_proxy&lt;const
+/usr/include/boost/mpl/if.hpp:67: error: zeep::xml::attribute, const
+zeep::xml::attribute&amp;&gt;&#8217;
+/usr/include/boost/mpl/if.hpp:70: error: &#8216;value&#8217; is not a member of
+&#8216;boost::detail::use_operator_brackets_proxy&lt;const
+/usr/include/boost/mpl/if.hpp:70: error: zeep::xml::attribute, const
+zeep::xml::attribute&amp;&gt;&#8217;
+./Sources/MRS.h:89: warning: &#8216;kInvalidDocID&#8217; defined but not used
+make[1]: *** [Obj.NoDebug/CConfig.o] Error 1
+make[1]: Leaving directory `/home/senger/Software/mrs-4.1.1/lib'
+make: *** [all] Error 2
+
+
+ The obvious solution of installing an earlier version of gcc does not seem
+&gt;<i> to work unfortunately, I'm afraid there is a binary incompatibility between
+</I>&gt;<i> boost libraries built with gcc-4.4 linked to an application built with
+</I>&gt;<i> gcc-4.3. You still might want to try it.
+</I>&gt;<i>
+</I>
+I am using the newest boost library 1.40.0. But Karmic originally came with
+1.38.0. Perhaps I should try with the 1.38.0?
+
+
+&gt;<i>  Anyway, I hope to have a version that compiles on a plain vanilla Ubuntu
+</I>&gt;<i> Karmic computer somewhere next week
+</I>&gt;<i>
+</I>and I'll also try to make a .deb package for it.
+&gt;<i>
+</I>
+That's perfect, I really appreciate it, indeed.
+
+Cheers,
+Martin
+
+-- 
+Martin Senger
+email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+skype: martinsenger
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20100131/58cf9b53/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20100131/58cf9b53/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000488.html">[Mrs-user] errors during installation from the sources (kubuntu Karmic 9.10, MacBookPro)
+</A></li>
+	<LI>Next message: <A HREF="000490.html">[Mrs-user] errors during installation from the sources (kubuntu Karmic 9.10, MacBookPro)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#489">[ date ]</a>
+              <a href="thread.html#489">[ thread ]</a>
+              <a href="subject.html#489">[ subject ]</a>
+              <a href="author.html#489">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

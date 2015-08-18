@@ -1,0 +1,354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Questions and report after successful installation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20successful%20installation&In-Reply-To=%3C466967F1.9010904%40lcb.uu.se%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000255.html">
+   <LINK REL="Next"  HREF="000258.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Questions and report after successful installation</H1>
+    <B>Alvaro Martinez Barrio</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20successful%20installation&In-Reply-To=%3C466967F1.9010904%40lcb.uu.se%3E"
+       TITLE="[Mrs-user] Questions and report after successful installation">Alvaro.Martinez.Barrio at lcb.uu.se
+       </A><BR>
+    <I>Fri Jun  8 16:30:09 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000255.html">[Mrs-user] Install MRS Itanium Processor.
+</A></li>
+        <LI>Next message: <A HREF="000258.html">[Mrs-user] Questions and report after successful installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#257">[ date ]</a>
+              <a href="thread.html#257">[ thread ]</a>
+              <a href="subject.html#257">[ subject ]</a>
+              <a href="author.html#257">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello mrs-users,
+
+I have installed mrs-3.0-rc2 on Mac OS X 10.4 but I am experiencing some
+problems I want to solve. I am going to tell my experience in every step
+in case anyone goes for the same platform (as I did not found any report
+in the mailing lists). My questions are in a block down there so if you
+want to go for them, just search for ## QUESTIONS ## in my email.
+
+I know that the developer Maarten Hekkelman develops himself in this
+platform so I hope he has gone through some of this and can help me to
+explain better the architecture/problems I am experiencing.
+
+First, if I want to follow that MRS mantra:
+
+perl install.pl
+make
+make install
+cd /usr/local/share/mrs/update_scripts
+make enzyme
+
+The first step &quot;perl install.pl&quot;. This looks for all the prerequisites
+in your platform: a c++ compiler (Mac OS X has gcc 4.01 right now), TR1
+headers that comes with most of the distributions of the GNU compiler
+and the first hurdle: Swig. Swig was not installed so I installed
+swig-1.3.31 and it installed smoothly. After that, it was soapcpp2 so I
+took a binary for Mac OS X but compile from sources it is straight away
+and you will get the library libgsoap++ that you will need later when
+linking MRS web services. Then the big headache: boost. I took
+boost_1_34_0 and never got it configured but I realised that the fink
+project had a port of libboost and his tool bjam so I chose these ones
+to install and compiled MRS modifying a few directory paths in the
+install.pl program (basically libraries and headers directories where to
+search for boost libs and incs).
+
+After making, when I get to
+
+:<i>~/src/mrs-3.0-rc2 alvaro$ make install
+</I>make: `install' is up to date.
+
+So I suspected something was missing and there it was: I got an empty
+bin folder under my chosen path (/usr/local/mrs/bin) and no mrs-3.war
+anywhere.
+
+So as the INSTALL document says: &quot;The next step is to either use the MRS
+perl plugin directly from your scripts&quot;. So I did not have any scripts
+and I had not realise I had no plugins...
+
+First time I tried:
+
+:<i>/usr/local/mrs/update_scripts alvaro$ sudo make enzyme
+</I>make /usr/local/mrs/data/flags/enzyme.done
+make: success
+sync
+touch /usr/local/mrs/data/status/enzyme.fetched
+touch /usr/local/mrs/data/flags/enzyme.fetched
+make: failed
+sync
+touch /usr/local/mrs/data/status/enzyme.make
+touch /usr/local/mrs/data/flags/enzyme.make
+touch /usr/local/mrs/data/status/enzyme.done
+touch /usr/local/mrs/data/flags/enzyme.done
+No matching processes were found
+mrsws does not seem to run
+rm /usr/local/mrs/data/flags/enzyme.*
+
+As it was looking effectively for mrsws, I looked also for it and then,
+I discover it in my source directory (src/mrs-3.0-rc2). Why &quot;make
+install&quot; did not put it in my bin? So I just took mrsws, mrsws-blast and
+mrsws-clustal and copied them to /usr/local/mrs/bin. I started them (not
+still in the background to see what they were doing!).
+
+But then I retried:
+
+:<i>/usr/local/mrs/update_scripts alvaro$ sudo make enzyme
+</I>make /usr/local/mrs/data/flags/enzyme.done
+make: success
+sync
+touch /usr/local/mrs/data/status/enzyme.fetched
+touch /usr/local/mrs/data/flags/enzyme.fetched
+make: failed
+sync
+touch /usr/local/mrs/data/status/enzyme.make
+touch /usr/local/mrs/data/flags/enzyme.make
+touch /usr/local/mrs/data/status/enzyme.done
+touch /usr/local/mrs/data/flags/enzyme.done
+rm /usr/local/mrs/data/flags/enzyme.*
+
+And failed badly (guess because I didn't relise by then of the plugin
+stuff).
+
+So I could not check if everything was in place as I had 1-) No
+databanks. 2-) No interface to look at.
+
+In the INSTALL doc, when it comes to the &quot;Web interface&quot; paragraph, it
+says you should have a mrs-3.war file but in my case it was not in my
+install tree (of course) but on my source directory (src/mrs-3.0-rc2)
+and then I just copied it under Tomcat webbapps directory (a .war file
+is an already deployed application) but I think this should be comment
+somewhere.
+
+When I reloaded &quot;<A HREF="http://localhost:8080/mrs-3/">http://localhost:8080/mrs-3/</A>&quot;, it just said what I was
+afraid of:
+
+&quot;Could not connect to SOAP server at <A HREF="http://localhost:8081/mrs/soap,">http://localhost:8081/mrs/soap,</A>
+please inform administrator.&quot;
+
+In very red letters so something was wrong but I couldn't guess why. I
+guess now that it was the API needed for the web services what was not
+into place but I discovered that this morning.
+
+I was reading an MRS report about MRS at the EMBnet.news magazine by
+Robert Herzog (of the Belgian EMBnet node) where it was referred a
+installation manual that I downloaded from
+<A HREF="ftp://ftp.be.embnet.org/pub/biosoft/MRS/MRS-2.0%20v0.6%20Howto.doc">ftp://ftp.be.embnet.org/pub/biosoft/MRS/MRS-2.0%20v0.6%20Howto.doc</A>
+
+And in that doc, finally I saw a thing I did have not done... Before
+doing any make in the root src directory, you would:
+
+cd plugin
+make
+sudo make install
+
+And here we go, that gave me a bundle, a pm module and some more
+commands in my /usr/local/mrs/bin directory...
+
+:<i>~/src/mrs-3.0-rc2/plugin alvaro$ sudo make install
+</I>Password:
+Compiler flags used: -fsigned-char -g -ffor-scope -force_cpusubtype_ALL
+-fstrict-aliasing -O3 -mcpu=G4 -falign-loops=32 -Wall -Wno-multichar
+-Wno-unknown-pragmas -Wno-long-long -Wno-sign-compare -fPIC -DCPU_x86
+-DMINI_H_LIB -DUSE_TR1 -DDARWIN -DHAVE_SYS_IOCTL_H -DHAVE_SYS_SOCKIO_H
+-DHAVE_SYS_SOCKET_H -DHAVE_NETINET_IN_H -DHAVE_SRANDOM
+-DHAVE_NET_IF_DL_H -DHAVE_SA_LEN -DNDEBUG
+Include paths: -I./Lib/Includes/ -I./Lib/X/ -I./Lib/ -I./Lib/Generic/
+-I./Lib/Posix/ -I./Lib/uuid/ -I./Sources/ -iquote -I/usr/include
+-I/sw/include -I/System/Library/Perl/5.8.6/darwin-thread-multi-2level/CORE
+Linking MRS.bundle
+Done
+/usr/bin/c++ -fsigned-char -g -ffor-scope -force_cpusubtype_ALL
+-fstrict-aliasing -O3 -mcpu=G4 -falign-loops=32  -Wall -Wno-multichar
+-Wno-unknown-pragmas -Wno-long-long -Wno-sign-compare -fPIC  -DCPU_x86
+-DMINI_H_LIB  -DUSE_TR1  -DDARWIN  -DHAVE_SYS_IOCTL_H
+-DHAVE_SYS_SOCKIO_H  -DHAVE_SYS_SOCKET_H  -DHAVE_NETINET_IN_H
+-DHAVE_SRANDOM  -DHAVE_NET_IF_DL_H  -DHAVE_SA_LEN  -DNDEBUG -o mrs_blast
+-ILib/Includes Sources/mrs_blast.cpp libmrs.a -fdata-sections -g
+-L./Lib/ -L/usr/local/lib/ -L/sw/lib   -L./Lib/  -L/usr/local/lib/
+-L/sw/lib  -lz  -lm  -lbz2  -lboost_regex
+Done
+=&gt; mrs_query
+Done
+mkdir -p dist/lib dist/bin
+/usr/bin/perl -pi.bak -e 's/^.+VERSION.+$/\t&quot;VERSION&quot;\t\t\t=&gt; &quot;3.0a1&quot;,/'
+dist/Makefile.PL
+cp MRS.pm MRS.bundle dist/lib/
+cp mrs.pl dist/bin
+strip -S dist/lib/MRS.bundle
+echo &quot;MANIFEST&quot; &gt; dist/MANIFEST
+echo &quot;Makefile.PL&quot; &gt;&gt; dist/MANIFEST
+echo &quot;lib/MRS.pm&quot; &gt;&gt; dist/MANIFEST
+echo &quot;bin/mrs.pl&quot; &gt;&gt; dist/MANIFEST
+echo lib/MRS.bundle &gt;&gt; dist/MANIFEST
+rm -rf dist/MRS-3.0a1.tar.gz
+cd dist; /usr/bin/perl Makefile.PL INSTALLSCRIPT=/usr/local/mrs/bin;
+make dist
+Checking if your kit is complete...
+Looks good
+Writing Makefile for MRS
+rm -rf MRS-3.0a1
+/usr/bin/perl &quot;-MExtUtils::Manifest=manicopy,maniread&quot; \
+        -e &quot;manicopy(maniread(),'MRS-3.0a1', 'best');&quot;
+mkdir MRS-3.0a1
+mkdir MRS-3.0a1/lib
+mkdir MRS-3.0a1/bin
+tar cvf MRS-3.0a1.tar MRS-3.0a1
+MRS-3.0a1/
+MRS-3.0a1/bin/
+MRS-3.0a1/bin/mrs.pl
+MRS-3.0a1/lib/
+MRS-3.0a1/lib/MRS.bundle
+MRS-3.0a1/lib/MRS.pm
+MRS-3.0a1/Makefile.PL
+MRS-3.0a1/MANIFEST
+MRS-3.0a1/META.yml
+rm -rf MRS-3.0a1
+gzip --best MRS-3.0a1.tar
+cd dist; sudo make install
+cp lib/MRS.bundle blib/arch/auto/MRS/MRS.bundle
+cp lib/MRS.pm blib/lib/MRS.pm
+cp bin/mrs.pl blib/script/mrs.pl
+/usr/bin/perl &quot;-MExtUtils::MY&quot; -e &quot;MY-&gt;fixin(shift)&quot; blib/script/mrs.pl
+Installing
+/Library/Perl/5.8.6/darwin-thread-multi-2level/auto/MRS/MRS.bundle
+Files found in blib/arch: installing files in blib/lib into architecture
+dependent library tree
+Installing /Library/Perl/5.8.6/darwin-thread-multi-2level/MRS.pm
+Installing /usr/local/mrs/bin/mrs.pl
+Writing /Library/Perl/5.8.6/darwin-thread-multi-2level/auto/MRS/.packlist
+Appending installation info to
+//System/Library/Perl/5.8.6/darwin-thread-multi-2level/perllocal.pod
+sudo install -m 755 mrs_blast /usr/local/bin/mrs_blast
+sudo install -m 755 mrs_query /usr/local/bin/mrs_query
+
+
+And then it also worked the installation of the enzyme dataset:
+
+:<i>/usr/local/mrs/update_scripts alvaro$ sudo make enzyme
+</I>make /usr/local/mrs/data/flags/enzyme.done
+make: success
+sync
+touch /usr/local/mrs/data/status/enzyme.fetched
+touch /usr/local/mrs/data/flags/enzyme.fetched
+make: success
+sync
+touch /usr/local/mrs/data/status/enzyme.make
+touch /usr/local/mrs/data/flags/enzyme.make
+touch /usr/local/mrs/data/status/enzyme.done
+touch /usr/local/mrs/data/flags/enzyme.done
+rm /usr/local/mrs/data/flags/enzyme.*
+
+And my web interface after refreshing :)
+
+## QUESTIONS ##
+
+1 ) Down there are the starting lines of my etc/mrs-config.xml for my
+three SOAP servers. It seems that both search and blast have no -exe
+entity as for &lt;clustalw-exe&gt;. Is that okay? How is it then the blast
+run? I guess it is some kind of client itself to another blast
+service... but a better explanation? Is it WS reading this file so if I
+change the params (specially, ports) will be automatically taken.
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;mrs-config&gt;
+        &lt;!-- generic, paths and stuff --&gt;
+        &lt;datadir&gt;/usr/local/mrs/data//mrs&lt;/datadir&gt;
+        &lt;scriptdir&gt;/usr/local/mrs/parser_scripts/&lt;/scriptdir&gt;
+
+        &lt;!-- service specific settings --&gt;
+        &lt;search-ws&gt;
+                &lt;address&gt;localhost&lt;/address&gt;
+                &lt;port&gt;8081&lt;/port&gt;
+                &lt;logfile&gt;/var/log/mrsws-search.log&lt;/logfile&gt;
+        &lt;/search-ws&gt;
+
+        &lt;blast-ws&gt;
+                &lt;address&gt;localhost&lt;/address&gt;
+                &lt;port&gt;8082&lt;/port&gt;
+                &lt;logfile&gt;/var/log/mrsws-blast.log&lt;/logfile&gt;
+        &lt;/blast-ws&gt;
+
+        &lt;clustal-ws&gt;
+                &lt;address&gt;localhost&lt;/address&gt;
+                &lt;port&gt;8083&lt;/port&gt;
+                &lt;logfile&gt;/var/log/mrsws-clustal.log&lt;/logfile&gt;
+                &lt;clustalw-exe&gt;/usr/ebiotools/bin/clustalw&lt;/clustalw-exe&gt;
+                &lt;max-run-time&gt;15&lt;/max-run-time&gt;
+        &lt;/clustal-ws&gt;
+
+        &lt;!-- list of databases to present --&gt;
+        &lt;dbs&gt;
+
+2 ) I indexed BLOCKS successfully BLOCKS but I can see it anywhere in
+the databanks. And there are some small databases that I want to index
+and fail. How can I trace why.
+
+3 ) This last question is useful because I have had no time to look into
+the make process of MRS. Is anybody with a good pointer to documentation
+where to read about &quot;How to add my own/additional databanks to my site&quot;
+and &quot;how to write parsers for them?&quot;.
+
+I have my own databases downloaded (Swissprot, EnsEMBL) and I would like
+to try to index them. I haven't got very far until now in understanding
+the make.pre and make.post mechanism but I hope for some help.
+
+4 ) How to use successfully and develop a web client service for MRS?
+How can I use the 3 SOAP servers available?
+
+All this documentation is missed in the document coming from the link I
+gave above and I would find it very useful. I have seen some courses
+given by the Belgian EMBnet node (see
+<A HREF="http://www.be.embnet.org/tutorials/Introduction%20to%20MRS">http://www.be.embnet.org/tutorials/Introduction%20to%20MRS</A>). Does any of
+you have documentation or experience about this guys?
+
+Thanks a lot if you can help me with this issues,
+&#225;lvaro
+
+-- 
+Alvaro Martinez Barrio
+The Linnaeus Centre for Bioinformatics
+Husargatan 3, Box 598
+SE 751 24 Uppsala SWEDEN
+
+Tel: +46 18 471 6685 - Fax: +46 18 471 6698
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000255.html">[Mrs-user] Install MRS Itanium Processor.
+</A></li>
+	<LI>Next message: <A HREF="000258.html">[Mrs-user] Questions and report after successful installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#257">[ date ]</a>
+              <a href="thread.html#257">[ thread ]</a>
+              <a href="subject.html#257">[ subject ]</a>
+              <a href="author.html#257">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

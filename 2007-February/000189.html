@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS3&In-Reply-To=%3C1170956968.45cb62a885ccb%40webmail.biol.unlp.edu.ar%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000187.html">
+   <LINK REL="Next"  HREF="000190.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS3</H1>
+    <B>dbellante at biol.unlp.edu.ar</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS3&In-Reply-To=%3C1170956968.45cb62a885ccb%40webmail.biol.unlp.edu.ar%3E"
+       TITLE="[Mrs-user] MRS3">dbellante at biol.unlp.edu.ar
+       </A><BR>
+    <I>Thu Feb  8 18:49:28 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000187.html">[Mrs-user] sorry, Debian-Ubuntu's security trapped me again
+</A></li>
+        <LI>Next message: <A HREF="000190.html">[Mrs-user] GenomeProject identifier in GenBank/Refseq - Checked by	AntiVir DEMO ve
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#189">[ date ]</a>
+              <a href="thread.html#189">[ thread ]</a>
+              <a href="subject.html#189">[ subject ]</a>
+              <a href="author.html#189">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Robert!
+
+   I can't change the distribution at this moment, but I'll take your advice
+into account for later installations.
+
+   Respecting to the boost libraries, they seem to be installed. There seems to
+be some kind of incompatibility
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">root at srsfed</A> lib]# ls -alF /usr/lib/libboost_reg*
+-rwxr-xr-x  1 root root 1488874 Feb 16  2006 /usr/lib/libboost_regex.a*
+lrwxrwxrwx  1 root root      24 Feb  6 17:51 /usr/lib/libboost_regex.so -&gt;
+libboost_regex.so.1.33.1*
+-rwxr-xr-x  1 root root  560968 Feb 16  2006 /usr/lib/libboost_regex.so.1.33.1*
+lrwxrwxrwx  1 root root      24 Feb  6 17:43 /usr/lib/libboost_regex.so.2 -&gt;
+libboost_regex.so.1.33.1*
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">root at srsfed</A> lib]# ls -alF /usr/lib/libboost_file*
+-rwxr-xr-x  1 root root 94736 Feb 16  2006 /usr/lib/libboost_filesystem.a*
+lrwxrwxrwx  1 root root    29 Feb  6 17:51 /usr/lib/libboost_filesystem.so -&gt;
+libboost_filesystem.so.1.33.1*
+-rwxr-xr-x  1 root root 63632 Feb 16  2006
+/usr/lib/libboost_filesystem.so.1.33.1*
+lrwxrwxrwx  1 root root    29 Feb  6 17:43 /usr/lib/libboost_filesystem.so.2 -&gt;
+libboost_filesystem.so.1.33.1*
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">root at srsfed</A> lib]#
+
+
+              Regards,
+
+                          Diego
+
+Quoting Robert HERZOG &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">rherzog at dbm.ulb.ac.be</A>&gt;:
+
+
+&gt;<i> Hi Diego,
+</I>&gt;<i> Clearly you don't have the boost_regex and boost_filesystem libraries
+</I>&gt;<i> installed.
+</I>&gt;<i> I have no experience with FC4. Do you require to stick to this
+</I>&gt;<i> distribution ? The management of packages in Debian is much easier, I
+</I>&gt;<i> believe. And running Ubuntu - a Debian derivative- is a real pleasure,
+</I>&gt;<i> while very easy to maintain.
+</I>&gt;<i> We now run several Ubuntu's here in Brussels, both on small desktop
+</I>&gt;<i> boxes and on Quad-opteron servers.
+</I>&gt;<i>
+</I>
+
+&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dbellante at biol.unlp.edu.ar</A> wrote:
+</I>&gt;<i> &gt; Maarten:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;        I did the svn update but I still get the error.
+</I>&gt;<i> &gt;        It exactly appears as the result of executing the following in
+</I>&gt;<i> &gt; &quot;install.pl&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;            eval {
+</I>&gt;<i> &gt;                 my $b_cc = $cc;
+</I>&gt;<i> &gt;                 $b_cc .= &quot; -I$boost_inc &quot; if defined $boost_inc;
+</I>&gt;<i> &gt;                 $b_cc .= &quot; -L$d &quot; if defined $d;
+</I>&gt;<i> &gt;                 my $test = &amp;compile($C_file, &quot;$b_cc
+</I>&gt;<i> &gt; -lboost_regex$boost_lib_suffix&quot;);
+</I>&gt;<i> &gt;                 die &quot;Boost versions do not match\n&quot; unless $test eq
+</I>&gt;<i> &gt; $boost_version;
+</I>&gt;<i> &gt;                 };
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; This is the error:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Could not compile: /usr/bin/ld: skipping incompatible
+</I>&gt;<i> /usr/lib/libboost_regex.so
+</I>&gt;<i> &gt; when searching for -lboost_regex
+</I>&gt;<i> &gt; /usr/bin/ld: skipping incompatible /usr/lib/libboost_regex.a when searching
+</I>&gt;<i> for
+</I>&gt;<i> &gt; -lboost_regex
+</I>&gt;<i> &gt; /usr/bin/ld: skipping incompatible
+</I>&gt;<i> &gt; /usr/lib/gcc/x86_64-redhat-linux/4.0.2/../../../libboost_regex.so when
+</I>&gt;<i> &gt; searching for -lboost_regex
+</I>&gt;<i> &gt; /usr/bin/ld: skipping incompatible
+</I>&gt;<i> &gt; /usr/lib/gcc/x86_64-redhat-linux/4.0.2/../../../libboost_regex.a when
+</I>&gt;<i> searching
+</I>&gt;<i> &gt; for -lboost_regex
+</I>&gt;<i> &gt; /usr/bin/ld: skipping incompatible /usr/lib/libboost_regex.so when
+</I>&gt;<i> searching for
+</I>&gt;<i> &gt; -lboost_regex
+</I>&gt;<i> &gt; /usr/bin/ld: skipping incompatible /usr/lib/libboost_regex.a when searching
+</I>&gt;<i> for
+</I>&gt;<i> &gt; -lboost_regex
+</I>&gt;<i> &gt; /usr/bin/ld: cannot find -lboost_regex
+</I>&gt;<i> &gt; collect2: ld returned 1 exit status
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;            Thanks!!
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;                    Diego
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Quoting &quot;Maarten L. Hekkelman&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">m.hekkelman at cmbi.ru.nl</A>&gt;:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;&gt; Hi Diego,
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; It might be that you've hit a problem in the Makefile's for the web
+</I>&gt;<i> &gt;&gt; services. I fixed this on one of my machines but forgot to check it
+</I>&gt;<i> &gt;&gt; in, until late this afternoon.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Please do a 'svn update' and try again.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; -maarten
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Op 7-feb-2007, om 19:41 heeft <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dbellante at biol.unlp.edu.ar</A> het volgende
+</I>&gt;<i> &gt;&gt; geschreven:
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; Hi all!
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;   I am testing mrs3.0 installation in an Intel Dual Xeon with
+</I>&gt;<i> &gt;&gt;&gt; Fedora Core 4
+</I>&gt;<i> &gt;&gt;&gt; (64bits).
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;  When I try to install mrs3.0 I get the following error:
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; ---------------------------------------------------------------
+</I>&gt;<i> &gt;&gt;&gt; Could not compile: /usr/bin/ld: skipping incompatible /usr/lib/
+</I>&gt;<i> &gt;&gt;&gt; libboost_regex.so
+</I>&gt;<i> &gt;&gt;&gt; when searching for -lboost_regex
+</I>&gt;<i> &gt;&gt;&gt; /usr/bin/ld: skipping incompatible /usr/lib/libboost_regex.a when
+</I>&gt;<i> &gt;&gt;&gt; searching for
+</I>&gt;<i> &gt;&gt;&gt; -lboost_regex
+</I>&gt;<i> &gt;&gt;&gt; /usr/bin/ld: skipping incompatible
+</I>&gt;<i> &gt;&gt;&gt; /usr/lib/gcc/x86_64-redhat-linux/4.0.2/../../../libboost_regex.so when
+</I>&gt;<i> &gt;&gt;&gt; searching for -lboost_regex
+</I>&gt;<i> &gt;&gt;&gt; /usr/bin/ld: skipping incompatible
+</I>&gt;<i> &gt;&gt;&gt; /usr/lib/gcc/x86_64-redhat-linux/4.0.2/../../../libboost_regex.a
+</I>&gt;<i> &gt;&gt;&gt; when searching
+</I>&gt;<i> &gt;&gt;&gt; for -lboost_regex
+</I>&gt;<i> &gt;&gt;&gt; /usr/bin/ld: skipping incompatible /usr/lib/libboost_regex.so when
+</I>&gt;<i> &gt;&gt;&gt; searching for
+</I>&gt;<i> &gt;&gt;&gt; -lboost_regex
+</I>&gt;<i> &gt;&gt;&gt; /usr/bin/ld: skipping incompatible /usr/lib/libboost_regex.a when
+</I>&gt;<i> &gt;&gt;&gt; searching for
+</I>&gt;<i> &gt;&gt;&gt; -lboost_regex
+</I>&gt;<i> &gt;&gt;&gt; /usr/bin/ld: cannot find -lboost_regex
+</I>&gt;<i> &gt;&gt;&gt; collect2: ld returned 1 exit status
+</I>&gt;<i> &gt;&gt;&gt; -------------------------------------------------------------
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; I probed it with boost y boost-devel version 1.32.0-6 , 1.33.0-3
+</I>&gt;<i> &gt;&gt;&gt; and 1.33.1-5 .
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; Can anybody help me?
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;  Thanks!!
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;         Diego Bellante (AR.EMBnet)
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt;&gt; Mrs-user mailing list
+</I>&gt;<i> &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; mvg,
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Maarten L. Hekkelman
+</I>&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Mrs-user mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000187.html">[Mrs-user] sorry, Debian-Ubuntu's security trapped me again
+</A></li>
+	<LI>Next message: <A HREF="000190.html">[Mrs-user] GenomeProject identifier in GenBank/Refseq - Checked by	AntiVir DEMO ve
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#189">[ date ]</a>
+              <a href="thread.html#189">[ thread ]</a>
+              <a href="subject.html#189">[ subject ]</a>
+              <a href="author.html#189">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

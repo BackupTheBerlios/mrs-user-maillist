@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [mrs-user] libzeep boost dependencies
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2012-August/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20libzeep%20boost%20dependencies&In-Reply-To=%3CFB626D2D-2690-4454-9C26-105A1AA17455%40mimectl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000659.html">
+   <LINK REL="Next"  HREF="000661.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[mrs-user] libzeep boost dependencies</H1>
+    <B>M.Hekkelman at ncmls.ru.nl</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20libzeep%20boost%20dependencies&In-Reply-To=%3CFB626D2D-2690-4454-9C26-105A1AA17455%40mimectl%3E"
+       TITLE="[mrs-user] libzeep boost dependencies">M.Hekkelman at ncmls.ru.nl
+       </A><BR>
+    <I>Tue Aug  7 15:46:45 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000659.html">[mrs-user] libzeep boost dependencies
+</A></li>
+        <LI>Next message: <A HREF="000661.html">[mrs-user] libzeep boost dependencies
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#660">[ date ]</a>
+              <a href="thread.html#660">[ thread ]</a>
+              <a href="subject.html#660">[ subject ]</a>
+              <a href="author.html#660">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hey Georgios,
+
+
+
+Could it be you have two copies of libzeep on your disk, one in /usr/include e.g. and one where you're trying to compile? I changed the attribute container type some time ago and it looks like your header files contain the old definition while the cpp file contains the new one.
+
+
+
+-maarten
+
+
+
+
+
+________________________________
+Van: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user-bounces at lists.berlios.de</A> [<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user-bounces at lists.berlios.de</A>] namens Georgios Magklaras [<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">georgios at biotek.uio.no</A>]
+Verzonden: dinsdag 7 augustus 2012 15:16
+Aan: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+Onderwerp: [mrs-user] libzeep boost dependencies
+
+Hi Maarten,
+
+I am currently trying to transition from libzeep 2.6.3 -&gt; 2.9.0. I am on
+a RHEL 6 box (gcc version 4.4.6 20120305 (Red Hat 4.4.6-4) (GCC) and lib
+boost 1.49.0 ). However, in the process of compiling libzeep, I get the
+error below. As far as I can see the makefile references libzeep
+properly (both the lib and include files), so I start suspecting either
+the libboost version or my compiler.
+
+makefile:133: obj/doctype.d: No such file or directory
+makefile:133: obj/document.d: No such file or directory
+makefile:133: obj/exception.d: No such file or directory
+makefile:133: obj/node.d: No such file or directory
+makefile:133: obj/soap-envelope.d: No such file or directory
+makefile:133: obj/parser.d: No such file or directory
+makefile:133: obj/request_parser.d: No such file or directory
+makefile:133: obj/reply.d: No such file or directory
+makefile:133: obj/connection.d: No such file or directory
+makefile:133: obj/http-server.d: No such file or directory
+makefile:133: obj/preforked-http-server.d: No such file or directory
+makefile:133: obj/soap-server.d: No such file or directory
+makefile:133: obj/unicode_support.d: No such file or directory
+makefile:133: obj/webapp.d: No such file or directory
+makefile:133: obj/webapp-el.d: No such file or directory
+makefile:133: obj/xpath.d: No such file or directory
+makefile:133: obj/writer.d: No such file or directory
+cc -MD -c -o obj/doctype.o src/doctype.cpp -O2 -I/usr/lsc/libs/include
+-I. -fPIC -pthread -shared -Wall
+src/doctype.cpp: In member function &#8216;bool
+zeep::xml::doctype::attribute::is_unparsed_entity(const std::string&amp;,
+const zeep::xml::doctype::entity_list&amp;) const&#8217;:
+src/doctype.cpp:856: error: base operand of &#8216;-&gt;&#8217; has non-pointer type
+&#8216;const zeep::xml::doctype::entity&#8217;
+src/doctype.cpp: In destructor &#8216;zeep::xml::doctype::element::~element()&#8217;:
+src/doctype.cpp:865: error: cannot convert
+&#8216;zeep::xml::doctype::attribute&#8217; to &#8216;zeep::xml::doctype::attribute*&#8217; in
+initialization
+src/doctype.cpp: In member function &#8216;const
+zeep::xml::doctype::attribute*
+zeep::xml::doctype::element::get_attribute(const std::string&amp;) const&#8217;:
+src/doctype.cpp:894: error: cannot convert &#8216;const
+zeep::xml::doctype::attribute&#8217; to &#8216;const zeep::xml::doctype::attribute*&#8217;
+in assignment
+/usr/lsc/libs/include/boost/system/error_code.hpp: At global scope:
+/usr/lsc/libs/include/boost/system/error_code.hpp:214: warning:
+&#8216;boost::system::posix_category&#8217; defined but not used
+/usr/lsc/libs/include/boost/system/error_code.hpp:215: warning:
+&#8216;boost::system::errno_ecat&#8217; defined but not used
+/usr/lsc/libs/include/boost/system/error_code.hpp:216: warning:
+&#8216;boost::system::native_ecat&#8217; defined but not used
+make: *** [obj/doctype.o] Error 1
+
+Best regards,
+
+--
+--
+George Magklaras PhD
+RHCE no: 805008309135525
+
+Senior Systems Engineer/IT Manager
+Biotechnology Center of Oslo and
+the Norwegian Center for Molecular Medicine
+EMBnet TMPC Chair
+
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+Tel: +47 22840535
+
+_______________________________________________
+mrs-user mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">mrs-user at lists.berlios.de</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+
+
+
+The Radboud University Nijmegen Medical Centre is listed in the Commercial Register of the Chamber of Commerce under file number 41055629.
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20120807/ed17028d/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20120807/ed17028d/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000659.html">[mrs-user] libzeep boost dependencies
+</A></li>
+	<LI>Next message: <A HREF="000661.html">[mrs-user] libzeep boost dependencies
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#660">[ date ]</a>
+              <a href="thread.html#660">[ thread ]</a>
+              <a href="subject.html#660">[ subject ]</a>
+              <a href="author.html#660">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the mrs-user
+mailing list</a><br>
+</body></html>

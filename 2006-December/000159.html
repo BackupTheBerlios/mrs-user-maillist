@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] mrs3 compilation...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs3%20compilation...&In-Reply-To=%3CCB75608E-25DF-434C-9B52-6E6E733195C4%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000158.html">
+   <LINK REL="Next"  HREF="000160.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] mrs3 compilation...</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs3%20compilation...&In-Reply-To=%3CCB75608E-25DF-434C-9B52-6E6E733195C4%40hekkelman.com%3E"
+       TITLE="[Mrs-user] mrs3 compilation...">maarten at hekkelman.com
+       </A><BR>
+    <I>Fri Dec 22 11:13:51 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000158.html">[Mrs-user] mrs3 compilation...
+</A></li>
+        <LI>Next message: <A HREF="000160.html">[Mrs-user] make.config files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Robert,
+
+Thanks for trying out mrs 3.0 although I see I should have given more  
+information for this release.
+
+You need the libboost_regex.a and libboost_filesytem.a files for MRS  
+to build. The problem with these files is they're installation  
+specific and so I put them in the make.config file. But I did not  
+provide an updated installer or make.config template. Here's the  
+content of mine
+
+for mrs/plugin
+
+CC = /opt/local/bin/c++-dp-4.1
+SWIG = /opt/local/bin/swig
+BOOST_LIBS = /opt/local/lib/libboost_regex.a
+HAVE_TR1 = 1
+INSTALL_DIR = /usr/local/bin
+SUDO = sudo
+TARGET = perl5
+PERL = /usr/bin/perl
+
+and for mrs/ws
+
+BOOST_LIBS = /opt/local/lib/libboost_regex.a /opt/local/lib/ 
+libboost_filesystem.a
+LIBXML = /opt/local/include/libxml2
+LIBXML_LIBS = /opt/local/lib/libxml2.2.dylib
+
+And now that I look at it, I see you also need libxml2 for the  
+webservices application.
+
+Now that I'm documenting this anyway I should also tell you the mrsws  
+application is a daemon application that should be started from the  
+commandline. It can spit out a 'usage' summary. For now it needs the  
+data directory, parser directory options. I will rewrite it to pick  
+up these values from the xml based config file. This config file is  
+optional, but when supplied it will specify what MRS files to load.  
+Otherwise it simply loads all files in the data directory.
+
+I think I will have to provide some more defaults like picking up the  
+directories from environmental variables if they exist and locating  
+the config file in a standard location like /usr/local/etc/.
+
+The WSDL file for the mrsws application should be put somewhere on  
+your web server. You then also will have to adjust the SOAP:address  
+location of the soap application. The default specifies localhost.
+
+Hope this helps a bit.
+
+-maarten
+
+
+
+Op 22-dec-2006, om 9:28 heeft Robert HERZOG het volgende geschreven:
+
+&gt;<i> Hi,
+</I>&gt;<i> I started yesterday to try and install mrs3. I have problems during  
+</I>&gt;<i> compilation, in fact during the linking phase, where a lot of   
+</I>&gt;<i> failure messages mention undefined references to boost::XXXX, like  
+</I>&gt;<i> typically:
+</I>&gt;<i> ---cut---
+</I>&gt;<i> /usr/include/boost/regex/v4/regex_raw_buffer.hpp:124: undefined  
+</I>&gt;<i> reference to `boost::re_detail::raw_storage::resize(unsigned long)'
+</I>&gt;<i> libmrs.a: In function `boost::re_detail::basic_regex_creator&lt;char,  
+</I>&gt;<i> boost::regex_traits&lt;char, boost::cpp_regex_traits&lt;char&gt; &gt;  
+</I>&gt;<i> &gt;::append_state(boost::re_detail::syntax_element_type, unsigned  
+</I>&gt;<i> long)':
+</I>&gt;<i> /usr/include/boost/regex/v4/regex_raw_buffer.hpp:124: undefined  
+</I>&gt;<i> reference to `boost::re_detail::raw_storage::resize(unsigned long)'
+</I>&gt;<i> /usr/include/boost/regex/v4/regex_raw_buffer.hpp:124: undefined  
+</I>&gt;<i> reference to `boost::re_detail::raw_storage::resize(unsigned long)'
+</I>&gt;<i> /usr/include/boost/regex/v4/regex_raw_buffer.hpp:124: undefined  
+</I>&gt;<i> reference to `boost::re_detail::raw_storage::resize(unsigned long)'
+</I>&gt;<i> libmrs.a: In function `boost::re_detail::basic_regex_parser&lt;char,  
+</I>&gt;<i> boost::regex_traits&lt;char, boost::cpp_regex_traits&lt;char&gt; &gt;  
+</I>&gt;<i> &gt;::parse_match_any()':
+</I>&gt;<i> /usr/include/boost/regex/v4/regex_raw_buffer.hpp:124: undefined  
+</I>&gt;<i> reference to `boost::re_detail::raw_storage::resize(unsigned long)'
+</I>&gt;<i> collect2: ld returned 1 exit status
+</I>&gt;<i> ---cut---
+</I>&gt;<i> It seems that the linker does not find my boost libraries, while  
+</I>&gt;<i> the path /usr/include, corresponding to the BOOST global is  
+</I>&gt;<i> correct. The version of boost is 1.33.1. The hardware is dual Opteron.
+</I>&gt;<i> I am on a SuSE 10.1 where the compiler is gcc4.1 and anything more  
+</I>&gt;<i> or less  related to boost is installed. On the same box, the  
+</I>&gt;<i> compilation and linking of mrs2 completes gracefully.
+</I>&gt;<i> Did anyone on the list (except Maarten, obviously...) succeed in  
+</I>&gt;<i> installing mrs3 ? If so, on which platform ?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000158.html">[Mrs-user] mrs3 compilation...
+</A></li>
+	<LI>Next message: <A HREF="000160.html">[Mrs-user] make.config files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

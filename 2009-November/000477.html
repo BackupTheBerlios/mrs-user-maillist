@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Problem with MRS on Tomcat 6
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Problem%20with%20MRS%20on%20Tomcat%206&In-Reply-To=%3C4B0ECE8A.2070101%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000476.html">
+   <LINK REL="Next"  HREF="000478.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Problem with MRS on Tomcat 6</H1>
+    <B>George Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Problem%20with%20MRS%20on%20Tomcat%206&In-Reply-To=%3C4B0ECE8A.2070101%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] Problem with MRS on Tomcat 6">georgios at biotek.uio.no
+       </A><BR>
+    <I>Thu Nov 26 19:52:58 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000476.html">[Mrs-user] Problem with MRS on Tomcat 6
+</A></li>
+        <LI>Next message: <A HREF="000478.html">[Mrs-user] Problem with MRS on Tomcat 6
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#477">[ date ]</a>
+              <a href="thread.html#477">[ thread ]</a>
+              <a href="subject.html#477">[ subject ]</a>
+              <a href="author.html#477">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten,
+
+I am afraid that references to mrs.cmbi.ru.nl are all over the place 
+with the war file, so it's not the web.xml and context.xml env settings 
+(see grep below). We tried to fix those and jar -cvf the war file, but 
+then we discovered many other references. We might try to grub the 
+latest trunk from svn and start from scratch but if you can upload 
+something that would be great.
+
+Greetings.
+
+GM
+
+-- 
+--
+George Magklaras BSc Hons MPhil
+RHCE:805008309135525
+
+Senior Computer Systems Engineer/UNIX-Linux Systems Administrator
+EMBnet Technical Management Board
+The Biotechnology Centre of Oslo,
+University of Oslo
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+Tel: +47-22840535
+
+--
+
+grep -r &quot;mrs.cmbi&quot; *
+help/man/MRS.3pm.html:  &lt;a 
+href=&quot;<A HREF="http://mrs.cmbi.ru.nl/">http://mrs.cmbi.ru.nl/</A>&quot;&gt;<A HREF="http://mrs.cmbi.ru.nl/&lt;/a">http://mrs.cmbi.ru.nl/&lt;/a</A>&gt;&lt;/pre&gt;
+META-INF/maven/nl.ru.cmbi/mrs-web/pom.xml: 
+ 
+&lt;wsdl&gt;<A HREF="http://mrs.cmbi.ru.nl/mrsws/search/wsdl&lt;/wsdl">http://mrs.cmbi.ru.nl/mrsws/search/wsdl&lt;/wsdl</A>&gt;
+META-INF/maven/nl.ru.cmbi/mrs-web/pom.xml: 
+ 
+&lt;wsdl&gt;<A HREF="http://mrs.cmbi.ru.nl/mrsws/blast/wsdl&lt;/wsdl">http://mrs.cmbi.ru.nl/mrsws/blast/wsdl&lt;/wsdl</A>&gt;
+META-INF/maven/nl.ru.cmbi/mrs-web/pom.xml: 
+ 
+&lt;wsdl&gt;<A HREF="http://mrs.cmbi.ru.nl:18084/wsdl&lt;/wsdl">http://mrs.cmbi.ru.nl:18084/wsdl&lt;/wsdl</A>&gt;
+META-INF/maven/nl.ru.cmbi/mrs-web/pom.xml: 
+ 
+&lt;wsdl&gt;<A HREF="http://mrs.cmbi.ru.nl/mrsws/clustal/wsdl&lt;/wsdl">http://mrs.cmbi.ru.nl/mrsws/clustal/wsdl&lt;/wsdl</A>&gt;
+pages/welcome.jsp:      &lt;li&gt;&lt;a 
+href=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/search/wsdl">http://mrs.cmbi.ru.nl/mrsws/search/wsdl</A>&quot;&gt;<A HREF="http://mrs.cmbi.ru.nl/mrsws/search/wsdl&lt;/a">http://mrs.cmbi.ru.nl/mrsws/search/wsdl&lt;/a</A>&gt;&lt;/li&gt;
+pages/welcome.jsp:      &lt;li&gt;&lt;a 
+href=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/blast/wsdl">http://mrs.cmbi.ru.nl/mrsws/blast/wsdl</A>&quot;&gt;<A HREF="http://mrs.cmbi.ru.nl/mrsws/blast/wsdl&lt;/a">http://mrs.cmbi.ru.nl/mrsws/blast/wsdl&lt;/a</A>&gt;&lt;/li&gt;
+pages/welcome.jsp:      &lt;li&gt;&lt;a 
+href=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/clustal/wsdl">http://mrs.cmbi.ru.nl/mrsws/clustal/wsdl</A>&quot;&gt;<A HREF="http://mrs.cmbi.ru.nl/mrsws/clustal/wsdl&lt;/a">http://mrs.cmbi.ru.nl/mrsws/clustal/wsdl&lt;/a</A>&gt;&lt;/li&gt;
+Binary file 
+WEB-INF/classes/nl/ru/cmbi/mrs/mrsws/search/MrswsSearchPortType.class 
+matches
+Binary file 
+WEB-INF/classes/nl/ru/cmbi/mrs/mrsws/search/package-info.class matches
+Binary file 
+WEB-INF/classes/nl/ru/cmbi/mrs/mrsws/search/MrswsSearch.class matches
+Binary file 
+WEB-INF/classes/nl/ru/cmbi/mrs/mrsws/admin/package-info.class matches
+Binary file 
+WEB-INF/classes/nl/ru/cmbi/mrs/mrsws/admin/MrswsAdminPortType.class matches
+Binary file WEB-INF/classes/nl/ru/cmbi/mrs/mrsws/admin/MrswsAdmin.class 
+matches
+Binary file 
+WEB-INF/classes/nl/ru/cmbi/mrs/mrsws/blast/MrswsBlastPortType.class matches
+Binary file 
+WEB-INF/classes/nl/ru/cmbi/mrs/mrsws/blast/package-info.class matches
+Binary file WEB-INF/classes/nl/ru/cmbi/mrs/mrsws/blast/MrswsBlast.class 
+matches
+Binary file 
+WEB-INF/classes/nl/ru/cmbi/mrs/mrsws/clustal/package-info.class matches
+Binary file 
+WEB-INF/classes/nl/ru/cmbi/mrs/mrsws/clustal/MrswsClustal.class matches
+Binary file 
+WEB-INF/classes/nl/ru/cmbi/mrs/mrsws/clustal/MrswsClustalPortType.class 
+matches
+WEB-INF/mytaglib.tld:   &lt;uri&gt;<A HREF="http://mrs.cmbi.ru.nl/mytags&lt;/uri">http://mrs.cmbi.ru.nl/mytags&lt;/uri</A>&gt;
+WEB-INF/wsdl/search.wsdl:&lt;wsdl:definitions 
+targetNamespace=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/search">http://mrs.cmbi.ru.nl/mrsws/search</A>&quot; 
+xmlns:wsdl=&quot;<A HREF="http://schemas.xmlsoap.org/wsdl/">http://schemas.xmlsoap.org/wsdl/</A>&quot; 
+xmlns:ns=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/search">http://mrs.cmbi.ru.nl/mrsws/search</A>&quot; 
+xmlns:soap=&quot;<A HREF="http://schemas.xmlsoap.org/wsdl/soap/">http://schemas.xmlsoap.org/wsdl/soap/</A>&quot;&gt;
+WEB-INF/wsdl/search.wsdl:  &lt;xsd:schema 
+targetNamespace=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/search">http://mrs.cmbi.ru.nl/mrsws/search</A>&quot; 
+xmlns:xsd=&quot;<A HREF="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</A>&quot; 
+elementFormDefault=&quot;qualified&quot; attributeFormDefault=&quot;unqualified&quot;&gt;
+WEB-INF/wsdl/search.wsdl:   &lt;soap:address 
+location=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/search">http://mrs.cmbi.ru.nl/mrsws/search</A>&quot;/&gt;
+WEB-INF/wsdl/admin.wsdl:&lt;wsdl:definitions 
+targetNamespace=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/admin">http://mrs.cmbi.ru.nl/mrsws/admin</A>&quot; 
+xmlns:wsdl=&quot;<A HREF="http://schemas.xmlsoap.org/wsdl/">http://schemas.xmlsoap.org/wsdl/</A>&quot; 
+xmlns:ns=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/admin">http://mrs.cmbi.ru.nl/mrsws/admin</A>&quot; 
+xmlns:soap=&quot;<A HREF="http://schemas.xmlsoap.org/wsdl/soap/">http://schemas.xmlsoap.org/wsdl/soap/</A>&quot;&gt;
+WEB-INF/wsdl/admin.wsdl:  &lt;xsd:schema 
+targetNamespace=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/admin">http://mrs.cmbi.ru.nl/mrsws/admin</A>&quot; 
+xmlns:xsd=&quot;<A HREF="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</A>&quot; 
+elementFormDefault=&quot;qualified&quot; attributeFormDefault=&quot;unqualified&quot;&gt;
+WEB-INF/wsdl/admin.wsdl:   &lt;soap:address 
+location=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/admin">http://mrs.cmbi.ru.nl/mrsws/admin</A>&quot;/&gt;
+WEB-INF/wsdl/blast.wsdl:&lt;wsdl:definitions 
+targetNamespace=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/blast">http://mrs.cmbi.ru.nl/mrsws/blast</A>&quot; 
+xmlns:wsdl=&quot;<A HREF="http://schemas.xmlsoap.org/wsdl/">http://schemas.xmlsoap.org/wsdl/</A>&quot; 
+xmlns:ns=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/blast">http://mrs.cmbi.ru.nl/mrsws/blast</A>&quot; 
+xmlns:soap=&quot;<A HREF="http://schemas.xmlsoap.org/wsdl/soap/">http://schemas.xmlsoap.org/wsdl/soap/</A>&quot;&gt;
+WEB-INF/wsdl/blast.wsdl:  &lt;xsd:schema 
+targetNamespace=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/blast">http://mrs.cmbi.ru.nl/mrsws/blast</A>&quot; 
+xmlns:xsd=&quot;<A HREF="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</A>&quot; 
+elementFormDefault=&quot;qualified&quot; attributeFormDefault=&quot;unqualified&quot;&gt;
+WEB-INF/wsdl/blast.wsdl:   &lt;soap:address 
+location=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/blast">http://mrs.cmbi.ru.nl/mrsws/blast</A>&quot;/&gt;
+WEB-INF/wsdl/clustal.wsdl:&lt;wsdl:definitions 
+targetNamespace=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/clustal">http://mrs.cmbi.ru.nl/mrsws/clustal</A>&quot; 
+xmlns:wsdl=&quot;<A HREF="http://schemas.xmlsoap.org/wsdl/">http://schemas.xmlsoap.org/wsdl/</A>&quot; 
+xmlns:ns=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/clustal">http://mrs.cmbi.ru.nl/mrsws/clustal</A>&quot; 
+xmlns:soap=&quot;<A HREF="http://schemas.xmlsoap.org/wsdl/soap/">http://schemas.xmlsoap.org/wsdl/soap/</A>&quot;&gt;
+WEB-INF/wsdl/clustal.wsdl:  &lt;xsd:schema 
+targetNamespace=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/clustal">http://mrs.cmbi.ru.nl/mrsws/clustal</A>&quot; 
+xmlns:xsd=&quot;<A HREF="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</A>&quot; 
+elementFormDefault=&quot;qualified&quot; attributeFormDefault=&quot;unqualified&quot;&gt;
+WEB-INF/wsdl/clustal.wsdl:   &lt;soap:address 
+location=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/clustal">http://mrs.cmbi.ru.nl/mrsws/clustal</A>&quot;/&gt;
+
+
+Maarten L. Hekkelman wrote:
+&gt;<i> Dear Harald,
+</I>&gt;<i> 
+</I>&gt;<i> Yes, I'm aware there is a problem with the current .war. Problem is the
+</I>&gt;<i> way the configuration of a war can be done in other servlet containers,
+</I>&gt;<i> (read: cannot be done...). And so I messed up. Tomcat uses a file called
+</I>&gt;<i> context.xml for environmental variables you can set from the outside.
+</I>&gt;<i> Glassfish is supposed to use the same file, but I'm not so sure it
+</I>&gt;<i> really does.
+</I>&gt;<i> 
+</I>&gt;<i> You might want to extract the .war file and edit the web.xml file. It
+</I>&gt;<i> contains a section with 'environment variables' somewhere at the bottom.
+</I>&gt;<i> Either remove this or fill in the correct values for your site.
+</I>&gt;<i> 
+</I>&gt;<i> I'll try to upload a new .war file, but that might be difficult since
+</I>&gt;<i> I'm not allowed to access my computer at work at the moment (due to a
+</I>&gt;<i> case of flu in the family). So you might want to work around this
+</I>&gt;<i> problem in the way described above.
+</I>&gt;<i> 
+</I>&gt;<i> If you're comfortable with Java development, you might also want to
+</I>&gt;<i> check out the web application from <A HREF="http://svn.cmbi.ru.nl/mrsweb/trunk">http://svn.cmbi.ru.nl/mrsweb/trunk</A>
+</I>&gt;<i> edit the web.xml file and then build a new war using maven.
+</I>&gt;<i> 
+</I>&gt;<i> -maarten
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Op donderdag 26-11-2009 om 17:10 uur [tijdzone +0100], schreef Harald
+</I>&gt;<i> Dahle:
+</I>&gt;&gt;<i> Maarten,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I am running into some problems with getting the MRS web application 
+</I>&gt;&gt;<i> deployed properly on Tomcat 6. Despite changing the environment 
+</I>&gt;&gt;<i> variables to point to localhost rather than your server ( mrs.cmbi.ru.nl 
+</I>&gt;&gt;<i> ), Tomcat keeps trying to reach <A HREF="http://mrs.cmbi.ru.nl:18084/.">http://mrs.cmbi.ru.nl:18084/.</A> It sticks 
+</I>&gt;&gt;<i> at the SYN_SENT stage, and I have to wait for that to timeout before I 
+</I>&gt;&gt;<i> can reach anything. MRS is unavailable even after the timeout, so there 
+</I>&gt;&gt;<i> seems to be something strange here.
+</I>&gt;&gt;<i> A bit of searching has shown that this URL is found in several *.class 
+</I>&gt;&gt;<i> files, which I can not modify. I realize that not all of these 
+</I>&gt;&gt;<i> references will matter, but apparently some of them do stick, even after 
+</I>&gt;&gt;<i> I have changed all the configuration files I have been able to find. So 
+</I>&gt;&gt;<i> at present, I am stuck in trying to get it working.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I understand that you have switched to using Glassfish rather than 
+</I>&gt;&gt;<i> Tomcat for the application server. Is this a switch that you would 
+</I>&gt;&gt;<i> recommend we make as well to get it working? If so, do you have a quick 
+</I>&gt;&gt;<i> how-to for setting this up?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> If not, do you have any suggestion on what I need to do to get it to run 
+</I>&gt;&gt;<i> on Tomcat 6?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks,
+</I>&gt;&gt;<i> -Harald Dahle
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i> 
+</I>
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000476.html">[Mrs-user] Problem with MRS on Tomcat 6
+</A></li>
+	<LI>Next message: <A HREF="000478.html">[Mrs-user] Problem with MRS on Tomcat 6
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#477">[ date ]</a>
+              <a href="thread.html#477">[ thread ]</a>
+              <a href="subject.html#477">[ subject ]</a>
+              <a href="author.html#477">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

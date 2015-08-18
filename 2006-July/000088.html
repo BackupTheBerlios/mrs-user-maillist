@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] installing locuslink and pdb
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20installing%20locuslink%20and%20pdb&In-Reply-To=%3CDCEFDF1C-08A7-430C-8F43-229BC3E0DB3A%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000087.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] installing locuslink and pdb</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20installing%20locuslink%20and%20pdb&In-Reply-To=%3CDCEFDF1C-08A7-430C-8F43-229BC3E0DB3A%40hekkelman.com%3E"
+       TITLE="[Mrs-user] installing locuslink and pdb">maarten at hekkelman.com
+       </A><BR>
+    <I>Sat Jul 29 10:03:56 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000087.html">[Mrs-user] Blast problem
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#88">[ date ]</a>
+              <a href="thread.html#88">[ thread ]</a>
+              <a href="subject.html#88">[ subject ]</a>
+              <a href="author.html#88">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Robert,
+&gt;<i>
+</I>&gt;<i> I looked into the locuslink.make file to identify why it did not build
+</I>&gt;<i> on my MRS boxes. The reason is that the path on the server must be
+</I>&gt;<i> modified, to read :
+</I>&gt;<i>
+</I>&gt;<i> DB_URL = <A HREF="ftp://ftp.ncbi.nih.gov/refseq/LocusLink/ARCHIVE/">ftp://ftp.ncbi.nih.gov/refseq/LocusLink/ARCHIVE/</A>
+</I>&gt;<i>
+</I>&gt;<i> The addition of ARCHIVE/ is required, as this databank is now  
+</I>&gt;<i> frozen and
+</I>&gt;<i> thus kept in a distinct subdirectory.
+</I>
+Locuslink is superseded by Genes I believe. I will create a parser  
+for that db as soon as I have some time.
+
+&gt;<i> Now I do not have a valid config for pdb. Who did solve this ?
+</I>
+It isn't working?
+
+Since the CMBI is responsible for creating DSSP and HSSP we have  
+special scripts to generate those although they are started by the  
+same make system as the MRS files. But the programs creating DSSP/ 
+HSSP and PDBFINDER* need uncompressed PDB files and that's why there  
+are these dependancy rules in the pdb.make, these rules extract all  
+pdb files into one flat hierarchy.
+
+But since you probably don't need that, you can remove all statements  
+that refer to pdb.deps. Your pdb.make should probably look something  
+like this:
+
+-------&gt;8---------------
+
+DATABANK		= pdb
+MRSLIBS			= pdb
+MRS_DICT		= text:title:ref:remark
+
+include make.pre
+
+ZIPFILES = $(wildcard $(SRCDIR)*/*.Z)
+DATFILES =
+
+fetch:
+	rsync -rltpvz --delete --port=33444 \
+		rsync.rcsb.org::ftp_data/structures/divided/pdb/ \
+		$(SRCDIR)
+
+include make.post
+
+------------&gt;8---------------
+
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000087.html">[Mrs-user] Blast problem
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#88">[ date ]</a>
+              <a href="thread.html#88">[ thread ]</a>
+              <a href="subject.html#88">[ subject ]</a>
+              <a href="author.html#88">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

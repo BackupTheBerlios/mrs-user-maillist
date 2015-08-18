@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] How to add my own sequence database?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20How%20to%20add%20my%20own%20sequence%20database%3F&In-Reply-To=%3CAAFD6FE1-939C-4D85-83D4-41F0E0635721%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000225.html">
+   <LINK REL="Next"  HREF="000227.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] How to add my own sequence database?</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20How%20to%20add%20my%20own%20sequence%20database%3F&In-Reply-To=%3CAAFD6FE1-939C-4D85-83D4-41F0E0635721%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] How to add my own sequence database?">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Fri Mar 16 14:45:25 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000225.html">[Mrs-user] How to add my own sequence database?
+</A></li>
+        <LI>Next message: <A HREF="000227.html">[Mrs-user] port features MRS 2 -&gt; MRS 3 - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#226">[ date ]</a>
+              <a href="thread.html#226">[ thread ]</a>
+              <a href="subject.html#226">[ subject ]</a>
+              <a href="author.html#226">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 16-mrt-2007, om 14:26 heeft Alex Patak het volgende geschreven:
+
+&gt;<i> Thanks, this helped me to get the .cmp file.
+</I>&gt;<i>
+</I>&gt;<i> During the execution of the script I got several errors like &quot;Use  
+</I>&gt;<i> of uninitialized value in...&quot;  (Find attached the hole list of  
+</I>&gt;<i> errors).
+</I>
+Those are warnings coming from the genbank.pm perl script. I've set  
+the script to some kind of paranoia mode to detect errors early.
+
+To avoid many of them you can assign the environmental variables  
+MRS_DATA_DIR, MRS_RAW_DIR and MRS_SCRIPT_DIR in your shell before  
+running mrs.pl.
+
+&gt;<i> I have following extra questions:
+</I>&gt;<i>
+</I>&gt;<i> 1) During this process no .dict file was created like the update  
+</I>&gt;<i> scripts do. What is this .dict file?
+</I>
+dict files can be created using the 'mrs.pl dict' command.
+
+If you run mrs.pl without any argument it will print out most of the  
+options available.
+
+A .dict file is used by the web application to generate a list of  
+spelling alternatives for query terms.
+
+&gt;<i> 2) Would the same procedure work with EMBL formatted sequences?
+</I>
+In theory, yes.
+
+&gt;<i> 3) I added the database name to the /usr/local/etc/mrs-config.xml  
+</I>&gt;<i> file but I get an empty line in the popup menu of the web  
+</I>&gt;<i> interface. Is there somewhere else where I have to declare the new  
+</I>&gt;<i> database?
+</I>
+Ah... yes. well... To add a name to your databank you have to edit  
+the genbank.pm script. At line 66 in this script you see a hash that  
+maps the databank short name to a human readable long name. Just add  
+your own name here and recreate your databank with the same command.
+
+-maarten
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000225.html">[Mrs-user] How to add my own sequence database?
+</A></li>
+	<LI>Next message: <A HREF="000227.html">[Mrs-user] port features MRS 2 -&gt; MRS 3 - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#226">[ date ]</a>
+              <a href="thread.html#226">[ thread ]</a>
+              <a href="subject.html#226">[ subject ]</a>
+              <a href="author.html#226">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

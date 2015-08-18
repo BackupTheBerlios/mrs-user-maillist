@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] a proposal : parsers for Rebase
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20a%20proposal%20%3A%20parsers%20for%20Rebase&In-Reply-To=%3C469627DF.6020505%40vub.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000270.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] a proposal : parsers for Rebase</H1>
+    <B>Guy Bottu</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20a%20proposal%20%3A%20parsers%20for%20Rebase&In-Reply-To=%3C469627DF.6020505%40vub.ac.be%3E"
+       TITLE="[Mrs-user] a proposal : parsers for Rebase">gbottu at vub.ac.be
+       </A><BR>
+    <I>Thu Jul 12 15:08:47 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000270.html">[Mrs-user] Successful installation
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#271">[ date ]</a>
+              <a href="thread.html#271">[ thread ]</a>
+              <a href="subject.html#271">[ subject ]</a>
+              <a href="author.html#271">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>	Dear Maarten, dear all,
+
+Rebase is a very useful database with information about restriction 
+enzymes. At the BEN site we always had it available in our SRS server 
+and, since we did not want to lose it, I did the effort to integrate in 
+our MRS server. For those who are interested I send you my version of 
+the parsers.
+A question was which format to use (R. Roberts provides versions of 
+Rebase in a great variety of formats). I chose to use the &quot;bairoch&quot; 
+file, which is also used by SRS. It is easy to parse and is rich in 
+information. A minor trouble is that the &quot;bairoch&quot; file contains two 
+entries with same ID for enzymes like BcgI that make 4 cuts, but this is 
+not really toxic.
+There is a second table with the commercial data. You will note that at
+<A HREF="http://tanga.ulb.ac.be:8080/mrs-3/">http://tanga.ulb.ac.be:8080/mrs-3/</A> it is e.g. possible to search in 
+Rebase for target:cccggg and in an entry to follow a hyperlink that 
+gives you the list of commercial providers.
+
+	Regards,
+	Guy Bottu,
+	Belgian EMBnet Node
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: rebase.make
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20070712/d6983091/attachment.ksh">https://lists.berlios.de/pipermail/mrs-user/attachments/20070712/d6983091/attachment.ksh</A>&gt;
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: rebase.pm
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20070712/d6983091/attachment-0001.ksh">https://lists.berlios.de/pipermail/mrs-user/attachments/20070712/d6983091/attachment-0001.ksh</A>&gt;
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: rebase_comdata.pm
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20070712/d6983091/attachment-0002.ksh">https://lists.berlios.de/pipermail/mrs-user/attachments/20070712/d6983091/attachment-0002.ksh</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000270.html">[Mrs-user] Successful installation
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#271">[ date ]</a>
+              <a href="thread.html#271">[ thread ]</a>
+              <a href="subject.html#271">[ subject ]</a>
+              <a href="author.html#271">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

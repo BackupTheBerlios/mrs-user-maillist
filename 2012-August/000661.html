@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [mrs-user] libzeep boost dependencies
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2012-August/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20libzeep%20boost%20dependencies&In-Reply-To=%3C50213216.5010202%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000660.html">
+   <LINK REL="Next"  HREF="000662.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[mrs-user] libzeep boost dependencies</H1>
+    <B>Georgios Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20libzeep%20boost%20dependencies&In-Reply-To=%3C50213216.5010202%40biotek.uio.no%3E"
+       TITLE="[mrs-user] libzeep boost dependencies">georgios at biotek.uio.no
+       </A><BR>
+    <I>Tue Aug  7 17:19:50 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000660.html">[mrs-user] libzeep boost dependencies
+</A></li>
+        <LI>Next message: <A HREF="000662.html">[mrs-user] libzeep boost dependencies
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#661">[ date ]</a>
+              <a href="thread.html#661">[ thread ]</a>
+              <a href="subject.html#661">[ subject ]</a>
+              <a href="author.html#661">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hmm, nope, I think it is my compiler. I have downgraded back to boost 
+1.47 and it compiled. The think now is that when I try to compile mrs 
+(svn rev 1442), the configure script of the MRS install fails to detect it:
+./configure --prefix=/usr/lsc/mrs --data-dir=/storage/tools/mrsdata 
+--boost_lib=/usr/lsc/libs/lib --boost_inc=/usr/lsc/libs/include 
+--zeep=/usr/lsc/libs/lib/
+...
+Checking for libz... OK
+Checking for libbz2... OK
+Checking for libzeep...
+
+Cannot continue since you don't seem to have libzeep installed
+Please install the libzeep package (<A HREF="http://www.cmbi.ru.nl/libzeep/">http://www.cmbi.ru.nl/libzeep/</A>) and 
+run configure again.
+
+  So:
+
+ldconfig -p | grep zeep
+     libzeep.so.2.9 (libc6,x86-64) =&gt; /usr/lsc/libs/lib/libzeep.so.2.9
+
+Should there be a libzeep.a somewhere?
+
+GM
+
+On 2012-08-07 15:46, <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">M.Hekkelman at ncmls.ru.nl</A> wrote:
+&gt;<i>
+</I>&gt;<i> Hey Georgios,
+</I>&gt;<i>
+</I>&gt;<i> Could it be you have two copies of libzeep on your disk, one in 
+</I>&gt;<i> /usr/include e.g. and one where you're trying to compile? I changed 
+</I>&gt;<i> the attribute container type some time ago and it looks like your 
+</I>&gt;<i> header files contain the old definition while the cpp file contains 
+</I>&gt;<i> the new one.
+</I>&gt;<i>
+</I>&gt;<i> -maarten
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+Best regards,
+
+-- 
+-- 
+George Magklaras PhD
+RHCE no: 805008309135525
+  
+Senior Systems Engineer/IT Manager
+Biotechnology Center of Oslo and
+the Norwegian Center for Molecular Medicine
+EMBnet TMPC Chair
+
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+Tel: +47 22840535
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20120807/ac7ca253/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20120807/ac7ca253/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000660.html">[mrs-user] libzeep boost dependencies
+</A></li>
+	<LI>Next message: <A HREF="000662.html">[mrs-user] libzeep boost dependencies
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#661">[ date ]</a>
+              <a href="thread.html#661">[ thread ]</a>
+              <a href="subject.html#661">[ subject ]</a>
+              <a href="author.html#661">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the mrs-user
+mailing list</a><br>
+</body></html>

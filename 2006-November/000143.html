@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS dev
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20dev&In-Reply-To=%3C0869A1E6-9D01-4B54-BE0B-9D6AD9DA61C3%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000142.html">
+   <LINK REL="Next"  HREF="000144.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS dev</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20dev&In-Reply-To=%3C0869A1E6-9D01-4B54-BE0B-9D6AD9DA61C3%40hekkelman.com%3E"
+       TITLE="[Mrs-user] MRS dev">maarten at hekkelman.com
+       </A><BR>
+    <I>Mon Nov 20 08:40:52 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000142.html">[Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -
+</A></li>
+        <LI>Next message: <A HREF="000144.html">[Mrs-user] about the new Web services - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#143">[ date ]</a>
+              <a href="thread.html#143">[ thread ]</a>
+              <a href="subject.html#143">[ subject ]</a>
+              <a href="author.html#143">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+OK, here's another question regarding MRS development.
+
+MRS uses several ways to locate files and directories. The website  
+uses a mrs.conf file in the cgi-bin directory, the makefiles use a  
+make_xxx.conf file and mrs_blast uses the environmental variable  
+MRS_DATA_DIR to name just a few.
+
+That's a bit confusing.
+
+So I'm considering dropping all this and replace it with one new  
+system wide configuration file containing all that is needed in  
+combination with a mrs-config application that works like pkg-config.  
+I think this might be a bit easier to maintain and configure since  
+there would be only one place left to set up everything related to MRS.
+
+In detail I'm thinking about:
+
+- Create a new configuration file format using XML. This file  
+describes where to place files on your disk, where applications and  
+scripts are located, what formatting filters to use for which  
+databank, etc.
+
+- This config file would be located in /etc, /usr/local/etc, or any  
+other directory determined at installation time. Possibly  
+a .mrs_config in the users home directory may override what is in the  
+system config file.
+
+- The mrs-config application reads this config file and prints on  
+stdout the information requested. This way you can e.g. ask it for  
+the location of the mrs data directory or the flags to use to link  
+against libmrs.
+
+- All other tools will use this new config file to find what they  
+need to know. The makefile system will use the config file using the  
+pkg-config application.
+
+I really would like to know if you have any comments on this.
+
+Best regards,
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000142.html">[Mrs-user] The Web services time-out problem - Checked by	AntiVir DEMO version -
+</A></li>
+	<LI>Next message: <A HREF="000144.html">[Mrs-user] about the new Web services - Checked by AntiVir DEMO	version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#143">[ date ]</a>
+              <a href="thread.html#143">[ thread ]</a>
+              <a href="subject.html#143">[ subject ]</a>
+              <a href="author.html#143">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

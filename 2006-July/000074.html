@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] new database not found by  databank overview
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20new%20database%20not%20found%20by%20%20databank%20overview&In-Reply-To=%3C58EF0F4E-8273-4BC1-ADBC-1EAEDE33FCCB%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000071.html">
+   <LINK REL="Next"  HREF="000077.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] new database not found by  databank overview</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20new%20database%20not%20found%20by%20%20databank%20overview&In-Reply-To=%3C58EF0F4E-8273-4BC1-ADBC-1EAEDE33FCCB%40hekkelman.com%3E"
+       TITLE="[Mrs-user] new database not found by  databank overview">maarten at hekkelman.com
+       </A><BR>
+    <I>Thu Jul 27 08:37:03 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000071.html">[Mrs-user] new database not found by  databank overview
+</A></li>
+        <LI>Next message: <A HREF="000077.html">[Mrs-user] new database not found by  databank overview
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#74">[ date ]</a>
+              <a href="thread.html#74">[ thread ]</a>
+              <a href="subject.html#74">[ subject ]</a>
+              <a href="author.html#74">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 26-jul-2006, om 17:24 heeft Dr. Andrea Schafferhans het volgende  
+geschreven:
+
+&gt;<i> after running 'make uniprot', make tells me that everything has worked
+</I>&gt;<i> alright. The uniprot.make_log also states this, and there is a
+</I>&gt;<i> uniprot.done in the status directory. However, when I update the
+</I>&gt;<i> Overview or run a keyword search, uniprot is not found. Do you have  
+</I>&gt;<i> any
+</I>&gt;<i> hint how to find out the reason for this problem?
+</I>
+&gt;<i> P.S. What I have noticed, is that uniprot is still mentioned in the
+</I>&gt;<i> failed_dbs.txt. However, even after moving that away, uniprot is not
+</I>&gt;<i> found. So this cannot really be the reason either.
+</I>
+Uniprot is not a databank in itself, it consists of two separate MRS  
+files: sprot.cmp and trembl.cmp. To query uniprot you have to specify  
+'sprot+trembl' to the MRS plugin.
+
+In mrs.conf (in the cgi-bin directory) the entry for Uniprot should  
+contain an &quot;id =&gt; 'sprot+trembl'&quot; for the UniProt entry. In earlier  
+releases this erroneously contained &quot;id =&gt; 'uniprot'&quot; since the  
+concatenation operator + did not work at the time the mrs.conf file  
+was first created.
+
+I hope this information is what you've been looking for. If there's  
+something else going wrong, please let me know.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000071.html">[Mrs-user] new database not found by  databank overview
+</A></li>
+	<LI>Next message: <A HREF="000077.html">[Mrs-user] new database not found by  databank overview
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#74">[ date ]</a>
+              <a href="thread.html#74">[ thread ]</a>
+              <a href="subject.html#74">[ subject ]</a>
+              <a href="author.html#74">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

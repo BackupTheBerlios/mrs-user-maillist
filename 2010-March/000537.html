@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] hyperlinks targets in the parsing scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20hyperlinks%20targets%20in%20the%20parsing%20scripts&In-Reply-To=%3C4BA4BBB7.6050603%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000533.html">
+   <LINK REL="Next"  HREF="000534.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] hyperlinks targets in the parsing scripts</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20hyperlinks%20targets%20in%20the%20parsing%20scripts&In-Reply-To=%3C4BA4BBB7.6050603%40hekkelman.com%3E"
+       TITLE="[Mrs-user] hyperlinks targets in the parsing scripts">maarten at hekkelman.com
+       </A><BR>
+    <I>Sat Mar 20 13:12:39 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000533.html">[Mrs-user] hyperlinks targets in the parsing scripts
+</A></li>
+        <LI>Next message: <A HREF="000534.html">[Mrs-user] mrs-query and command line queries
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#537">[ date ]</a>
+              <a href="thread.html#537">[ thread ]</a>
+              <a href="subject.html#537">[ subject ]</a>
+              <a href="author.html#537">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Martin,
+
+I suddenly realised I completely forgot to answer this question.
+
+Op 15-03-10 09:54, Martin Senger schreef:
+&gt;<i> I am writing now some parser scripts (e.g. for MicroRNA databases) and 
+</I>&gt;<i> I wonder what is the recommended way for creating the HTML hyperlinks 
+</I>&gt;<i> (in the parser's &quot;pp&quot; method). I would like that the parser recognizes 
+</I>&gt;<i> whether a database (where a link should point to) is available in the 
+</I>&gt;<i> current MRS server or not. In the latter case, the parser can create a 
+</I>&gt;<i> link to an external (native) database, in the former case the parser 
+</I>&gt;<i> will point to the same MRS server (and gets much faster response when 
+</I>&gt;<i> a user click on it in mrsweb). What would be the best way to test such 
+</I>&gt;<i> condition in the parser?
+</I>
+This is currently a bit difficult to do. What I need to do is extend the 
+interface of MRS as it is exposed in the script files. That way you can 
+query MRS for information like whether a databank is indexed or a record 
+actually exists. Unfortunately, this is not currently possible. It's not 
+that much work, but I haven't had time to do it yet.
+
+For now one option might be to use the xml config file to find out if a 
+databank is enabled in your setup. You could load that file using 
+XML::Simple and then query the information in it. Do this in the 'new' 
+routine of the script and keep the information cached in the parser object.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000533.html">[Mrs-user] hyperlinks targets in the parsing scripts
+</A></li>
+	<LI>Next message: <A HREF="000534.html">[Mrs-user] mrs-query and command line queries
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#537">[ date ]</a>
+              <a href="thread.html#537">[ thread ]</a>
+              <a href="subject.html#537">[ subject ]</a>
+              <a href="author.html#537">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

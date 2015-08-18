@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Questions and report after installation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20installation&In-Reply-To=%3C4783585A.6080808%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000347.html">
+   <LINK REL="Next"  HREF="000349.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Questions and report after installation</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Questions%20and%20report%20after%20installation&In-Reply-To=%3C4783585A.6080808%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Questions and report after installation">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue Jan  8 12:02:50 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000347.html">[Mrs-user] Questions and report after installation
+</A></li>
+        <LI>Next message: <A HREF="000349.html">[Mrs-user] Questions and report after installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#348">[ date ]</a>
+              <a href="thread.html#348">[ thread ]</a>
+              <a href="subject.html#348">[ subject ]</a>
+              <a href="author.html#348">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alexandre Kravchenko schreef:
+
+&gt;<i> MRS databases (and their parts) are  too large now.
+</I>&gt;<i> 
+</I>&gt;<i> Whether it is possible to add a variable in host.conf file (for example,
+</I>&gt;<i> MRSPARTSDIR),
+</I>&gt;<i> which will determine a directory for MRS databases parts ?
+</I>
+You mean you don't have enough diskspace for the intermediate files
+during an update?
+
+I hope to receive a new computer for our own MRS server next week and a
+feature like this is planned since this new computer will have very fast
+scratch disks.
+
+But that means that unfortunately now there is no such provision yet.
+You could try to hack the makefiles and move the parts manually to
+another location after creation and put a symbolic link in their place
+at the main disk. Then you can also add the -l option to the merge
+command (in make.post) which will not copy the data into the merged file
+but only use a pointer to the actual data in the parts. You will then
+also have to comment out the line that removes the parts after a
+successful merge (also in make.post).
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000347.html">[Mrs-user] Questions and report after installation
+</A></li>
+	<LI>Next message: <A HREF="000349.html">[Mrs-user] Questions and report after installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#348">[ date ]</a>
+              <a href="thread.html#348">[ thread ]</a>
+              <a href="subject.html#348">[ subject ]</a>
+              <a href="author.html#348">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

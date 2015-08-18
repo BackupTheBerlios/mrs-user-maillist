@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] mrs-query and command line queries
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs-query%20and%20command%20line%20queries&In-Reply-To=%3C4B9F0A5D.3090802%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000537.html">
+   <LINK REL="Next"  HREF="000535.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] mrs-query and command line queries</H1>
+    <B>Georgios Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs-query%20and%20command%20line%20queries&In-Reply-To=%3C4B9F0A5D.3090802%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] mrs-query and command line queries">georgios at biotek.uio.no
+       </A><BR>
+    <I>Tue Mar 16 05:34:37 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000537.html">[Mrs-user] hyperlinks targets in the parsing scripts
+</A></li>
+        <LI>Next message: <A HREF="000535.html">[Mrs-user] mrs-query and command line queries
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#534">[ date ]</a>
+              <a href="thread.html#534">[ thread ]</a>
+              <a href="subject.html#534">[ subject ]</a>
+              <a href="author.html#534">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi folks,
+
+I am interested in using the mrs-query command line application. I am 
+using MRS 4.1.1 with patches. Checking with mrs-test against the embl 
+databank (embl_release + embl_updates) it looks OK. On the Tomcat (web 
+interface), the query:
+
+de: H1N1 AND os:human
+
+gives me all H1N1 sequences human sampled sequences.
+
+However, trying to replicate the same thing on the command line using 
+the mrs-query interface gives me results that I cannot interpret as correct:
+
+i)mrs-query -d embl -q H1N1 -q human -n 30  (this gives me h1n1 
+sequences, not restricted in taxonomy on the human species, but that is 
+reasonable as I did not specify the index).
+
+ii)mrs-query -d embl -q &quot;de:H1N1&quot; -q &quot;os:human&quot; -n 30 (this gives me no 
+hits, as I tried to replicate within the quoted strings the command line 
+queries).
+
+iii)mrs-query -d embl -q &quot;H1N1&quot; -i de -n 30
+no file specified for db-join EMBL
+Found 2 hits, displaying the first 2
+aayz01110026    9.92e-26        Ochotona princeps cont2.110025, whole 
+genome shotgun sequence.
+fu743039        4.03e-28        Transcriptome Microarray Technology and 
+Methods of Using the Same.
+
+(Is this correct? I am saying query the string &quot;H1N1&quot; using the index 
+&quot;de&quot; of embl. The sequences returned are totally irrelevant.)
+
+So, essentially my question is: How do I correctly replicate the initial 
+web query on the command line (using the -q, -i and perhaps -f switches)?
+
+For reference my mrs-test for the de index of embl:
+
+(from embl_release)
+Index Part 7 (Indp) 28 bytes
+   name:          de
+   kind:          text
+   tree offset:   534461521920
+   tree size:     3340974080
+   root:          1631335
+   entries:       120609723
+   bits offset:   527460175872
+   bits size:     1690426588
+   flags:         IDL+length V3-index
+   idl offset:    529150602460
+   idl size:      5310917924
+
+from embl_updates)
+Index Part 6 (Indp) 28 bytes
+   name:          de
+   kind:          text
+   tree offset:   14435188736
+   tree size:     101783552
+   root:          49699
+   entries:       3803633
+   bits offset:   14197706752
+   bits size:     32443203
+   flags:         IDL+length V3-index
+   idl offset:    14230149955
+   idl size:      205038384
+
+Thanks for any hints.
+
+GM
+
+-- 
+Best regards,
+--
+
+George Magklaras BSc (Hons) MPhil RHCE
+IT Systems Manager/Senior Systems Engineer
+The Biotechnology Center of Oslo
+University of Oslo
+
+<A HREF="http://www.biotek.uio.no">http://www.biotek.uio.no</A>
+<A HREF="http://www.no.embnet.org">http://www.no.embnet.org</A>
+<A HREF="http://folk.uio.no/georgios">http://folk.uio.no/georgios</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000537.html">[Mrs-user] hyperlinks targets in the parsing scripts
+</A></li>
+	<LI>Next message: <A HREF="000535.html">[Mrs-user] mrs-query and command line queries
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#534">[ date ]</a>
+              <a href="thread.html#534">[ thread ]</a>
+              <a href="subject.html#534">[ subject ]</a>
+              <a href="author.html#534">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

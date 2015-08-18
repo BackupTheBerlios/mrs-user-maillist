@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] problem with finding an entry in Uniprot
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20problem%20with%20finding%20an%20entry%20in%20Uniprot&In-Reply-To=%3Cp2m4d93f07c1004130236va5e1c689u27f3558d23dd5142%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000569.html">
+   <LINK REL="Next"  HREF="000564.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] problem with finding an entry in Uniprot</H1>
+    <B>Martin Senger</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20problem%20with%20finding%20an%20entry%20in%20Uniprot&In-Reply-To=%3Cp2m4d93f07c1004130236va5e1c689u27f3558d23dd5142%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] problem with finding an entry in Uniprot">martin.senger at gmail.com
+       </A><BR>
+    <I>Tue Apr 13 11:36:41 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000569.html">[Mrs-user] iterating over all entries
+</A></li>
+        <LI>Next message: <A HREF="000564.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#563">[ date ]</a>
+              <a href="thread.html#563">[ thread ]</a>
+              <a href="subject.html#563">[ subject ]</a>
+              <a href="author.html#563">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I found the following problem which I am not sure where it originates from:
+Using the mrs-web, I make a query for &quot;A7YL71&quot; in the databank &quot;Uniprot KB&quot;.
+
+1) When doing it at <A HREF="http://mrs.cmbi.ru.nl/mrs-web/,">http://mrs.cmbi.ru.nl/mrs-web/,</A> it works fine: I am
+getting, indeed, an entry with the primary accession A7YL71**.
+
+2) When doing in our installation, I am getting a completely different entry
+(primary accession A2T009). This whole entry even does not contain anywhere
+the searched string A7YL71.
+
+3) When doing the same query (at our installation) only for &quot;TrEMBL&quot;,
+however, works fine; I am getting the right entry. Therefore, I have such
+entry in my data. BTW, I am using Uniprot data from March 23 - which seems
+to be the same as Uniprot used at <A HREF="http://mrs.cmbi.ru.nl/mrs-web/.">http://mrs.cmbi.ru.nl/mrs-web/.</A>
+
+I am not sure what data, or reports, should I send/show you in order to make
+it possible to suggest where things might go wrong in our installation.
+
+There is one thing which may be relevant: when I do &quot;mrs-test -d uniprot&quot;
+(but it also happened for other mrs command-line tools), I am getting a
+warning:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">senger at ShereKhan2</A>:/usr/local/data/mrs$ mrs-test -d uniprot
+*no file specified for db-join Uniprot KB*
+File: /usr/local/data/mrs/sprot.cmp
+...
+
+So perhaps something is wrong in my mrs-config.xml? But I can't see there
+anything missing or wrong. Probably I am just blind. [I am attaching my
+mrs-config.xml here, but because I am not sure if this mailing list accepts
+attachments I am also cc-ing this even directly to Maarten. Sorry for this
+intrusion.]
+
+Thank you for any advise and help,
+Martin
+
+-- 
+Martin Senger
+email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+skype: martinsenger
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20100413/5f422fa6/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20100413/5f422fa6/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: mrs-config.xml
+Type: text/xml
+Size: 5456 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20100413/5f422fa6/attachment.xml">https://lists.berlios.de/pipermail/mrs-user/attachments/20100413/5f422fa6/attachment.xml</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000569.html">[Mrs-user] iterating over all entries
+</A></li>
+	<LI>Next message: <A HREF="000564.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#563">[ date ]</a>
+              <a href="thread.html#563">[ thread ]</a>
+              <a href="subject.html#563">[ subject ]</a>
+              <a href="author.html#563">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

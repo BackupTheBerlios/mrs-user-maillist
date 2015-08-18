@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] installing mrs3 afresh
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20installing%20mrs3%20afresh&In-Reply-To=%3C45A53128.8020707%40dbm.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000176.html">
+   <LINK REL="Next"  HREF="000168.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] installing mrs3 afresh</H1>
+    <B>Robert HERZOG</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20installing%20mrs3%20afresh&In-Reply-To=%3C45A53128.8020707%40dbm.ulb.ac.be%3E"
+       TITLE="[Mrs-user] installing mrs3 afresh">rherzog at dbm.ulb.ac.be
+       </A><BR>
+    <I>Wed Jan 10 19:32:08 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000176.html">[Mrs-user] install script  **CLAP**
+</A></li>
+        <LI>Next message: <A HREF="000168.html">[Mrs-user] installing mrs3 afresh
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#167">[ date ]</a>
+              <a href="thread.html#167">[ thread ]</a>
+              <a href="subject.html#167">[ subject ]</a>
+              <a href="author.html#167">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I took a fresh Ubuntu installation on a Pentium box in order to test the 
+installation of MRS as recently updated by Maarten.
+
+Here are my findings:
+I had to add to the initially simple vanilla Ubuntu 6.10 installation 
+the following packages that the &quot;perl install.pl&quot; procedure complained 
+about:
+- gsoap
+- boost, the libboost-regex and libboost_fielsystem packages including 
+the _dev derivatives (the _dev rerivatives are generally the include 
+files not provided by the basic packages)
+- g++ (the g++4.1 was already there but loading the basic g++ provided 
+the required logical links c++ and g++ to it)
+- libg++.dev
+- libaatr1.dev
+- libxml2 and libxml2.dev
+
+With all this, the perl install was satisfied.
+
+Now the make command revealde a few more requirements:
+- libbz2.dev (to ptovide the bzlib.h file)
+- libperl.dev
+- libexpat1 and libexpat1.dev
+
+And with this the make succeeded, which means it produced all that is 
+required in the plugin and ws subdirectories.
+
+A last issue was raised when starting the ws/mrsws module... It 
+complained about /usr/local/data/mrs not being a valid directory. This 
+is indeed correct on my machine, as I declared my intention to store the 
+MRS files in my /data directory. Thus the installation script did not 
+take care of my choice. Putting a link to it from /usr/local and 
+creating the mrs subdirectory solved this minor issue.
+
+Now downloading and building MRS datasets could start in the ususal way 
+:<i> go to the update_scripts directory and type e.g. make omim or make go. 
+</I>Soon the corresponding raw directories get filled and corresponding 
+mrs-formatted files become available.
+
+I could also install the MRS3 system in a very similar way on a 
+dual-opteron (64bit) computer where databank downloading and indexing 
+just started. Soon GO, OMIM and UNIPROT became available. As I ask for 
+the embl_release on this one, I will have to wait a few hours to be able 
+to claim about success...;-) This system had already previously received 
+several additional packages &quot;by hand&quot; and I cannot claim precisely about 
+which are really required for a proper MRS installation.
+
+I still have to install the access to the webserver on my machines.
+
+Congratulation to Maarten for providing a nice  installation system 
+which is essentially bugfree.
+
+Robert Herzog
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000176.html">[Mrs-user] install script  **CLAP**
+</A></li>
+	<LI>Next message: <A HREF="000168.html">[Mrs-user] installing mrs3 afresh
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#167">[ date ]</a>
+              <a href="thread.html#167">[ thread ]</a>
+              <a href="subject.html#167">[ subject ]</a>
+              <a href="author.html#167">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

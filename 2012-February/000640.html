@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] how to get and how to install MRS 5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2012-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20how%20to%20get%20and%20how%20to%20install%20MRS%205&In-Reply-To=%3CCAMOKDGVHfaOXmdNSVFs%2BChsVxY_j8Sap1XdfCHR1TVHZjGohFA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000641.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] how to get and how to install MRS 5</H1>
+    <B>Martin Senger</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20how%20to%20get%20and%20how%20to%20install%20MRS%205&In-Reply-To=%3CCAMOKDGVHfaOXmdNSVFs%2BChsVxY_j8Sap1XdfCHR1TVHZjGohFA%40mail.gmail.com%3E"
+       TITLE="[Mrs-user] how to get and how to install MRS 5">martin.senger at gmail.com
+       </A><BR>
+    <I>Tue Feb 14 13:38:56 CET 2012</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000641.html">[Mrs-user] how to get and how to install MRS 5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#640">[ date ]</a>
+              <a href="thread.html#640">[ thread ]</a>
+              <a href="subject.html#640">[ subject ]</a>
+              <a href="author.html#640">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maarten,
+
+It seems that finally I am able to test the MRS::Client module with the MRS
+version 5 (don't ask why it took so long to get the version 5 running :-)).
+Allow me please to remind you of my question (from November 2011) and your
+answer to it:
+
+I don't think you need to change your MRS::Client code. If I changed the
+&gt;<i> SOAP interface, I only exteded it. And if I broke it, I didn't do that
+</I>&gt;<i> intentionally. Honest.
+</I>&gt;<i>
+</I>
+Unfortunately, the MRS::Client code does not seem to work fully. When I ask
+for a list of databases, it works fine. I am sending this SOAP request (and
+I get an expected answer):
+
+Request:
+  POST <A HREF="http://mrs.cmbi.ru.nl/mrsws/search">http://mrs.cmbi.ru.nl/mrsws/search</A> HTTP/1.1
+  User-Agent: libwww-perl/6.02
+  Content-Length: 274
+  Content-Type: text/xml; charset=&quot;utf-8&quot;
+  X-LWP-Version: 6.02
+  X-XML-Compile-Cache-Version: 0.991
+  X-XML-Compile-SOAP-Version: 2.25
+  X-XML-Compile-Version: 1.23
+  X-XML-LibXML-Version: 1.70
+
+  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;
+<A HREF="http://schemas.xmlsoap.org/soap/envelope/">http://schemas.xmlsoap.org/soap/envelope/</A>&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns:GetDatabankInfo
+xmlns:ns=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/search">http://mrs.cmbi.ru.nl/mrsws/search</A>
+&quot;&gt;&lt;ns:db&gt;all&lt;/ns:db&gt;&lt;/ns:GetDatabankInfo&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+However, when I try to get more information about the databases, like the
+record counts, I am getting an error message. Perhaps the SOAP interface
+for this request changed? If so, is there a new WSDL with the latest
+interface? This is what I send and get (an example for the 'dbest'
+database):
+
+Request:
+  POST <A HREF="http://mrs.cmbi.ru.nl/mrsws/search">http://mrs.cmbi.ru.nl/mrsws/search</A> HTTP/1.1
+  User-Agent: libwww-perl/6.02
+  Content-Length: 292
+  Content-Type: text/xml; charset=&quot;utf-8&quot;
+  X-LWP-Version: 6.02
+  X-XML-Compile-Cache-Version: 0.991
+  X-XML-Compile-SOAP-Version: 2.25
+  X-XML-Compile-Version: 1.23
+  X-XML-LibXML-Version: 1.70
+
+  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;
+<A HREF="http://schemas.xmlsoap.org/soap/envelope/">http://schemas.xmlsoap.org/soap/envelope/</A>&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns:Count
+xmlns:ns=&quot;<A HREF="http://mrs.cmbi.ru.nl/mrsws/search">http://mrs.cmbi.ru.nl/mrsws/search</A>
+&quot;&gt;&lt;ns:db&gt;dbest&lt;/ns:db&gt;&lt;ns:booleanquery&gt;*&lt;/ns:booleanquery&gt;&lt;/ns:Count&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+Response:
+  HTTP/1.1 200 OK
+  Connection: Keep-Alive
+  Date: Tue, 14 Feb 2012 12:34:34 GMT
+  Server: libzeep
+  Content-Length: 210
+  Content-Type: text/xml; charset=utf-8
+  Client-Date: Tue, 14 Feb 2012 12:34:35 GMT
+  Client-Peer: 131.174.88.174:80
+  Client-Response-Num: 1
+
+  &lt;env:Envelope
+xmlns:env=&quot;<A HREF="http://schemas.xmlsoap.org/soap/envelope/">http://schemas.xmlsoap.org/soap/envelope/</A>&quot;&gt;&lt;env:Body&gt;&lt;env:Fault&gt;&lt;faultcode&gt;env:Server&lt;/faultcode&gt;&lt;faultstring&gt;Invalid
+query for Count&lt;/faultstring&gt;&lt;/env:Fault&gt;&lt;/env:Body&gt;&lt;/env:Envelope&gt;
+
+
+I wonder if you can help me with this interface problem.
+Many thanks,
+
+Martin
+
+-- 
+Martin Senger
+email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">martin.senger at gmail.com</A><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">,martin.senger at kaust.edu.sa</A>
+skype: martinsenger
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mrs-user/attachments/20120214/f30cffec/attachment.html">https://lists.berlios.de/pipermail/mrs-user/attachments/20120214/f30cffec/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000641.html">[Mrs-user] how to get and how to install MRS 5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#640">[ date ]</a>
+              <a href="thread.html#640">[ thread ]</a>
+              <a href="subject.html#640">[ subject ]</a>
+              <a href="author.html#640">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

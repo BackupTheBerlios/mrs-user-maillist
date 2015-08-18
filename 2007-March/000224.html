@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] How to add my own sequence database?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20How%20to%20add%20my%20own%20sequence%20database%3F&In-Reply-To=%3CE77992C1-300A-420D-9D98-6E702E962817%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000223.html">
+   <LINK REL="Next"  HREF="000225.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] How to add my own sequence database?</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20How%20to%20add%20my%20own%20sequence%20database%3F&In-Reply-To=%3CE77992C1-300A-420D-9D98-6E702E962817%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] How to add my own sequence database?">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Thu Mar 15 19:20:51 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000223.html">[Mrs-user] How to add my own sequence database?
+</A></li>
+        <LI>Next message: <A HREF="000225.html">[Mrs-user] How to add my own sequence database?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#224">[ date ]</a>
+              <a href="thread.html#224">[ thread ]</a>
+              <a href="subject.html#224">[ subject ]</a>
+              <a href="author.html#224">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 15-mrt-2007, om 16:38 heeft Alex Patak het volgende geschreven:
+&gt;<i>
+</I>&gt;<i> I just installed MRS on Mac OS X and succesfully installed the enzyme
+</I>&gt;<i> databse using the make enzyme script.
+</I>&gt;<i>
+</I>&gt;<i> Now I would like to know how to install my own sequence database,
+</I>&gt;<i> which is annotated in Genbank format. Could you give me any clue?
+</I>
+The quick way:
+
+Create a directory for your databank in /usr/local/data/raw/ (or  
+wherever you've placed your data). Let's call it mydb, so you have:
+
+/usr/local/data/raw/mydb/
+
+In this directory you put your data file (or files) in e.g. gzipped  
+format, so you get e.g.:
+
+/usr/local/data/raw/mydb/myfile-1.dat.gz
+/usr/local/data/raw/mydb/myfile-2.dat.gz
+
+Now you can run the following command to index these:
+
+mrs.pl create -d mydb -s genbank -v (&lt;= the -v is for debugging,  
+verbose output)
+
+This command uses the genbank parser to create your databank. You can  
+optionally specify the raw files on this commandline using the -r  
+switch. Multiple files can be specified by seperating them with a  
+comma, like this:
+
+mrs.pl create -d mydb -s genbank -r 'myfile-1.dat.gz,myfile-2.dat.gz' -v
+
+And this should create a mydb.cmp file in /usr/local/data/mrs/ which  
+you then can query using the mrs_query or mrs_blast command line tools.
+
+If your file follows the REFSEQ syntax and contains protein sequences  
+with an 'aa' field in the locus line the blast indices will be  
+created automatically.
+
+To add your own databank to the webservices you have to edit the /usr/ 
+local/etc/mrs-config.xml file and add your own db. Simply saving the  
+file should be enough for the running webservices to pick up the  
+changes.
+
+Now if you need something special for your own databank you can copy  
+the genbank.pm script in parser_scripts to mydb.pm in the same  
+directory and edit this file. Replace each instance of the word  
+genbank in this parser with mydb and change whatever you want to  
+change. You can then create your databank with the simple command:
+
+mrs.pl create -d mydb
+
+Hope this helps.
+
+Best regards,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000223.html">[Mrs-user] How to add my own sequence database?
+</A></li>
+	<LI>Next message: <A HREF="000225.html">[Mrs-user] How to add my own sequence database?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#224">[ date ]</a>
+              <a href="thread.html#224">[ thread ]</a>
+              <a href="subject.html#224">[ subject ]</a>
+              <a href="author.html#224">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

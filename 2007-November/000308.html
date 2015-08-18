@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] beta test on trunk
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20beta%20test%20on%20trunk&In-Reply-To=%3C4742A269.2090306%40ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000316.html">
+   <LINK REL="Next"  HREF="000310.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] beta test on trunk</H1>
+    <B>Robert Herzog</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20beta%20test%20on%20trunk&In-Reply-To=%3C4742A269.2090306%40ulb.ac.be%3E"
+       TITLE="[Mrs-user] beta test on trunk">rherzog at ulb.ac.be
+       </A><BR>
+    <I>Tue Nov 20 10:01:29 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000316.html">[Mrs-user] Problem with web interface and the MRS instalation	(new version)
+</A></li>
+        <LI>Next message: <A HREF="000310.html">[Mrs-user] data lists of real estate agents
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#308">[ date ]</a>
+              <a href="thread.html#308">[ thread ]</a>
+              <a href="subject.html#308">[ subject ]</a>
+              <a href="author.html#308">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+You might like to know that I succeeded in building and running a 
+functional MRS server on a fresh Ubuntu linux box, from the trunk of the 
+MRS distribution as found on the Berlios SVN server yesterday.
+
+A few things required attention:
+- the detection of required libraries missed libperl, libexpat, libattr1 
+and the three or four libboost-something (-regex, etc) that are 
+required. Their identification is simple while tryinfg to compile
+- the make.config at the root of the MRS installation required the 
+addition of a &quot;/&quot; at the end of each of the &quot;path&quot; definitions - lack of 
+this produced directories named &quot;dataflags&quot;, &quot;dataraw&quot;, datamrs, est, 
+rather than the required &quot;data/raw&quot;, &quot;data/flags&quot;, etc.
+- the copy of the parsers and update scripts to the recommended (at 
+least preconfigured) /usr/local/data path had to be done by hand, as 
+they are originally available under the root of the mrs tree
+
+Installation of tomcat was from the Ubuntu ditribution (tomcat 5.5). I 
+had to declare the proper users in the /etc/tomcat5.5/tomcat-users.xml 
+file (manager and admin) and deactivate security in the 
+/etc/default/tomcat5.5 (TOMCAT5_SECURITY=NO) as recommended by Maarten
+
+I could start the web services (mrsws, mrs-blast and mrs-clustal) from 
+their respective directories in the ws subtree, and then the mount the 
+mrs-war file.
+
+Building the enzyme databank succeeded and it became available under the 
+web interface. I then built prosite, go and a few other small datasets, 
+and they were nicely searchable. I then imported the uniprot datafiles.
+Building sprot took about one hour but trembl takes longer, as the 
+machine is swapping... it has only 500 Mbyte RAM...!
+
+Thanks to Maarten for the nice piece of software...
+Robert Herzog
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000316.html">[Mrs-user] Problem with web interface and the MRS instalation	(new version)
+</A></li>
+	<LI>Next message: <A HREF="000310.html">[Mrs-user] data lists of real estate agents
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#308">[ date ]</a>
+              <a href="thread.html#308">[ thread ]</a>
+              <a href="subject.html#308">[ subject ]</a>
+              <a href="author.html#308">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

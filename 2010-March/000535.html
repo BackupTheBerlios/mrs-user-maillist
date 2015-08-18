@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] mrs-query and command line queries
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs-query%20and%20command%20line%20queries&In-Reply-To=%3C4B9FF150.8070607%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000534.html">
+   <LINK REL="Next"  HREF="000536.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] mrs-query and command line queries</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20mrs-query%20and%20command%20line%20queries&In-Reply-To=%3C4B9FF150.8070607%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] mrs-query and command line queries">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue Mar 16 22:00:00 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000534.html">[Mrs-user] mrs-query and command line queries
+</A></li>
+        <LI>Next message: <A HREF="000536.html">[Mrs-user] Mrs-user Digest, Vol 40, Issue 10
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#535">[ date ]</a>
+              <a href="thread.html#535">[ thread ]</a>
+              <a href="subject.html#535">[ subject ]</a>
+              <a href="author.html#535">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Georgios,
+
+You should use the -f option for doing boolean searches (or filter the 
+output of a ranked search). It's all explained in the man page for 
+mrs-query.
+
+-maarten
+
+PS:
+
+cmbi12:~&gt; mrs-query -d embl -q h1n1 -f 'os:human'
+Found 32 hits, displaying the first 10
+af362797	35.1	Influenza A virus (A/human/Taiwan/3825/00(H1N1)) 
+hemagglutinin (HA) mRNA, partial cds.
+af362789	34.6	Influenza A virus (A/human/Taiwan/0562/95(H1N1)) 
+hemagglutinin (HA) mRNA, partial cds.
+af362783	34.6	Influenza A virus (A/human/Taiwan/0211/96(H1N1)) 
+hemagglutinin (HA) mRNA, partial cds.
+af362782	34.6	Influenza A virus (A/human/Taiwan/0132/96(H1N1)) 
+hemagglutinin (HA) mRNA, partial cds.
+af362784	34.6	Influenza A virus (A/human/Taiwan/0235/96(H1N1)) 
+hemagglutinin (HA) mRNA, partial cds.
+af362787	34.6	Influenza A virus (A/human/Taiwan/0342/96(H1N1)) 
+hemagglutinin (HA) mRNA, partial cds.
+af362781	34.6	Influenza A virus (A/human/Taiwan/0130/96(H1N1)) 
+hemagglutinin (HA) mRNA, partial cds.
+af362791	34.6	Influenza A virus (A/human/Taiwan/0657/95(H1N1)) 
+hemagglutinin (HA) mRNA, partial cds.
+af362790	34.6	Influenza A virus (A/human/Taiwan/0563/95(H1N1)) 
+hemagglutinin (HA) mRNA, partial cds.
+af362786	34.6	Influenza A virus (A/human/Taiwan/0337/96(H1N1)) 
+hemagglutinin (HA) mRNA, partial cds.
+
+
+
+Op 16-03-10 05:34, Georgios Magklaras schreef:
+&gt;<i> Hi folks,
+</I>&gt;<i>
+</I>&gt;<i> I am interested in using the mrs-query command line application. I am
+</I>&gt;<i> using MRS 4.1.1 with patches. Checking with mrs-test against the embl
+</I>&gt;<i> databank (embl_release + embl_updates) it looks OK. On the Tomcat (web
+</I>&gt;<i> interface), the query:
+</I>&gt;<i>
+</I>&gt;<i> de: H1N1 AND os:human
+</I>&gt;<i>
+</I>&gt;<i> gives me all H1N1 sequences human sampled sequences.
+</I>&gt;<i>
+</I>&gt;<i> However, trying to replicate the same thing on the command line using
+</I>&gt;<i> the mrs-query interface gives me results that I cannot interpret as
+</I>&gt;<i> correct:
+</I>&gt;<i>
+</I>&gt;<i> i)mrs-query -d embl -q H1N1 -q human -n 30 (this gives me h1n1
+</I>&gt;<i> sequences, not restricted in taxonomy on the human species, but that is
+</I>&gt;<i> reasonable as I did not specify the index).
+</I>&gt;<i>
+</I>&gt;<i> ii)mrs-query -d embl -q &quot;de:H1N1&quot; -q &quot;os:human&quot; -n 30 (this gives me no
+</I>&gt;<i> hits, as I tried to replicate within the quoted strings the command line
+</I>&gt;<i> queries).
+</I>&gt;<i>
+</I>&gt;<i> iii)mrs-query -d embl -q &quot;H1N1&quot; -i de -n 30
+</I>&gt;<i> no file specified for db-join EMBL
+</I>&gt;<i> Found 2 hits, displaying the first 2
+</I>&gt;<i> aayz01110026 9.92e-26 Ochotona princeps cont2.110025, whole genome
+</I>&gt;<i> shotgun sequence.
+</I>&gt;<i> fu743039 4.03e-28 Transcriptome Microarray Technology and Methods of
+</I>&gt;<i> Using the Same.
+</I>&gt;<i>
+</I>&gt;<i> (Is this correct? I am saying query the string &quot;H1N1&quot; using the index
+</I>&gt;<i> &quot;de&quot; of embl. The sequences returned are totally irrelevant.)
+</I>&gt;<i>
+</I>&gt;<i> So, essentially my question is: How do I correctly replicate the initial
+</I>&gt;<i> web query on the command line (using the -q, -i and perhaps -f switches)?
+</I>&gt;<i>
+</I>&gt;<i> For reference my mrs-test for the de index of embl:
+</I>&gt;<i>
+</I>&gt;<i> (from embl_release)
+</I>&gt;<i> Index Part 7 (Indp) 28 bytes
+</I>&gt;<i> name: de
+</I>&gt;<i> kind: text
+</I>&gt;<i> tree offset: 534461521920
+</I>&gt;<i> tree size: 3340974080
+</I>&gt;<i> root: 1631335
+</I>&gt;<i> entries: 120609723
+</I>&gt;<i> bits offset: 527460175872
+</I>&gt;<i> bits size: 1690426588
+</I>&gt;<i> flags: IDL+length V3-index
+</I>&gt;<i> idl offset: 529150602460
+</I>&gt;<i> idl size: 5310917924
+</I>&gt;<i>
+</I>&gt;<i> from embl_updates)
+</I>&gt;<i> Index Part 6 (Indp) 28 bytes
+</I>&gt;<i> name: de
+</I>&gt;<i> kind: text
+</I>&gt;<i> tree offset: 14435188736
+</I>&gt;<i> tree size: 101783552
+</I>&gt;<i> root: 49699
+</I>&gt;<i> entries: 3803633
+</I>&gt;<i> bits offset: 14197706752
+</I>&gt;<i> bits size: 32443203
+</I>&gt;<i> flags: IDL+length V3-index
+</I>&gt;<i> idl offset: 14230149955
+</I>&gt;<i> idl size: 205038384
+</I>&gt;<i>
+</I>&gt;<i> Thanks for any hints.
+</I>&gt;<i>
+</I>&gt;<i> GM
+</I>&gt;<i>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000534.html">[Mrs-user] mrs-query and command line queries
+</A></li>
+	<LI>Next message: <A HREF="000536.html">[Mrs-user] Mrs-user Digest, Vol 40, Issue 10
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#535">[ date ]</a>
+              <a href="thread.html#535">[ thread ]</a>
+              <a href="subject.html#535">[ subject ]</a>
+              <a href="author.html#535">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

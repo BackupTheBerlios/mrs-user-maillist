@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS Database downloading
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20Database%20downloading&In-Reply-To=%3C44C88D98.1080300%40biotek.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000075.html">
+   <LINK REL="Next"  HREF="000076.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS Database downloading</H1>
+    <B>George Magklaras</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20Database%20downloading&In-Reply-To=%3C44C88D98.1080300%40biotek.uio.no%3E"
+       TITLE="[Mrs-user] MRS Database downloading">georgios at ulrik.uio.no
+       </A><BR>
+    <I>Thu Jul 27 11:55:36 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000075.html">[Mrs-user] MRS Database downloading
+</A></li>
+        <LI>Next message: <A HREF="000076.html">[Mrs-user] Blast problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#80">[ date ]</a>
+              <a href="thread.html#80">[ thread ]</a>
+              <a href="subject.html#80">[ subject ]</a>
+              <a href="author.html#80">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>You could troubleshoot the FTP module problem by mirroring the 
+problematic dirs or files using a simple client (wget for instance). If 
+you have the diskspace in various workstations or servers, run then an 
+FTP server there and point your download paths on your local FTP. I have 
+seen similar problems in other dirs of the the EBI FTP server.
+
+If a wget -c <A HREF="ftp://ftp.ebi.ac.uk/pub/databases/intepro/match.xml.gz">ftp://ftp.ebi.ac.uk/pub/databases/intepro/match.xml.gz</A>
+fails consistently from your location, you have your answer.
+
+If the FTP connection to EBI is the problem for whatever reason, in the 
+process of finding another mirror site, you could try biomirror:
+
+<A HREF="ftp://bio-mirror.net/biomirror//interpro/">ftp://bio-mirror.net/biomirror//interpro/</A>
+
+Maybe this will help you.
+
+Out of curiosity, and because it was a previous issue raised in the 
+list, is anyone playing with torrents at the moment?
+
+-- 
+--
+George B. Magklaras
+
+Senior Computer Systems Engineer/UNIX Systems Administrator
+The Biotechnology Centre of Oslo,
+University of Oslo
+<A HREF="http://www.biotek.uio.no/">http://www.biotek.uio.no/</A>
+
+EMBnet Norway: <A HREF="http://www.biotek.uio.no/EMBNET/">http://www.biotek.uio.no/EMBNET/</A>
+
+
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dbellante at biol.unlp.edu.ar</A> wrote:
+&gt;<i> Hi all!!
+</I>&gt;<i> 
+</I>&gt;<i> I am still having problems with databases:
+</I>&gt;<i> 
+</I>&gt;<i> I execute  &quot;make interpro&quot; but it seems the file &quot;match.xml.gz&quot; is not
+</I>&gt;<i> downloaded completely. After downloading 47MB ..the ftp server stops
+</I>&gt;<i> tranferring. What do you think is happening?
+</I>&gt;<i> 
+</I>&gt;<i>               Thanks a lot!
+</I>&gt;<i> 
+</I>&gt;<i>                           Diego (AR.EMBnet)
+</I>&gt;<i> 
+</I>&gt;<i>      
+</I>&gt;<i> 
+</I>&gt;<i> Here is the log file:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">root at srsfed</A> status]# more interpro.mirror_log
+</I>&gt;<i> make[3]: Entering directory `/raid/usr/local/mrs-update'
+</I>&gt;<i> mkdir -p /raid/db/mrsdata/raw/interpro
+</I>&gt;<i> mkdir -p /raid/db/mrsdata/uncompressed/interpro
+</I>&gt;<i> mkdir -p /raid/db/mrsdata/fasta/interpro
+</I>&gt;<i> /usr/bin/perl /raid/usr/local/mrs-update/mirror.pl -d
+</I>&gt;<i> /raid/db/mrsdata/raw/interpro/ -c <A HREF="ftp://ftp.ebi.ac.uk/pub">ftp://ftp.ebi.ac.uk/pub</A>
+</I>&gt;<i> /databases/interpro
+</I>&gt;<i> README
+</I>&gt;<i> entry.list
+</I>&gt;<i> interpro.dtd
+</I>&gt;<i> interpro.xml.gz
+</I>&gt;<i> interpro.xsd
+</I>&gt;<i> interpro2go
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+</I>&gt;<i> 
+</I>&gt;<i> Retrying...
+</I>&gt;<i> interpro2go
+</I>&gt;<i> match.dtd
+</I>&gt;<i> match.xml.gz
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+</I>&gt;<i> 
+</I>&gt;<i> Retrying...
+</I>&gt;<i> match.xml.gz
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+</I>&gt;<i> 
+</I>&gt;<i> Retrying...
+</I>&gt;<i> match.xml.gz
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+</I>&gt;<i> 
+</I>&gt;<i> Retrying...
+</I>&gt;<i> match.xml.gz
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+</I>&gt;<i> 
+</I>&gt;<i> Retrying...
+</I>&gt;<i> match.xml.gz
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Error in mirror.pl: Timeout at /usr/lib/perl5/5.8.6/Net/FTP.pm line 503
+</I>&gt;<i> 
+</I>&gt;<i> make[3]: Leaving directory `/raid/usr/local/mrs-update'
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://bat.berlios.de/mailman/listinfo/mrs-user">http://bat.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000075.html">[Mrs-user] MRS Database downloading
+</A></li>
+	<LI>Next message: <A HREF="000076.html">[Mrs-user] Blast problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#80">[ date ]</a>
+              <a href="thread.html#80">[ thread ]</a>
+              <a href="subject.html#80">[ subject ]</a>
+              <a href="author.html#80">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] status update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20status%20update&In-Reply-To=%3C4BD801B8.6010507%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000570.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] status update</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20status%20update&In-Reply-To=%3C4BD801B8.6010507%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] status update">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Wed Apr 28 11:36:56 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000570.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#571">[ date ]</a>
+              <a href="thread.html#571">[ thread ]</a>
+              <a href="subject.html#571">[ subject ]</a>
+              <a href="author.html#571">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm working on a new release for MRS. It will be a minor upgrade to iron 
+out some problems that have come up recently.
+
+First of all I will switch over from using Expat and libxml2 to my own 
+libzeep XML library. This has the added benefit that I can easily check 
+the config files for consistency and detect configuration errors. In the 
+process I've changed the file layout and the new one is not compatible 
+with the old.
+
+I also added a better check for correct joined databanks. There was a 
+problem that if one of the parts of a joined databank was out-of-date, 
+the rest would still be loaded and the index would be incorrect leading 
+to incorrect results for queries.
+
+But since I fixed this, I found out that it is very important you keep 
+an eye on the update process. If the update does not end properly, the 
+flags directory is not emptied and as a result the joined databanks do 
+not get build. I'll fix this as well, but for now I would like to 
+suggest you check this flags directory when something goes wrong and 
+empty it by hand if there's anything left in it.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000570.html">[Mrs-user] problem with finding an entry in Uniprot
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#571">[ date ]</a>
+              <a href="thread.html#571">[ thread ]</a>
+              <a href="subject.html#571">[ subject ]</a>
+              <a href="author.html#571">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

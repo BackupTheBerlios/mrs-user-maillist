@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] merging in several stages ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20merging%20in%20several%20stages%20%3F&In-Reply-To=%3CE6C6E183-0F52-4DED-AD90-731BA3680101%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000268.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] merging in several stages ?</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20merging%20in%20several%20stages%20%3F&In-Reply-To=%3CE6C6E183-0F52-4DED-AD90-731BA3680101%40hekkelman.com%3E"
+       TITLE="[Mrs-user] merging in several stages ?">maarten at hekkelman.com
+       </A><BR>
+    <I>Thu Jun 28 19:13:28 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000268.html">[Mrs-user] merging in several stages ?
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#269">[ date ]</a>
+              <a href="thread.html#269">[ thread ]</a>
+              <a href="subject.html#269">[ subject ]</a>
+              <a href="author.html#269">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Guy,
+
+&gt;<i> The problem is the following : the EMBL databank is quite big, and  
+</I>&gt;<i> the WGS is
+</I>&gt;<i> taking a considerable part of it. Now our system manager David is  
+</I>&gt;<i> wondering if
+</I>&gt;<i> it would not be convenient to download and index the WGS section  
+</I>&gt;<i> separately. But
+</I>&gt;<i> what if we want still to present EMBL as one databank to our users ?
+</I>&gt;<i>
+</I>&gt;<i> Can we merge in two stages ? merge nonwgsrelease + nonwgsupdates  
+</I>&gt;<i> into nonwgs,
+</I>&gt;<i> merge wgsrelease + wgsupdates into wgs and then merge nonwgs + wgs  
+</I>&gt;<i> (which are
+</I>&gt;<i> now both indexes without actual data) into embl.
+</I>&gt;<i>
+</I>&gt;<i> Or merge all 4 (nonwgsrelease + nonwgsupdates + wgsrelease +  
+</I>&gt;<i> wgsupdates) at once
+</I>&gt;<i> into embl. But  what if the nonwgs and the wgs are updated on the  
+</I>&gt;<i> same day ?
+</I>&gt;<i> Would the merging than be performed twice during one run of  
+</I>&gt;<i> mrsupdate ?
+</I>&gt;<i>
+</I>&gt;<i> And if we have two separate indexes ? Is it not so that in MRS 3  
+</I>&gt;<i> there is,
+</I>&gt;<i> contrary to MRS 2, no easy way to search in several databanks at  
+</I>&gt;<i> the same time ?
+</I>
+Merging in stages is definitively supported. In fact, some users use  
+this to merge over 600 MRS files into one.
+
+You can use the -l option for 'mrs.pl create' in this case to avoid  
+copying over all the data. This option then only creates the index  
+and links to the data in the original files.
+
+The option to search multiple databanks as if they are one (dba+dbb 
++dbc) is no longer supported since it was quite a performance  
+penalty. And it is not possible to do correct ranked searches in such  
+a concatenated set of databanks. On the other hand, search speed for  
+individual databanks was considerably improved between 2 and 3 and  
+merging doesn't take that long anymore either.
+
+I do see the same problem as you mention here though and I might  
+reintroduce the joined databank feature again. However, it is not a  
+trivial thing to do and I will have to spend quite a bit of time to  
+do it right.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000268.html">[Mrs-user] merging in several stages ?
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#269">[ date ]</a>
+              <a href="thread.html#269">[ thread ]</a>
+              <a href="subject.html#269">[ subject ]</a>
+              <a href="author.html#269">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Problems with indexing the pdb
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Problems%20with%20indexing%20the%20pdb&In-Reply-To=%3C47DFD4E4.7020701%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000367.html">
+   <LINK REL="Next"  HREF="000371.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Problems with indexing the pdb</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Problems%20with%20indexing%20the%20pdb&In-Reply-To=%3C47DFD4E4.7020701%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Problems with indexing the pdb">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue Mar 18 15:42:44 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000367.html">[Mrs-user] Problems with indexing the pdb
+</A></li>
+        <LI>Next message: <A HREF="000371.html">[Mrs-user] Physician List in the United States
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#369">[ date ]</a>
+              <a href="thread.html#369">[ thread ]</a>
+              <a href="subject.html#369">[ subject ]</a>
+              <a href="author.html#369">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Uli,
+
+The PDB files changed recently (last summer). The new PDB files are 
+gzipped whereas the older version used the old unix compress format.
+
+The make file for pdb you use looks for .Z files instead of .gz files. 
+You either have to fix the old makefile or fetch the old data files. To 
+fix the make file you can look a the latest pdb.make file to see what 
+needs to be done.
+
+-maarten
+
+Uli schreef:
+&gt;<i> Hi
+</I>&gt;<i> 
+</I>&gt;<i> I have managed to index numerous databases including enzyme, go pfam 
+</I>&gt;<i> prosite sprot trembl and uniprot.  I have now tried to index the pdb 
+</I>&gt;<i> (make pdb) without success. Because it is relatively large I wanted to 
+</I>&gt;<i> test it on an older version (2004) to see if I can get it to work. I am 
+</I>&gt;<i> able to copy the raw and uncompressed files from a local mirror into the 
+</I>&gt;<i> .../data/raw/pdb/?? and .../data/uncompressed/pdb files with no problem 
+</I>&gt;<i> - I had to make a small changes to use gz rather than .Z files in the 
+</I>&gt;<i> pdb.make file.  The problem seems to arise when it tries to build the 
+</I>&gt;<i> pdb-1.cmp and pdb-2.cmp files.  Their size remains at 216.
+</I>&gt;<i> 
+</I>&gt;<i> The tails of the logs are as follows:
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">uli at biosym1</A>:/media/nodem1/data/status$ tail pdb.make pdb.make_log 
+</I>&gt;<i> pdb.mirror_log
+</I>&gt;<i> ==&gt; pdb.make &lt;==
+</I>&gt;<i> 
+</I>&gt;<i> ==&gt; pdb.make_log &lt;==
+</I>&gt;<i> make[3]: Nothing to be done for `data'.
+</I>&gt;<i> make -f pdb.make /media/nodem1/data/mrs/pdb-1.cmp 
+</I>&gt;<i> /media/nodem1/data/mrs/pdb-2.cmp
+</I>&gt;<i> make[4]: Entering directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;<i> /usr/bin/perl /usr/local/bin/mrs.pl create -d pdb -p 1 -P 2 -b 5 -w stop.txt
+</I>&gt;<i> Could not open stop.txt
+</I>&gt;<i> not enough raw files to create all parts at /usr/local/bin/mrs.pl line 325.
+</I>&gt;<i> make[4]: *** [/media/nodem1/data/mrs/pdb-1.cmp] Error 2
+</I>&gt;<i> make[4]: Leaving directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;<i> make[3]: *** [/media/nodem1/data/mrs/pdb.cmp] Error 2
+</I>&gt;<i> make[3]: Leaving directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;<i> 
+</I>&gt;<i> ==&gt; pdb.mirror_log &lt;==
+</I>&gt;<i> make[3]: Entering directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;<i> rm -rf pdb.deps
+</I>&gt;<i> rsync -rltpvz --delete --port=33444 \
+</I>&gt;<i>         /media/nodem1/pdb/ \
+</I>&gt;<i>         /media/nodem1/data/raw/pdb/
+</I>&gt;<i> building file list ... done
+</I>&gt;<i> 
+</I>&gt;<i> sent 424916 bytes  received 20 bytes  121410.29 bytes/sec
+</I>&gt;<i> total size is 4075110271  speedup is 9589.94
+</I>&gt;<i> make[3]: Leaving directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">uli at biosym1</A>:/media/nodem1/data/status$
+</I>&gt;<i> 
+</I>&gt;<i> tail from pdb.make_log.1:
+</I>&gt;<i> 
+</I>&gt;<i> zcat /media/nodem1/data/raw/pdb/zz/pdb1zzzent.gz &gt; 
+</I>&gt;<i> /media/nodem1/data/uncompressed/pdb/pdb1zzzent
+</I>&gt;<i> touch -cr /media/nodem1/data/raw/pdb/zz/pdb1zzzent.gz 
+</I>&gt;<i> /media/nodem1/data/uncompressed/pdb/pdb1zzzent
+</I>&gt;<i> make -f pdb.make /media/nodem1/data/mrs/pdb-1.cmp 
+</I>&gt;<i> /media/nodem1/data/mrs/pdb-2.cmp
+</I>&gt;<i> make[4]: Entering directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;<i> make[4]: `/media/nodem1/data/mrs/pdb-1.cmp' is up to date.
+</I>&gt;<i> make[4]: `/media/nodem1/data/mrs/pdb-2.cmp' is up to date.
+</I>&gt;<i> make[4]: Leaving directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;<i> /usr/bin/perl /usr/local/bin/mrs.pl merge -d pdb -P 2
+</I>&gt;<i> Invalid mrs data filemake[3]: *** [/media/nodem1/data/mrs/pdb.cmp] Error 2
+</I>&gt;<i> make[3]: Leaving directory `/usr/local/share/mrs/update_scripts'
+</I>&gt;<i> 
+</I>&gt;<i> although I don't think applicable here the site for the rcsb rsync url 
+</I>&gt;<i> also seems to be down permanently.
+</I>&gt;<i> 
+</I>&gt;<i> The files in .../data/raw are of the form:
+</I>&gt;<i> .../data/raw/pdb/at/pdb1at0ent.gz
+</I>&gt;<i> 
+</I>&gt;<i> and the files in .../data/uncompressed are:
+</I>&gt;<i> .../data/uncompressed/pdb/pdb1at0ent
+</I>&gt;<i> 
+</I>&gt;<i> command limitations arise when for instance using ls or rm on all files 
+</I>&gt;<i> in the uncompressed directory i.e. they won't display/delete all the 
+</I>&gt;<i> files although they are there.  I don't know if this is part of the problem?
+</I>&gt;<i> 
+</I>&gt;<i> However I would assume that the problem would be even worse when trying 
+</I>&gt;<i> to index genbank or embl.
+</I>&gt;<i> 
+</I>&gt;<i> Could you point me in the right direction regarding this?
+</I>&gt;<i> 
+</I>&gt;<i> Regards
+</I>&gt;<i> Uli
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000367.html">[Mrs-user] Problems with indexing the pdb
+</A></li>
+	<LI>Next message: <A HREF="000371.html">[Mrs-user] Physician List in the United States
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#369">[ date ]</a>
+              <a href="thread.html#369">[ thread ]</a>
+              <a href="subject.html#369">[ subject ]</a>
+              <a href="author.html#369">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

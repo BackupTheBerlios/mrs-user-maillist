@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Mrs mrsws web services data dir
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs%20mrsws%20web%20services%20data%20dir&In-Reply-To=%3C47BAEAA7.5010001%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000357.html">
+   <LINK REL="Next"  HREF="000359.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Mrs mrsws web services data dir</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs%20mrsws%20web%20services%20data%20dir&In-Reply-To=%3C47BAEAA7.5010001%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Mrs mrsws web services data dir">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue Feb 19 15:41:43 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000357.html">[Mrs-user] Mrs mrsws web services data dir
+</A></li>
+        <LI>Next message: <A HREF="000359.html">[Mrs-user] release 3.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#358">[ date ]</a>
+              <a href="thread.html#358">[ thread ]</a>
+              <a href="subject.html#358">[ subject ]</a>
+              <a href="author.html#358">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Uli schreef:
+
+&gt;<i> I have been trying to change the data dir for the webservices, but it 
+</I>&gt;<i> seems to default back to the original data directory MRS_DATA_DIR = 
+</I>&gt;<i> /usr/local/data.  I have tried the following:
+</I>&gt;<i> 
+</I>&gt;<i> 1.
+</I>&gt;<i> ./configure.pl --data-dir /mypath/mydatadir
+</I>&gt;<i> make clean
+</I>&gt;<i> make
+</I>&gt;<i> make install
+</I>
+A make install does not overwrite any existing mrsws-config.xml file 
+that may be in /usr/local/etc/. You will have to edit that file 
+manually. Whenever a new MRS is installed and a new config file is 
+written it is place in /usr/local/etc/mrsws-config.xml.dist
+You can this .dist file as a reference to see if anything changed 
+between the releases.
+
+I'm sorry, this should have been documented of course.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000357.html">[Mrs-user] Mrs mrsws web services data dir
+</A></li>
+	<LI>Next message: <A HREF="000359.html">[Mrs-user] release 3.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#358">[ date ]</a>
+              <a href="thread.html#358">[ thread ]</a>
+              <a href="subject.html#358">[ subject ]</a>
+              <a href="author.html#358">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

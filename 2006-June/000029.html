@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] 2 changes and BLAST-formatting
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%202%20changes%20and%20BLAST-formatting&In-Reply-To=%3C017A62ED-B39E-4423-96CD-371AF16BDA1B%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000028.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] 2 changes and BLAST-formatting</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%202%20changes%20and%20BLAST-formatting&In-Reply-To=%3C017A62ED-B39E-4423-96CD-371AF16BDA1B%40hekkelman.com%3E"
+       TITLE="[Mrs-user] 2 changes and BLAST-formatting">maarten at hekkelman.com
+       </A><BR>
+    <I>Wed Jun 28 21:01:04 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000028.html">[Mrs-user] 2 changes and BLAST-formatting
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#29">[ date ]</a>
+              <a href="thread.html#29">[ thread ]</a>
+              <a href="subject.html#29">[ subject ]</a>
+              <a href="author.html#29">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 28-jun-2006, om 18:22 heeft Robert HERZOG het volgende geschreven:
+&gt;<i>
+</I>&gt;<i> I want to mention two issues that can easily be cleared about  
+</I>&gt;<i> MRS_2.0 :
+</I>&gt;<i> 1. the failed_dbs.txt file in the status directory has to be world- 
+</I>&gt;<i> writeable for apache to be able to send the edition command to  
+</I>&gt;<i> clear a &quot;failed&quot; databank in the databanks.cgi view
+</I>
+Good point, I'll make sure that file gets created by the install  
+script with the correct permissions.
+
+&gt;<i> 2. I think that the pdb.make is not really as functional as most  
+</I>&gt;<i> other make files. Starting the rsync by hand succeeds if the target  
+</I>&gt;<i> directory exists. I am presently rsync-ing the PDB. I shall see  
+</I>&gt;<i> tomorrow if the updating process works.
+</I>
+My fault. The pdb.make contained the hardcoded path from the CMBI8  
+machine. A typical copy/paste error.
+
+&gt;<i> I have activated the lines in uniprot, embl_release and  
+</I>&gt;<i> embl_updates make files in order for the software to build the NCBI- 
+</I>&gt;<i> formatted blast files. The building works flawlessly once the  
+</I>&gt;<i> formatdb command from the BLAST package is in the path. Also, I had  
+</I>&gt;<i> to hand-compile swiss2fasta.cpp in the update_scripts directory and  
+</I>&gt;<i> put it in the path. In this way, an external BLAST server can be  
+</I>&gt;<i> fed permanently with up to date blast-formatted databanks.
+</I>
+Well, formatdb is a variable in the make_XXX.conf file. I think that  
+the manual will have to mention this, not everyone will use ncbi  
+blast and those who do will have to do a bit more work anyway.
+
+swiss2fasta was another error, I declared SWISS_TO_FASTA to be $ 
+(BINDIR)swiss2fasta while the Makefile builds it in $(SCRIPTDIR).  
+Changed that.
+
+&gt;<i> Maarten, you mention in the end of the compilation phase that to  
+</I>&gt;<i> keep databanks up to date, one should run a make daily and a make  
+</I>&gt;<i> weekly. These scripts, albeit simple to compose, might be useful to  
+</I>&gt;<i> be part of the distribution for people to use and enjoy.
+</I>
+Yes, good point.
+
+On cmbi8 my crontab looks like this:
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dba at cmbi8</A> ~]$ crontab -l
+30 20 * * 1-4   /usr/data/bin/lock_and_run /usr/data/status/ 
+UPDATE_LOCK /usr/data/bin/run_daily.csh
+30 20 * * 5     /usr/data/bin/lock_and_run /usr/data/status/ 
+UPDATE_LOCK /usr/data/bin/run_weekly.csh
+
+And run_daily.csh looks like this:
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dba at cmbi8</A> ~]$ cat /usr/data/bin/run_daily.csh
+#!/bin/tcsh
+
+setenv MRS_DATA_DIR /usr/data/data/mrs/
+setenv MRS_RAW_DIR /usr/data/data/raw/
+setenv MRS_SCRIPT_DIR /usr/data/prog/Mrs/scripts
+
+cd /usr/data/scripts
+gmake -j 2 daily
+
+The setenv's are no longer necessary since I now export those from  
+within the makefiles. So in theory the script can be skipped and the  
+crontab could be something like this:
+
+30 20 * * 1-4   /usr/local/bin/lock_and_run /usr/local/mrs/status/ 
+UPDATE_LOCK /bin/sh -c &quot;cd /usr/local/mrs/update-scripts; make -j 2  
+daily&quot;
+30 20 * * 5     /usr/local/bin/lock_and_run /usr/local/mrs/status/ 
+UPDATE_LOCK /bin/sh -c &quot;cd /usr/local/mrs/update-scripts; make -j 2  
+weekly&quot;
+
+But that may look a bit intimidating. Maybe we should create a script  
+to wrap this up?
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000028.html">[Mrs-user] 2 changes and BLAST-formatting
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#29">[ date ]</a>
+              <a href="thread.html#29">[ thread ]</a>
+              <a href="subject.html#29">[ subject ]</a>
+              <a href="author.html#29">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

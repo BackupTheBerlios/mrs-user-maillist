@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] logicals in MRS 3 Web interface - Checked by AntiVir	DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20logicals%20in%20MRS%203%20Web%20interface%20-%20Checked%20by%20AntiVir%0A%09DEMO%20version%20-&In-Reply-To=%3CEBCB1651-61B1-4CC5-BCD1-74896FC25AD6%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000206.html">
+   <LINK REL="Next"  HREF="000209.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] logicals in MRS 3 Web interface - Checked by AntiVir	DEMO version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20logicals%20in%20MRS%203%20Web%20interface%20-%20Checked%20by%20AntiVir%0A%09DEMO%20version%20-&In-Reply-To=%3CEBCB1651-61B1-4CC5-BCD1-74896FC25AD6%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] logicals in MRS 3 Web interface - Checked by AntiVir	DEMO version -">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Fri Mar  2 08:53:54 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000206.html">[Mrs-user] logicals in MRS 3 Web interface - Checked by AntiVir	DEMO version -
+</A></li>
+        <LI>Next message: <A HREF="000209.html">[Mrs-user] logicals in MRS 3 Web interface - Checked by AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#208">[ date ]</a>
+              <a href="thread.html#208">[ thread ]</a>
+              <a href="subject.html#208">[ subject ]</a>
+              <a href="author.html#208">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 1-mrt-2007, om 13:46 heeft Guy Bottu het volgende geschreven:
+&gt;<i>
+</I>&gt;<i> The current version of the MRS 3 Web interface does not allow to write
+</I>&gt;<i> queries with logicals, presumably because the query is not handled
+</I>&gt;<i> as it is to the search engine (using a Perl script it does work). I
+</I>&gt;<i> understand you prefer to develop the new interface rather then to
+</I>&gt;<i> debug the old one ; still, it is maybe just a few lines of code to  
+</I>&gt;<i> change.
+</I>&gt;<i> Then it would be possible to type queries like :
+</I>&gt;<i> os:carica AND os:papaya AND (de:protease OR de:proteinase)
+</I>&gt;<i> This the only thing we wait for before shifting to MRS 3 on the BEN  
+</I>&gt;<i> site.
+</I>
+OK, fair enough... I'll fix this.
+
+The reason I didn't implemented this in the first place was that I  
+thought it would be cool to be able to copy/paste a piece of text  
+from a record and then be able to find this record back again. That  
+means skipping over punctuation and such without producing errors.
+
+But that doesn't work anyway when there's a colon or minus somewhere  
+in the copied text. :-/
+
+(Did you know you can search for -human to exclude all records  
+containing the word human e.g.?)
+
+So ok, I'll do this. The question though is, what should be regarded  
+as boolean operators. The obvious candidates are AND, OR and NOT. In  
+fact, AND is implicit, only OR is needed. NOT can be replaced by  
+'-' (as it is now) or even '!'. And then AND and OR could have  
+synonyms in the form of '&amp;' and '|'.
+
+hmmm
+
+When we choose to accept AND, OR and NOT at least these will have to  
+be case sensitive. Otherwise the grammar gets too ambiguous.
+
+But is it an option to allow only '-' and '|' as operators (along  
+with parenthesis of course). Your query would then be entered like:
+
+&quot;os:carica os:papaya (de:protease | de:proteinase)&quot;
+
+Is that acceptable?
+
+-maarten
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000206.html">[Mrs-user] logicals in MRS 3 Web interface - Checked by AntiVir	DEMO version -
+</A></li>
+	<LI>Next message: <A HREF="000209.html">[Mrs-user] logicals in MRS 3 Web interface - Checked by AntiVir DEMO version -
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#208">[ date ]</a>
+              <a href="thread.html#208">[ thread ]</a>
+              <a href="subject.html#208">[ subject ]</a>
+              <a href="author.html#208">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

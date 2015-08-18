@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] question about GPCRDB databank - Checked by AntiVir	DEMO version -
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20question%20about%20GPCRDB%20databank%20-%20Checked%20by%20AntiVir%0A%09DEMO%20version%20-&In-Reply-To=%3C889AC995-1802-4698-8B77-C58F11035E39%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000153.html">
+   <LINK REL="Next"  HREF="000154.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] question about GPCRDB databank - Checked by AntiVir	DEMO version -</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20question%20about%20GPCRDB%20databank%20-%20Checked%20by%20AntiVir%0A%09DEMO%20version%20-&In-Reply-To=%3C889AC995-1802-4698-8B77-C58F11035E39%40hekkelman.com%3E"
+       TITLE="[Mrs-user] question about GPCRDB databank - Checked by AntiVir	DEMO version -">maarten at hekkelman.com
+       </A><BR>
+    <I>Fri Dec  8 09:31:36 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000153.html">[Mrs-user] question about GPCRDB databank - Checked by AntiVir DEMO	version -
+</A></li>
+        <LI>Next message: <A HREF="000154.html">[Mrs-user] Note about Pfam and accession numbers - Checked by	AntiVir DEMO version
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#155">[ date ]</a>
+              <a href="thread.html#155">[ thread ]</a>
+              <a href="subject.html#155">[ subject ]</a>
+              <a href="author.html#155">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 6-dec-2006, om 16:13 heeft Guy Bottu het volgende geschreven:
+&gt;<i>
+</I>&gt;<i> The &quot;mother&quot; server at the CMBI has a copy of the GPCRDB databank. The
+</I>&gt;<i> files that can obtained at <A HREF="ftp://www.gpcr.org/pub/7tm/seq/">ftp://www.gpcr.org/pub/7tm/seq/</A> however
+</I>&gt;<i> contain binary data before each 'ID'line so that the parser &quot;breaks  
+</I>&gt;<i> its
+</I>&gt;<i> teeth&quot;. Is there somewhere a standard swiss format version of the
+</I>&gt;<i> databank or a parser that can handle the modified format ?
+</I>
+I'm afraid this problem is not related to the data but to the way it  
+is extracted in the MRS scripts. The data itself is in two tar files.  
+These files are then extracted using the O flag of tar and output is  
+redirected to a new file. This assumes that the tar utility only  
+outputs the text data from the tar, perhaps your tar inserts binary  
+data?
+
+If this tar trick is not reliable I'm afraid I will have to change  
+the script to extract the tar in the normal way and then revise the  
+parser script to read all the separate files.
+
+mvg,
+
+Maarten L. Hekkelman
+<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">maarten at hekkelman.com</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000153.html">[Mrs-user] question about GPCRDB databank - Checked by AntiVir DEMO	version -
+</A></li>
+	<LI>Next message: <A HREF="000154.html">[Mrs-user] Note about Pfam and accession numbers - Checked by	AntiVir DEMO version
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#155">[ date ]</a>
+              <a href="thread.html#155">[ thread ]</a>
+              <a href="subject.html#155">[ subject ]</a>
+              <a href="author.html#155">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

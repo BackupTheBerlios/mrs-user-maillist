@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS 4, perl interface requirements
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%204%2C%20perl%20interface%20requirements&In-Reply-To=%3C48C4FF3A.8060909%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000408.html">
+   <LINK REL="Next"  HREF="000411.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS 4, perl interface requirements</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%204%2C%20perl%20interface%20requirements&In-Reply-To=%3C48C4FF3A.8060909%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] MRS 4, perl interface requirements">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Mon Sep  8 12:32:26 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000408.html">[Mrs-user] MRS 4, perl interface requirements
+</A></li>
+        <LI>Next message: <A HREF="000411.html">[Mrs-user] mrs status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#409">[ date ]</a>
+              <a href="thread.html#409">[ thread ]</a>
+              <a href="subject.html#409">[ subject ]</a>
+              <a href="author.html#409">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Guy Bottu schreef:
+&gt;&gt;<i> Is anyone using the Perl interface to create databanks?
+</I>&gt;<i> 
+</I>&gt;<i> I occasionally use the script mrs.pl
+</I>&gt;<i> mrs.pl merge ...    to catch up with a crashed merging
+</I>&gt;<i> mrs.pl dump_index -d embl_release -i td    to obtain a lis of taxonomic division 
+</I>&gt;<i> names (useful for making fastA/BLAST format databanks)
+</I>&gt;<i> So, if the script or at least its functionality could be preserved.
+</I>
+Many features of the mrs.pl script are now covered by the mrs-test and 
+mrs-query application. However, as mentioned before, there's no merging 
+option for MRS 4 yet. Maybe I can revive it, but I will do so only if 
+there's are real need for it. I mean, I know lots of other nice features 
+I'd like to implement that would have to wait.
+
+&gt;&gt;<i> As an alternative I can write an MRS 3 API compatible perl module that 
+</I>&gt;&gt;<i> can be used instead of the MRS 3 one but which uses SOAP to do the 
+</I>&gt;&gt;<i> actual searching.
+</I>&gt;<i> 
+</I>&gt;<i> I have noticed that for searches that yield very long results the SOAP causes a 
+</I>&gt;<i> perceptible overhead. So, the possibility to access the search engine directly 
+</I>&gt;<i> without going over the Web services is certainly very useful.
+</I>
+Yes, that's indeed one of the reasons to work with MRS files directly. 
+BTW, I already have a Java plugin for direct access and could perhaps 
+also create a Python plugin.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000408.html">[Mrs-user] MRS 4, perl interface requirements
+</A></li>
+	<LI>Next message: <A HREF="000411.html">[Mrs-user] mrs status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#409">[ date ]</a>
+              <a href="thread.html#409">[ thread ]</a>
+              <a href="subject.html#409">[ subject ]</a>
+              <a href="author.html#409">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

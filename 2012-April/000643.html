@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [mrs-user] mrs update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20mrs%20update&In-Reply-To=%3C4F7957A8.9090908%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[mrs-user] mrs update</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5Bmrs-user%5D%20mrs%20update&In-Reply-To=%3C4F7957A8.9090908%40cmbi.ru.nl%3E"
+       TITLE="[mrs-user] mrs update">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Mon Apr  2 09:39:20 CEST 2012</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#643">[ date ]</a>
+              <a href="thread.html#643">[ thread ]</a>
+              <a href="subject.html#643">[ subject ]</a>
+              <a href="author.html#643">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear all,
+
+Unfortunately running the mailing-list software at the CMBI is not going 
+to work, so I've moved the list back to Berlios. My apologies for the 
+inconvenience.
+
+Based on the feedback I got recently I decided to completely rewrite 
+MRS. The code was growing too complex, there were too many dependencies, 
+building MRS proved to be too difficult on some systems. And then the 
+performance degraded considerably recently.
+
+MRS-6 aka M6 will be distributed as a single, statically linked, binary 
+executable for either Linux or Windows. Configuration will be done using 
+a web application. Parsers will be written in a completely new way based 
+only on regular expressions. The dependency on Perl has gone, makefile 
+are gone too, update will be managed by the web application, formatting 
+of entries will be done using JavaScript at the client side.
+
+The SOAP and REST API will remain as it is. This means that any script 
+or application accessing MRS over a network connection will continue to 
+work, I will make sure the MRS::Client script will remain working. But 
+since there may be changes in the parsers, indices may have changed and 
+since the query parser has changed too, results for more complex queries 
+may be different.
+
+I'm not sure if I will distribute the source code for the new MRS. One 
+of the reasons is that it will compile only when you have the Intel 
+compiler, I will definitively no longer support using GCC. That compiler 
+has cost me too much time already.
+
+If you want to see the results a very early development version of M6 is 
+running at &lt;<A HREF="http://mrs.cmbi.ru.nl:18090/">http://mrs.cmbi.ru.nl:18090/</A>&gt; This version is far from 
+feature complete but shows in which direction development is going.
+
+I understand this news may be a bit unexpected and not very welcome for 
+some. But I believe something had to change given the problems that came up.
+
+best regards,
+
+-maarten
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#643">[ date ]</a>
+              <a href="thread.html#643">[ thread ]</a>
+              <a href="subject.html#643">[ subject ]</a>
+              <a href="author.html#643">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the mrs-user
+mailing list</a><br>
+</body></html>

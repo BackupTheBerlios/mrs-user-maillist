@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] boost installation problem (solved) -- now	compilation problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20boost%20installation%20problem%20%28solved%29%20--%20now%0A%09compilation%20problem&In-Reply-To=%3C6BA563CA-0B2B-45E3-ABFF-1D784EFE1AE0%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000038.html">
+   <LINK REL="Next"  HREF="000043.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] boost installation problem (solved) -- now	compilation problem</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20boost%20installation%20problem%20%28solved%29%20--%20now%0A%09compilation%20problem&In-Reply-To=%3C6BA563CA-0B2B-45E3-ABFF-1D784EFE1AE0%40hekkelman.com%3E"
+       TITLE="[Mrs-user] boost installation problem (solved) -- now	compilation problem">maarten at hekkelman.com
+       </A><BR>
+    <I>Thu Jul 13 10:35:13 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000038.html">[Mrs-user] Re: boost installation problem
+</A></li>
+        <LI>Next message: <A HREF="000043.html">[Mrs-user] db installation problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Andrea,
+
+&gt;&gt;<i> That's not the default location. It often is located in /usr/local/ 
+</I>&gt;&gt;<i> include/boost (so without the version thing). I will edit the  
+</I>&gt;&gt;<i> install script so you can provide your own path.
+</I>&gt;<i>
+</I>&gt;<i> Hm, maybe they've changed something or some Linux distributions  
+</I>&gt;<i> work differently (mine is Suse 10.0 btw). But seeing the other  
+</I>&gt;<i> mails on the list I also wondered whether those people have the  
+</I>&gt;<i> same problem.
+</I>
+Yes, it looks like that.
+
+&gt;&gt;&gt;<i> Now, the compilation is successful until the following problem:
+</I>&gt;&gt;&gt;<i> cc1: note: obsolete option -I- used, please use -iquote instead
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> To fix this you should specify IQUOTE=1 in the make.config file.  
+</I>&gt;&gt;<i> It should have been set automatically btw... weird.
+</I>&gt;<i>
+</I>&gt;<i> Thanks for the hint. However, this only changed the error:
+</I>&gt;<i> Compiler flags used: -fsigned-char -g -ffor-scope -fstrict-aliasing  
+</I>&gt;<i> -O3 -march=pentium3 -Wall -Wno-multichar -Wno-unknown-pragmas -Wno- 
+</I>&gt;<i> long-long -Wno-sign-compare -fpic -DCPU_x86 -DMINI_H_LIB -DLINUX - 
+</I>&gt;<i> DHAVE_SYS_IOCTL_H -DHAVE_SYS_SOCKET_H -DHAVE_NETINET_IN_H - 
+</I>&gt;<i> DHAVE_SRANDOM -DHAVE_SA_LEN -DNDEBUG
+</I>&gt;<i> Include paths: -I./Lib/Includes/ -I./Lib/X/ -I./Lib/ -I./Lib/ 
+</I>&gt;<i> Generic/ -I./Lib/Posix/ -I./Lib/loki/ -I./Lib/uuid/ -I./Sources/ - 
+</I>&gt;<i> iquote -I/usr/include -I./Lib/loki -I/usr/local/include/ 
+</I>&gt;<i> boost-1_33_1 -I/usr/lib/perl5/5.8.7/i586-linux-thread-multi/CORE
+</I>&gt;<i> =&gt; clear.o
+</I>&gt;<i> cc1: warning: command line option &quot;-ffor-scope&quot; is valid for C++/ 
+</I>&gt;<i> ObjC++ but not for C
+</I>
+This is a warning, not an error. However, your compiler seems to  
+believe it should compile the code as C and not C++. Try changing the  
+CC in make.config to 'c++' or /usr/bin/c++, whatever is in your path.
+
+&gt;<i> Unfortunately I know too little about C anc C++ to fiddle around by  
+</I>&gt;<i> myself here. So I'd be really greateful for another tip.
+</I>&gt;<i> Maybe there was a reason that IQUOTE wasn't set to 1 automatically?  
+</I>&gt;<i> -- I guess I should probably really get the newer gcc version.  
+</I>&gt;<i> Could that be the solution?
+</I>
+If you know how to do that, I think that would be the best you could do.
+
+-maarten
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000038.html">[Mrs-user] Re: boost installation problem
+</A></li>
+	<LI>Next message: <A HREF="000043.html">[Mrs-user] db installation problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

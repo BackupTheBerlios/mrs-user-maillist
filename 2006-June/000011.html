@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] GCC3.3.4 not OK ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20GCC3.3.4%20not%20OK%20%3F&In-Reply-To=%3C11B4ADDF-D751-4599-8A4C-E534A6BD9C01%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000010.html">
+   <LINK REL="Next"  HREF="000016.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] GCC3.3.4 not OK ?</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20GCC3.3.4%20not%20OK%20%3F&In-Reply-To=%3C11B4ADDF-D751-4599-8A4C-E534A6BD9C01%40hekkelman.com%3E"
+       TITLE="[Mrs-user] GCC3.3.4 not OK ?">maarten at hekkelman.com
+       </A><BR>
+    <I>Sat Jun 24 10:06:07 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000010.html">[Mrs-user] GCC3.3.4 not OK ?
+</A></li>
+        <LI>Next message: <A HREF="000016.html">[Mrs-user] embl
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 23-jun-2006, om 23:33 heeft Robert HERZOG het volgende geschreven:
+&gt;<i>
+</I>&gt;<i> pursuing my installation experiments, it seems that a GCC 3.3.4  
+</I>&gt;<i> compiler is not OK for building MRS_2.0.
+</I>
+3.3 is a bit old, I don't remember when I last used it. I do believe  
+that 3.4 should work though.
+
+&gt;<i> I'll consider installing GCC4.x on that machine, as recommended.  
+</I>&gt;<i> But this is a &quot;production&quot; machine and thus, changing the C  
+</I>&gt;<i> compiler is bound to produce... surprises.
+</I>
+The differences between 3 and 4 are not as big as between 2 and 3.  
+The main thing that changed is standards compliance. However, maybe  
+the ABI has changed and if so you might run into problems simply  
+replacing your current compiler if you use plugins written in C++.
+
+But there is a simple solution, simply download the source code for  
+gcc, use configure to specify a command suffix like '-41' and you end  
+up with a 'c++-41' named compiler that can be used alongside your  
+current compiler. That's the way I do it myself and it works very well.
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000010.html">[Mrs-user] GCC3.3.4 not OK ?
+</A></li>
+	<LI>Next message: <A HREF="000016.html">[Mrs-user] embl
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRS Installations - some recent recommendations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20Installations%20-%20some%20recent%20recommendations&In-Reply-To=%3Cp0623090bc0e3cf701747%40%5B130.223.122.102%5D%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000064.html">
+   <LINK REL="Next"  HREF="000066.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRS Installations - some recent recommendations</H1>
+    <B>Laurent Falquet</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRS%20Installations%20-%20some%20recent%20recommendations&In-Reply-To=%3Cp0623090bc0e3cf701747%40%5B130.223.122.102%5D%3E"
+       TITLE="[Mrs-user] MRS Installations - some recent recommendations">Laurent.Falquet at unil.ch
+       </A><BR>
+    <I>Wed Jul 19 14:37:33 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000064.html">[Mrs-user] MRS Installations - some recent recommendations
+</A></li>
+        <LI>Next message: <A HREF="000066.html">[Mrs-user] Mrs Databases
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#65">[ date ]</a>
+              <a href="thread.html#65">[ thread ]</a>
+              <a href="subject.html#65">[ subject ]</a>
+              <a href="author.html#65">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Maarten,
+
+It worked!!! You were right the CPU was badly recognised...
+
+The message at plugin make: (notice the pentium3 flag...)
+Compiler flags used: -fsigned-char -g -ffor-scope 
+-fstrict-aliasing -O3 -march=pentium3 -Wall 
+-Wno-multichar -Wno-unknown-pragmas 
+-Wno-long-long -Wno-sign-compare -fpic -DCPU_x86 
+-DMINI_H_LIB -DUSE_TR1 -DLINUX -DHAVE_SYS_IOCTL_H 
+-DHAVE_SYS_SOCKET_H -DHAVE_NETINET_IN_H 
+-DHAVE_SRANDOM -DHAVE_SA_LEN -DNDEBUG
+Include paths: -I./Lib/Includes/ -I./Lib/X/ 
+-I./Lib/ -I./Lib/Generic/ -I./Lib/Posix/ 
+-I./Lib/loki/ -I./Lib/uuid/ -I./Sources/ -iquote 
+-I/usr/include -I./Lib/loki 
+-I/usr/local/boost_1_33_1 
+-I/usr/lib/perl5/5.8.6/i386-linux-thread-multi/CORE
+
+The CPU information:
+x86info v1.13.  Dave Jones 2001-2003
+Feedback to &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">davej at redhat.com</A>&gt;.
+--------------------------------------------------------------------------
+Family: 6 Model: 5 Stepping: 2 Type: 0 Brand: 0
+CPU Model: Pentium II (Deschutes) [dB0] Original 
+OEM  ##### notice the pentium II...  :-/
+
+So I modified the Makefile before recompiling the 
+plugins (replacing pentium3 by pentium2)
+and I was then able to index the &quot;GO&quot; database as 
+suggested by Robert. So I suppose that now
+we can proudly add the Fedora Core4 on a 
+PentiumII in the list of working machines. ;-)
+
+
+OK I think that I must definitively find a more recent machine, since mine
+is a PentiumII 450Mhz with 768Mb of RAM, it won't do it for large databases...
+
+Thanks for your help!
+
+Best greetings,
+Laurent
+
+
+&gt;<i>Op 19-jul-2006, om 10:43 heeft Laurent Falquet het volgende geschreven:
+</I>&gt;<i>
+</I>&gt;<i>  &gt; I am thinking to either upgrade to Fedora core5 or to change the
+</I>&gt;<i>  &gt; machine
+</I>&gt;<i>  &gt; for a more recent PC, or even better doing both...
+</I>&gt;<i>
+</I>&gt;<i>You haven't told us yet what hardware this machine consists of,
+</I>&gt;<i>especially the processor is interesting to know. You could also send
+</I>&gt;<i>me the line with compiler flags that is printed when you start the
+</I>&gt;<i>make of the plugins. The combination of these two might reveal the
+</I>&gt;<i>real problem here.
+</I>&gt;<i>
+</I>&gt;<i>-maarten
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Mrs-user mailing list
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i><A HREF="http://bat.berlios.de/mailman/listinfo/mrs-user">http://bat.berlios.de/mailman/listinfo/mrs-user</A>
+</I>
+
+-- 
+-----------------------------------------
+Dr. Laurent Falquet
+Swiss EMBnet node Manager
+Swiss Institute of Bioinformatics
+G&#233;nopode, UNIL
+CH-1015 Lausanne, Switzerland
+Tel: +41 21 692 4078
+Fax: +41 21 692 4065
+Email: <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Laurent.Falquet at isb-sib.ch</A>
+<A HREF="http://www.ch.embnet.org">http://www.ch.embnet.org</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000064.html">[Mrs-user] MRS Installations - some recent recommendations
+</A></li>
+	<LI>Next message: <A HREF="000066.html">[Mrs-user] Mrs Databases
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#65">[ date ]</a>
+              <a href="thread.html#65">[ thread ]</a>
+              <a href="subject.html#65">[ subject ]</a>
+              <a href="author.html#65">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

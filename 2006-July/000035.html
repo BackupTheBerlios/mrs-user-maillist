@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] MRSCommon.pm and some stray hard-coded paths
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRSCommon.pm%20and%20some%20stray%20hard-coded%20paths&In-Reply-To=%3C44AE473B.2070702%40dbm.ulb.ac.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000034.html">
+   <LINK REL="Next"  HREF="000036.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] MRSCommon.pm and some stray hard-coded paths</H1>
+    <B>david coornaert</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20MRSCommon.pm%20and%20some%20stray%20hard-coded%20paths&In-Reply-To=%3C44AE473B.2070702%40dbm.ulb.ac.be%3E"
+       TITLE="[Mrs-user] MRSCommon.pm and some stray hard-coded paths">dcoorna at dbm.ulb.ac.be
+       </A><BR>
+    <I>Fri Jul  7 13:36:27 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000034.html">[Mrs-user] MRSCommon.pm and some stray hard-coded paths
+</A></li>
+        <LI>Next message: <A HREF="000036.html">[Mrs-user] MRSCommon.pm and some stray hard-coded paths
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#35">[ date ]</a>
+              <a href="thread.html#35">[ thread ]</a>
+              <a href="subject.html#35">[ subject ]</a>
+              <a href="author.html#35">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Yeah I removed it harmlessly
+
+I also removed the path (since it is in /usr/local/bin )
+and it works,
+I guess batch system shell looks in there by default
+
+
+I have a problem tho (now that blast runs)
+blast jobs against SwissProt do work and are displayed (MRS-nicely)
+but against uniprot they run but are not displayed???? (*puzzled*)
+
+have a test @ <A HREF="http://bendisk.ulb.ac.be/mrs">http://bendisk.ulb.ac.be/mrs</A>
+
+===============================================
+David Coornaert [PhD]   (<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dcoorna at dbm.ulb.ac.be</A>)
+
+Belgian Embnet Node (<A HREF="http://www.be.embnet.org">http://www.be.embnet.org</A>)
+Universit&#233; Libre de Bruxelles
+
+Laboratoire de Bioinformatique
+12, Rue des Professeurs Jeener &amp; Brachet
+6041  Gosselies
+BELGIQUE
+
+T&#233;l:  +3226509975
+Fax:  +3226509998
+===============================================
+
+
+
+Maarten L. Hekkelman wrote:
+&gt;<i> David,
+</I>&gt;<i>
+</I>&gt;<i> The line in mrs-result.cgi (use MRSCommon;) can be removed safely, I
+</I>&gt;<i> forgot to do that.
+</I>&gt;<i>
+</I>&gt;<i> The path in mrs-submit is something that needs to be changed of
+</I>&gt;<i> course. But then this entire script won't work unless you have the
+</I>&gt;<i> same queueing system as I have. I need to write some documentation for
+</I>&gt;<i> this.
+</I>&gt;<i>
+</I>&gt;<i> -maarten
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Op 7-jul-2006, om 11:03 heeft david coornaert het volgende geschreven:
+</I>&gt;<i>
+</I>&gt;&gt;<i> in mrs-submit.cgi (line 155)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> changed
+</I>&gt;&gt;<i> /opt/local/bin/mrs_blast
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> /usr/local/bin/mrs_blast
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> but shouldn't it be working without any path ?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> print SCRIPT &quot;( /usr/bin/env MRS_DATA_DIR=$mrs_data
+</I>&gt;&gt;<i> /usr/local/bin/mrs_blast -p $program $options -i $query_name.fa -o
+</I>&gt;&gt;<i> $query_name.out ) &gt;&amp; $query_name.err\n&quot;;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ===============================================
+</I>&gt;&gt;<i> David Coornaert [PhD]   (<A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">dcoorna at dbm.ulb.ac.be</A>)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Belgian Embnet Node (<A HREF="http://www.be.embnet.org">http://www.be.embnet.org</A>)
+</I>&gt;&gt;<i> Universit&#233; Libre de Bruxelles
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Laboratoire de Bioinformatique
+</I>&gt;&gt;<i> 12, Rue des Professeurs Jeener &amp; Brachet
+</I>&gt;&gt;<i> 6041  Gosselies
+</I>&gt;&gt;<i> BELGIQUE
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> T&#233;l:  +3226509975
+</I>&gt;&gt;<i> Fax:  +3226509998
+</I>&gt;&gt;<i> ===============================================
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Maarten L. Hekkelman wrote:
+</I>&gt;&gt;&gt;<i> Op 7-jul-2006, om 8:59 heeft Robert Herzog het volgende geschreven:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> It seems that the file MRSCommon.pm is not copied during installation
+</I>&gt;&gt;&gt;&gt;<i> to a place within reach of the $PATH. From what I see, this does not
+</I>&gt;&gt;&gt;&gt;<i> affect basic downloading, indexing and web-visibility. You should
+</I>&gt;&gt;&gt;&gt;<i> probably do the copy by hand for the time being.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> MRSCommon is no longer part of the distribution since it shouldn't be
+</I>&gt;&gt;&gt;<i> used anymore. I integrated its functionality into MRSCGI.pm.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Also two hard coded paths for $status_dir (../data/...) survived
+</I>&gt;&gt;&gt;&gt;<i> scrutiny, namely in databanks.cgi and databank_log.cgi. Edit the line
+</I>&gt;&gt;&gt;&gt;<i> according to your own configuration and all should be OK.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> The databank_log.cgi script should not have been part of the
+</I>&gt;&gt;&gt;<i> distribution since it is outdated. It's task is now done by
+</I>&gt;&gt;&gt;<i> databanks.cgi. And I fixed databanks.cgi to use mrs.conf to locate the
+</I>&gt;&gt;&gt;<i> base data directory. I assume in the script that you maintain the
+</I>&gt;&gt;&gt;<i> layout as set up by the install script, that means that the status
+</I>&gt;&gt;&gt;<i> directory is located in the same parent folder as the mrs data
+</I>&gt;&gt;&gt;<i> directory.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I didn't update the tar ball since it is such a small change. For
+</I>&gt;&gt;&gt;<i> those of you who want this update, you should apply the following
+</I>&gt;&gt;&gt;<i> patch:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> [pb:~/projects/mrs_2.0] maarten% svn diff -r 125
+</I>&gt;&gt;&gt;<i> web-simple/cgi-bin/databanks.cgi
+</I>&gt;&gt;&gt;<i> Index: web-simple/cgi-bin/databanks.cgi
+</I>&gt;&gt;&gt;<i> ===================================================================
+</I>&gt;&gt;&gt;<i> --- web-simple/cgi-bin/databanks.cgi (revision 125)
+</I>&gt;&gt;&gt;<i> +++ web-simple/cgi-bin/databanks.cgi (working copy)
+</I>&gt;&gt;&gt;<i> @@ -10,7 +10,19 @@
+</I>&gt;&gt;&gt;<i> use File::stat;
+</I>&gt;&gt;&gt;<i> use Data::Dumper;
+</I>&gt;&gt;&gt;<i> -my $status_dir = &quot;/data/status/&quot;;
+</I>&gt;&gt;&gt;<i> +our $mrs_data;
+</I>&gt;&gt;&gt;<i> +
+</I>&gt;&gt;&gt;<i> +my $settings = 'mrs.conf';
+</I>&gt;&gt;&gt;<i> +unless (my $return = do $settings)
+</I>&gt;&gt;&gt;<i> +{
+</I>&gt;&gt;&gt;<i> + warn &quot;couldn't parse $settings: $@&quot; if $@;
+</I>&gt;&gt;&gt;<i> + warn &quot;couldn't do $settings: $!&quot; unless defined $return;
+</I>&gt;&gt;&gt;<i> + warn &quot;couldn't run $settings&quot; unless $return;
+</I>&gt;&gt;&gt;<i> +}
+</I>&gt;&gt;&gt;<i> +
+</I>&gt;&gt;&gt;<i> +# assume that $mrs_data and $status_dir share the same parent folder
+</I>&gt;&gt;&gt;<i> +my $status_dir = &quot;$mrs_data/../status/&quot;;
+</I>&gt;&gt;&gt;<i> +
+</I>&gt;&gt;&gt;<i> my $q = new MRSCGI;
+</I>&gt;&gt;&gt;<i> &amp;main();
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> -maarten
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Mrs-user mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/mrs-user">http://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000034.html">[Mrs-user] MRSCommon.pm and some stray hard-coded paths
+</A></li>
+	<LI>Next message: <A HREF="000036.html">[Mrs-user] MRSCommon.pm and some stray hard-coded paths
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#35">[ date ]</a>
+              <a href="thread.html#35">[ thread ]</a>
+              <a href="subject.html#35">[ subject ]</a>
+              <a href="author.html#35">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

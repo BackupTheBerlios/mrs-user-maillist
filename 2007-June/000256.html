@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] Mrs-user Digest, Vol 12,	Issue 1 - Checked by AntiVir DEMO version
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs-user%20Digest%2C%20Vol%2012%2C%0A%09Issue%201%20-%20Checked%20by%20AntiVir%20DEMO%20version&In-Reply-To=%3C97E4ED16-FB9F-47CE-97CD-0FA5CA0D69BE%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000254.html">
+   <LINK REL="Next"  HREF="000255.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] Mrs-user Digest, Vol 12,	Issue 1 - Checked by AntiVir DEMO version</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20Mrs-user%20Digest%2C%20Vol%2012%2C%0A%09Issue%201%20-%20Checked%20by%20AntiVir%20DEMO%20version&In-Reply-To=%3C97E4ED16-FB9F-47CE-97CD-0FA5CA0D69BE%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] Mrs-user Digest, Vol 12,	Issue 1 - Checked by AntiVir DEMO version">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Fri Jun  8 13:33:04 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000254.html">[Mrs-user] Mrs-user Digest, Vol 12,	Issue 1 - Checked by AntiVir DEMO version
+</A></li>
+        <LI>Next message: <A HREF="000255.html">[Mrs-user] Install MRS Itanium Processor.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 4-jun-2007, om 16:46 heeft Guy Bottu het volgende geschreven:
+
+&gt;<i> 	Dear Maarten, dear all,
+</I>&gt;<i>
+</I>&gt;<i> The problem is (technically) solved ! My colleague from the Belgian
+</I>&gt;<i> Biodiversity Facility kept working on it and found that it works  
+</I>&gt;<i> when you
+</I>&gt;<i> change line 61 :
+</I>&gt;<i> &lt;xsl:template match=&quot;Other-source&quot; xml:space=&quot;preserve&quot; name=&quot;make- 
+</I>&gt;<i> url&quot;&gt;
+</I>&gt;<i> into
+</I>&gt;<i> &lt;xsl:template match=&quot;Other-source&quot; name=&quot;make-url&quot;&gt;
+</I>&gt;<i> An alternative is to concatenate some lines in the &quot;Gene- 
+</I>&gt;<i> commentary_source&quot;
+</I>&gt;<i> block until the error message disappears. This does still not  
+</I>&gt;<i> explain the
+</I>&gt;<i> ultimate cause. He suspects the presence of some non-printing
+</I>&gt;<i> character...
+</I>
+I don't understand why this space-preserve statement was here in the  
+first place so this seems like an acceptable solution to me.
+
+I've checked in this fix into the 3.0.1 branch along with a small  
+couple of other fixes in script files.
+
+&gt;<i> By the way, I just bumped on another problem : if you click on a &quot;GO&quot;
+</I>&gt;<i> link the entry is not retrieved, because an URL of type
+</I>&gt;<i> <A HREF="http://mrs.cmbi.ru.nl/mrs-3/query.do?db=go&amp;id=7155">http://mrs.cmbi.ru.nl/mrs-3/query.do?db=go&amp;id=7155</A>
+</I>&gt;<i> is generated ; the script fails to padd the necessary O's so that  
+</I>&gt;<i> you get
+</I>&gt;<i> <A HREF="http://mrs.cmbi.ru.nl/mrs-3/query.do?db=go&amp;id=0007155">http://mrs.cmbi.ru.nl/mrs-3/query.do?db=go&amp;id=0007155</A>
+</I>
+This clearly is a bug in Xalan. Well, that's my opinion anyway.  
+Here's the code in the style sheet:
+&lt;xsl:variable
+	name=&quot;go&quot;
+	select=&quot;format-number(
+			Gene-commentary_source/Other-source/Other-source_src/Dbtag/ 
+Dbtag_tag/Object-id/Object-id_id,
+			'0000000'
+		)&quot;
+/&gt;
+
+As you can see I specify the format here and according to the XSLT  
+documentation this should work.
+
+In a future release of MRS I will integrate XSLT handling in the soap  
+server so I can use a more up-to-date XSLT processor.
+
+-maarten
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000254.html">[Mrs-user] Mrs-user Digest, Vol 12,	Issue 1 - Checked by AntiVir DEMO version
+</A></li>
+	<LI>Next message: <A HREF="000255.html">[Mrs-user] Install MRS Itanium Processor.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] bug fixes and extra's for Pfam
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20bug%20fixes%20and%20extra%27s%20for%20Pfam&In-Reply-To=%3C482C2633.6070102%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000382.html">
+   <LINK REL="Next"  HREF="000383.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] bug fixes and extra's for Pfam</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20bug%20fixes%20and%20extra%27s%20for%20Pfam&In-Reply-To=%3C482C2633.6070102%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] bug fixes and extra's for Pfam">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Thu May 15 14:01:55 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000382.html">[Mrs-user] bug fixes and extra's for Pfam
+</A></li>
+        <LI>Next message: <A HREF="000383.html">[Mrs-user] Problems at installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#384">[ date ]</a>
+              <a href="thread.html#384">[ thread ]</a>
+              <a href="subject.html#384">[ subject ]</a>
+              <a href="author.html#384">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks very much Guy. I've checked this file in in the repository so it 
+will end up in the next release.
+
+-maarten
+
+
+Guy Bottu schreef:
+&gt;<i>     Dear Maarten, dear all,
+</I>&gt;<i> 
+</I>&gt;<i> This weekend I was testing something and got surprised by the fact that 
+</I>&gt;<i> in the Pfam-A databank the field 'tp' contained a keyword 'tp'. I took a 
+</I>&gt;<i> look and understood why. I take the occasion to send you a modified 
+</I>&gt;<i> version of the file pfam.pm, with also and older fix for another problem :
+</I>&gt;<i> 
+</I>&gt;<i> - There are two lines with
+</I>&gt;<i>    substr($line, 5)
+</I>&gt;<i>    but the file goes
+</I>&gt;<i>    #=GF TP   Domain
+</I>&gt;<i>    so the text to be parsed starts at posion 11 rather then 6. Putting
+</I>&gt;<i>    everywhere  $value  instead fixes it.
+</I>&gt;<i> -  The data files for Pfam-B and Pfam-A-seed had been inverted
+</I>&gt;<i> 
+</I>&gt;<i> As well as with some enhancements, which you might or might not find 
+</I>&gt;<i> useful :
+</I>&gt;<i> - a list of long field names
+</I>&gt;<i> - a numeric 'The number of sequences per cluster' field
+</I>&gt;<i> - not indexing some fields with technical information about how the 
+</I>&gt;<i> model was
+</I>&gt;<i>   built
+</I>&gt;<i> - a version section (to make it work the updater must also retrieve
+</I>&gt;<i>   relnotes.txt)
+</I>&gt;<i> 
+</I>&gt;<i>     Regards,
+</I>&gt;<i>     Guy Bottu,
+</I>&gt;<i>     Belgian EMBnet Node
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mrs-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">Mrs-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mrs-user">https://lists.berlios.de/mailman/listinfo/mrs-user</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000382.html">[Mrs-user] bug fixes and extra's for Pfam
+</A></li>
+	<LI>Next message: <A HREF="000383.html">[Mrs-user] Problems at installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#384">[ date ]</a>
+              <a href="thread.html#384">[ thread ]</a>
+              <a href="subject.html#384">[ subject ]</a>
+              <a href="author.html#384">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] how to get and how to install MRS 5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20how%20to%20get%20and%20how%20to%20install%20MRS%205&In-Reply-To=%3C4DD24A47.1000400%40cmbi.ru.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000599.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] how to get and how to install MRS 5</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20how%20to%20get%20and%20how%20to%20install%20MRS%205&In-Reply-To=%3C4DD24A47.1000400%40cmbi.ru.nl%3E"
+       TITLE="[Mrs-user] how to get and how to install MRS 5">m.hekkelman at cmbi.ru.nl
+       </A><BR>
+    <I>Tue May 17 12:13:27 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000599.html">[Mrs-user] how to get and how to install MRS 5
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#600">[ date ]</a>
+              <a href="thread.html#600">[ thread ]</a>
+              <a href="subject.html#600">[ subject ]</a>
+              <a href="author.html#600">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin,
+
+&gt;<i> Thanks for your hard work on the new MRS release. I would like to use 
+</I>&gt;<i> it, mainly I would like to install it and test its interface to find 
+</I>&gt;<i> out if I need to make some changes in the MRS::Client module. But it 
+</I>&gt;<i> has been long time since I installed it last time and I do not 
+</I>&gt;<i> remember where to get MRS from :-) Before I start to use the PPA 
+</I>&gt;<i> package (or before I compile it from the source), I wonder if you can 
+</I>&gt;<i> clarify few issues:
+</I>&gt;<i>
+</I>&gt;<i> * The PPA site has the MRS 5.0.3-1, the ftp site has MRS 5.0.2b. What 
+</I>&gt;<i> is the latest released version?
+</I>
+Ah, fixed that. You can always get the source of the PPA version by 
+using e.g. 'apt-get source mrs-all'.
+
+&gt;<i>
+</I>&gt;<i> * If I install it from the PPA, does it overwrite the current, 
+</I>&gt;<i> installed previous, version of MRS? I understand that if I run both I 
+</I>&gt;<i> would need to change the port numbers (that are, I believe, the same 
+</I>&gt;<i> in both versions) - but otherwise can the two versions co-exist? How 
+</I>&gt;<i> it is with previously indexed datasets; are they compatible or should 
+</I>&gt;<i> I re-index them for the new version?
+</I>
+The PPA won't overwrite the older version. That's because the PPA 
+installs in /usr while the old version installed in /usr/local by 
+default. Config file for the new version is in /etc/mrs and for the old 
+one in /usr/local/etc. So theoretically you can share one data directory 
+with two installations of MRS. And if you specify separate port numbers 
+in the two config files you can even run the servers along each other.
+
+You can also specify the config file to use from the command line for 
+most of the tools.
+
+&gt;<i>
+</I>&gt;<i> * Is there any documentation about the new release? When I looked into 
+</I>&gt;<i> the package mrs-5.0.2b.tgz, the INSTALL file still refers to the 
+</I>&gt;<i> release 4.2. Is there any notes/docs about transferring from mrs 4 to 
+</I>&gt;<i> mrs 5?
+</I>
+Ah, the INSTALL file... I forgot I had one...
+
+I did update the HTML documentation:
+
+<A HREF="http://mrs.cmbi.ru.nl/mrs-5/help?page=50">http://mrs.cmbi.ru.nl/mrs-5/help?page=50</A>
+
+and
+
+<A HREF="http://mrs.cmbi.ru.nl/mrs-5/help?page=51">http://mrs.cmbi.ru.nl/mrs-5/help?page=51</A>
+
+
+The changes between 4 and 5 are basically summed up in a previous post 
+to this list. But to summarize it:
+
+- New installation method, and as a result new default installation 
+directories. Also, the installation scripts assume there is a user 
+called 'mrs-dba' who owns the created MRS files.
+- The make script is now an executable i.e. you have to run 'mrs-update 
+enzyme' instead of 'make -f /xxx/makefile enzyme'.
+- New application server in mrs-ws, no longer need to run a Java web 
+application.
+
+And then there were quite a few minor bug fixes.
+
+Hope this is sufficient to help you to start evaluating MRS 5? If not, 
+please let me know. I don't think you need to change your MRS::Client 
+code. If I changed the SOAP interface, I only exteded it. And if I broke 
+it, I didn't do that intentionally. Honest.
+
+-maarten
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000599.html">[Mrs-user] how to get and how to install MRS 5
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#600">[ date ]</a>
+              <a href="thread.html#600">[ thread ]</a>
+              <a href="subject.html#600">[ subject ]</a>
+              <a href="author.html#600">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>

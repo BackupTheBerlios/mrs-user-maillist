@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mrs-user] install script in 2.0 branch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mrs-user/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20install%20script%20in%202.0%20branch&In-Reply-To=%3C515F8753-DFF2-4AAD-93E6-60E9C9F90024%40hekkelman.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000002.html">
+   <LINK REL="Next"  HREF="000003.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mrs-user] install script in 2.0 branch</H1>
+    <B>Maarten L. Hekkelman</B> 
+    <A HREF="mailto:mrs-user%40lists.berlios.de?Subject=Re%3A%20%5BMrs-user%5D%20install%20script%20in%202.0%20branch&In-Reply-To=%3C515F8753-DFF2-4AAD-93E6-60E9C9F90024%40hekkelman.com%3E"
+       TITLE="[Mrs-user] install script in 2.0 branch">maarten at hekkelman.com
+       </A><BR>
+    <I>Fri Jun 23 07:57:24 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000002.html">[Mrs-user] install script in 2.0 branch
+</A></li>
+        <LI>Next message: <A HREF="000003.html">[Mrs-user] embl format changed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4">[ date ]</a>
+              <a href="thread.html#4">[ thread ]</a>
+              <a href="subject.html#4">[ subject ]</a>
+              <a href="author.html#4">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 22-jun-2006, om 14:54 heeft Robert HERZOG het volgende geschreven:
+
+&gt;<i> After that, a cd to plugin, the make and make install went with  
+</I>&gt;<i> only two minor complaints about
+</I>&gt;<i> /bin/sh: - : invalid option
+</I>
+Do you happen to remember when exactly this happened?
+
+I'm now working on the installation part of the db-update scripts.  
+Doing that I realise I'm not so sure about the default location for  
+all my stuff. There are several options, one is to have all MRS  
+related stuff in a separate directory tree, like this:
+
+/prefix/mrs/
+/prefix/mrs/bin/mrs.pl
+/prefix/mrs/bin/mrs_blast
+..
+/prefix/mrs/data/
+/prefix/mrs/data/raw/
+/prefix/mrs/data/mrs/
+..
+/prefix/mrs/parser_scripts/
+/prefix/mrs/update_scripts/
+
+That's a bit like SRS. I don't like it myself, but it makes  
+installation a bit easier. However, in this case you need to have a  
+settings file that needs to be 'sourced' at startup to be able to  
+find all the apps and data.
+
+An alternative approach would be to store the binaries in the default  
+OS location for third party software. That's /usr/local/bin for most  
+of them. In that case we could create a /usr/local/etc/mrs.conf file  
+that contains the global settings for mrs on your system. This will  
+also remove the need for using environmental variables. The /usr/ 
+local/etc/mrs.conf file would then contain all the paths to other  
+tools and data directories. And all the tools would use this  
+configuration file.
+
+As an extra I could build code that looks for an alternative .mrsrc  
+configuration for user overrides of the settings.
+
+What's your opinion?
+
+-maarten
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000002.html">[Mrs-user] install script in 2.0 branch
+</A></li>
+	<LI>Next message: <A HREF="000003.html">[Mrs-user] embl format changed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4">[ date ]</a>
+              <a href="thread.html#4">[ thread ]</a>
+              <a href="subject.html#4">[ subject ]</a>
+              <a href="author.html#4">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mrs-user">More information about the Mrs-user
+mailing list</a><br>
+</body></html>
